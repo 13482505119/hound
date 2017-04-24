@@ -9,15 +9,10 @@
 require.config({
     paths: {
         "jquery": "jquery-3.2.1.min",
-        "bootstrap": "bootstrap.min",
         "form": "plugins/form/jquery.form.min",
         "validate": "plugins/validate/jquery.validate.min"
     },
     shim:{
-        "bootstrap": {
-            deps: ["jquery"],
-            exports: "jquery"
-        },
         "form": {
             deps: ["jquery"],
             exports: "jquery"
@@ -29,7 +24,7 @@ require.config({
     }
 });
 
-define("hound", ["plugins/sweetalert2/sweetalert2.min", "jquery", "bootstrap", "form", "validate"], function (sweetAlert) {
+define("hound", ["plugins/sweetalert2/sweetalert2.min", "jquery", "form", "validate"], function (sweetAlert) {
 
     var config = {
             version: "2.0",
