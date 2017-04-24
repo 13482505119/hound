@@ -4,7 +4,7 @@
     dir: "../../public",
     modules: [
         {name: "hound"},
-        {name: "doc"}
+        {name: "docs"}
     ],
     fileExclusionRegExp: /^(r|build)\.js$/,
     optimize: "uglify2",
