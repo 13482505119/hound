@@ -118,18 +118,18 @@
         }(window, window.lib || (window.lib = {}));
     </script>
     <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="../src/css/mall.css?v=20170417" rel="stylesheet">
+    <link href="../src/css/mall.css?v=20170425" rel="stylesheet">
     <script>
         var require = {
             baseUrl: "../src/js/",
-            urlArgs: "v=20170417"
+            urlArgs: "v=20170425"
         };
     </script>
     <script data-main="mall" src="../src/js/require.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-fixed-top">
-    <div class="container">
+    <header class="container">
         <div class="row">
             <div class="rem-9">
                 <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
@@ -152,17 +152,19 @@
                 <!--<i class="fa fa-th-list"></i>-->
             </div>
         </div>
-    </div>
+    </header>
 </nav>
 
-<div class="container" id="content">
+<div class="container goods-waterfall">
     <div class="row">
         <div class="rem-5">
-            <a class="thumbnail" href="product.html">
-                <img src="holder.js/100px567?auto=yes&theme=sky&text=Image" alt="...">
+            <a class="thumbnail" href="goods.html">
+                <div class="img-thumbnail">
+                    <img src="holder.js/100px567?auto=yes&theme=sky&text=Image" alt="...">
+                </div>
                 <div class="caption">
                     <div>600/套---无锡铂尔曼樱花节超值套餐（高级房加双人自助</div>
-                    <div class="price">
+                    <div class="text-price">
                         <i class="fa fa-rmb"></i> <span class="yuan">600.</span>00
                     </div>
                     <div class="text-right text-muted"><small>已售471　仅剩238</small></div>
@@ -170,11 +172,14 @@
             </a>
         </div>
         <div class="rem-5">
-            <a class="thumbnail" href="product.html">
-                <img src="holder.js/100px567?auto=yes&theme=sky&text=Image" alt="...">
+            <a class="thumbnail" href="goods.html">
+                <div class="img-thumbnail">
+                    <img src="holder.js/100px567?auto=yes&theme=sky&text=Image" alt="...">
+                    <span class="sold-out">已售罄</span>
+                </div>
                 <div class="caption">
                     <div>600/套---无锡铂尔曼樱花节超值套餐（高级房加双人自助</div>
-                    <div class="price">
+                    <div class="text-price">
                         <i class="fa fa-rmb"></i> <span class="yuan">600.</span>00
                     </div>
                     <div class="text-right text-muted"><small>已售471　仅剩238</small></div>
@@ -182,44 +187,52 @@
             </a>
         </div>
         <div class="rem-5">
-            <a class="thumbnail" href="product.html">
-                <img src="holder.js/100px567?auto=yes&theme=sky&text=Image" alt="...">
+            <a class="thumbnail" href="goods.html">
+                <div class="img-thumbnail">
+                    <img src="holder.js/100px567?auto=yes&theme=sky&text=Image" alt="...">
+                </div>
                 <div class="caption">
                     <div>600/套---无锡铂尔曼樱花节超值套餐（高级房加双人自助</div>
-                    <div class="price">
+                    <div class="text-price">
                         <i class="fa fa-rmb"></i> <span class="yuan">600.</span>00
                     </div>
                     <div class="text-right text-muted"><small>已售471　仅剩238</small></div>
                 </div>
             </a>
         </div><div class="rem-5">
-        <a class="thumbnail" href="product.html">
-            <img src="holder.js/100px567?auto=yes&theme=sky&text=Image" alt="...">
+        <a class="thumbnail" href="goods.html">
+            <div class="img-thumbnail">
+                <img src="holder.js/100px567?auto=yes&theme=sky&text=Image" alt="...">
+            </div>
             <div class="caption">
                 <div>600/套---无锡铂尔曼樱花节超值套餐（高级房加双人自助</div>
-                <div class="price">
+                <div class="text-price">
                     <i class="fa fa-rmb"></i> <span class="yuan">600.</span>00
                 </div>
                 <div class="text-right text-muted"><small>已售471　仅剩238</small></div>
             </div>
         </a>
     </div><div class="rem-5">
-        <a class="thumbnail" href="product.html">
-            <img src="holder.js/100px567?auto=yes&theme=sky&text=Image" alt="...">
+        <a class="thumbnail" href="goods.html">
+            <div class="img-thumbnail">
+                <img src="holder.js/100px567?auto=yes&theme=sky&text=Image" alt="...">
+            </div>
             <div class="caption">
                 <div>600/套---无锡铂尔曼樱花节超值套餐（高级房加双人自助</div>
-                <div class="price">
+                <div class="text-price">
                     <i class="fa fa-rmb"></i> <span class="yuan">600.</span>00
                 </div>
                 <div class="text-right text-muted"><small>已售471　仅剩238</small></div>
             </div>
         </a>
     </div><div class="rem-5">
-        <a class="thumbnail" href="product.html">
-            <img src="holder.js/100px567?auto=yes&theme=sky&text=Image" alt="...">
+        <a class="thumbnail" href="goods.html">
+            <div class="img-thumbnail">
+                <img src="holder.js/100px567?auto=yes&theme=sky&text=Image" alt="...">
+            </div>
             <div class="caption">
                 <div>600/套---无锡铂尔曼樱花节超值套餐（高级房加双人自助</div>
-                <div class="price">
+                <div class="text-price">
                     <i class="fa fa-rmb"></i> <span class="yuan">600.</span>00
                 </div>
                 <div class="text-right text-muted"><small>已售471　仅剩238</small></div>
@@ -229,46 +242,75 @@
     </div>
 </div>
 
-<!--<div class="container" id="content">
+<div class="container goods-list" style="display: none;">
     <div class="media">
         <div class="media-left">
-            <a href="#">
-                <img class="media-object" src="holder.js/100x100?theme=sky&text=Hello" alt="...">
+            <a href="#" class="img-thumbnail">
+                <img src="holder.js/100px340?auto=yes&theme=sky&text=Image" alt="...">
             </a>
         </div>
         <div class="media-body">
-            <h5 class="media-heading">￥600/套-&#45;&#45;无锡铂尔曼樱花节超值套餐（高级房+加双人自助早餐+加双人自助晚餐）</h5>
-            <p class="clearfix"><span class="pull-left">￥600</span><span class="pull-right">销量：1999</span></p>
+            <div class="media-heading">￥600/套---无锡铂尔曼樱花节超值套餐（高级房+加双人自助早餐+加双人自助晚餐）</div>
+            <div class="text-price"><i class="fa fa-rmb"></i> <span class="yuan">600.</span>00</div>
+            <div class="text-muted">已售471　仅剩238</div>
         </div>
     </div>
     <div class="media">
         <div class="media-left">
-            <a href="#">
-                <img class="media-object" src="holder.js/100x100?theme=sky&text=Hello" alt="...">
+            <a href="#" class="img-thumbnail">
+                <img src="holder.js/100px340?auto=yes&theme=sky&text=Image" alt="...">
+                <span class="sold-out">已售罄</span>
             </a>
         </div>
         <div class="media-body">
-            <h5 class="media-heading">￥600/套-&#45;&#45;无锡铂尔曼樱花节超值套餐（高级房+加双人自助早餐+加双人自助晚餐）</h5>
-            <p class="clearfix"><span class="pull-left">￥600</span><span class="pull-right">销量：1999</span></p>
+            <div class="media-heading">￥600/套---无锡铂尔曼樱花节超值套餐（高级房+加双人自助早餐+加双人自助晚餐）</div>
+            <div class="text-price"><i class="fa fa-rmb"></i> <span class="yuan">600.</span>00</div>
+            <div class="text-muted">已售471　仅剩238</div>
         </div>
     </div>
-</div>-->
+    <div class="media">
+        <div class="media-left">
+            <a href="#" class="img-thumbnail">
+                <img src="holder.js/100px340?auto=yes&theme=sky&text=Image" alt="...">
+            </a>
+        </div>
+        <div class="media-body">
+            <div class="media-heading">￥600/套---无锡铂尔曼樱花节超值套餐（高级房+加双人自助早餐+加双人自助晚餐）</div>
+            <div class="text-price"><i class="fa fa-rmb"></i> <span class="yuan">600.</span>00</div>
+            <div class="text-muted">已售471　仅剩238</div>
+        </div>
+    </div>
+    <div class="media">
+        <div class="media-left">
+            <a href="#" class="img-thumbnail">
+                <img src="holder.js/100px340?auto=yes&theme=sky&text=Image" alt="...">
+            </a>
+        </div>
+        <div class="media-body">
+            <div class="media-heading">￥600/套---无锡铂尔曼樱花节超值套餐（高级房+加双人自助早餐+加双人自助晚餐）</div>
+            <div class="text-price"><i class="fa fa-rmb"></i> <span class="yuan">600.</span>00</div>
+            <div class="text-muted">已售471　仅剩238</div>
+        </div>
+    </div>
+</div>
 
 <nav class="navbar navbar-fixed-bottom">
-    <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
-        <a href="" class="btn active" role="button">
-            <!--<i class="fa fa-home"></i>-->
-            <span class="btn-nav-title">商城首页</span>
-        </a>
-        <a href="" class="btn" role="button">
-            <!--<i class="fa fa-file-o"></i>-->
-            <span class="btn-nav-title">我的订单</span>
-        </a>
-        <a href="" class="btn" role="button">
-            <!--<i class="fa fa-user-o"></i>-->
-            <span class="btn-nav-title">我的收藏</span>
-        </a>
-    </div>
+    <footer class="container">
+        <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
+            <a href="" class="btn active" role="button">
+                <!--<i class="fa fa-home"></i>-->
+                <span class="btn-nav-title">商城首页</span>
+            </a>
+            <a href="" class="btn" role="button">
+                <!--<i class="fa fa-file-o"></i>-->
+                <span class="btn-nav-title">我的订单</span>
+            </a>
+            <a href="" class="btn" role="button">
+                <!--<i class="fa fa-user-o"></i>-->
+                <span class="btn-nav-title">我的收藏</span>
+            </a>
+        </div>
+    </footer>
 </nav>
 </body>
 </html>
