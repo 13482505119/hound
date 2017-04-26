@@ -8,18 +8,18 @@ define(["plugins/iscroll/iscroll-probe"], function (IScroll) {
     //新增锁定下拉方法
     IScroll.prototype.lockPullDown = function (lock) {
         var opts = this.options;
-        opts.pullDownLock = !!lock;
-        if (opts.pullDownElement) {
+        if (opts.pullDownElement && opts.pullDownLock == !lock) {
+            opts.pullDownLock = !!lock;
             if (opts.pullDownLock) {
                 opts.pullDownElement.style.display = "none";
                 this.y = 0;
                 this.options.startY = 0;
-                this.maxScrollY += opts.pullDownOffset;
+                opts.maxScrollY = this.maxScrollY = this.maxScrollY + opts.pullDownOffset;
             } else {
                 opts.pullDownElement.style.display = "block";
                 this.y = -opts.pullDownOffset;
                 this.options.startY = -opts.pullDownOffset;
-                this.maxScrollY -= opts.pullDownOffset;
+                opts.maxScrollY = this.maxScrollY = this.maxScrollY - opts.pullDownOffset;
             }
             this.refresh();
             this.scrollTo(0, this.options.startY, 600);
@@ -28,14 +28,14 @@ define(["plugins/iscroll/iscroll-probe"], function (IScroll) {
     //新增锁定上啦方法
     IScroll.prototype.lockPullUp = function (lock) {
         var opts = this.options;
-        opts.pullUpLock = !!lock;
-        if (opts.pullUpElement) {
+        if (opts.pullUpElement && opts.pullUpLock == !lock) {
+            opts.pullUpLock = !!lock;
             if (opts.pullUpLock) {
                 opts.pullUpElement.style.display = "none";
-                this.maxScrollY += opts.pullUpOffset;
+                opts.maxScrollY = this.maxScrollY = this.maxScrollY + opts.pullUpOffset;
             } else {
                 opts.pullUpElement.style.display = "block";
-                this.maxScrollY -= opts.pullUpOffset;
+                opts.maxScrollY = this.maxScrollY = this.maxScrollY - opts.pullUpOffset;
             }
             this.refresh();
         }
@@ -48,18 +48,21 @@ define(["plugins/iscroll/iscroll-probe"], function (IScroll) {
         probeType: 1,
         startY: 0, //-pullDownOffset
         //extend
+        maxScrollY: 0,
         pullElement: null,
         pullDownSelector: '#pullDown',
         pullDownElement: null,
         pullDownOffset: 0,
         pullDownAction: false,
         pullDownLock: false,
-        pullDownText: ['下拉刷新', '松开加载', '加载中…'],
+        pullDownLabel: null,
+        pullDownText: ['下拉刷新', '松开刷新', '刷新中…'],
         pullUpSelector: '#pullUp',
         pullUpElement: null,
         pullUpOffset: 0,
         pullUpAction: false,
         pullUpLock: false,
+        pullUpLabel: null,
         pullUpText: ['上拉加载更多', '松开加载', '加载中…']
     };
 
@@ -68,6 +71,26 @@ define(["plugins/iscroll/iscroll-probe"], function (IScroll) {
             target[i] = obj[i];
         }
         return target;
+    }
+
+    function trim(str) {
+        return str.replace(/^\s|\s$/g, "")
+    }
+
+    function hasClass(el, className) {
+        return (" " + ((el || {}).className || "").replace(/\s/g, " ") + " ").indexOf(" " + trim(className) + " ") >= 0
+    }
+
+    function addClass(el, className) {
+        if (!hasClass(el, className)) {
+            el.className = el.className ? el.className + ' ' + trim(className) : trim(className)
+        }
+    }
+
+    function removeClass(el, className) {
+        if (hasClass(el, className)) {
+            el.className = trim((" " + el.className.replace(/\s+/g, "  ") + " ").replace(new RegExp(" " + trim(className) + " ", "gi"), "").replace(/\s+/g, " "))
+        }
     }
 
     //获取隐藏元素宽高
@@ -85,7 +108,6 @@ define(["plugins/iscroll/iscroll-probe"], function (IScroll) {
     }
 
     return function (el, options) {
-        var options;
         var _IScroll,
             isScrolling = false,
             isLoading = false;
@@ -93,13 +115,18 @@ define(["plugins/iscroll/iscroll-probe"], function (IScroll) {
         options = extend(defaults, options);
         options.pullElement = document.querySelector(el);
 
-        if (null === options.pullElement) {
-            console.error("Pull element is null!!");
+        if (options.pullElement === null) {
+            console.error("Not found pull element!!");
+            return null;
+        }
+        if (hasClass(options.pullElement, "IScroll")) {
+            console.error("Element is initialized!!");
             return null;
         }
 
         options.pullDownElement = options.pullDownElement || options.pullElement.querySelector(options.pullDownSelector);
         if (options.pullDownElement) {
+            options.pullDownLabel = options.pullDownElement.querySelector('.pullDownLabel') || {};
             //options.pullDownOffset = options.pullDownElement.offsetHeight;
             options.pullDownOffset = getDomWidthOrHeight("height", options.pullDownElement);
             if (options.pullDownLock) {
@@ -109,22 +136,37 @@ define(["plugins/iscroll/iscroll-probe"], function (IScroll) {
                 options.startY = -options.pullDownOffset;
                 options.pullDownElement.style.display = "block";
             }
-            options.pullDownElement.querySelector('.pullDownLabel').innerHTML = options.pullDownText[0];
+            options.pullDownLabel.innerHTML = options.pullDownText[0];
         }
         options.pullUpElement = options.pullUpElement || options.pullElement.querySelector(options.pullUpSelector);
         if (options.pullUpElement) {
+            options.pullUpLabel = options.pullUpElement.querySelector('.pullUpLabel') || {};
             //options.pullUpOffset = options.pullUpElement.offsetHeight;
             options.pullUpOffset = getDomWidthOrHeight("height", options.pullUpElement);
             options.pullUpElement.style.display = options.pullUpLock ? "none" : "block";
-            options.pullUpElement.querySelector('.pullUpLabel').innerHTML = options.pullDownText[0];
+            options.pullUpLabel.innerHTML = options.pullDownText[0];
         }
 
+        //如果内容高度小于容器高度，锁定上拉
+        //var scroller = document.querySelector("#scroller"); //options.pullElement.querySelector("#scroller")
+        var scroller = options.pullElement.children[0];
+        if (options.pullElement.offsetHeight > scroller.offsetHeight + options.startY) {
+            options.pullUpLock = true;
+            options.pullUpElement.style.display = "none";
+            scroller.style.minHeight = (options.pullElement.offsetHeight + options.pullDownOffset) + "px";
+        }
+
+        //Build
         _IScroll = new IScroll(el, options);
 
-        if (options.pullUpLock) {
-            _IScroll.maxScrollY = _IScroll.maxScrollY;
+        if (_IScroll) {
+            addClass(options.pullElement, "IScroll");
+        }
+
+        if (_IScroll.options.pullUpLock) {
+            _IScroll.options.maxScrollY = _IScroll.maxScrollY;
         } else {
-            _IScroll.maxScrollY = _IScroll.maxScrollY + options.pullUpOffset;
+            _IScroll.options.maxScrollY = _IScroll.maxScrollY = _IScroll.maxScrollY + _IScroll.options.pullUpOffset;
         }
 
         //Event: scrollStart
@@ -136,28 +178,31 @@ define(["plugins/iscroll/iscroll-probe"], function (IScroll) {
 
         //Event: scroll
         _IScroll.on('scroll', function () {
+            if (isLoading) {
+                return;
+            }
             var opts = this.options;
             if (opts.pullDownElement && !opts.pullDownLock) {
-                if (this.y >= 5 && !opts.pullDownElement.className.match('flip')) {
-                    opts.pullDownElement.className = 'flip';
-                    opts.pullDownElement.querySelector('.pullDownLabel').innerHTML = opts.pullDownText[1];
-                } else if (this.y < 5 && opts.pullDownElement.className.match('flip')) {
-                    opts.pullDownElement.className = '';
-                    opts.pullDownElement.querySelector('.pullDownLabel').innerHTML = opts.pullDownText[0];
+                if (this.y >= 5 && !hasClass(opts.pullDownElement, "flip")) {
+                    addClass(opts.pullDownElement, "flip");
+                    opts.pullDownLabel.innerHTML = opts.pullDownText[1];
+                } else if (this.y < 5 && hasClass(opts.pullDownElement, "flip")) {
+                    removeClass(opts.pullDownElement, "flip");
+                    opts.pullDownLabel.innerHTML = opts.pullDownText[0];
                 }
             }
             if (opts.pullUpElement && !opts.pullUpLock) {
-                if (this.y <= (this.maxScrollY - opts.pullUpOffset) && !opts.pullUpElement.className.match('flip')) {
-                    opts.pullUpElement.className = 'flip';
-                    opts.pullUpElement.querySelector('.pullUpLabel').innerHTML = opts.pullUpText[1];
+                if (this.y <= (opts.maxScrollY - opts.pullUpOffset) && !hasClass(opts.pullUpElement, "flip")) {
+                    addClass(opts.pullUpElement, "flip");
+                    opts.pullUpLabel.innerHTML = opts.pullUpText[1];
                     this.maxScrollY = this.maxScrollY - opts.pullUpOffset;
-                } else if (this.y > (this.maxScrollY - opts.pullUpOffset) && opts.pullUpElement.className.match('flip')) {
-                    opts.pullUpElement.className = '';
-                    opts.pullUpElement.querySelector('.pullUpLabel').innerHTML = opts.pullUpText[0];
+                } else if (this.y > (opts.maxScrollY - opts.pullUpOffset) && hasClass(opts.pullUpElement, "flip")) {
+                    removeClass(opts.pullUpElement, "flip");
+                    opts.pullUpLabel.innerHTML = opts.pullUpText[0];
                     this.maxScrollY = this.maxScrollY + opts.pullUpOffset;
                 }
             }
-            //console.log('y:' + this.y);
+            //console.log(_IScroll.maxScrollY);
         });
 
         //Event: scrollEnd
@@ -167,14 +212,15 @@ define(["plugins/iscroll/iscroll-probe"], function (IScroll) {
             }
             var opts = this.options;
             if (opts.pullDownElement && !opts.pullDownLock) {
-                if (!opts.pullDownElement.className.match('flip') && this.y > this.options.startY) {
+                if (!hasClass(opts.pullDownElement, "flip") && this.y > opts.startY) {
                     //console.log('resume');
-                    this.scrollTo(0, this.options.startY, 800);
-                } else if (opts.pullDownElement.className.match('flip')) {
-                    opts.pullDownElement.className = 'loading';
-                    opts.pullDownElement.querySelector('.pullDownLabel').innerHTML = opts.pullDownText[2];
+                    this.scrollTo(0, opts.startY, 800);
+                } else if (hasClass(opts.pullDownElement, "flip")) {
+                    removeClass(opts.pullDownElement, "flip");
+                    addClass(opts.pullDownElement, "loading");
+                    opts.pullDownLabel.innerHTML = opts.pullDownText[2];
                     // Execute custom function (ajax call?)
-                    if (isScrolling && !opts.pullDownLock) {
+                    if (isScrolling) {
                         isLoading = true;
                         if (opts.pullDownAction) {
                             opts.pullDownAction()
@@ -185,11 +231,12 @@ define(["plugins/iscroll/iscroll-probe"], function (IScroll) {
                 }
             }
             if (opts.pullUpElement && !opts.pullUpLock) {
-                if (opts.pullUpElement.className.match('flip')) {
-                    opts.pullUpElement.className = 'loading';
-                    opts.pullUpElement.querySelector('.pullUpLabel').innerHTML = opts.pullUpText[2];
+                if (hasClass(opts.pullUpElement, "flip")) {
+                    removeClass(opts.pullUpElement, "flip");
+                    addClass(opts.pullUpElement, "loading");
+                    opts.pullUpLabel.innerHTML = opts.pullUpText[2];
                     // Execute custom function (ajax call?)
-                    if (isScrolling && !this.options.pullUpLock) {
+                    if (isScrolling) {
                         isLoading = true;
                         if (opts.pullUpAction) {
                             opts.pullUpAction();
@@ -207,13 +254,19 @@ define(["plugins/iscroll/iscroll-probe"], function (IScroll) {
         _IScroll.on("refresh", function () {
             var opts = this.options;
 
-            if (opts.pullDownElement && opts.pullDownElement.className.match('loading')) {
-                opts.pullDownElement.className = '';
-                opts.pullDownElement.querySelector('.pullDownLabel').innerHTML = 'Pull down to refresh';
-                this.scrollTo(0, this.options.startY, 0);
-            } else if (opts.pullUpElement && opts.pullUpElement.className.match('loading')) {
-                opts.pullUpElement.className = '';
-                opts.pullUpElement.querySelector('.pullUpLabel').innerHTML = 'Pull up to load more';
+            if (opts.pullUpLock) {
+                opts.maxScrollY = this.maxScrollY;
+            } else {
+                opts.maxScrollY = this.maxScrollY = this.maxScrollY + opts.pullUpOffset;
+            }
+
+            if (opts.pullDownElement && hasClass(opts.pullDownElement, "loading")) {
+                removeClass(opts.pullDownElement, "loading");
+                opts.pullDownLabel.innerHTML = opts.pullDownText[0];
+                this.scrollTo(0, opts.startY, 0);
+            } else if (opts.pullUpElement && hasClass(opts.pullUpElement, "loading")) {
+                removeClass(opts.pullUpElement, "loading");
+                opts.pullUpLabel.innerHTML = opts.pullUpText[0];
                 this.scrollTo(0, this.maxScrollY, 0);
             }
 

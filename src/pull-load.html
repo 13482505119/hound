@@ -119,7 +119,28 @@
 
         }(window, window.lib || (window.lib = {}));
     </script>
-    <script data-main="js/plugins/iscroll/pullLoad" src="js/require.js"></script>
+    <script src="js/require.js"></script>
+    <script>
+        require.config({
+            baseUrl: "js/"
+        });
+        require(["plugins/iscroll/pullLoad"], function (pullLoad) {
+            var myIScroll = pullLoad("#wrapper", {
+                pullDownAction: function () {
+                    setTimeout(function () {
+                        myIScroll.refresh();
+                    }, 3000);
+                },
+                pullUpAction: function () {
+                    setTimeout(function () {
+                        myIScroll.refresh();
+                    }, 3000);
+                }
+            });
+
+            console.log(myIScroll);
+        });
+    </script>
 </head>
 <body>
 <div id="header">iScroll-5</div>

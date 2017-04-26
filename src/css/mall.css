@@ -286,9 +286,7 @@ a:focus {
 
 .goods-waterfall {
     width: 10rem;
-    margin: 0 auto;
-    padding-top: 1rem;
-    padding-bottom: 1.2rem;
+    margin: 0;
 }
 .goods-waterfall .rem-5 {
     margin: 0.1932367149758454rem 0;
@@ -366,4 +364,94 @@ a:focus {
 .row:after,
 .media-bottom:after {
     clear: both;
+}
+
+
+/* IScroll style */
+#wrapper {
+    position: absolute;
+    z-index: 1;
+    top: 3.25em;
+    bottom: 3.8125em;
+    left: 0;
+    right: 0;
+    width: 10rem;
+    margin: 0 auto;
+    overflow: hidden;
+}
+#scroller {
+    position: absolute;
+    z-index: 1;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    width: 100%;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    -o-text-size-adjust: none;
+    text-size-adjust: none;
+}
+#pullDown, #pullUp {
+    display: none;
+    background: #fff;
+    padding: 0.5em 1em;
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
+    line-height: 2em;
+    color: #888;
+}
+#pullDown .pullDownLabel,
+#pullUp .pullUpLabel {
+    margin-left: 1em;
+}
+#pullDown .pullDownIcon,
+#pullUp .pullUpIcon {
+    display: block;
+    float: left;
+    font: normal normal normal 2em/1 FontAwesome;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: 250ms;
+}
+#pullDown .pullDownIcon:before {
+    content: "\f063";
+}
+#pullUp .pullUpIcon:before {
+    content: "\f062";
+}
+#pullDown.flip .pullDownIcon ,
+#pullUp.flip .pullUpIcon {
+    -webkit-transform: rotate(-180deg) translateZ(0);
+}
+#pullDown.loading .pullDownIcon:before,
+#pullUp.loading .pullUpIcon:before {
+    content: "\f021";
+}
+#pullDown.loading .pullDownIcon, #pullUp.loading .pullUpIcon {
+    background-position: 0 100%;
+    -webkit-transform: rotate(0deg) translateZ(0);
+    -webkit-transition-duration: 0ms;
+    -webkit-animation-name: loading;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+}
+
+@-webkit-keyframes loading {
+    from {
+        -webkit-transform: rotate(0deg) translateZ(0);
+    }
+    to {
+        -webkit-transform: rotate(360deg) translateZ(0);
+    }
 }

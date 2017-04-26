@@ -117,15 +117,11 @@ html {
 #pullUp .pullUpIcon:before {
     content: "\f062";
 }
-#pullDown.flip .pullDownIcon {
+#pullDown.flip .pullDownIcon ,
+#pullUp.flip .pullUpIcon {
     -webkit-transform: rotate(-180deg) translateZ(0);
 }
-#pullUp.flip .pullUpIcon {
-    -webkit-transform: rotate(0deg) translateZ(0);
-}
-#pullDown.loading .pullDownIcon:before {
-    content: "\f021";
-}
+#pullDown.loading .pullDownIcon:before,
 #pullUp.loading .pullUpIcon:before {
     content: "\f021";
 }
