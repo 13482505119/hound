@@ -9,22 +9,28 @@
 require.config({
     paths: {
         "jquery": "jquery-3.2.1.min",
+        "swiper": "plugins/swiper/swiper.jquery.min",
+        "sweetAlert": "plugins/sweetalert2/sweetalert2.min",
         "form": "plugins/form/jquery.form.min",
         "validate": "plugins/validate/jquery.validate.min"
     },
     shim:{
+        "swiper": {
+            deps: ["jquery"],
+            exports: "Swiper"
+        },
         "form": {
             deps: ["jquery"],
-            exports: "jquery"
+            exports: "$"
         },
         "validate": {
             deps: ["jquery"],
-            exports: "jquery"
+            exports: "$"
         }
     }
 });
 
-define("hound", ["plugins/sweetalert2/sweetalert2.min", "jquery", "form", "validate"], function (sweetAlert) {
+define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function (Swiper, sweetAlert) {
 
     var config = {
             version: "2.0",

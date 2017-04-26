@@ -339,8 +339,12 @@ a:focus {
     bottom: 0.5em;
 }
 
-
-
+.hide {
+    display: none;
+}
+.show {
+    display: block;
+}
 .pull-left {
     float: left;
 }

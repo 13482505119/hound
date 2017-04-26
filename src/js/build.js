@@ -14,6 +14,8 @@
     paths: {
         "jquery": "jquery-3.2.1.min",
         "bootstrap": "bootstrap.min",
+        "swiper": "plugins/swiper/swiper.jquery.min",
+        "sweetAlert": "plugins/sweetalert2/sweetalert2.min",
         "form": "plugins/form/jquery.form.min",
         "validate": "plugins/validate/jquery.validate.min",
         "dropload": "plugins/dropload/dropload.min",
@@ -22,23 +24,27 @@
     shim:{
         "bootstrap": {
             deps: ["jquery"],
-            exports: "jquery"
+            exports: "$"
+        },
+        "swiper": {
+            deps: ["jquery"],
+            exports: "Swiper"
         },
         "form": {
             deps: ["jquery"],
-            exports: "jquery"
+            exports: "$"
         },
         "validate": {
             deps: ["jquery"],
-            exports: "jquery"
+            exports: "$"
         },
         "dropload":{
             deps: ["jquery"],
-            exports: "jquery"
+            exports: "$"
         },
         "lazyload":{
             deps: ["jquery"],
-            exports: "jquery"
+            exports: "$"
         },
         "bootstrap/bootstrap-affix": {
             deps: ["jquery"],
