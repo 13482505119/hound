@@ -50,6 +50,7 @@ define("pullLoad", ["plugins/iscroll/iscroll-probe"], function (IScroll) {
         //extend
         maxScrollY: 0,
         pullElement: null,
+        pullContainer: null,
         pullDownSelector: '#pullDown',
         pullDownElement: null,
         pullDownOffset: 0,
@@ -147,14 +148,16 @@ define("pullLoad", ["plugins/iscroll/iscroll-probe"], function (IScroll) {
             options.pullUpLabel.innerHTML = options.pullDownText[0];
         }
 
-        //如果内容高度小于容器高度，锁定上拉
-        //var scroller = document.querySelector("#scroller"); //options.pullElement.querySelector("#scroller")
+        /*//如果内容高度小于容器高度，锁定上拉
         var scroller = options.pullElement.children[0];
         if (options.pullElement.offsetHeight > scroller.offsetHeight + options.startY) {
             options.pullUpLock = true;
             options.pullUpElement.style.display = "none";
             scroller.style.minHeight = (options.pullElement.offsetHeight + options.pullDownOffset) + "px";
-        }
+        }*/
+        //定义内部容器最小高度
+        options.pullContainer = options.pullDownElement ? options.pullDownElement.nextElementSibling : options.pullElement.children[0].children[0];
+        options.pullContainer.style.minHeight = options.pullElement.offsetHeight + "px";
 
         //Build
         _IScroll = new IScroll(el, options);
@@ -269,6 +272,8 @@ define("pullLoad", ["plugins/iscroll/iscroll-probe"], function (IScroll) {
                 opts.pullUpLabel.innerHTML = opts.pullUpText[0];
                 this.scrollTo(0, this.maxScrollY, 0);
             }
+
+            opts.pullContainer.style.minHeight = opts.pullElement.offsetHeight + "px";
 
             isLoading = false;
         });

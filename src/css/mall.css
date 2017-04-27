@@ -1,7 +1,11 @@
 @import "normalize.css";
+@import "../js/plugins/swiper/swiper.min.css";
 @import "../js/plugins/sweetalert2/sweetalert2.min.css";
 
-/* 2017-4-24 */
+/**
+ * Muse mall styles
+ * Created by LiuSong on 2017-4-24
+ */
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -106,13 +110,13 @@ a:focus {
 .container {
     margin-right: auto;
     margin-left: auto;
-    padding-left: 1em;
-    padding-right: 1em;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
     width: 10rem;
 }
 .row {
-    margin-left: -1em;
-    margin-right: -1em;
+    margin-left: -0.25rem;
+    margin-right: -0.25rem;
 }
 .rem-1,
 .rem-2,
@@ -127,8 +131,8 @@ a:focus {
     float: left;
     position: relative;
     min-height: 1px;
-    padding-right: 1em;
-    padding-left: 1em;
+    padding-right: 0.25rem;
+    padding-left: 0.25rem;
 }
 .rem-1 {
     width: 1rem;
@@ -240,12 +244,9 @@ a:focus {
 .thumbnail {
     display: block;
     background-color: #fff;
-    -webkit-box-shadow: 0 10px 20px rgba(4, 0, 0, 0.73);
-    -moz-box-shadow: 0 10px 20px rgba(4, 0, 0, 0.73);
-    box-shadow: 0 10px 20px rgba(4, 0, 0, 0.73);
-    -webkit-transition: border .2s ease-in-out;
-    -o-transition: border .2s ease-in-out;
-    transition: border .2s ease-in-out;
+    -webkit-box-shadow: 0 0.0805152979066023rem 0.1610305958132045rem rgba(4, 0, 0, 0.73);
+    -moz-box-shadow: 0 0.0805152979066023rem 0.1610305958132045rem rgba(4, 0, 0, 0.73);
+    box-shadow: 0 0.0805152979066023rem 0.1610305958132045rem rgba(4, 0, 0, 0.73);
 }
 .thumbnail .caption {
     padding: 0.1449275362318841rem;
@@ -289,22 +290,22 @@ a:focus {
     margin: 0;
 }
 .goods-waterfall .rem-5 {
-    margin: 0.1932367149758454rem 0;
+    margin: 0.2rem 0;
 }
 .goods-waterfall .rem-5:nth-child(2n+1) {
-    padding-right: 0.5em;
+    padding-right: 0.125rem;
 }
 .goods-waterfall .rem-5:nth-child(2n) {
-    padding-left: 0.5em;
+    padding-left: 0.125rem;
 }
 .goods-waterfall .img-thumbnail {
-    width: 4.565217391304348rem;
-    height: 4.565217391304348rem;
+    width: 4.625rem;
+    height: 4.625rem;
 }
 .goods-waterfall .img-thumbnail > .sold-out {
-    width: 2.270531400966184rem;
-    height: 2.270531400966184rem;
-    line-height: 2.270531400966184rem;
+    width: 2.3125rem;
+    height: 2.3125rem;
+    line-height: 2.3125rem;
 }
 .goods-list {
     width: 10rem;
@@ -313,11 +314,11 @@ a:focus {
     padding-bottom: 1.2rem;
 }
 .goods-list .media {
-    margin: 0.1932367149758454rem 0;
+    margin: 0.2rem 0;
     background: #ffffff;
-    -webkit-box-shadow: 0 10px 20px rgba(4, 0, 0, 0.73);
-    -moz-box-shadow: 0 10px 20px rgba(4, 0, 0, 0.73);
-    box-shadow: 0 10px 20px rgba(4, 0, 0, 0.73);
+    -webkit-box-shadow: 0 0.0805152979066023rem 0.1610305958132045rem rgba(4, 0, 0, 0.73);
+    -moz-box-shadow: 0 0.0805152979066023rem 0.1610305958132045rem rgba(4, 0, 0, 0.73);
+    box-shadow: 0 0.0805152979066023rem 0.1610305958132045rem rgba(4, 0, 0, 0.73);
 }
 .goods-list .img-thumbnail {
     width: 2.737520128824477rem;
