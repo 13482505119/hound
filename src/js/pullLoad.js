@@ -4,7 +4,7 @@
  * Created by LiuSong on 2017/4/25.
  */
 
-define(["plugins/iscroll/iscroll-probe"], function (IScroll) {
+define("pullLoad", ["plugins/iscroll/iscroll-probe"], function (IScroll) {
     //新增锁定下拉方法
     IScroll.prototype.lockPullDown = function (lock) {
         var opts = this.options;

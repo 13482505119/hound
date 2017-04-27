@@ -3,7 +3,7 @@
  *
  */
 
-require(["hound", "plugins/iscroll/pullLoad"], function(hound, pullLoad) {
+require(["hound", "pullLoad"], function(hound, pullLoad) {
     //document.ready
     $(function () {
 
