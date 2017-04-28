@@ -33,6 +33,8 @@ body {
     height: 100%;
     background: #f2f2f2;
     overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
     font-family:"Microsoft YaHei","Helvetica Neue",Helvetica,Arial,sans-serif;
     line-height: 1.25;
     color: #122733;
@@ -68,17 +70,11 @@ a:focus {
 .text-nowrap {
     white-space: nowrap;
 }
-.text-lowercase {
-    text-transform: lowercase;
-}
-.text-uppercase {
-    text-transform: uppercase;
-}
-.text-capitalize {
-    text-transform: capitalize;
-}
 .text-muted {
     color: #999;
+}
+.text-attract {
+    color: #ff5000;
 }
 .text-price {
     color: #ff5000;
@@ -102,7 +98,7 @@ a:focus {
     font-size: 0.9em;
     color: #ffffff;
     line-height: 1;
-    vertical-align: middle;
+    vertical-align: top;
     white-space: nowrap;
     text-align: center;
     background-color: #ff5000;
@@ -125,24 +121,51 @@ a:focus {
     margin-left: auto;
     width: 10rem;
 }
+.wrapper-has-footer {
+    padding-bottom: 1.8rem;
+}
 .section {
-    padding: 0.2rem 0.4rem;
+    padding: 0.2rem 0;
+    width: 10rem;
     background: #ffffff;
-}
-.section > h1,
-.section > h3 {
-    margin: 0;
-    font-weight: normal;
-}
-.section > h1 {
-    float: left;
-    font-size: 0.3864734299516908rem;
+    font-size: 1.1111111111111112em;
 }
 .section-head {
-    margin-bottom: 1em;
+    margin: 0 0 0.1rem 0;
+    padding: 0 0.4rem 0.1rem 0.4rem;
+    border-bottom: 1px solid #f5f5f5;
     font-size: 1.125em;
     font-weight: bold;
     color: #ff5000;
+}
+.section-body {
+    padding: 0 0.4rem;
+    word-wrap: break-word;
+    text-align: justify;
+}
+.section-head > *,
+.section-body > * {
+    float: left;
+    width: 100%;
+}
+.section-body > h1,
+.section-body > h3 {
+    margin: 0;
+    font-weight: normal;
+}
+.section-body > h1 {
+    font-size: 1.2em;
+}
+.section-body > h3 {
+    margin-top: 0.5em;
+    font-size: 1em;
+}
+.section-body p {
+    margin: 0;
+}
+.section-body > ul {
+    margin-top: 0;
+    margin-bottom: 0;
 }
 .row-fa {
     position: relative;
@@ -153,8 +176,8 @@ a:focus {
     position: absolute;
     left: 0;
     top: 0;
-    font-size: 1.5em;
-    line-height: 1.25;
+    font-size: 1.875em;
+    line-height: 1;
 }
 .row {
     margin-left: -0.25rem;
@@ -206,32 +229,76 @@ a:focus {
 .rem-10 {
     width: 10rem;
 }
+.dl-horizontal {
+    margin: 0;
+}
+.dl-horizontal dt {
+    float: left;
+    width: 5.1em;
+    overflow: hidden;
+    clear: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.dl-horizontal dd {
+    margin-left: 5.1em;
+}
+.dl-horizontal ~ .dl-horizontal {
+    margin-top: 0.45em;
+}
 
 /* 自适用按钮组 */
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border: 0;
+    font-weight: normal;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+}
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+    outline: none;
+}
 .btn-group-justified {
     display: table;
     width: 100%;
     table-layout: fixed;
     border-collapse: separate;
 }
-.btn-group-justified > .btn,
-.btn-group-justified > .btn-group {
+.btn-group-justified > .btn {
     display: table-cell;
     float: none;
     width: 1%;
     text-align: center;
 }
-.btn-group-justified > .btn-group .btn {
+.btn-group-justified > .btn {
     width: 100%;
 }
-.btn:active,
-.btn.active {
+.btn-group-justified > .btn:active,
+.btn-group-justified > .btn.active {
     color: #ff5000;
 }
 
 /* 顶部底部导航 */
 .navbar-fixed-top,
-.navbar-fixed-bottom {
+.navbar-fixed-bottom,
+.navbar-fixed-button {
     position: fixed;
     right: 0;
     left: 0;
@@ -259,6 +326,34 @@ a:focus {
 }
 .navbar-fixed-bottom .btn-group-justified > .btn ~ .btn {
     border-left: 1px solid #122733;
+}
+.navbar-fixed-button {
+    bottom: 0;
+    height: 1.2rem;
+}
+.navbar-fixed-button .btn {
+    display: block;
+    height: 1.2rem;
+    border: 0;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align: center;
+    font-size: 0.3864734299516908rem;
+}
+.navbar-fixed-button .btn-favorite {
+    background: none #FFFFFF;
+}
+.navbar-fixed-button .btn-favorite > .fa {
+    font-size: 1.3em;
+}
+.navbar-fixed-button .btn-attract {
+    background: none #ff5000;
+    color: #FFFFFF;
 }
 
 /* 瀑布商品 */
@@ -441,8 +536,14 @@ a:focus {
 .clearfix:after,
 .container:before,
 .container:after,
+.wrapper:before,
+.wrapper:after,
+.section:before,
+.section:after,
 .row:before,
 .row:after,
+.dl-horizontal dd:before,
+.dl-horizontal dd:after,
 .media-bottom:before,
 .media-bottom:after {
     display: table;
@@ -450,7 +551,10 @@ a:focus {
 }
 .clearfix:after,
 .container:after,
+.wrapper:after,
+.section:after,
 .row:after,
+.dl-horizontal dd:after,
 .media-bottom:after {
     clear: both;
 }

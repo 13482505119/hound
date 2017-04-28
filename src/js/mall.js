@@ -26,10 +26,12 @@ require(["hound", "pullLoad"], function(hound, pullLoad) {
             });
         }
 
-        var mySwiper = new Swiper ('.swiper-goods', {
-            loop: true,
-            pagination: '.swiper-pagination'
-        });
+        if ($(".swiper-wrapper", ".swiper-goods").children().length > 1) {
+            new Swiper ('.swiper-goods', {
+                loop: true,
+                pagination: '.swiper-pagination'
+            });
+        }
 
     });
 });
