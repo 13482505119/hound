@@ -42,6 +42,8 @@ define("pullLoad", ["plugins/iscroll/iscroll-probe"], function (IScroll) {
     };
 
     var defaults = {
+        click: true,
+        taps: true,
         mouseWheel: true,
         scrollbars: true,
         fadeScrollbars: true,

@@ -52,6 +52,7 @@ a:focus {
 a:focus {
     outline: none;
 }
+/* 文本样式 */
 .text-left {
     text-align: left;
 }
@@ -85,34 +86,75 @@ a:focus {
 .text-price .yuan {
     font-size: 1.5em;
 }
+.text-price-align {
+    margin-top: 0.25em;
+    line-height: 1.5;
+}
 .text-overflow {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+.badge {
+    display: inline-block;
+    min-width: 0.9em;
+    padding: 0.3333333333333333em 0.6666666666666667em;
+    font-size: 0.9em;
+    color: #ffffff;
+    line-height: 1;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-align: center;
+    background-color: #ff5000;
+    border-radius: 0.4em;
+}
+.badge:empty {
+    display: none;
+}
 
-.hspace {
-    margin-top: 1em;
-}
-.hspace-half {
-    margin-top: 0.5em;
-}
-.hspace-sesqui {
-    margin-top: 1.5em;
-}
-.hspace-double {
-    margin-top: 2em;
-}
-.hspace-triple {
-    margin-top: 3em;
-}
-
+/* 布局样式 */
 .container {
     margin-right: auto;
     margin-left: auto;
     padding-left: 0.25rem;
     padding-right: 0.25rem;
     width: 10rem;
+}
+.wrapper {
+    margin-right: auto;
+    margin-left: auto;
+    width: 10rem;
+}
+.section {
+    padding: 0.2rem 0.4rem;
+    background: #ffffff;
+}
+.section > h1,
+.section > h3 {
+    margin: 0;
+    font-weight: normal;
+}
+.section > h1 {
+    float: left;
+    font-size: 0.3864734299516908rem;
+}
+.section-head {
+    margin-bottom: 1em;
+    font-size: 1.125em;
+    font-weight: bold;
+    color: #ff5000;
+}
+.row-fa {
+    position: relative;
+    padding-left: 2em;
+    line-height: 1.875;
+}
+.row-fa .fa {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1.5em;
+    line-height: 1.25;
 }
 .row {
     margin-left: -0.25rem;
@@ -165,6 +207,7 @@ a:focus {
     width: 10rem;
 }
 
+/* 自适用按钮组 */
 .btn-group-justified {
     display: table;
     width: 100%;
@@ -186,6 +229,7 @@ a:focus {
     color: #ff5000;
 }
 
+/* 顶部底部导航 */
 .navbar-fixed-top,
 .navbar-fixed-bottom {
     position: fixed;
@@ -217,6 +261,7 @@ a:focus {
     border-left: 1px solid #122733;
 }
 
+/* 瀑布商品 */
 .img-thumbnail {
     position: relative;
 }
@@ -255,7 +300,9 @@ a:focus {
     margin-top: 0.25em;
 }
 
+/* 列表商品 */
 .media {
+    display: block;
     margin-top: 1.25em;
 }
 .media,
@@ -285,6 +332,7 @@ a:focus {
     font-size: 1.15em;
 }
 
+/* 商品瀑布布局 */
 .goods-waterfall {
     width: 10rem;
     margin: 0;
@@ -307,6 +355,8 @@ a:focus {
     height: 2.3125rem;
     line-height: 2.3125rem;
 }
+
+/* 商品列表布局 */
 .goods-list {
     width: 10rem;
     margin: 0 auto;
@@ -340,6 +390,23 @@ a:focus {
     bottom: 0.5em;
 }
 
+/* 商品大图轮播 */
+.swiper-goods {
+    width: 10rem;
+    height: 8rem;
+}
+.swiper-goods>.swiper-pagination-bullets {
+    bottom: 0.3703703703703703rem;
+}
+.swiper-goods>.swiper-pagination-bullets .swiper-pagination-bullet {
+    margin: 0 0.072463768115942rem;
+    width: 0.1851851851851852rem;
+    height: 0.1851851851851852rem;
+    background: #FFFFFF;
+}
+
+
+/* 常用样式 */
 .hide {
     display: none;
 }
@@ -352,7 +419,24 @@ a:focus {
 .pull-right {
     float: right;
 }
+/* 水平间距 */
+.hspace {
+    margin-top: 1em;
+}
+.hspace-half {
+    margin-top: 0.5em;
+}
+.hspace-sesqui {
+    margin-top: 1.5em;
+}
+.hspace-double {
+    margin-top: 2em;
+}
+.hspace-triple {
+    margin-top: 3em;
+}
 
+/* 清除浮动 */
 .clearfix:before,
 .clearfix:after,
 .container:before,
