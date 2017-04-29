@@ -91,6 +91,12 @@ a:focus {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+.text-small {
+    font-size: smaller;
+}
+.text-big {
+    font-size: larger;
+}
 .badge {
     display: inline-block;
     min-width: 0.9em;
@@ -106,6 +112,16 @@ a:focus {
 }
 .badge:empty {
     display: none;
+}
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
 }
 
 /* 布局样式 */
@@ -247,18 +263,18 @@ a:focus {
     margin-top: 0.45em;
 }
 
-/* 自适用按钮组 */
+/* 按钮 */
 .btn {
     display: inline-block;
     margin-bottom: 0;
     padding-top: 0;
     padding-bottom: 0;
     border: 0;
+    font-size: 1em;
     font-weight: normal;
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
-    -ms-touch-action: manipulation;
     touch-action: manipulation;
     cursor: pointer;
     -webkit-user-select: none;
@@ -274,6 +290,32 @@ a:focus {
 .btn:active.focus,
 .btn.active.focus {
     outline: none;
+}
+.btn.disabled,
+.btn[disabled] {
+    background: #999999 none;
+    color: #ffffff;
+    cursor: not-allowed;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.btn-attract {
+    background: #ff5000 none;
+    color: #ffffff;
+}
+.btn-attract-o {
+    padding-left: 0;
+    padding-right: 0;
+    width: 1.5rem;
+    height: 0.5rem;
+    border: 1px solid #ff5000;
+    border-radius: 0.05rem;
+    background: #ffffff none;
+    color: #ff5000;
+}
+.btn-block {
+    display: block;
+    width: 100%;
 }
 .btn-group-justified {
     display: table;
@@ -294,11 +336,40 @@ a:focus {
 .btn-group-justified > .btn.active {
     color: #ff5000;
 }
+.btn ~ .btn {
+    margin-left: 0.3rem;
+}
+
+/* 表单 */
+.form-search {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding-top: 1em;
+}
+.form-search:before {
+    display: block;
+    position: absolute;
+    left: 0.6em;
+    top: 0.94em;
+    font-size: 1.875em;
+    line-height: 1;
+}
+.form-search input {
+    display: block;
+    width: 100%;
+    padding: 0.7em 1em 0.7em 3.75em;
+    border: 0;
+    background: #f2f2f2 none;
+    border-radius: 0.0644122383252818rem;
+    font-size: 1em;
+    font-weight: bold;
+    line-height: 1.875em;
+}
 
 /* 顶部底部导航 */
 .navbar-fixed-top,
-.navbar-fixed-bottom,
-.navbar-fixed-button {
+.navbar-fixed-bottom {
     position: fixed;
     right: 0;
     left: 0;
@@ -308,52 +379,41 @@ a:focus {
 .navbar-fixed-top {
     top: 0;
     padding-bottom: 0.0833333333333333em;
-    font-size: 1.25em;
-    line-height: 2.6;
     text-align: center;
 }
-.navbar-fixed-top .container {
+.navbar-fixed-top nav {
     border-bottom: 1px solid #e7e7e7;
+    font-size: 1.25em;
+    line-height: 2.6;
 }
-.navbar-fixed-top .rem-1 {
+.navbar-fixed-top nav .rem-1 {
     border-left: 1px solid #e7e7e7;
 }
 .navbar-fixed-bottom {
     bottom: 0;
-    padding: 0.5em 0;
+}
+.navbar-fixed-bottom nav {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
     font-size: 1.25em;
     line-height: 2.25;
 }
 .navbar-fixed-bottom .btn-group-justified > .btn ~ .btn {
     border-left: 1px solid #122733;
 }
-.navbar-fixed-button {
-    bottom: 0;
+.navbar-fixed-bottom .btn-group-row {
     height: 1.2rem;
 }
-.navbar-fixed-button .btn {
+.navbar-fixed-bottom .btn-group-row > .btn {
     display: block;
     height: 1.2rem;
-    border: 0;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    text-align: center;
     font-size: 0.3864734299516908rem;
 }
-.navbar-fixed-button .btn-favorite {
-    background: none #FFFFFF;
+.navbar-fixed-bottom .btn-group-row > .btn-favorite {
+    background: #ffffff none;
 }
-.navbar-fixed-button .btn-favorite > .fa {
+.navbar-fixed-bottom .btn-group-row > .btn-favorite > .fa {
     font-size: 1.3em;
-}
-.navbar-fixed-button .btn-attract {
-    background: none #ff5000;
-    color: #FFFFFF;
 }
 
 /* 瀑布商品 */
@@ -485,6 +545,56 @@ a:focus {
     bottom: 0.5em;
 }
 
+.order-list {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+}
+.orderli {
+    margin: 0.25rem 0;
+    background: #ffffff;
+}
+.orderli-media {
+    padding: 0.25rem 0.2rem 0 0.25rem;
+}
+.orderli-state {
+    padding: 0.15rem 0.4rem 0.15rem 0.3rem;
+}
+.orderli-state .pull-left {
+    line-height: 1.5em;
+}
+.orderli-body {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.8em;
+}
+.orderli-foot {
+    padding: 0.2rem 0.4rem 0.25rem 0.3rem;
+    border-top: 1px solid #e7e7e7;
+    text-align: right;
+}
+.orderli-media .media {
+    margin-top: 0;
+    background: #f2f2f2;
+}
+.orderli-media .media-heading {
+    font-size: 1em;
+}
+.orderli-media .img-thumbnail {
+    width: 2rem;
+    height: 2rem;
+}
+.orderli-media .text-price {
+    position: absolute;
+    left: 0;
+    bottom: 0.5em;
+}
+.orderli-media .text-muted {
+    position: absolute;
+    right: 1em;
+    bottom: 0.5em;
+}
+
+
 /* 商品大图轮播 */
 .swiper-goods {
     width: 10rem;
@@ -497,7 +607,7 @@ a:focus {
     margin: 0 0.072463768115942rem;
     width: 0.1851851851851852rem;
     height: 0.1851851851851852rem;
-    background: #FFFFFF;
+    background: #ffffff;
 }
 
 
@@ -544,6 +654,8 @@ a:focus {
 .row:after,
 .dl-horizontal dd:before,
 .dl-horizontal dd:after,
+.orderli-state:before,
+.orderli-state:after,
 .media-bottom:before,
 .media-bottom:after {
     display: table;
@@ -555,6 +667,7 @@ a:focus {
 .section:after,
 .row:after,
 .dl-horizontal dd:after,
+.orderli-state:after,
 .media-bottom:after {
     clear: both;
 }

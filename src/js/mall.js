@@ -26,12 +26,18 @@ require(["hound", "pullLoad"], function(hound, pullLoad) {
             });
         }
 
+        //商品图片轮播
         if ($(".swiper-wrapper", ".swiper-goods").children().length > 1) {
             new Swiper ('.swiper-goods', {
                 loop: true,
                 pagination: '.swiper-pagination'
             });
         }
+
+        //收藏及取消收藏
+        $(".btn-favorite").click(function () {
+
+        });
 
     });
 });
