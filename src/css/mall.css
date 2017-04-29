@@ -313,6 +313,9 @@ a:focus {
     background: #ffffff none;
     color: #ff5000;
 }
+.btn-attract-o ~ .btn-attract-o {
+    margin-left: 0.3rem;
+}
 .btn-block {
     display: block;
     width: 100%;
@@ -335,9 +338,6 @@ a:focus {
 .btn-group-justified > .btn:active,
 .btn-group-justified > .btn.active {
     color: #ff5000;
-}
-.btn ~ .btn {
-    margin-left: 0.3rem;
 }
 
 /* 表单 */
@@ -610,6 +610,66 @@ a:focus {
     background: #ffffff;
 }
 
+.result-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+}
+.result {
+    margin: 0 auto;
+    width: 7.246376811594203rem;
+    background: #ffffff;
+}
+.result-icon {
+    margin: 0 auto;
+    width: 5rem;
+    height: 4rem;
+}
+.result-text {
+    width: 100%;
+    margin-top: 0.4rem;
+    font-size: 1.3333333333333333em;
+    font-weight: bold;
+    text-align: center;
+}
+.result-button {
+    width: 100%;
+    margin-top: 1rem;
+}
+.result-button > .btn {
+    display: block;
+    width: 100%;
+    height: 1rem;
+    border-radius: 0.15rem;
+    font-size: 1.3333333333333333em;
+    font-weight: bold;
+    line-height: 1rem;
+}
+.result-button > .btn ~ .btn {
+    margin-top: 0.6rem;
+}
+.result-success .result-icon {
+    background: url("images/success.png") no-repeat;
+    background-size: 100%;
+}
+.result-fail .result-icon {
+    background: url("images/fail.png") no-repeat;
+    background-size: 100%;
+}
+.result-exception .result-icon {
+    background: url("images/exception.png") no-repeat;
+    background-size: 100%;
+}
+.result-no-record .result-icon {
+    background: url("images/no-record.png") no-repeat;
+    background-size: 100%;
+}
+.result-wrapper .section {
+    margin-top: 1.8rem;
+}
 
 /* 常用样式 */
 .hide {
