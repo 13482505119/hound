@@ -26,7 +26,7 @@ require(["hound", "pullLoad"], function(hound, pullLoad) {
             });
         }
 
-        //��ƷͼƬ�ֲ�
+        //商品图片轮播
         if ($(".swiper-wrapper", ".swiper-goods").children().length > 1) {
             new Swiper ('.swiper-goods', {
                 loop: true,
@@ -34,10 +34,27 @@ require(["hound", "pullLoad"], function(hound, pullLoad) {
             });
         }
 
-        //�ղؼ�ȡ���ղ�
+        //收藏及取消收藏
         $(".btn-favorite").click(function () {
 
         });
+
+        //radio
+        $(".fa-circle-o").click(function () {
+            checkRadio();
+        });
+        checkRadio();
+        function checkRadio() {
+            $(".fa-circle-o").each(function () {
+                var $this = $(this);
+                if ($this.find(":radio").prop("checked")) {
+                    $this.addClass("checked");
+                } else {
+                    $this.removeClass("checked");
+                }
+            });
+
+        }
 
     });
 });

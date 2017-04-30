@@ -73,6 +73,9 @@ a:focus {
 .text-muted {
     color: #999;
 }
+.text-silver {
+    color: #c5c5c5;
+}
 .text-attract {
     color: #ff5000;
 }
@@ -141,25 +144,23 @@ a:focus {
     padding-bottom: 1.8rem;
 }
 .section {
-    padding: 0.2rem 0;
     width: 10rem;
     background: #ffffff;
     font-size: 1.1111111111111112em;
 }
 .section-head {
-    margin: 0 0 0.1rem 0;
-    padding: 0 0.4rem 0.1rem 0.4rem;
+    margin: 0;
+    padding: 0.2rem 0.4rem;
     border-bottom: 1px solid #f5f5f5;
     font-size: 1.125em;
     font-weight: bold;
     color: #ff5000;
 }
 .section-body {
-    padding: 0 0.4rem;
+    padding: 0.2rem 0.4rem;
     word-wrap: break-word;
     text-align: justify;
 }
-.section-head > *,
 .section-body > * {
     float: left;
     width: 100%;
@@ -182,6 +183,14 @@ a:focus {
 .section-body > ul {
     margin-top: 0;
     margin-bottom: 0;
+}
+.section-body ~ .section-body {
+    border-top: 1px solid #f2f2f2;
+}
+.section .row {
+    padding: 0.2rem 0;
+    border-bottom: 1px solid #f2f2f2;
+    line-height: 0.5314009661835749rem;
 }
 .row-fa {
     position: relative;
@@ -247,20 +256,36 @@ a:focus {
 }
 .dl-horizontal {
     margin: 0;
+    font-size: 0.322061191626409rem;
 }
 .dl-horizontal dt {
     float: left;
-    width: 5.1em;
+    width: 1.65rem;
     overflow: hidden;
     clear: left;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 .dl-horizontal dd {
-    margin-left: 5.1em;
+    float: left;
+    margin-left: 0;
+    width: 7.55rem;
+    overflow: hidden;
 }
 .dl-horizontal ~ .dl-horizontal {
     margin-top: 0.45em;
+}
+.jumbotron {
+    padding: 0.5rem 0.25rem 0.25rem 0.25rem;
+    background: #ffffff;
+}
+.jumbotron-head {
+    font-size: 0.3864734299516908rem;
+    color: #ff5000;
+}
+.jumbotron-body {
+    margin-top: 0.25rem;
+    font-size: 0.322061191626409rem;
 }
 
 /* 按钮 */
@@ -671,6 +696,30 @@ a:focus {
     margin-top: 1.8rem;
 }
 
+.icon-weixin,
+.icon-zhifubao {
+    display: inline-block;
+    width: 0.6521739130434783rem;
+    height: 0.5314009661835749rem;
+}
+.icon-weixin {
+    background: url("images/weixin.png") no-repeat;
+    background-size: 100%;
+}
+.icon-zhifubao {
+    background: url("images/zhifubao.png") no-repeat;
+    background-size: 100%;
+}
+.fa-circle-o:before {
+    display: inline-block;
+    font-size: 0.45rem;
+    line-height: 0.5314009661835749rem;
+}
+.checked:before {
+    content: "\f058";
+    color: #ff5000;
+}
+
 /* 常用样式 */
 .hide {
     display: none;
@@ -686,19 +735,25 @@ a:focus {
 }
 /* 水平间距 */
 .hspace {
-    margin-top: 1em;
+    margin-top: 0.25rem;
 }
 .hspace-half {
-    margin-top: 0.5em;
+    margin-top: 0.125rem;
 }
 .hspace-sesqui {
-    margin-top: 1.5em;
+    margin-top: 0.375rem;
 }
 .hspace-double {
-    margin-top: 2em;
+    margin-top: 0.5rem;
 }
 .hspace-triple {
-    margin-top: 3em;
+    margin-top: 0.75rem;
+}
+.hspace-fourfold {
+    margin-top: 1rem;
+}
+.hspace-clear {
+    margin-top: 0!important;
 }
 
 /* 清除浮动 */
@@ -710,6 +765,8 @@ a:focus {
 .wrapper:after,
 .section:before,
 .section:after,
+.section-body:before,
+.section-body:after,
 .row:before,
 .row:after,
 .dl-horizontal dd:before,
@@ -725,6 +782,7 @@ a:focus {
 .container:after,
 .wrapper:after,
 .section:after,
+.section-body:after,
 .row:after,
 .dl-horizontal dd:after,
 .orderli-state:after,
