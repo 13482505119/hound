@@ -146,7 +146,7 @@ a:focus {
 .section {
     width: 10rem;
     background: #ffffff;
-    font-size: 1.1111111111111112em;
+    font-size: 0.322rem;
 }
 .section-head {
     margin: 0;
@@ -186,6 +186,9 @@ a:focus {
 }
 .section-body ~ .section-body {
     border-top: 1px solid #f2f2f2;
+}
+.section-body .btn-attract-o {
+    font-size: 0.2254rem;
 }
 .section .row {
     padding: 0.2rem 0;
@@ -256,7 +259,7 @@ a:focus {
 }
 .dl-horizontal {
     margin: 0;
-    font-size: 0.322061191626409rem;
+    font-size: 0.322rem;
 }
 .dl-horizontal dt {
     float: left;
@@ -273,7 +276,7 @@ a:focus {
     overflow: hidden;
 }
 .dl-horizontal ~ .dl-horizontal {
-    margin-top: 0.45em;
+    margin-top: 0.15rem;
 }
 .jumbotron {
     padding: 0.5rem 0.25rem 0.25rem 0.25rem;
@@ -285,7 +288,7 @@ a:focus {
 }
 .jumbotron-body {
     margin-top: 0.25rem;
-    font-size: 0.322061191626409rem;
+    font-size: 0.322rem;
 }
 
 /* 按钮 */
@@ -295,7 +298,7 @@ a:focus {
     padding-top: 0;
     padding-bottom: 0;
     border: 0;
-    font-size: 1em;
+    font-size: 0.322rem;
     font-weight: normal;
     text-align: center;
     white-space: nowrap;
@@ -329,14 +332,12 @@ a:focus {
     color: #ffffff;
 }
 .btn-attract-o {
-    padding-left: 0;
-    padding-right: 0;
-    width: 1.5rem;
-    height: 0.5rem;
+    padding: 0 0.2rem;
     border: 1px solid #ff5000;
     border-radius: 0.05rem;
     background: #ffffff none;
     color: #ff5000;
+    line-height: 1.75;
 }
 .btn-attract-o ~ .btn-attract-o {
     margin-left: 0.3rem;
@@ -364,32 +365,51 @@ a:focus {
 .btn-group-justified > .btn.active {
     color: #ff5000;
 }
+.btn-group-row {
+    height: 1.2rem;
+}
+.btn-group-row > .btn {
+    display: block;
+    height: 1.2rem;
+    font-size: 0.3865rem;
+}
+.btn-group-row > .btn-favorite {
+    background: #ffffff none;
+}
+.btn-group-row > .btn-favorite > .fa {
+    font-size: 0.5rem;
+}
+.btn-group-order {
+    width: 10rem;
+    padding: 0.322rem 0.4rem;
+    text-align: right;
+}
 
 /* 表单 */
 .form-search {
     position: relative;
     display: block;
     width: 100%;
-    padding-top: 1em;
+    padding-top: 0.3059581320450885rem;
 }
 .form-search:before {
     display: block;
     position: absolute;
-    left: 0.6em;
-    top: 0.94em;
-    font-size: 1.875em;
+    left: 0.322rem;
+    top: 0.5rem;
+    font-size: 0.55rem;
     line-height: 1;
 }
 .form-search input {
     display: block;
     width: 100%;
-    padding: 0.7em 1em 0.7em 3.75em;
+    padding: 0.2rem 0.29rem 0.2rem 1.1rem;
     border: 0;
     background: #f2f2f2 none;
-    border-radius: 0.0644122383252818rem;
-    font-size: 1em;
+    border-radius: 0.08rem;
+    font-size: 0.29rem;
     font-weight: bold;
-    line-height: 1.875em;
+    line-height: 0.55rem;
 }
 
 /* 顶部底部导航 */
@@ -403,42 +423,30 @@ a:focus {
 }
 .navbar-fixed-top {
     top: 0;
-    padding-bottom: 0.0833333333333333em;
-    text-align: center;
+    padding-bottom: 0.0241545893719807rem;
 }
 .navbar-fixed-top nav {
     border-bottom: 1px solid #e7e7e7;
-    font-size: 1.25em;
-    line-height: 2.6;
 }
 .navbar-fixed-top nav .rem-1 {
     border-left: 1px solid #e7e7e7;
+    line-height: 0.95rem;
+}
+.navbar-fixed-top nav .btn {
+    font-size: 0.3623rem;
+    line-height: 0.95rem;
 }
 .navbar-fixed-bottom {
     bottom: 0;
 }
 .navbar-fixed-bottom nav {
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    font-size: 1.25em;
-    line-height: 2.25;
+    padding-top: 0.2174rem;
+    padding-bottom: 0.1771rem;
+    font-size: 0.3623rem;
+    line-height: 0.781rem;
 }
 .navbar-fixed-bottom .btn-group-justified > .btn ~ .btn {
     border-left: 1px solid #122733;
-}
-.navbar-fixed-bottom .btn-group-row {
-    height: 1.2rem;
-}
-.navbar-fixed-bottom .btn-group-row > .btn {
-    display: block;
-    height: 1.2rem;
-    font-size: 0.3864734299516908rem;
-}
-.navbar-fixed-bottom .btn-group-row > .btn-favorite {
-    background: #ffffff none;
-}
-.navbar-fixed-bottom .btn-group-row > .btn-favorite > .fa {
-    font-size: 1.3em;
 }
 
 /* 瀑布商品 */
@@ -448,9 +456,9 @@ a:focus {
 .img-thumbnail > img {
     max-width: 100%;
     max-height: 100%;
-    -webkit-border-radius: 0.0644122383252818rem;
-    -moz-border-radius: 0.0644122383252818rem;
-    border-radius: 0.0644122383252818rem;
+    -webkit-border-radius: 0.0644rem;
+    -moz-border-radius: 0.0644rem;
+    border-radius: 0.0644rem;
 }
 .sold-out {
     position: absolute;
@@ -463,27 +471,29 @@ a:focus {
     border-radius: 50%;
     background: rgba(0, 0, 0, 0.5);
     text-align: center;
-    font-size: 1.25em;
+    font-size: 0.3462rem;
     color: #ffffff;
 }
 .thumbnail {
     display: block;
     background-color: #fff;
-    -webkit-box-shadow: 0 0.0805152979066023rem 0.1610305958132045rem rgba(4, 0, 0, 0.73);
-    -moz-box-shadow: 0 0.0805152979066023rem 0.1610305958132045rem rgba(4, 0, 0, 0.73);
-    box-shadow: 0 0.0805152979066023rem 0.1610305958132045rem rgba(4, 0, 0, 0.73);
+    -webkit-box-shadow: 0 0.0805rem 0.161rem rgba(4, 0, 0, 0.73);
+    -moz-box-shadow: 0 0.0805rem 0.161rem rgba(4, 0, 0, 0.73);
+    box-shadow: 0 0.0805rem 0.161rem rgba(4, 0, 0, 0.73);
+    font-size: 0.2657rem;
 }
 .thumbnail .caption {
     padding: 0.1449275362318841rem;
 }
 .thumbnail .text-price {
-    margin-top: 0.25em;
+    margin-top: 0.0805rem;
 }
 
 /* 列表商品 */
 .media {
     display: block;
-    margin-top: 1.25em;
+    margin-top: 0.3623rem;
+    font-size: 0.29rem;
 }
 .media,
 .media-body {
@@ -493,14 +503,14 @@ a:focus {
 .media-body {
     position: relative;
     width: 10000px;
-    padding-right: 1em;
+    padding-right: 0.25rem;
 }
 .media .img-thumbnail {
     display: block;
 }
 .media-left,
 .media > .pull-left {
-    padding-right: 1em;
+    padding-right: 0.25rem;
 }
 .media-left,
 .media-body {
@@ -508,8 +518,8 @@ a:focus {
     vertical-align: top;
 }
 .media-heading {
-    margin: 0.5em 0;
-    font-size: 1.15em;
+    margin: 0.2rem 0;
+    font-size: 0.322rem;
 }
 
 /* 商品瀑布布局 */
@@ -540,15 +550,13 @@ a:focus {
 .goods-list {
     width: 10rem;
     margin: 0 auto;
-    padding-top: 1rem;
-    padding-bottom: 1.2rem;
 }
 .goods-list .media {
     margin: 0.2rem 0;
     background: #ffffff;
-    -webkit-box-shadow: 0 0.0805152979066023rem 0.1610305958132045rem rgba(4, 0, 0, 0.73);
-    -moz-box-shadow: 0 0.0805152979066023rem 0.1610305958132045rem rgba(4, 0, 0, 0.73);
-    box-shadow: 0 0.0805152979066023rem 0.1610305958132045rem rgba(4, 0, 0, 0.73);
+    -webkit-box-shadow: 0 0.0805rem 0.161rem rgba(4, 0, 0, 0.73);
+    -moz-box-shadow: 0 0.0805rem 0.161rem rgba(4, 0, 0, 0.73);
+    box-shadow: 0 0.0805rem 0.161rem rgba(4, 0, 0, 0.73);
 }
 .goods-list .img-thumbnail {
     width: 2.737520128824477rem;
@@ -562,12 +570,12 @@ a:focus {
 .goods-list .text-price {
     position: absolute;
     left: 0;
-    bottom: 0.5em;
+    bottom: 0.145rem;
 }
 .goods-list .text-muted {
     position: absolute;
-    right: 1em;
-    bottom: 0.5em;
+    right: 0.29rem;
+    bottom: 0.145rem;
 }
 
 .order-list {
@@ -578,6 +586,7 @@ a:focus {
 .orderli {
     margin: 0.25rem 0;
     background: #ffffff;
+    font-size: 0.29rem;
 }
 .orderli-media {
     padding: 0.25rem 0.2rem 0 0.25rem;
@@ -590,19 +599,26 @@ a:focus {
 }
 .orderli-body {
     padding: 0.2rem 0.4rem;
-    font-size: 0.8em;
+    font-size: 0.2255rem;
+}
+.orderli-body dd {
+    width: 7.05rem;
 }
 .orderli-foot {
     padding: 0.2rem 0.4rem 0.25rem 0.3rem;
     border-top: 1px solid #e7e7e7;
     text-align: right;
 }
+.orderli-foot .btn-attract-o {
+    width: 1.5rem;
+    height: 0.5rem;
+}
 .orderli-media .media {
     margin-top: 0;
     background: #f2f2f2;
 }
 .orderli-media .media-heading {
-    font-size: 1em;
+    font-size: 0.29rem;
 }
 .orderli-media .img-thumbnail {
     width: 2rem;
@@ -611,12 +627,12 @@ a:focus {
 .orderli-media .text-price {
     position: absolute;
     left: 0;
-    bottom: 0.5em;
+    bottom: 0.145rem;
 }
 .orderli-media .text-muted {
     position: absolute;
-    right: 1em;
-    bottom: 0.5em;
+    right: 0.29rem;
+    bottom: 0.145rem;
 }
 
 
@@ -656,7 +672,7 @@ a:focus {
 .result-text {
     width: 100%;
     margin-top: 0.4rem;
-    font-size: 1.3333333333333333em;
+    font-size: 0.3865rem;
     font-weight: bold;
     text-align: center;
 }
@@ -669,7 +685,7 @@ a:focus {
     width: 100%;
     height: 1rem;
     border-radius: 0.15rem;
-    font-size: 1.3333333333333333em;
+    font-size: 0.3865rem;
     font-weight: bold;
     line-height: 1rem;
 }
@@ -769,6 +785,8 @@ a:focus {
 .section-body:after,
 .row:before,
 .row:after,
+.dl-horizontal:before,
+.dl-horizontal:after,
 .dl-horizontal dd:before,
 .dl-horizontal dd:after,
 .orderli-state:before,
@@ -784,6 +802,7 @@ a:focus {
 .section:after,
 .section-body:after,
 .row:after,
+.dl-horizontal:after,
 .dl-horizontal dd:after,
 .orderli-state:after,
 .media-bottom:after {
@@ -795,8 +814,8 @@ a:focus {
 #wrapper {
     position: absolute;
     z-index: 1;
-    top: 3.25em;
-    bottom: 3.8125em;
+    top: 1rem;
+    bottom: 1.2rem;
     left: 0;
     right: 0;
     width: 10rem;
@@ -826,16 +845,20 @@ a:focus {
 }
 #pullDown, #pullUp {
     display: none;
-    background: #fff;
-    padding: 0.5em 1em;
-    border-bottom: 1px solid #ccc;
+    padding: 0.145rem 0.29rem;
     font-weight: bold;
-    line-height: 2em;
+    line-height: 2;
     color: #888;
+}
+#pullDown {
+    border-bottom: 1px solid #ccc;
+}
+#pullUp {
+    border-top: 1px solid #ccc;
 }
 #pullDown .pullDownLabel,
 #pullUp .pullUpLabel {
-    margin-left: 1em;
+    margin-left: 0.25rem;
 }
 #pullDown .pullDownIcon,
 #pullUp .pullUpIcon {
