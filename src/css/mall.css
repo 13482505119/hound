@@ -64,11 +64,17 @@ a:focus {
 .text-center {
     text-align: center;
 }
+.text-middle {
+    vertical-align: middle;
+}
 .text-justify {
     text-align: justify;
 }
 .text-nowrap {
     white-space: nowrap;
+}
+.text-block {
+    display: block;
 }
 .text-muted {
     color: #999;
@@ -309,7 +315,7 @@ a:focus {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    background-image: none;
+    background: #ffffff none;
 }
 .btn:focus,
 .btn:active:focus,
@@ -393,11 +399,11 @@ a:focus {
     padding-top: 0.3059581320450885rem;
 }
 .form-search:before {
-    display: block;
     position: absolute;
     left: 0.322rem;
     top: 0.5rem;
-    font-size: 0.55rem;
+    display: block;
+    font-size: 0.5475rem;
     line-height: 1;
 }
 .form-search input {
@@ -409,7 +415,60 @@ a:focus {
     border-radius: 0.08rem;
     font-size: 0.29rem;
     font-weight: bold;
-    line-height: 0.55rem;
+    line-height: 0.5475rem;
+}
+.form-control {
+    display: block;
+    padding: 0;
+    border: 0;
+    width: 100%;
+    font-size: 0.29rem;
+    resize: none;
+}
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+}
+.input-group .form-control {
+    position: relative;
+    z-index: 2;
+    float: left;
+    margin: 0;
+    width: 100%;
+    height: 0.5475rem;
+    background: transparent none;
+    font-size: 0.29rem;
+    text-align: center;
+}
+.input-group .form-control:focus {
+    z-index: 3;
+}
+.input-group-addon,
+.input-group-btn,
+.input-group .form-control {
+    display: table-cell;
+}
+.input-group-addon:not(:first-child):not(:last-child),
+.input-group-btn:not(:first-child):not(:last-child),
+.input-group .form-control:not(:first-child):not(:last-child) {
+    border-radius: 0;
+}
+.input-group-addon,
+.input-group-btn {
+    padding: 0 0.145rem;
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+.input-group-addon {
+    font-size: 0.29rem;
+    font-weight: normal;
+    line-height: 0.5475rem;
+    color: #aaaaaa;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 4px;
 }
 
 /* 顶部底部导航 */
@@ -567,16 +626,6 @@ a:focus {
     height: 2.028985507246377rem;
     line-height: 2.028985507246377rem;
 }
-.goods-list .text-price {
-    position: absolute;
-    left: 0;
-    bottom: 0.145rem;
-}
-.goods-list .text-muted {
-    position: absolute;
-    right: 0.29rem;
-    bottom: 0.145rem;
-}
 
 .order-list {
     margin: 0;
@@ -624,15 +673,8 @@ a:focus {
     width: 2rem;
     height: 2rem;
 }
-.orderli-media .text-price {
-    position: absolute;
-    left: 0;
-    bottom: 0.145rem;
-}
-.orderli-media .text-muted {
-    position: absolute;
-    right: 0.29rem;
-    bottom: 0.145rem;
+.orderli-media .input-group {
+    width: 1.8rem;
 }
 
 
@@ -726,6 +768,14 @@ a:focus {
     background: url("images/zhifubao.png") no-repeat;
     background-size: 100%;
 }
+.icon-plus {
+    display: inline-block;
+    width: 1.2157809983896941rem;
+    height: 1.2157809983896941rem;
+    background: url("images/plus.png") no-repeat;
+    background-size: 100%;
+    vertical-align: middle;
+}
 .fa-circle-o:before {
     display: inline-block;
     font-size: 0.45rem;
@@ -749,6 +799,18 @@ a:focus {
 .pull-right {
     float: right;
 }
+.position-left,
+.position-right {
+    position: absolute;
+    bottom: 0.145rem;
+    max-width: 40%;
+}
+.position-left {
+    left: 0;
+}
+.position-right {
+    right: 0.29rem;
+}
 /* 水平间距 */
 .hspace {
     margin-top: 0.25rem;
@@ -770,6 +832,9 @@ a:focus {
 }
 .hspace-clear {
     margin-top: 0!important;
+}
+.hpadding {
+    padding-top: 0.25rem;
 }
 
 /* 清除浮动 */
