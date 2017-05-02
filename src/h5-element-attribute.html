@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>H5页面属性和元素</title>
+    <link href="css/normalize.css" rel="stylesheet">
+    <script>!function(N,M){function L(){var a=I.getBoundingClientRect().width;a/F>540&&(a=540*F);var d=a/10;I.style.fontSize=d+"px",D.rem=N.rem=d}var K,J=N.document,I=J.documentElement,H=J.querySelector('meta[name="viewport"]'),G=J.querySelector('meta[name="flexible"]'),F=0,E=0,D=M.flexible||(M.flexible={});if(H){console.warn("将根据已有的meta标签来设置缩放比例");var C=H.getAttribute("content").match(/initial\-scale=([\d\.]+)/);C&&(E=parseFloat(C[1]),F=parseInt(1/E))}else{if(G){var B=G.getAttribute("content");if(B){var A=B.match(/initial\-dpr=([\d\.]+)/),z=B.match(/maximum\-dpr=([\d\.]+)/);A&&(F=parseFloat(A[1]),E=parseFloat((1/F).toFixed(2))),z&&(F=parseFloat(z[1]),E=parseFloat((1/F).toFixed(2)))}}}if(!F&&!E){var y=N.navigator.userAgent,x=(!!y.match(/android/gi),!!y.match(/iphone/gi)),w=x&&!!y.match(/OS 9_3/),v=N.devicePixelRatio;F=x&&!w?v>=3&&(!F||F>=3)?3:v>=2&&(!F||F>=2)?2:1:1,E=1/F}if(I.setAttribute("data-dpr",F),!H){if(H=J.createElement("meta"),H.setAttribute("name","viewport"),H.setAttribute("content","initial-scale="+E+", maximum-scale="+E+", minimum-scale="+E+", user-scalable=no"),I.firstElementChild){I.firstElementChild.appendChild(H)}else{var u=J.createElement("div");u.appendChild(H),J.write(u.innerHTML)}}N.addEventListener("resize",function(){clearTimeout(K),K=setTimeout(L,300)},!1),N.addEventListener("pageshow",function(b){b.persisted&&(clearTimeout(K),K=setTimeout(L,300))},!1),"complete"===J.readyState?J.body.style.fontSize=12*F+"px":J.addEventListener("DOMContentLoaded",function(){J.body.style.fontSize=12*F+"px"},!1),L(),D.dpr=N.dpr=F,D.refreshRem=L,D.rem2px=function(d){var c=parseFloat(d)*this.rem;return"string"==typeof d&&d.match(/rem$/)&&(c+="px"),c},D.px2rem=function(d){var c=parseFloat(d)/this.rem;return"string"==typeof d&&d.match(/px$/)&&(c+="rem"),c}}(window,window.lib||(window.lib={}));</script>
+    <style>
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+            font-family: 'Arial', 'Microsoft YaHei', serif;
+        }
+        .article_c {
+            margin: 0 auto;
+            padding: 0 0.25rem;
+            width: 10rem;
+            font-size: 0.2592592592592592rem;
+        }
+        .article_c p {
+            float: left;
+            margin: 0.5em 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="article_c">
+    <p align="center"><strong>H5常用页面属性与元素</strong></p>
+    <p>　　大家都知道HTML5添加了很多新的属性和元素，那我们常常用到的有哪些呢？我为您整理了一下我们常用的元素，仅供参考，注意下面分类中并非全是新加入元素。</p>
+    <p>l　　<strong>文档头部元素</strong></p>
+    <p>base:页面上所有连接默认地址或默认目标</p>
+    <p>meta:页面元信息，针对搜索引擎和更新频度的描述和关键词</p>
+    <p>title:标题</p>
+    <p>link：文档与资源之间的关系</p>
+    <p>style:定义HTML文档的样式信息</p>
+    <p>script:定义客户端脚本</p>
+    <p>l　　<strong>HTML5全局属性</strong></p>
+    <p>contenteditable[是否可编辑元素的内容]</p>
+    <p>draggable[指定元素是否可以拖动]</p>
+    <p>hidden[控件是否隐藏]</p>
+    <p>spellcheck[可输入的控件是否进行拼写检查]</p>
+    <p>l　　<strong>结构元素</strong></p>
+    <p>&lt;header&gt;页眉信息</p>
+    <p>&lt;article&gt;元素定义独立于文档的其余部分的内容</p>
+    <p>&lt;aside&gt;定义它所处内容之外的内容，是附属信息部分</p>
+    <p>&lt;footer&gt;页脚信息</p>
+    <p>&lt;section&gt;节，一个内容单元</p>
+    <p>l　　<strong>交互元素</strong></p>
+    <p>&lt;progress&gt;定义下载的进度，一般与时间线程一起使用</p>
+    <p>&lt;meter&gt;统计指定范围的数值，如投票人数，等级评分等</p>
+    <p>&lt;details&gt;和&lt;summary&gt;描述一个部分的细节和标题，属性open默认为false</p>
+    <p>&lt;menu&gt;定义菜单列表，常和&lt;li&gt;元素配合使用</p>
+    <p>&lt;command&gt;表示能够调用的命令，仅当与&lt;menu&gt;结合时可用，还可规定快捷键</p>
+    <p>l　　<strong>文本层次语义元素</strong></p>
+    <p>&lt;cite&gt;创建引用标记，可以用来定义书籍等的标题[不包括作者名称，出版日期等]，其它地方引用后会自动显示为斜体</p>
+    <p>&lt;mark&gt;高亮显示，常用于显示搜索中的关键字，区别&lt;strong&gt;强调重要性，&lt;em&gt;突出文章的重点</p>
+    <p>&lt;time&gt;定义公历时间，其属性datetime定义时间，pubdate指明是否发布</p>
+    <p>　　<strong>页面节点</strong></p>
+    <p>&lt;section&gt;定义一个有主题的内容组，cite属性定义内容的来源</p>
+    <p>&lt;nav&gt;定义导航链接部分的内容</p>
+    <p>&lt;hgroup&gt;对页面中的标题进行分组，形成一个组群，常和&lt;figcaption&gt;结合使用</p>
+    <p>&lt;address&gt;定义文档作者的联系信息[不能包含标题]，常位于&lt;article&gt;元素后面，放于&lt;footer&gt;元素中，换行并斜体显示</p>
+    <p>　　<strong>分组元素</strong></p>
+    <p>&lt;ul&gt;无序列表，不再支持type,用CSS替代</p>
+    <p>&lt;ol&gt;有序列表，增加了start属性和reversed属性</p>
+    <p>&lt;dl&gt;定义术语或一个逻辑节点，常与&lt;dt&gt;&lt;dd&gt;结合使用，&lt;dt&gt;定义列表项目，&lt;dd&gt;用于描述项目</p>
+</div>
+<div class="article_c">
+    <p align="center"><strong>使用H5设计表单</strong></p>
+    <p>强大的HTML5，极大地增强了表单的设计能力，实现了很多以前需要大量编码才能实现的功能。下面我们一起来看看吧。</p>
+    <p>　　<strong>传统表单元素</strong></p>
+    <p>action属性，给出绝对地址，可以指向任何服务器</p>
+    <p>method属性，查询建议用get方式，增删改建议用post方式</p>
+    <p>&lt;input&gt;必要属性有name和type,它的类型有text,password,checkbox[复选框],button,radio,reset,submit,hidden,file,image[图像按钮]</p>
+    <p>&lt;select&gt;创建下拉菜单和列表框，至少包含一个&lt;option&gt;选项元素</p>
+    <p>文本域&lt;textarearows="" cols=""&gt;&lt;/textarea&gt;</p>
+    <p>图像按钮&lt;buttonname="" type="按钮类型"&gt;&lt;/button&gt;</p>
+    <p>标签元素一定与其它某个控件相关联&lt;label for="关联控件的id属性值"&gt;&lt;/label&gt;</p>
+    <p>　　<strong>新增输入类型</strong></p>
+    <p>email用来输入邮件地址的文本框，会自动对其格式进行验证&lt;input type="email" id="emailadd"multiple="true"/&gt;</p>
+    <p>url用来输入URL地址的文本框，会自动检测其格式&lt;input type="url" id="myrul"/&gt;</p>
+    <p>number输入指定范围数字，有微调控件&lt;input name="textYear" type="number"min="1950" max="2050" step="1"value="1990"/&gt;</p>
+    <p>range输入指定范围数字，以滑动条展示，&lt;input id="textred" type="range"min="0" max="255" step="1" value="0"onchange="changeColor()"/&gt;</p>
+    <p>telephone number验证电话号码，必要属性type和patter,&lt;inputtype="telephone" pattern="^\d{3}-\d{8}|\d{4}-\d{7}$"name="tele"/&gt;</p>
+    <p>search用来输入搜索关键字的文本框，与text类型仅仅是外观不同&lt;inputtype="search" id="searchtext"/&gt;</p>
+    <p>color颜色选择器&lt;input type="color" id="changeCol"value="#00a2e8"width="300"/&gt;</p>
+    <p>日期时间类型：用于输入时间的文本框，type取值有date,month,week,time,datetime,datetime-local例如&lt;input name="date1"type="date"/&gt;</p>
+    <p>　　<strong>新增表单属性</strong></p>
+    <p>autocomplete属性，是否启动自动完成功能，针对输入框默认的on表示启用，off表示不启用</p>
+    <p>autofocus属性，规定当前页面加载时是否允许某一个输入控件自动获取焦点&lt;input type="text" name="username"autofocus="true"/&gt;</p>
+    <p>disabled属性，使控件变为灰色，不可用状态；readonly仅不可编辑，但依然可以提交数据</p>
+    <p>form属性使得控件不必放在&lt;form&gt;标签下，可以在页面任何地方。&lt;input type="text" name="myName"form="form1"/&gt;</p>
+    <p>list属性是为单行文本框增加的，可以指定预定义选项，list的属性值是某个datalist的id值</p>
+    <p>multiple属性允许控件输入多个值，如上传控件可以一次选择多个文件上传&lt;input type="file" name="images"multiple="multiple"/&gt;</p>
+    <p>placeholder为输入框显示提示信息，空则出现，用则消失&lt;input type="text" name="name"placeholder="请输入真实姓名"/&gt;</p>
+    <p>pattern让输入框可以使用正则表达式&lt;input type="password" pattern="\w{6,12}"&gt;</p>
+    <p>required属性检查输入是否为空，强制"必选"，否则无法提交表单&lt;inputtype="text" name="book" required="required"/&gt;</p>
+    <p>　　<strong>新增表单元素</strong></p>
+    <p>datalist元素，选项放在option标签中，作用是辅助文本框的输入，文本框list属性值为datalist的id值。功能类似于&lt;select&gt;选择框,但更强大</p>
+    <p>keygen元素作用类似于密码文本框，更强大。&lt;keygen name="security"/&gt;</p>
+    <p>output可以显示不同控件的内容，当它所关联的input控件的值发生变化时，就触发form的oninput事件&lt;output name="sum"for="num1 num2"&gt;&lt;/output&gt;</p>
+    <p>optgroup对各种类型的选项进行组合，常用在select标记和option标记之间，对option进行分组</p>
+    <p>　　<strong>提交时的验证处理</strong></p>
+    <p>自动验证：是表单的默认验证方式，常用到的属性有required，pattern,min,max,step等</p>
+    <p>显示验证：所有表单控件都可以通过checkValidity()来实现验证，需要提交按钮触发JS函数</p>
+    <p>自定义验证：所有的input控件可以通过调用setCustomValidity()函数验证</p>
+    <p>取消验证：所有控件（包括form）都可以通过novalidate="true"来实现避免验证的功能</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>
