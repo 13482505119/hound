@@ -139,7 +139,21 @@
         #px {
             width: 5em;
         }
-
+        table {
+            width: 100%;
+        }
+        th {
+            border-top: 2px solid grey;
+            border-bottom: 1px solid grey;
+        }
+        td {
+            border-bottom: 1px solid grey;
+            padding: 0.25em;
+        }
+        th ~ th,
+        td ~ td {
+            border-left: 1px solid grey;
+        }
     </style>
 </head>
 <body>
@@ -149,17 +163,30 @@
     1em = <span id="em"></span> (body.fontSize)
 </p>
 <p>
-    <button class="btn" data-clipboard-action="copy" data-clipboard-target="#remp">COPY</button><input type="text" value="" id="remp">rem<br>
+    <button type="button" class="btn" data-clipboard-action="copy" data-clipboard-target="#remp">COPY</button><input type="text" value="" id="remp">rem<br>
 </p>
 <p>
-    <button class="btn" data-clipboard-action="copy" data-clipboard-target="#emp">COPY</button><input type="text" value="" id="emp">em<br>
+    <button type="button" class="btn" data-clipboard-action="copy" data-clipboard-target="#emp">COPY</button><input type="text" value="" id="emp">em<br>
 </p>
 <p>
-    <button class="btn" data-clipboard-action="copy" data-clipboard-target="#px">COPY</button><input type="text" value="" id="px">px<br>
+    <button type="button" class="btn" data-clipboard-action="copy" data-clipboard-target="#px">COPY</button><input type="text" value="" id="px">px<br>
 </p>
 <p>
-    <button id="clean">CLEAN</button>
+    <button type="button" id="clean">CLEAN</button>
+    <button type="button" id="add">Add Common</button>
 </p>
+<table id="common">
+    <thead>
+    <tr>
+        <th>rem</th>
+        <th>em</th>
+        <th>px</th>
+        <th>&nbsp;</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
 <script src="js/plugins/clipboard/clipboard.min.js"></script>
 <script>
     var rem = parseFloat(document.documentElement.style.fontSize);
@@ -210,6 +237,55 @@
                 dotIndex = strValue.indexOf(".");
 
         return strValue.substr(dotIndex + 1).length > 16 ? parseFloat(value.toFixed(16)) : value;
+    }
+</script>
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/plugins/cookie/jquery.cookie.js"></script>
+<script src="js/plugins/json/json2.js"></script>
+<script>
+    //Use Cookies to record data (need jquery & jquery.cookie & JSON)
+    var $common = $("tbody", "#common"),
+            $remp = $("#remp"),
+            $emp = $("#emp"),
+            $px = $("#px"),
+            commonName = "dpr" + rem + "-" + em,
+            commonValue = JSON.parse($.cookie(commonName) || "{}"),
+            options = {
+                expires: 30,
+                path: '/'
+            };
+
+    buildCommon();
+
+    $("#add").click(function () {
+        var rem = $remp.val(),
+                em = $emp.val(),
+                px = $px.val();
+
+        if (rem > "" && em > "" && px > "") {
+            var item = {},
+                    key = "px" + px;
+            item[key] = [rem, em, px];
+
+            $.extend(commonValue, item);
+            $.cookie(commonName, JSON.stringify(commonValue), options);
+
+            buildCommon();
+        }
+    });
+
+    $common.on("click", ".remove", function () {
+        delete commonValue[$(this).data("item")];
+        $.cookie("common", JSON.stringify(commonValue), options);
+        buildCommon();
+    });
+
+    function buildCommon() {
+        $common.empty();
+        $.each(commonValue, function (i, n) {
+            $common.append('<tr><td><button type="button" class="btn" data-clipboard-text="' + n[0] + '">' + n[0] + '</button></td><td><button type="button" class="btn" data-clipboard-text="' + n[1] + '">' + n[1] + '</button></td><td><button type="button" class="btn" data-clipboard-text="' + n[2] + '">' + n[2] + '</button></td><td><button type="button" class="remove" data-item="' + i + '">Remove</button></td></tr>');
+        });
     }
 </script>
 <p>&nbsp;</p>
