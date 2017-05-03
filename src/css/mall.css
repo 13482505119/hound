@@ -846,14 +846,87 @@ a:focus {
     background-size: 100%;
     vertical-align: middle;
 }
-.fa-circle-o:before {
+
+/* Hound UI */
+.h-radio,
+.h-checkbox {
+    position: relative;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
     display: inline-block;
-    font-size: 0.45rem;
-    line-height: 0.5314009661835749rem;
+    margin: 0 0 0.25em;
+    height: 1.25em;
+    background-clip: content-box;
+    -webkit-appearance: none;
+    user-select: none;
+    outline: none;
+    vertical-align: middle;
 }
-.checked:before {
-    content: "\f058";
-    color: #ff5000;
+.h-radio:before,
+.h-checkbox:before {
+    position: absolute;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background: #ffffff;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    content: "";
+    text-align: center;
+    font: normal normal normal 1em/1 FontAwesome;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.h-checkbox {
+    width: 2em;
+    background: #8a8a8a;
+    -webkit-border-radius: 0.75em;
+    -moz-border-radius: 0.75em;
+    border-radius: 0.75em;
+    transition: background-color ease 0.4s;
+}
+.h-checkbox:before {
+    top: 0.125em;
+    left: 0.125em;
+    transition: left ease 0.4s;
+}
+.h-checkbox:checked {
+    background: #ff3300;
+}
+.h-checkbox:checked:before {
+    left: 0.875em;
+}
+
+.h-radio {
+    width: 1.25em;
+}
+.h-radio:before {
+    left: 0;
+    bottom: 0;
+    border: 0.125em solid #8a8a8a;
+    transition: background-color ease 0.4s, border-color ease 0.2s;
+}
+.h-radio:checked:before {
+    border-color: #ff3300;
+    background: #ff3300;
+    content: "\f00c";
+    color: #ffffff;
+}
+
+.h-radio-m,
+.h-checkbox-m {
+    font-size: 1.2em;
+}
+.h-radio-l,
+.h-checkbox-l {
+    font-size: 1.6em;
 }
 
 /* 常用样式 */

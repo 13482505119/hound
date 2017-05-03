@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>switch & radio</title>
+    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+
+        body {
+            font-size: 16px;
+            line-height: 1.25;
+        }
+        input {
+            font-size: 16px;
+        }
+        .mui-switch {
+            width: 52px;
+            height: 31px;
+            position: relative;
+            border: 1px solid #dfdfdf;
+            background-color: #fdfdfd;
+            box-shadow: #dfdfdf 0 0 0 0 inset;
+            border-radius: 20px;
+            background-clip: content-box;
+            display: inline-block;
+            -webkit-appearance: none;
+            user-select: none;
+            outline: none;
+        }
+        .mui-switch:before {
+            content: '';
+            width: 29px;
+            height: 29px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 20px;
+            background-color: #fff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4); }
+        .mui-switch:checked {
+            border-color: #64bd63;
+            box-shadow: #64bd63 0 0 0 16px inset;
+            background-color: #64bd63;
+        }
+        .mui-switch:checked:before {
+            left: 21px;
+        }
+        .mui-switch.mui-switch-animbg {
+            transition: background-color ease 0.4s;
+        }
+        .mui-switch.mui-switch-animbg:before {
+            transition: left 0.3s;
+        }
+        .mui-switch.mui-switch-animbg:checked {
+            box-shadow: #dfdfdf 0 0 0 0 inset;
+            background-color: #64bd63;
+            transition: border-color 0.4s, background-color ease 0.4s;
+        }
+        .mui-switch.mui-switch-animbg:checked:before {
+            transition: left 0.3s;
+        }
+        .mui-switch.mui-switch-anim {
+            transition: border cubic-bezier(0, 0, 0, 1) 0.4s, box-shadow cubic-bezier(0, 0, 0, 1) 0.4s;
+        }
+        .mui-switch.mui-switch-anim:before {
+            transition: left 0.3s;
+        }
+        .mui-switch.mui-switch-anim:checked {
+            box-shadow: #64bd63 0 0 0 16px inset;
+            background-color: #64bd63;
+            transition: border ease 0.4s, box-shadow ease 0.4s, background-color ease 1.2s;
+        }
+        .mui-switch.mui-switch-anim:checked:before {
+            transition: left 0.3s;
+        }
+
+        /* Hound UI */
+        .h-radio,
+        .h-checkbox {
+            position: relative;
+            -webkit-box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            box-sizing: content-box;
+            display: inline-block;
+            margin: 0 0 0.25em;
+            height: 1.25em;
+            background-clip: content-box;
+            -webkit-appearance: none;
+            user-select: none;
+            outline: none;
+            vertical-align: middle;
+        }
+        .h-radio:before,
+        .h-checkbox:before {
+            position: absolute;
+            -webkit-box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            box-sizing: content-box;
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            background: #ffffff;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            content: "";
+            text-align: center;
+            font: normal normal normal 1em/1 FontAwesome;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .h-checkbox {
+            width: 2em;
+            background: #8a8a8a;
+            -webkit-border-radius: 0.75em;
+            -moz-border-radius: 0.75em;
+            border-radius: 0.75em;
+            transition: background-color ease 0.4s;
+        }
+        .h-checkbox:before {
+            top: 0.125em;
+            left: 0.125em;
+            transition: left ease 0.4s;
+        }
+        .h-checkbox:checked {
+            background: #ff3300;
+        }
+        .h-checkbox:checked:before {
+            left: 0.875em;
+        }
+
+        .h-radio {
+            width: 1.25em;
+        }
+        .h-radio:before {
+            left: 0;
+            bottom: 0;
+            border: 0.125em solid #8a8a8a;
+            transition: background-color ease 0.4s, border-color ease 0.2s;
+        }
+        .h-radio:checked:before {
+            border-color: #ff3300;
+            background: #ff3300;
+            content: "\f00c";
+            color: #ffffff;
+        }
+
+        .h-radio-m,
+        .h-checkbox-m {
+            font-size: 1.2em;
+        }
+        .h-radio-l,
+        .h-checkbox-l {
+            font-size: 1.6em;
+        }
+    </style>
+</head>
+<body>
+<p class="">
+    <label><input class="mui-switch" type="checkbox"> 默认未选中</label>
+    <label><input class="mui-switch" type="checkbox" checked> 默认选中</label>
+    <label><input class="mui-switch mui-switch-animbg" type="checkbox"> 默认未选中,简单的背景过渡效果,加mui-switch-animbg类即可</label>
+    <label><input class="mui-switch mui-switch-animbg" type="checkbox" checked> 默认选中</label>
+    <label><input class="mui-switch mui-switch-anim" type="checkbox"> 默认未选中，过渡效果，加 mui-switch-anim
+        类即可</label>
+    <label><input class="mui-switch mui-switch-anim" type="checkbox" checked> 默认选中</label>
+</p>
+<p class="">
+    <label><input type="checkbox" name="checkbox" checked> 默认选中</label>
+</p>
+<p class="">
+    <label><input type="checkbox" name="checkbox1" class="h-checkbox" checked> 默认选中</label>
+</p>
+<p class="">
+    <label><input type="checkbox" name="checkbox2" class="h-checkbox h-checkbox-m" checked> 默认选中</label>
+</p>
+<p class="">
+    <label><input type="checkbox" name="checkbox3" class="h-checkbox h-checkbox-l" checked> 默认选中</label>
+</p>
+<p class="">
+    <label><input type="radio" name="radio" checked> 默认选中</label>
+    <label><input type="radio" name="radio"> 默认未选中</label>
+</p>
+<p class="">
+    <label><input type="radio" name="radio1" class="h-radio" checked> 默认选中</label>
+    <label><input type="radio" name="radio1" class="h-radio"> 默认未选中</label>
+</p>
+<p class="">
+    <label><input type="radio" name="radio2" class="h-radio h-radio-m" checked> 默认选中</label>
+    <label><input type="radio" name="radio2" class="h-radio h-radio-m"> 默认未选中</label>
+</p>
+<p class="">
+    <label><input type="radio" name="radio3" class="h-radio h-radio-l" checked> 默认选中</label>
+    <label><input type="radio" name="radio3" class="h-radio h-radio-l"> 默认未选中</label>
+</p>
+
+</body>
+</html>

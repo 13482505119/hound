@@ -116,9 +116,13 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
                 }
             }, delay);
         },
-        post: function (url, data, fn) {
-            var _this = this,
-                xhr = $.post(url, data, function (json) {
+        ajax: function (type, url, data, fn) {
+            var _this = this;
+            return $.ajax({
+                type: type,
+                url: url,
+                data: data,
+                success: function (json) {
                     _this.swal.close();
                     switch (json.status) {
                         case 1:
@@ -130,14 +134,39 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
                             json.message && _this.alert(json.message);
                             break;
                     }
-                }, "json").fail(function () {
+                },
+                error: function () {
                     _this.error(_this.message.fail);
-                });
+                },
+                dataType: _this.dataType
+            });
+        },
+        post: function (url, data, fn) {
+            var _this = this,
+                xhr = _this.ajax("POST", url, data, fn);
 
             _this.loading(xhr);
         },
         get: function (url, fn) {
-            this.post(url, {}, fn);
+            var _this = this,
+                xhr = _this.ajax("GET", url, "", fn);
+
+            _this.loading(xhr);
+        },
+        loadHTML: function ($element, url, data) {
+            var _this = this;
+
+            $.ajax({
+                url: url,
+                data: data,
+                success: function (html) {
+                    $element.html(html);
+                },
+                error: function () {
+                    $element.html(_this.message.fail);
+                },
+                dataType: "html"
+            });
         },
         getRequest: function () {
             var request = {};
@@ -222,17 +251,26 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
             toggle: function (element, event) {
                 event.preventDefault();
 
-                var $toggle = $(element).children(),
-                    $target = $toggle.filter(":visible:eq(0)"),
-                    url = $target.data("url"),
-                    data = $.extend({}, $target.data("data"));
+                var $this = $(element),
+                    url = $this.hasClass("toggled") ? $this.data("urlA") : $this.data("urlB"),
+                    data = $.extend({}, $this.data("data"));
 
                 $.hound.post(url, data, function () {
-                    if ($toggle.hasClass("hide")) {
-                        $toggle.toggleClass("hide");
-                    } else {
-                        $toggle.toggle();
-                    }
+                    $this.toggleClass("toggled");
+                });
+            },
+            remove: function (element, event) {
+                event.preventDefault();
+
+                var $this = $(element),
+                    $target = $this.data("target") ? $this.closest($this.data("target")) : $this,
+                    url = $this.data("url"),
+                    data = $.extend({}, $this.data("data"));
+
+                $.hound.post(url, data, function () {
+                    $target.fadeOut("fast", function () {
+                        $target.remove();
+                    });
                 });
             },
             redirect: function (element, event) {
@@ -308,7 +346,7 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
         //element load a url
         $('[data-load]').each(function () {
             var $this = $(this);
-            $this.load($this.data("load"));
+            $.hound.loadHTML($this, $this.data("load"));
         });
 
         //form validate

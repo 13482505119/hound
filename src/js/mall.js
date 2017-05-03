@@ -36,25 +36,9 @@ require(["hound", "pullLoad"], function(hound, pullLoad) {
 
         //收藏及取消收藏
         $(".btn-favorite").click(function () {
+            //todo favorite
 
         });
-
-        //radio
-        $(".fa-circle-o").click(function () {
-            checkRadio();
-        });
-        checkRadio();
-        function checkRadio() {
-            $(".fa-circle-o").each(function () {
-                var $this = $(this);
-                if ($this.find(":radio").prop("checked")) {
-                    $this.addClass("checked");
-                } else {
-                    $this.removeClass("checked");
-                }
-            });
-
-        }
 
         //商品数量
         $(".input-group-quantity").on("click", ".input-group-addon", function () {
@@ -67,7 +51,7 @@ require(["hound", "pullLoad"], function(hound, pullLoad) {
                 min = $quantity.attr("min"),
                 max = $quantity.attr("max"),
                 total,
-                dotIndex = -1;
+                dotIndex;
 
             if ($this.index() == 0) {
                 quantity = quantity > min ? --quantity : min;
