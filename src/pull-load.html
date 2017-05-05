@@ -124,7 +124,7 @@
         require.config({
             baseUrl: "js/"
         });
-        require(["plugins/iscroll/pullLoad"], function (pullLoad) {
+        require(["pullLoad"], function (pullLoad) {
             var myIScroll = pullLoad("#wrapper", {
                 pullDownAction: function () {
                     setTimeout(function () {
