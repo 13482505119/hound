@@ -8,7 +8,7 @@
     <!--<meta name="viewport" content="initial-scale=0.3333333333333333, maximum-scale=0.3333333333333333, minimum-scale=0.3333333333333333, user-scalable=no">-->
     <!-- On-line deletion end -->
     <script>!function(N,M){function L(){var a=I.getBoundingClientRect().width;a/F>540&&(a=540*F);var d=a/10;I.style.fontSize=d+"px",D.rem=N.rem=d}var K,J=N.document,I=J.documentElement,H=J.querySelector('meta[name="viewport"]'),G=J.querySelector('meta[name="flexible"]'),F=0,E=0,D=M.flexible||(M.flexible={});if(H){console.warn("将根据已有的meta标签来设置缩放比例");var C=H.getAttribute("content").match(/initial\-scale=([\d\.]+)/);C&&(E=parseFloat(C[1]),F=parseInt(1/E))}else{if(G){var B=G.getAttribute("content");if(B){var A=B.match(/initial\-dpr=([\d\.]+)/),z=B.match(/maximum\-dpr=([\d\.]+)/);A&&(F=parseFloat(A[1]),E=parseFloat((1/F).toFixed(2))),z&&(F=parseFloat(z[1]),E=parseFloat((1/F).toFixed(2)))}}}if(!F&&!E){var y=N.navigator.userAgent,x=(!!y.match(/android/gi),!!y.match(/iphone/gi)),w=x&&!!y.match(/OS 9_3/),v=N.devicePixelRatio;F=x&&!w?v>=3&&(!F||F>=3)?3:v>=2&&(!F||F>=2)?2:1:1,E=1/F}if(I.setAttribute("data-dpr",F),!H){if(H=J.createElement("meta"),H.setAttribute("name","viewport"),H.setAttribute("content","initial-scale="+E+", maximum-scale="+E+", minimum-scale="+E+", user-scalable=no"),I.firstElementChild){I.firstElementChild.appendChild(H)}else{var u=J.createElement("div");u.appendChild(H),J.write(u.innerHTML)}}N.addEventListener("resize",function(){clearTimeout(K),K=setTimeout(L,300)},!1),N.addEventListener("pageshow",function(b){b.persisted&&(clearTimeout(K),K=setTimeout(L,300))},!1),"complete"===J.readyState?J.body.style.fontSize=12*F+"px":J.addEventListener("DOMContentLoaded",function(){J.body.style.fontSize=12*F+"px"},!1),L(),D.dpr=N.dpr=F,D.refreshRem=L,D.rem2px=function(d){var c=parseFloat(d)*this.rem;return"string"==typeof d&&d.match(/rem$/)&&(c+="px"),c},D.px2rem=function(d){var c=parseFloat(d)/this.rem;return"string"==typeof d&&d.match(/px$/)&&(c+="rem"),c}}(window,window.lib||(window.lib={}));</script>
-    <title>手机登录</title>
+    <title>商家投诉</title>
     <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="../src/css/mall.css?v=20170425" rel="stylesheet">
     <script>
@@ -20,35 +20,58 @@
     <script data-main="mall" src="../src/js/require.js"></script>
 </head>
 <body>
-<div class="wrapper">
-    <form method="post" action="" class="form-horizontal">
-        <div class="form-note">
-            登陆后才能查看您的订单哦～
-        </div>
-        <div class="form-field">
-            <div class="form-group">
-                <label class="col-2 control-label">手机号</label>
-                <div class="col-5">
-                    <input type="text" class="form-control" name="mobile" id="mobile" placeholder="请输入您的手机号" required>
+<div class="wrapper wrapper-has-footer">
+    <div class="orderli hspace-clear">
+        <div class="orderli-media">
+            <div class="media">
+                <div class="media-left">
+                    <a class="img-thumbnail" href="item.html">
+                        <img src="holder.js/100px100p?theme=sky&text=Image" alt="...">
+                    </a>
                 </div>
-                <div class="col-3 text-right">
-                    <button class="btn btn-attract" type="button">获取验证码</button>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-2 control-label">验证码</label>
-                <div class="col-5">
-                    <input type="text" class="form-control" name="code" id="code" placeholder="请输入您的验证码" required>
-                </div>
-                <div class="col-3">
+                <div class="media-body">
+                    <div class="media-heading"><a href="item.html">￥600/套---无锡铂尔曼樱花节超值套餐（高级房+加双人自助早餐+加双人自助晚餐）</a></div>
+                    <div class="position-left">
+                        <span class="text-price"><i class="fa fa-rmb"></i> <span class="yuan">56.</span>80</span>
+                    </div>
+                    <div class="position-right">
+                        <span class="text-muted">x 12</span>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="row btn-group-row">
-            <div class="col-1"></div>
-            <button class="col-8 btn btn-attract" type="submit">登录</button>
+        <div class="orderli-state">
+            <div class="pull-right">
+                共<span class="jCount">2</span>件商品 合计：<i class="fa fa-rmb"></i><span class="jTotal"><span class="text-big">113.</span>60</span>
+            </div>
         </div>
-    </form>
+    </div>
+    <div class="section">
+        <div class="section-head">问题描述</div>
+        <div class="section-body">
+            <textarea name="notes" class="form-control" placeholder="请详细描述您的原因（必填）" required></textarea>
+        </div>
+    </div>
+    <div class="section hspace">
+        <div class="section-head">订单信息</div>
+        <div class="section-body">
+            <dl class="dl-horizontal">
+                <dt>　订单号：</dt>
+                <dd>123456789012345678901234</dd>
+            </dl>
+        </div>
+        <div class="section-body">
+            <dl class="dl-horizontal">
+                <dt>下单手机：</dt>
+                <dd>18601781861  </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="row btn-group-row hspace-fivefold">
+        <div class="col-1"></div>
+        <button class="col-8 btn btn-radius btn-attract" type="submit">提交投诉</button>
+    </div>
 </div>
+
 </body>
 </html>

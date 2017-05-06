@@ -14,6 +14,7 @@ require(["hound", "pullLoad"], function(hound, pullLoad) {
                         //todo refresh page
 
                         myIScroll.refresh();
+                        setSWControl();
                     }, 3000);
                 },
                 pullUpAction: function () {
@@ -21,18 +22,31 @@ require(["hound", "pullLoad"], function(hound, pullLoad) {
                         //todo load next page
 
                         myIScroll.refresh();
+                        setSWControl();
                     }, 3000);
                 }
             });
         }
 
         //商品图片轮播
-        if ($(".swiper-wrapper", ".swiper-goods").children().length > 1) {
-            new Swiper ('.swiper-goods', {
+        var swGoods = {
                 loop: true,
                 pagination: '.swiper-pagination'
-            });
+            },
+            swControl = {
+                slidesPerView: 'auto',
+                resistanceRatio: .00000000000001,
+                slideToClickedSlide: true
+            };
+        if ($(".swiper-wrapper", ".swiper-goods").children().length > 1) {
+            new Swiper ('.swiper-goods', swGoods);
         }
+        function setSWControl() {
+            if ($(".swiper-control").length > 1) {
+                new Swiper('.swiper-control', swControl);
+            }
+        }
+        setSWControl();
 
         //收藏及取消收藏
         $(".btn-favorite").click(function () {

@@ -264,12 +264,17 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
 
                 var $this = $(element),
                     $target = $this.data("target") ? $this.closest($this.data("target")) : $this,
+                    siblings = $target.siblings().length,
                     url = $this.data("url"),
                     data = $.extend({}, $this.data("data"));
 
                 $.hound.post(url, data, function () {
                     $target.fadeOut("fast", function () {
-                        $target.remove();
+                        if (siblings == 0 && $target.parent().data("redirect")) {
+                            $.hound.redirect($this.parent().data("redirect"));
+                        } else {
+                            $target.remove();
+                        }
                     });
                 });
             },
@@ -333,11 +338,14 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
                     } else {
                         $.hound.swal({
                             title: confirm,
-                            type: "warning",
+                            type: "question",
                             showCancelButton: true
-                        }).then(function (){
-                            handle(element, event);
-                        });
+                        }).then(
+                            function () {
+                                handle(element, event);
+                            },
+                            function () {}
+                        );
                     }
                 });
             });
