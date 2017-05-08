@@ -46,13 +46,14 @@
         </div>
     </nav>
 </header>
+
 <div id="wrapper" style="top: 2.2061rem" data-url="order-part.html">
     <div id="scroller">
         <div id="pullDown">
             <span class="pullDownIcon"></span><span class="pullDownLabel">下拉刷新</span>
         </div>
         <div class="container">
-            <ul class="order-list">
+            <ul class="order-list pullList">
                 <!-- 等待买家付款 begin -->
                 <li class="orderli">
                     <div class="orderli-media">
@@ -82,7 +83,7 @@
                         </div>
                     </div>
                     <div class="orderli-foot">
-                        <button class="btn btn-attract-o" type="button">去付款</button>
+                        <button class="btn btn-attract-o" type="button" data-click="redirect" data-url="toPay">去付款</button>
                     </div>
                 </li>
                 <!-- 等待买家付款 end -->
@@ -126,8 +127,8 @@
                         </dl>
                     </div>
                     <div class="orderli-foot">
-                        <button class="btn btn-attract-o" type="button">查看详情</button>
-                        <button class="btn btn-attract-o" type="button">申请退款</button>
+                        <button class="btn btn-attract-o" type="button" data-click="redirect" data-url="order-detail.html">查看详情</button>
+                        <button class="btn btn-attract-o" type="button" data-click="redirect" data-url="order-refund.html">申请退款</button>
                     </div>
                 </li>
                 <!-- 等待买家使用 end -->
@@ -156,8 +157,8 @@
                         </div>
                     </div>
                     <div class="orderli-foot">
-                        <button class="btn btn-attract-o" type="button">查看详情</button>
-                        <button class="btn btn-attract-o" type="button">申请退款</button>
+                        <button class="btn btn-attract-o" type="button" data-click="redirect" data-url="order-detail.html">查看详情</button>
+                        <button class="btn btn-attract-o" type="button" data-click="redirect" data-url="order-refund.html">申请退款</button>
                     </div>
                 </li>
                 <!-- 订单已过期 end -->
@@ -190,8 +191,8 @@
                         </div>
                     </div>
                     <div class="orderli-foot">
-                        <button class="btn btn-attract-o" type="button">查看详情</button>
-                        <button class="btn btn-attract-o" type="button">点评Ta</button>
+                        <button class="btn btn-attract-o" type="button" data-click="redirect" data-url="order-detail.html">查看详情</button>
+                        <button class="btn btn-attract-o" type="button" data-click="redirect" data-url="toCommit">点评Ta</button>
                     </div>
                 </li>
                 <!-- 已完成 end -->
@@ -224,7 +225,7 @@
                         </div>
                     </div>
                     <div class="orderli-foot">
-                        <button class="btn btn-attract-o" type="button">查看详情</button>
+                        <button class="btn btn-attract-o" type="button" data-click="redirect" data-url="order-detail.html">查看详情</button>
                     </div>
                 </li>
                 <!-- 退款中 end -->
@@ -257,7 +258,7 @@
                         </div>
                     </div>
                     <div class="orderli-foot">
-                        <button class="btn btn-attract-o" type="button">查看详情</button>
+                        <button class="btn btn-attract-o" type="button" data-click="redirect" data-url="order-detail.html">查看详情</button>
                     </div>
                 </li>
                 <!-- 退款失败 end -->
@@ -290,7 +291,7 @@
                         </div>
                     </div>
                     <div class="orderli-foot">
-                        <button class="btn btn-attract-o" type="button">查看详情</button>
+                        <button class="btn btn-attract-o" type="button" data-click="redirect" data-url="order-detail.html">查看详情</button>
                     </div>
                 </li>
                 <!-- 已关闭 end -->

@@ -20,7 +20,7 @@
     <script data-main="mall" src="../src/js/require.js"></script>
 </head>
 <body>
-<div class="wrapper wrapper-has-footer">
+<form action="../public/success.json" method="post" class="wrapper wrapper-has-footer">
     <div class="orderli hspace-clear">
         <div class="orderli-media">
             <div class="media">
@@ -69,9 +69,9 @@
     </div>
     <div class="row btn-group-row hspace-fivefold">
         <div class="col-1"></div>
-        <button class="col-8 btn btn-radius btn-attract" type="submit">提交投诉</button>
+        <button class="col-8 btn btn-radius btn-attract" type="button" data-click="ajaxSubmit">提交投诉</button>
     </div>
-</div>
+</form>
 
 </body>
 </html>

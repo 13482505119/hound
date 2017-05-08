@@ -266,7 +266,7 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
                 var $this = $(element),
                     $target = $this.data("target") ? $this.closest($this.data("target")) : $this,
                     siblings = $target.siblings().length,
-                    url = $this.data("url"),
+                    url = $this.data("url") || $target.parent().data("removeUrl"),
                     data = $.extend({}, $this.data("data"));
 
                 $.hound.post(url, data, function () {

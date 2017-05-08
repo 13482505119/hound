@@ -405,6 +405,7 @@ a:focus {
 }
 .btn-group-row {
     height: 1.2rem;
+    line-height: 1.2rem;
 }
 .btn-group-row > .btn {
     display: block;
@@ -782,8 +783,11 @@ a:focus {
     text-align: right;
 }
 .orderli-foot .btn-attract-o {
+    padding: 0;
     width: 1.5rem;
     height: 0.5rem;
+    font-size: 0.25rem;
+    line-height: 0.5rem;
 }
 .orderli-media .media {
     margin-top: 0;

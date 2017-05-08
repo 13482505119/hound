@@ -26,7 +26,7 @@
         <div id="pullDown">
             <span class="pullDownIcon"></span><span class="pullDownLabel">下拉刷新</span>
         </div>
-        <div class="wrapper-favorite goods-list" data-redirect="reload">
+        <div class="wrapper-favorite goods-list pullList" data-redirect="reload">
             <div class="swiper-container swiper-control">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide swiper-slide-1"></div>
@@ -48,7 +48,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="swiper-slide swiper-slide-btn" data-click="remove" data-confirm="确认要删除吗？" data-target=".swiper-control" data-url="../src/fail.json">删除</div>
+                    <div class="swiper-slide swiper-slide-btn" data-click="remove" data-confirm="确认要删除吗？" data-target=".swiper-control" data-url="../public/fail.json" data-data='{"id":1}'>删除</div>
                 </div>
             </div>
             <div class="swiper-container swiper-control">
@@ -72,7 +72,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="swiper-slide swiper-slide-btn" data-click="remove" data-confirm="确认要删除吗？" data-target=".swiper-control" data-url="../src/success.json">删除</div>
+                    <div class="swiper-slide swiper-slide-btn" data-click="remove" data-confirm="确认要删除吗？" data-target=".swiper-control" data-url="../public/success.json" data-data='{"id":1}'>删除</div>
                 </div>
             </div>
         </div>
