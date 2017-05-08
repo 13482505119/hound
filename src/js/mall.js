@@ -6,25 +6,66 @@
 require(["hound", "pullLoad"], function(hound, pullLoad) {
     //document.ready
     $(function () {
+        var request = $.extend({
+                page: 1,
+                pagesize: 12
+            }, hound.getRequest()),
+            header = {
+                sID: "abc123",
+                openid: "oijvYvvYh0F0kbjP_TCGO5frERLM",
+                mobile: "",
+                token: "",
+                expiry: "",
+                type: "json"
+            };
+
         //IScroll
-        if ($("#wrapper").length == 1) {
+        var $wrapper = $("#wrapper");
+        if ($wrapper.find("#scroller").length == 1) {
+            var $pullList = $wrapper.find(".pullList"),
+                url = $wrapper.data("url"),
+                data = $.extend({}, request);
+
             var myIScroll = pullLoad("#wrapper", {
                 pullDownAction: function () {
-                    setTimeout(function () {
-                        //todo refresh page
-
-                        myIScroll.refresh();
-                        setSWControl();
-                    }, 3000);
+                    data.page = 1;
+                    getHtml(myIScroll, $pullList, url, data);
                 },
                 pullUpAction: function () {
-                    setTimeout(function () {
-                        //todo load next page
-
+                    data.page++;
+                    getHtml(myIScroll, $pullList, url, data);
+                }
+            });
+        }
+        function getHtml(iScroll, $target, url, data) {
+            $.ajax({
+                url: url,
+                data: data,
+                beforeSend: function(rq) {
+                    $.each(header, function (key, val) {
+                        rq.setRequestHeader(key, val);
+                    });
+                },
+                success: function (html) {
+                    if (data.page == 1) {
+                        $target.empty();
+                    }
+                    var size = $(html).length;
+                    if (size == 0) {
+                        //错误信息
+                        hound.alert(html);
+                        iScroll.lockPullUp(true);
+                    } else {
+                        $target.append(html);
                         myIScroll.refresh();
                         setSWControl();
-                    }, 3000);
-                }
+                        iScroll.lockPullUp(size < data.pagesize);
+                    }
+                },
+                error: function () {
+                    hound.alert(hound.messages.fail);
+                },
+                dataType: "html"
             });
         }
 
@@ -47,12 +88,6 @@ require(["hound", "pullLoad"], function(hound, pullLoad) {
             }
         }
         setSWControl();
-
-        //收藏及取消收藏
-        $(".btn-favorite").click(function () {
-            //todo favorite
-
-        });
 
         //商品数量
         $(".input-group-quantity").on("click", ".input-group-addon", function () {

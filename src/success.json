@@ -1,6 +1,6 @@
 {
-  "status": 1,
-  "result": "",
-  "message": "",
+  "code": 200,
+  "msg": "",
+  "data": "",
   "redirect": ""
 }

@@ -228,7 +228,7 @@ define("pullLoad", ["plugins/iscroll/iscroll-probe"], function (IScroll) {
                     if (isScrolling) {
                         isLoading = true;
                         if (opts.pullDownAction) {
-                            opts.pullDownAction()
+                            opts.pullDownAction();
                         } else {
                             this.refresh();
                         }

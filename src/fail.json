@@ -1,6 +1,6 @@
 {
-  "status": 0,
-  "result": "",
-  "message": "失败",
+  "code": 0,
+  "msg": "失败啦",
+  "data": "",
   "redirect": ""
 }

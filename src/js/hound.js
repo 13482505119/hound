@@ -124,19 +124,19 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
                 data: data,
                 success: function (json) {
                     _this.swal.close();
-                    switch (json.status) {
-                        case 1:
+                    switch (json.code) {
+                        case 200:
                             $.isFunction (fn) && fn();
-                            json.message && _this.success(json.message);
-                            json.redirect && _this.redirect(json.redirect, json.message ? _this.delay : 0);
+                            json.msg && _this.success(json.msg);
+                            json.redirect && _this.redirect(json.redirect, json.msg ? _this.delay : 0);
                             break;
                         default :
-                            json.message && _this.alert(json.message);
+                            json.msg && _this.alert(json.msg);
                             break;
                     }
                 },
                 error: function () {
-                    _this.error(_this.message.fail);
+                    _this.error(_this.messages.fail);
                 },
                 dataType: _this.dataType
             });
@@ -163,7 +163,7 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
                     $element.html(html);
                 },
                 error: function () {
-                    $element.html(_this.message.fail);
+                    $element.html(_this.messages.fail);
                 },
                 dataType: "html"
             });
@@ -252,8 +252,9 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
                 event.preventDefault();
 
                 var $this = $(element),
-                    url = $this.hasClass("toggled") ? $this.data("urlA") : $this.data("urlB"),
-                    data = $.extend({}, $this.data("data"));
+                    $target = $this.children().eq($this.hasClass("toggled") ? 1 : 0),
+                    url = $this.data("url") || $target.data("url"),
+                    data = $.extend({}, $target.data("data"));
 
                 $.hound.post(url, data, function () {
                     $this.toggleClass("toggled");
@@ -296,18 +297,18 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
                     resetForm: true,
                     dataType: "json",
                     error: function () {//xhr, statusText, error, $form
-                        $.hound.error($.hound.message.fail);
+                        $.hound.error($.hound.messages.fail);
                     },
                     success: function (responseText) {//responseText, statusText, xhr, $form
-                        switch (responseText.status) {
-                            case 1:
-                                $.hound.success(responseText.message);
+                        switch (responseText.code) {
+                            case 200:
+                                $.hound.success(responseText.msg);
                                 break;
                             default :
-                                $.hound.alert(responseText.message);
+                                $.hound.alert(responseText.msg);
                                 break;
                         }
-                        $.hound.redirect(responseText.redirect, responseText.message ? $.hound.delay : 0);
+                        $.hound.redirect(responseText.redirect, responseText.msg ? $.hound.delay : 0);
                     }
                 });
             },

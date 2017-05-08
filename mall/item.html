@@ -92,10 +92,10 @@
 <div class="navbar-fixed-bottom">
     <div class="container">
         <div class="row btn-group-row">
-            <!-- 未收藏 -->
-            <!--<button class="rem-2 btn btn-favorite" type="button"><i class="fa fa-star-o"></i><br><span>收藏</span></button>-->
-            <!-- 已收藏 -->
-            <button class="rem-2 btn btn-favorite" type="button"><i class="fa fa-star text-attract"></i><br><span>已收藏</span></button>
+            <button class="rem-2 btn btn-favorite toggled" type="button" data-click="toggle" data-url="../src/success.json">
+                <span data-data='{"skuId":"qwe123","method":"add"}'><i class="fa fa-star-o"></i><br><span>收藏</span></span>
+                <span data-data='{"skuId":"qwe123","method":"del"}'><i class="fa fa-star text-attract"></i><br><span>已收藏</span></span>
+            </button>
             <!-- 可购买 -->
             <!--<button class="rem-8 btn btn-attract" type="button">立即购买</button>-->
             <!-- 卖光了 -->
