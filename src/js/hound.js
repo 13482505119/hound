@@ -38,10 +38,12 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
             dataType: "json",
             timeout: 45000, //ajax 请求超时时间
             delay: 1500, //消息提醒后延迟调整时间
+            mobile: /^1(3[0-9]|[458][0-35-9]|7[0678])\d{8}$/,
             messages: {
                 loading: "加载中……",
                 timeout: "请求超时",
-                fail: "服务器连接错误"
+                fail: "服务器连接错误",
+                mobile: "请输入一个有效的手机号码"
             }
         },
         hound = function () {
@@ -312,6 +314,39 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
                     }
                 });
             },
+            sendCode: function (element, event) {
+                event.preventDefault();
+
+                var $this = $(element),
+                    $target = $($this.data("target")),
+                    text = $this.text(),
+                    url = $this.data("url"),
+                    data = $.extend({}, $this.data("data"));
+
+                if ($this.data("waiting")) {
+                    return false;
+                }
+
+                if ($.hound.mobile.test($target.val())) {
+                    data[$target.prop("name")] = $target.val();
+                    $.hound.post(url, data, function () {
+                        $this.data("waiting", true);
+                        var second = 60;
+                        var interval = setInterval(function () {
+                            if (second == 0) {
+                                clearInterval(interval);
+                                $this.data("waiting", false);
+                                $this.text(text);
+                            } else {
+                                $this.text(second + "秒后可重发");
+                            }
+                            second--;
+                        }, 1000);
+                    });
+                } else {
+                    $.hound.alert($.hound.messages.mobile);
+                }
+            },
             refreshCode: function (element, event) {
                 event.preventDefault();
 
@@ -401,8 +436,8 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
         }
     });
     $.validator.addMethod("mobile", function (value, element) {
-        return this.optional(element) || /^1(3[0-9]|[458][0-35-9]|7[0678])\d{8}$/.test(value);
-    }, "请输入一个有效的手机号码");
+        return this.optional(element) || $.hound.mobile.test(value);
+    }, $.hound.messages.mobile);
     $.extend($.validator.messages, {
         required: "这是必填字段",
         remote: "请修正此字段",

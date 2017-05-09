@@ -196,6 +196,9 @@ a:focus {
     margin-top: 0;
     margin-bottom: 0;
 }
+.section-body img {
+    min-width: 100%;
+}
 .section-body + .section-body {
     border-top: 1px solid #f2f2f2;
 }
@@ -369,6 +372,10 @@ a:focus {
     background: #ff5000 none;
     color: #ffffff;
 }
+a.btn-attract:hover,
+a.btn-attract:active {
+    color: #ffffff;
+}
 .btn-attract-o {
     padding: 0 0.2rem;
     border: 1px solid #ff5000;
@@ -376,6 +383,10 @@ a:focus {
     background: #ffffff none;
     color: #ff5000;
     line-height: 1.75;
+}
+a.btn-attract-o:hover,
+a.btn-attract-o:active {
+    color: #ff5000;
 }
 .btn-attract-o + .btn-attract-o {
     margin-left: 0.3rem;
@@ -964,6 +975,12 @@ a:focus {
     background: url("images/plus.png") no-repeat;
     background-size: 100%;
     vertical-align: middle;
+}
+.swiper-slide {
+    overflow: hidden;
+}
+.swiper-slide img {
+    min-width: 100%;
 }
 
 /* Hound UI */

@@ -10,14 +10,7 @@ require(["hound", "pullLoad"], function(hound, pullLoad) {
                 page: 1,
                 pagesize: 12
             }, hound.getRequest()),
-            header = {
-                sID: "abc123",
-                openid: "oijvYvvYh0F0kbjP_TCGO5frERLM",
-                mobile: "",
-                token: "",
-                expiry: "",
-                type: "json"
-            };
+            jsonContent = $.parseJSON($("#jsonContent").text() || "{}");
 
         //IScroll
         var $wrapper = $("#wrapper");
@@ -41,11 +34,6 @@ require(["hound", "pullLoad"], function(hound, pullLoad) {
             $.ajax({
                 url: url,
                 data: data,
-                beforeSend: function(rq) {
-                    $.each(header, function (key, val) {
-                        rq.setRequestHeader(key, val);
-                    });
-                },
                 success: function (html) {
                     if (data.page == 1) {
                         $target.empty();
