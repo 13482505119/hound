@@ -35,7 +35,7 @@ body {
     overflow-x: hidden;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
-    font-family:"Microsoft YaHei","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Microsoft YaHei","Helvetica Neue",Helvetica,Arial,sans-serif;
     line-height: 1.25;
     color: #122733;
 }
@@ -983,6 +983,192 @@ a.btn-attract-o:active {
     min-width: 100%;
 }
 
+/* dealer style */
+.dealer-header {
+    margin: 0 auto;
+    width: 10rem;
+    background: #1E81D2;
+    color: #FFFFFF;
+    text-align: center;
+}
+.dealer-title {
+    margin-left: 0.4rem;
+    padding: 0.4rem 0.4rem 0 0;
+    height: 1.2rem;
+    border-bottom: 1px solid #62A7E0;
+    font-size: 0.3733333333333334rem;
+    text-align: left;
+}
+.dealer-row {
+    display: flex;
+    padding: 0.48rem 0 0.5333333333333333rem 0;
+    height: 2.4rem;
+    line-height: 1;
+}
+.dealer-row + .dealer-row {
+    border-top: 1px solid #62A7E0;
+}
+.dealer-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.dealer-col + .dealer-col {
+    border-left: 1px solid #62A7E0;
+}
+.text-number {
+    font-size: 0.56rem;
+}
+.text-text {
+    font-size: 0.3733333333333334rem;
+}
+.text-number.text-large {
+    font-size: 0.64rem;
+}
+.text-text.text-large {
+    font-size: 0.48rem;
+}
+.dealer-header .text-rmb {
+    font-family: arial;
+    font-size: 0.3733333333333334rem;
+}
+.dealer-header-white {
+    background: #FFFFFF;
+    color: #333333;
+}
+.dealer-header-white .dealer-title {
+    border-bottom: 1px solid #e0e0e0;
+}
+.dealer-header-white .text-number,
+.dealer-header-white .text-text {
+    color: #ff5000;
+}
+.dealer-header-white .dealer-col + .dealer-col {
+    border-left: 0;
+}
+.dealer-footer {
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1030;
+    margin: 0 auto;
+    width: 10rem;
+    height: 1.1733333333333333rem;
+    background: #ffffff;
+    font-size: 0.32rem;
+}
+.dealer-footer .fa {
+    font-size: 0.56rem;
+    line-height: 1.4;
+}
+.dealer-footer nav {
+    display: flex;
+}
+.dealer-footer a {
+    flex: 1;
+    position: relative;
+    padding-top: 0.6933333333333334rem;
+    color: #515151;
+    text-align: center;
+}
+.dealer-footer a:before {
+    content: '';
+    position: absolute;
+    top: 0.0666666666666667rem;
+    left: 0;
+    right: 0;
+    display: block;
+    margin: 0 auto;
+    width: 0.56rem;
+    height: 0.56rem;
+}
+.dealer-footer a.dealer-count:before {
+    background: url("images/dealer/count.png") no-repeat;
+    background-size: cover;
+}
+.dealer-footer a.dealer-shelf:before {
+    background: url("images/dealer/shelf.png") no-repeat;
+    background-size: cover;
+}
+.dealer-footer a.dealer-order:before {
+    background: url("images/dealer/order.png") no-repeat;
+    background-size: cover;
+}
+.dealer-footer a.active {
+    color: #ff5000;
+}
+.dealer-footer a.active.dealer-count:before {
+    background: url("images/dealer/count-active.png") no-repeat;
+    background-size: cover;
+}
+.dealer-footer a.active.dealer-shelf:before {
+    background: url("images/dealer/shelf-active.png") no-repeat;
+    background-size: cover;
+}
+.dealer-footer a.active.dealer-order:before {
+    background: url("images/dealer/order-active.png") no-repeat;
+    background-size: cover;
+}
+.dealer-container {
+    margin: 0 auto;
+    width: 10rem;
+    color: #333333;
+}
+.chapter {
+    padding-left: 0.4rem;
+    background: #FFFFFF;
+}
+.dealer-container .chapter + .chapter,
+.dealer-header + .dealer-container .chapter {
+    margin-top: 0.6666666666666666rem;
+}
+.chapter-title {
+    padding-top: 0.4rem;
+    height: 1.2rem;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 0.3733333333333334rem;
+}
+.chapter-content {
+    padding: 0.4rem 0.4rem 0.4rem 0;
+}
+.chapter-content + .chapter-content {
+    border-top: 1px solid #e0e0e0;
+}
+.link-block {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.4rem;
+    line-height: 0.6666666666666666rem;
+}
+.link-block-text {
+    flex: 1;
+}
+.link-block-array {
+    color: #CCCCCC;
+}
+.link-block .icon {
+    margin-right: 0.4rem;
+}
+.icon {
+    width: 0.6666666666666666rem;
+    height: 0.6666666666666666rem;
+}
+.icon-count-commission {
+    background: url("images/dealer/count-commission.png") no-repeat;
+    background-size: cover;
+}
+.icon-count-order {
+    background: url("images/dealer/count-order.png") no-repeat;
+    background-size: cover;
+}
+#chart {
+    height: 6rem;
+    width: 9.2rem;
+}
+
+
 /* Hound UI */
 .h-radio,
 .h-checkbox {
@@ -1022,7 +1208,6 @@ a.btn-attract-o:active {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-
 .h-checkbox {
     width: 2em;
     background: #8a8a8a;
@@ -1042,7 +1227,6 @@ a.btn-attract-o:active {
 .h-checkbox:checked:before {
     left: 0.875em;
 }
-
 .h-radio {
     width: 1.25em;
 }
@@ -1058,7 +1242,6 @@ a.btn-attract-o:active {
     content: "\f00c";
     color: #ffffff;
 }
-
 .h-radio-m,
 .h-checkbox-m {
     font-size: 1.2em;

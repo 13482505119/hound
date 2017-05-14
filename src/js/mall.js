@@ -3,7 +3,7 @@
  *
  */
 
-require(["hound", "pullLoad"], function(hound, pullLoad) {
+require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pullLoad, echarts) {
     //document.ready
     $(function () {
         var request = $.extend({
@@ -104,6 +104,54 @@ require(["hound", "pullLoad"], function(hound, pullLoad) {
             $count.html(quantity);
             $total.html('<span class="text-big">' + total.substr(0, dotIndex) + '.</span>' + total.substr(dotIndex + 1));
         });
+        
+        var myChart = echarts.init(document.getElementById('chart'));
+        var fontSize = parseInt(document.documentElement.getAttribute("data-dpr")) * 12;
 
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                show: false,
+                text: '历史收入'
+            },
+            legend: {
+                show: false,
+                data:['销量']
+            },
+            xAxis: {
+                axisLabel: {
+                    textStyle: {
+                        fontSize: fontSize
+                    }
+                },
+                data: ["一月","二月","三月","四月","五月","六月"]
+            },
+            yAxis: {
+                axisLabel: {
+                    textStyle: {
+                        fontSize: fontSize
+                    }
+                }
+            },
+            series: [{
+                name: '收入',
+                type: 'line',
+                itemStyle: {
+                    normal: {
+                        label: {
+                            show: true,
+                            textStyle: {
+                                fontFamily: '"Microsoft YaHei","Helvetica Neue",Helvetica,Arial,sans-serif',
+                                fontSize: fontSize
+                            }
+                        }
+                    }
+                },
+                data: [899, 1500, 3856, 4822, 3000, 5500]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
     });
 });
