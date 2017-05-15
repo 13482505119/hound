@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- On-line deletion begin -->
+    <script src="../../src/js/holder.min.js"></script>
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">-->
+    <!--<meta name="viewport" content="initial-scale=0.3333333333333333, maximum-scale=0.3333333333333333, minimum-scale=0.3333333333333333, user-scalable=no">-->
+    <!-- On-line deletion end -->
+    <script>!function(N,M){function L(){var a=I.getBoundingClientRect().width;a/F>540&&(a=540*F);var d=a/10;I.style.fontSize=d+"px",D.rem=N.rem=d}var K,J=N.document,I=J.documentElement,H=J.querySelector('meta[name="viewport"]'),G=J.querySelector('meta[name="flexible"]'),F=0,E=0,D=M.flexible||(M.flexible={});if(H){console.warn("将根据已有的meta标签来设置缩放比例");var C=H.getAttribute("content").match(/initial\-scale=([\d\.]+)/);C&&(E=parseFloat(C[1]),F=parseInt(1/E))}else{if(G){var B=G.getAttribute("content");if(B){var A=B.match(/initial\-dpr=([\d\.]+)/),z=B.match(/maximum\-dpr=([\d\.]+)/);A&&(F=parseFloat(A[1]),E=parseFloat((1/F).toFixed(2))),z&&(F=parseFloat(z[1]),E=parseFloat((1/F).toFixed(2)))}}}if(!F&&!E){var y=N.navigator.userAgent,x=(!!y.match(/android/gi),!!y.match(/iphone/gi)),w=x&&!!y.match(/OS 9_3/),v=N.devicePixelRatio;F=x&&!w?v>=3&&(!F||F>=3)?3:v>=2&&(!F||F>=2)?2:1:1,E=1/F}if(I.setAttribute("data-dpr",F),!H){if(H=J.createElement("meta"),H.setAttribute("name","viewport"),H.setAttribute("content","initial-scale="+E+", maximum-scale="+E+", minimum-scale="+E+", user-scalable=no"),I.firstElementChild){I.firstElementChild.appendChild(H)}else{var u=J.createElement("div");u.appendChild(H),J.write(u.innerHTML)}}N.addEventListener("resize",function(){clearTimeout(K),K=setTimeout(L,300)},!1),N.addEventListener("pageshow",function(b){b.persisted&&(clearTimeout(K),K=setTimeout(L,300))},!1),"complete"===J.readyState?J.body.style.fontSize=12*F+"px":J.addEventListener("DOMContentLoaded",function(){J.body.style.fontSize=12*F+"px"},!1),L(),D.dpr=N.dpr=F,D.refreshRem=L,D.rem2px=function(d){var c=parseFloat(d)*this.rem;return"string"==typeof d&&d.match(/rem$/)&&(c+="px"),c},D.px2rem=function(d){var c=parseFloat(d)/this.rem;return"string"==typeof d&&d.match(/px$/)&&(c+="rem"),c}}(window,window.lib||(window.lib={}));</script>
+    <title>商品库</title>
+    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../src/css/mall.css?v=20170425" rel="stylesheet">
+    <script>
+        var require = {
+            baseUrl: "../../src/js/",
+            urlArgs: "v=20170425"
+        };
+    </script>
+    <script data-main="mall" src="../../src/js/require.js"></script>
+</head>
+<body>
+<header class="navbar navbar-fixed-top-dealer">
+    <form class="dealer-search" action="" method="post">
+        <input type="text" name="keyword" placeholder="搜索商品">
+        <label class="fa fa-search"></label>
+    </form>
+    <ul class="dealer-nav">
+        <li class="active"><a href="">商品库</a></li>
+        <li><a href="">已上架</a></li>
+        <li><a href="">已下架</a></li>
+    </ul>
+    <ul class="dealer-subnav">
+        <li><a href="">佣金</a></li>
+        <li><a href="">销量</a></li>
+        <li><a href="">新品</a></li>
+        <li>
+            <a href="">
+                <!-- 默认排序 -->
+                <span>价格<i class="fa fa-sort"></i></span>
+                <!-- 正序 -->
+                <!--<span>价格<i class="fa fa-sort-asc"></i></span>-->
+                <!-- 倒叙 -->
+                <!--<span>价格<i class="fa fa-sort-desc"></i></span>-->
+            </a>
+        </li>
+    </ul>
+</header>
+
+<div id="wrapper" class="dealer-list" data-url="list-part.html">
+    <div id="scroller">
+        <div id="pullDown">
+            <span class="pullDownIcon"></span><span class="pullDownLabel">下拉刷新</span>
+        </div>
+        <!-- 商品列表样式(被隐藏) begin -->
+        <div class="wrapper pullList">
+            <div class="item" href="item.html">
+                <div class="item-figure">
+                    <a href="" class="img-thumbnail">
+                        <img src="holder.js/100px100p?theme=sky&text=Image" alt="...">
+                    </a>
+                </div>
+                <div class="item-body">
+                    <a href="" class="item-heading">￥600/套---无锡铂尔曼樱花节超值套餐（高级房+加双人自助早餐+加双人自助晚餐）</a>
+                    <div class="item-caption">
+                        <div>
+                            佣金：<span class="text-price"><i class="fa fa-rmb"></i>23.5</span><br>销量：1256
+                        </div>
+                        <div>
+                            价格：<i class="fa fa-rmb"></i>600<br>库存：1256
+                        </div>
+                        <button class="btn btn-attract" type="button" data-click="toggle" data-url="../../public/success.json">
+                            <span data-data='{"skuId":"qwe123","method":"up"}'><i class="fa fa-caret-up"></i><br>上架</span>
+                            <span data-data='{"skuId":"qwe123","method":"down"}'><i class="fa fa-caret-down"></i><br>下架</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="item" href="item.html">
+                <div class="item-figure">
+                    <a href="" class="img-thumbnail">
+                        <img src="holder.js/100px100p?theme=sky&text=Image" alt="...">
+                    </a>
+                </div>
+                <div class="item-body">
+                    <a href="" class="item-heading">￥600/套---无锡铂尔曼樱花节超值套餐（高级房+加双人自助早餐+加双人自助晚餐）</a>
+                    <div class="item-caption">
+                        <div>
+                            佣金：<span class="text-price"><i class="fa fa-rmb"></i>23.5</span><br>销量：1256
+                        </div>
+                        <div>
+                            价格：<i class="fa fa-rmb"></i>600<br>库存：1256
+                        </div>
+                        <button class="btn btn-attract toggled" type="button" data-click="toggle" data-url="../../public/success.json">
+                            <span data-data='{"skuId":"qwe123","method":"up"}'><i class="fa fa-caret-up"></i><br>上架</span>
+                            <span data-data='{"skuId":"qwe123","method":"down"}'><i class="fa fa-caret-down"></i><br>下架</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="item" href="item.html">
+                <div class="item-figure">
+                    <a href="" class="img-thumbnail">
+                        <img src="holder.js/100px100p?theme=sky&text=Image" alt="...">
+                    </a>
+                </div>
+                <div class="item-body">
+                    <a href="" class="item-heading">￥600/套---无锡铂尔曼樱花节超值套餐（高级房+加双人自助早餐+加双人自助晚餐）</a>
+                    <div class="item-caption">
+                        <div>
+                            佣金：<span class="text-price"><i class="fa fa-rmb"></i>23.5</span><br>销量：1256
+                        </div>
+                        <div>
+                            价格：<i class="fa fa-rmb"></i>600<br>库存：1256
+                        </div>
+                        <button class="btn btn-attract" type="button" data-click="toggle" data-url="../../public/success.json">
+                            <span data-data='{"skuId":"qwe123","method":"up"}'><i class="fa fa-caret-up"></i><br>上架</span>
+                            <span data-data='{"skuId":"qwe123","method":"down"}'><i class="fa fa-caret-down"></i><br>下架</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 商品列表样式 end -->
+        <div id="pullUp">
+            <span class="pullUpIcon"></span><span class="pullUpLabel">下拉加载更多</span>
+        </div>
+    </div>
+</div>
+
+<footer class="dealer-footer">
+    <nav>
+        <a href="#" class="dealer-count active">统计</a>
+        <a href="#" class="dealer-shelf">货架</a>
+        <a href="#" class="dealer-order">订单</a>
+    </nav>
+</footer>
+</body>
+</html>

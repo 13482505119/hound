@@ -464,6 +464,10 @@ a.btn-attract-o:active {
 .btn-radius {
     border-radius: 0.2rem;
 }
+.btn-muted {
+    background: #e4e4e4;
+    color: #666666;
+}
 
 /* ±íµ¥ */
 .form-control {
@@ -1163,10 +1167,191 @@ a.btn-attract-o:active {
     background: url("images/dealer/count-order.png") no-repeat;
     background-size: cover;
 }
-#chart {
+#chart-commission {
     height: 6rem;
     width: 9.2rem;
 }
+#chart-order,
+#chart-order-history {
+    height: 4rem;
+    width: 9.2rem;
+}
+.navbar-fixed-top-dealer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    padding: 0;
+    background: #ffffff;
+}
+.dealer-search {
+    position: relative;
+    padding: 0.2666666666666667rem 0.4rem 0 0.4rem;
+}
+.dealer-search input {
+    display: block;
+    padding: 0 0.92rem;
+    border: 0;
+    width: 100%;
+    height: 0.9333333333333333rem;
+    outline: none;
+    background: #f2f2f2;
+    border-radius: 0.08rem;
+    font-size: 0.32rem;
+}
+.dealer-search .fa-search {
+    position: absolute;
+    top: 0.48rem;
+    left: 0.72rem;
+    font-size: 0.4rem;
+}
+.dealer-nav {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    height: 1.0666666666666667rem;
+    border-bottom: 1px solid #d6d6d6;
+    list-style: none;
+    font-size: 0.3733333333333334rem;
+    line-height: 1.04rem;
+    text-align: center;
+}
+.dealer-nav li {
+    flex: 1;
+}
+.dealer-nav a {
+    position: relative;
+    display: inline-block;
+    padding: 0 0.12rem;
+}
+.dealer-nav .active a {
+    color: #ff5000;
+}
+.dealer-nav .active a:after {
+    content: "";
+    position: absolute;
+    top: 1.0666666666666667rem;
+    left: 0;
+    right: 0;
+    display: block;
+    height: 1px;
+    border-bottom: 0.04rem solid #ff5000;
+}
+.dealer-subnav {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    height: 0.8rem;
+    background: #f2f2f2;
+    list-style: none;
+    font-size: 0.3466666666666667rem;
+    line-height: 0.8rem;
+    text-align: center;
+}
+.dealer-subnav li {
+    flex: 1;
+}
+.dealer-subnav .active a {
+    color: #ff5000;
+}
+#wrapper.dealer-list {
+    top: 3.08rem;
+}
+#wrapper.dealer-list-up {
+
+}
+#wrapper.dealer-list-down {
+
+}
+.item {
+    display: flex;
+    align-items: flex-start;
+    padding: 0.12rem 0.2rem 0.12rem 0.12rem;
+    background: #ffffff;
+}
+.item:first-child {
+    padding-top: 0.24rem;
+}
+.item-figure {
+    margin-right: 0.28rem;
+}
+.item-figure .img-thumbnail {
+    display: block;
+    width: 2.6666666666666665rem;
+    height: 2.6666666666666665rem;
+}
+.item-body {
+    flex: 1;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    height: 2.6666666666666665rem;
+}
+.item-heading {
+    font-size: 0.3733333333333334rem;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.item-caption {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.32rem;
+    line-height: 2;
+}
+.item-caption > div {
+    width: 2.4rem;
+}
+.item + .item {
+    border-top: 1px solid #e0e0e0;
+}
+.item .btn {
+    position: relative;
+    height: 1.28rem;
+    width: 1.28rem;
+    border-radius: 0.12rem;
+    font-size: 0.2933333333333333rem;
+    overflow: hidden;
+}
+.item .btn > span {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    -webkit-transition: top 0.2s;
+    -moz-transition: top 0.2s;
+    -ms-transition: top 0.2s;
+    -o-transition: top 0.2s;
+    transition: top 0.2s;
+}
+.item .btn > span:first-child {
+    top: 0;
+}
+.item .btn > span:last-child {
+    top: 100%;
+}
+.item .btn.toggled {
+    background: #E4E4E4;
+    color: #666666;
+}
+.item .btn.toggled .fa {
+    color: #8A8A8A;
+}
+.item .btn.toggled > span:first-child {
+    top: -100%;
+}
+.item .btn.toggled > span:last-child {
+    top: 0;
+}
+.item .btn .fa {
+    font-size: 0.8rem;
+    line-height: 0.8;
+}
+
 
 
 /* Hound UI */
