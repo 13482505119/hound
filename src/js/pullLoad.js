@@ -147,7 +147,7 @@ define("pullLoad", ["plugins/iscroll/iscroll-probe"], function (IScroll) {
             //options.pullUpOffset = options.pullUpElement.offsetHeight;
             options.pullUpOffset = getDomWidthOrHeight("height", options.pullUpElement);
             options.pullUpElement.style.display = options.pullUpLock ? "none" : "block";
-            options.pullUpLabel.innerHTML = options.pullDownText[0];
+            options.pullUpLabel.innerHTML = options.pullUpText[0];
         }
 
         /*//如果内容高度小于容器高度，锁定上拉
