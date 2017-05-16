@@ -210,6 +210,19 @@ a:focus {
     border-bottom: 1px solid #f2f2f2;
     line-height: 0.5314009661835749rem;
 }
+.section-data {
+    display: flex;
+    margin: 0;
+    padding: 0.18rem 0;
+    list-style: none;
+    flex-wrap: wrap;
+    font-size: 0.36rem;
+    line-height: 2;
+    border-bottom: 1px solid #d6d6d6;
+}
+.section-data > li {
+    width: 3.066666666666666rem;
+}
 .row-fa {
     position: relative;
     padding-left: 2em;
@@ -468,6 +481,10 @@ a.btn-attract-o:active {
     background: #e4e4e4;
     color: #666666;
 }
+.btn-gray {
+    background: #CCCCCC;
+    color: #FFFFFF;
+}
 
 /* ±íµ¥ */
 .form-control {
@@ -600,7 +617,7 @@ a.btn-attract-o:active {
 }
 .navbar-fixed-top {
     top: 0;
-    padding-bottom: 0.0241545893719807rem;
+    /*padding-bottom: 0.0241545893719807rem;*/
 }
 .navbar-fixed-top nav {
     border-bottom: 1px solid #e7e7e7;
@@ -804,6 +821,10 @@ a.btn-attract-o:active {
     font-size: 0.25rem;
     line-height: 0.5rem;
 }
+.orderli-foot .text-left {
+    font-size: 0.32rem;
+    line-height: 1.75;
+}
 .orderli-media .media {
     margin-top: 0;
     background: #f2f2f2;
@@ -832,6 +853,11 @@ a.btn-attract-o:active {
     width: 0.1851851851851852rem;
     height: 0.1851851851851852rem;
     background: #ffffff;
+}
+.swiper-goods .sold-out {
+    height: 4.48rem;
+    width: 4.48rem;
+    line-height: 4.48rem;
 }
 .swiper-control {
     width: 10rem;
@@ -1255,14 +1281,33 @@ a.btn-attract-o:active {
 .dealer-subnav .active a {
     color: #ff5000;
 }
+.dealer-tips {
+    display: flex;
+    padding: 0.1rem 0.2rem;
+    background: #f2f2f2;
+    font-size: 0.2933333333333333rem;
+    line-height: 0.4rem;
+    color: #999999;
+}
+.dealer-tips-text {
+    flex: 1;
+    margin-right: 0.2rem;
+}
+.dealer-tips .btn {
+    margin: 0.1rem 0;
+    padding: 0 0.24rem;
+}
 #wrapper.dealer-list {
     top: 3.08rem;
 }
 #wrapper.dealer-list-up {
-
+    top: 3.28rem;
 }
 #wrapper.dealer-list-down {
-
+    top: 2.4rem;
+}
+#wrapper.dealer-orders {
+    top: 0.96rem;
 }
 .item {
     display: flex;
@@ -1280,6 +1325,11 @@ a.btn-attract-o:active {
     display: block;
     width: 2.6666666666666665rem;
     height: 2.6666666666666665rem;
+}
+.item-figure .sold-out {
+    width: 1.6rem;
+    height: 1.6rem;
+    line-height: 1.6rem;
 }
 .item-body {
     flex: 1;
