@@ -43,7 +43,6 @@
             background: #ccc;
             overflow: hidden;
         }
-
         .pull-scroller {
             position: absolute;
             z-index: 1;
@@ -65,7 +64,6 @@
             -o-text-size-adjust: none;
             text-size-adjust: none;
         }
-
         .pull-body {
             list-style: none;
             padding: 0;
@@ -73,19 +71,12 @@
             width: 100%;
             text-align: left;
         }
-
         .pull-body li {
             padding: 0.5em 1em;
             border-bottom: 1px solid #ccc;
             border-top: 1px solid #fff;
             background-color: #fafafa;
         }
-
-        /**
-         *
-         * Pull down styles
-         *
-         */
         .pull-down,
         .pull-up {
             display: none;
@@ -125,7 +116,6 @@
             -o-animation: loading 1s linear 0s infinite;
             animation: loading 1s linear 0s infinite;
         }
-
         @-webkit-keyframes loading {
             from {
                 -webkit-transform: rotate(0deg) translateZ(0);
@@ -265,6 +255,8 @@
             });
 
             console.log(myIScroll);
+            //myIScroll.lockPullDown(true);
+            //myIScroll.lockPullUp(true);
         });
     </script>
 </head>

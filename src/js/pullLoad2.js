@@ -70,35 +70,35 @@ define("pullLoad2", ["plugins/iscroll/iscroll-probe"], function (IScroll) {
 
     //新增锁定下拉方法
     IScroll.prototype.lockPullDown = function (lock) {
-        var opts = this.options;
-        if (opts.pullDownElement && opts.pullDownLock == !lock) {
-            opts.pullDownLock = !!lock;
-            if (opts.pullDownLock) {
-                opts.pullDownElement.style.display = "none";
+        var p = this.pull;
+        if (p.down.element && p.down.lock == !lock) {
+            p.down.lock = !!lock;
+            if (p.down.lock) {
+                p.down.element.style.display = "none";
                 this.y = 0;
                 this.options.startY = 0;
-                opts.maxScrollY = this.maxScrollY = this.maxScrollY + opts.pullDownOffset;
+                p.maxScrollY = this.maxScrollY = this.maxScrollY + p.down.offset;
             } else {
-                opts.pullDownElement.style.display = "block";
-                this.y = -opts.pullDownOffset;
-                this.options.startY = -opts.pullDownOffset;
-                opts.maxScrollY = this.maxScrollY = this.maxScrollY - opts.pullDownOffset;
+                p.down.element.style.display = "block";
+                this.y = -p.down.offset;
+                this.options.startY = -p.down.offset;
+                p.maxScrollY = this.maxScrollY = this.maxScrollY - p.down.offset;
             }
             this.refresh();
-            this.scrollTo(0, this.options.startY, 600);
+            this.scrollTo(0, this.options.startY, 300);
         }
     };
     //新增锁定上拉方法
     IScroll.prototype.lockPullUp = function (lock) {
-        var opts = this.options;
-        if (opts.pullUpElement && opts.pullUpLock == !lock) {
-            opts.pullUpLock = !!lock;
-            if (opts.pullUpLock) {
-                opts.pullUpElement.style.display = "none";
-                opts.maxScrollY = this.maxScrollY = this.maxScrollY + opts.pullUpOffset;
+        var p = this.pull;
+        if (p.up.element && p.up.lock == !lock) {
+            p.up.lock = !!lock;
+            if (p.up.lock) {
+                p.up.element.style.display = "none";
+                p.maxScrollY = this.maxScrollY = this.maxScrollY + p.up.offset;
             } else {
-                opts.pullUpElement.style.display = "block";
-                opts.maxScrollY = this.maxScrollY = this.maxScrollY - opts.pullUpOffset;
+                p.up.element.style.display = "block";
+                p.maxScrollY = this.maxScrollY = this.maxScrollY - p.up.offset;
             }
             this.refresh();
         }
