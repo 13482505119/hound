@@ -25,7 +25,7 @@ define("pullLoad", ["plugins/iscroll/iscroll-probe"], function (IScroll) {
             this.scrollTo(0, this.options.startY, 600);
         }
     };
-    //新增锁定上啦方法
+    //新增锁定上拉方法
     IScroll.prototype.lockPullUp = function (lock) {
         var opts = this.options;
         if (opts.pullUpElement && opts.pullUpLock == !lock) {
@@ -123,7 +123,7 @@ define("pullLoad", ["plugins/iscroll/iscroll-probe"], function (IScroll) {
             return null;
         }
         if (hasClass(options.pullElement, "IScroll")) {
-            console.error("Element is initialized!!");
+            console.error("Element has been initialized!!");
             return null;
         }
 

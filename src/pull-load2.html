@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>pullLoad</title>
+    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/normalize.css" rel="stylesheet">
+    <style rel="stylesheet">
+        #header {
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            left: 0;
+            width: 10rem;
+            background: #CD235C;
+            padding: 0;
+            color: #eee;
+            font-size: 2em;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #footer {
+            position: absolute;
+            z-index: 2;
+            bottom: 0;
+            left: 0;
+            width: 10rem;
+            height: 2em;
+            background: #444;
+            padding: 0;
+            border-top: 1px solid #444;
+        }
+
+        .pull-wrapper {
+            position: absolute;
+            z-index: 1;
+            top: 2.3em;
+            bottom: 2em;
+            left: 0;
+            right: 0;
+            width: 10rem;
+            background: #ccc;
+            overflow: hidden;
+        }
+
+        .pull-scroller {
+            position: absolute;
+            z-index: 1;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+            width: 100%;
+            -webkit-transform: translateZ(0);
+            -moz-transform: translateZ(0);
+            -ms-transform: translateZ(0);
+            -o-transform: translateZ(0);
+            transform: translateZ(0);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-text-size-adjust: none;
+            -moz-text-size-adjust: none;
+            -ms-text-size-adjust: none;
+            -o-text-size-adjust: none;
+            text-size-adjust: none;
+        }
+
+        .pull-body {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            text-align: left;
+        }
+
+        .pull-body li {
+            padding: 0.5em 1em;
+            border-bottom: 1px solid #ccc;
+            border-top: 1px solid #fff;
+            background-color: #fafafa;
+        }
+
+        /**
+         *
+         * Pull down styles
+         *
+         */
+        .pull-down,
+        .pull-up {
+            display: none;
+            background: #fff;
+            padding: 0.5em 1em;
+            border-bottom: 1px solid #ccc;
+            font-weight: bold;
+            line-height: 2em;
+            color: #888;
+        }
+        .pull-label {
+            margin-left: 1em;
+        }
+        .pull-icon {
+            display: block;
+            float: left;
+            font: normal normal normal 2em/1 FontAwesome;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            -webkit-transition-property: -webkit-transform;
+            -webkit-transition-duration: 250ms;
+        }
+        .pull-down .pull-icon:before {
+            content: "\f063";
+        }
+        .pull-up .pull-icon:before {
+            content: "\f062";
+        }
+        .pull-flip .pull-icon {
+            -webkit-transform: rotate(-180deg) translateZ(0);
+        }
+        .pull-loading .pull-icon:before {
+            content: "\f021";
+        }
+        .pull-loading .pull-icon {
+            -webkit-animation: loading 1s linear 0s infinite;
+            -o-animation: loading 1s linear 0s infinite;
+            animation: loading 1s linear 0s infinite;
+        }
+
+        @-webkit-keyframes loading {
+            from {
+                -webkit-transform: rotate(0deg) translateZ(0);
+            }
+            to {
+                -webkit-transform: rotate(360deg) translateZ(0);
+            }
+        }
+    </style>
+    <script>
+        !function(win, lib) {
+            var timeout,
+                    doc = win.document,
+                    docEl = doc.documentElement,
+                    metaViewport = doc.querySelector('meta[name="viewport"]'),
+                    metaFlexible = doc.querySelector('meta[name="flexible"]'),
+                    dpr = 0,
+                    scale = 0,
+                    flexible = lib.flexible || (lib.flexible = {});
+
+            if (metaViewport) {
+                console.warn("将根据已有的meta标签来设置缩放比例");
+                var match = metaViewport.getAttribute("content").match(/initial\-scale=([\d\.]+)/);
+                if (match) {
+                    scale = parseFloat(match[1]);
+                    dpr = parseInt(1 / scale);
+                }
+            } else {
+                if (metaFlexible) {
+                    var content = metaFlexible.getAttribute("content");
+                    if (content) {
+                        var initialDpr = content.match(/initial\-dpr=([\d\.]+)/),
+                                maximumDpr = content.match(/maximum\-dpr=([\d\.]+)/);
+                        if (initialDpr) {
+                            dpr = parseFloat(initialDpr[1]);
+                            scale = parseFloat((1 / dpr).toFixed(2));
+                        }
+                        if (maximumDpr) {
+                            dpr = parseFloat(maximumDpr[1]);
+                            scale = parseFloat((1 / dpr).toFixed(2));
+                        }
+                    }
+                }
+            }
+
+            if (!dpr && !scale) {
+                var ua = win.navigator.userAgent,
+                        isMobile =  !!ua.match(/android/gi) || !!ua.match(/iphone/gi),
+                        isIOS9 = isMobile && !! ua.match(/OS 9_3/),
+                        devicePixelRatio = win.devicePixelRatio;
+
+                dpr = isMobile && !isIOS9 ? (devicePixelRatio >= 3 && (!dpr || dpr >= 3) ? 3 : (devicePixelRatio >= 2 && (!dpr || dpr >= 2) ? 2 : 1)) : 1;
+                scale = 1 / dpr;
+            }
+
+            docEl.setAttribute("data-dpr", dpr);
+            if (!metaViewport) {
+                metaViewport = doc.createElement("meta");
+                metaViewport.setAttribute("name", "viewport");
+                metaViewport.setAttribute("content", "initial-scale=" + scale + ", maximum-scale=" + scale + ", minimum-scale=" + scale + ", user-scalable=no");
+                if (docEl.firstElementChild) {
+                    docEl.firstElementChild.appendChild(metaViewport)
+                } else {
+                    var wrap = doc.createElement("div");
+                    wrap.appendChild(metaViewport);
+                    doc.write(wrap.innerHTML);
+                }
+            }
+
+            function refreshRem() {
+                var width = docEl.getBoundingClientRect().width;
+                if (width / dpr > 540) {
+                    width = 540 * dpr;
+                }
+                var remWidth = width / 10;
+                docEl.style.fontSize = remWidth + "px";
+                flexible.rem = win.rem = remWidth;
+            }
+
+            win.addEventListener("resize", function() {
+                clearTimeout(timeout);
+                timeout = setTimeout(refreshRem, 300);
+            }, false);
+            win.addEventListener("pageshow", function(e) {
+                if (e.persisted) {
+                    clearTimeout(timeout);
+                    timeout = setTimeout(refreshRem, 300);
+                }
+            }, false);
+
+            if ("complete" === doc.readyState) {
+                doc.body.style.fontSize = 12 * dpr + "px";
+            } else {
+                doc.addEventListener("DOMContentLoaded", function() {
+                    doc.body.style.fontSize = 12 * dpr + "px";
+                }, false)
+            }
+
+            refreshRem();
+
+            flexible.dpr = win.dpr = dpr;
+            flexible.refreshRem = refreshRem;
+            flexible.rem2px = function(d) {
+                var val = parseFloat(d) * this.rem;
+                if ("string" == typeof d && d.match(/rem$/)) {
+                    val += "px";
+                }
+                return val;
+            };
+            flexible.px2rem = function(d) {
+                var val = parseFloat(d) / this.rem;
+                if ("string" == typeof d && d.match(/px$/)) {
+                    val += "rem";
+                }
+                return val;
+            }
+
+        }(window, window.lib || (window.lib = {}));
+    </script>
+    <script src="js/require.js"></script>
+    <script>
+        require.config({
+            baseUrl: "js/"
+        });
+        require(["pullLoad2"], function (pullLoad) {
+            var myIScroll = pullLoad(".pull-wrapper", {
+                pullDownAction: function () {
+                    setTimeout(function () {
+                        myIScroll.refresh();
+                    }, 3000);
+                },
+                pullUpAction: function () {
+                    setTimeout(function () {
+                        myIScroll.refresh();
+                    }, 3000);
+                }
+            });
+
+            console.log(myIScroll);
+        });
+    </script>
+</head>
+<body>
+<div id="header">iScroll-5</div>
+<div class="pull-wrapper">
+    <div class="pull-scroller">
+        <div class="pull-down">
+            <span class="pull-icon"></span><span class="pull-label">Pull down to refresh...</span>
+        </div>
+        <ul class="pull-body">
+            <li>Pretty row 1</li>
+            <li>Pretty row 2</li>
+            <li>Pretty row 3</li>
+            <li>Pretty row 4</li>
+            <li>Pretty row 5</li>
+            <li>Pretty row 6</li>
+            <li>Pretty row 7</li>
+            <li>Pretty row 8</li>
+            <li>Pretty row 9</li>
+            <li>Pretty row 10</li>
+            <li>Pretty row 11</li>
+            <li>Pretty row 12</li>
+            <li>Pretty row 13</li>
+            <li>Pretty row 14</li>
+            <li>Pretty row 15</li>
+            <li>Pretty row 16</li>
+            <li>Pretty row 17</li>
+            <li>Pretty row 18</li>
+            <li>Pretty row 19</li>
+            <li>Pretty row 20</li>
+            <li>Pretty row 21</li>
+            <li>Pretty row 22</li>
+            <li>Pretty row 23</li>
+            <li>Pretty row 24</li>
+            <li>Pretty row 25</li>
+            <li>Pretty row 26</li>
+            <li>Pretty row 27</li>
+            <li>Pretty row 28</li>
+            <li>Pretty row 29</li>
+            <li>Pretty row 30</li>
+            <li>Pretty row 31</li>
+            <li>Pretty row 32</li>
+            <li>Pretty row 33</li>
+            <li>Pretty row 34</li>
+            <li>Pretty row 35</li>
+            <li>Pretty row 36</li>
+            <li>Pretty row 37</li>
+            <li>Pretty row 38</li>
+            <li>Pretty row 39</li>
+            <li>Pretty row 40</li>
+        </ul>
+        <div class="pull-up">
+            <span class="pull-icon"></span><span class="pull-label">Pull up to load more...</span>
+        </div>
+    </div>
+</div>
+<div id="footer"></div>
+</body>
+</html>
