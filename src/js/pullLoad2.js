@@ -5,7 +5,6 @@
  */
 
 define("pullLoad2", ["plugins/iscroll/iscroll-probe"], function (IScroll) {
-
     var utils = (function () {
         var me = {
             defaults: {
@@ -22,6 +21,24 @@ define("pullLoad2", ["plugins/iscroll/iscroll-probe"], function (IScroll) {
             for ( var i in obj ) {
                 target[i] = obj[i];
             }
+        };
+
+        me.createElement = function (t, c, h) {
+            var o = document.createElement(t);
+            if (typeof c === "string") {
+                o.className = c;
+            }
+            if (Object.prototype.toString.call(h) === "[object Array]") {
+                for (var i in h){
+                    o.appendChild(h[i]);
+                }
+            } else if (typeof h === "object") {
+                o.appendChild(h);
+            } else if (typeof h === "string") {
+                o.innerHTML = h;
+            }
+
+            return o;
         };
 
         me.hasClass = function (e, c) {
@@ -117,22 +134,8 @@ define("pullLoad2", ["plugins/iscroll/iscroll-probe"], function (IScroll) {
             },
             pull = {
                 maxScrollY: 0,
-                down: {
-                    element: null,
-                    offset: 0,
-                    action: false,
-                    lock: false,
-                    label: null,
-                    texts: ['下拉刷新', '松开刷新', '刷新中…']
-                },
-                up: {
-                    element: null,
-                    offset: 0,
-                    action: false,
-                    lock: false,
-                    label: null,
-                    texts: ['上拉加载更多', '松开加载', '加载中…']
-                },
+                down: {},
+                up: {},
                 isScrolling: false,
                 isLoading: false,
                 flip: "pull-flip",
@@ -154,34 +157,28 @@ define("pullLoad2", ["plugins/iscroll/iscroll-probe"], function (IScroll) {
         utils.extend(param, o);
 
         pull.scroller = pull.wrapper.children[0];
-        pull.body = pull.scroller.querySelector(".pull-body");
+        pull.body = pull.scroller.children[0];
         pull.body.style.minHeight = pull.wrapper.offsetHeight + "px";
-        pull.down.element = pull.scroller.querySelector(".pull-down");
         pull.down.action = param.pullDownAction;
         pull.down.lock = param.pullDownLock;
         pull.down.texts = param.pullDownTexts;
-        if (pull.down.element) {
-            pull.down.label = pull.down.element.querySelector(".pull-label") || {};
-            pull.down.label.innerHTML = pull.down.texts[0];
-            pull.down.offset = utils.getDomHeight(pull.down.element);
-            if (pull.down.lock) {
-                options.startY = 0;
-                pull.down.element.style.display = "none";
-            } else {
-                options.startY = -pull.down.offset;
-                pull.down.element.style.display = "block";
-            }
+        pull.down.element = utils.createElement("div", "pull-down", [pull.down.icon = utils.createElement("i", "pull-icon"), pull.down.label = utils.createElement("span", "pull-label", pull.down.texts[0])]);
+        pull.scroller.insertBefore(pull.down.element, pull.body);
+        pull.down.offset = utils.getDomHeight(pull.down.element);
+        if (pull.down.lock) {
+            options.startY = 0;
+            pull.down.element.style.display = "none";
+        } else {
+            options.startY = -pull.down.offset;
+            pull.down.element.style.display = "block";
         }
-        pull.up.element = pull.scroller.querySelector(".pull-up");
         pull.up.action = param.pullUpAction;
         pull.up.lock = param.pullUpLock;
         pull.up.texts = param.pullUpTexts;
-        if (pull.up.element) {
-            pull.up.label = pull.up.element.querySelector(".pull-label") || {};
-            pull.up.label.innerHTML = pull.up.texts[0];
-            pull.up.offset = utils.getDomHeight(pull.up.element);
-            pull.up.element.style.display = pull.up.lock ? "none" : "block";
-        }
+        pull.up.element = utils.createElement("div", "pull-up", [pull.up.icon = utils.createElement("i", "pull-icon"), pull.up.label = utils.createElement("span", "pull-label", pull.up.texts[0])]);
+        pull.scroller.appendChild(pull.up.element);
+        pull.up.offset = utils.getDomHeight(pull.up.element);
+        pull.up.element.style.display = pull.up.lock ? "none" : "block";
 
         //Build
         _IScroll = new IScroll(e, options);

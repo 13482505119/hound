@@ -264,9 +264,6 @@
 <div id="header">iScroll-5</div>
 <div class="pull-wrapper">
     <div class="pull-scroller">
-        <div class="pull-down">
-            <span class="pull-icon"></span><span class="pull-label">Pull down to refresh...</span>
-        </div>
         <ul class="pull-body">
             <li>Pretty row 1</li>
             <li>Pretty row 2</li>
@@ -309,11 +306,28 @@
             <li>Pretty row 39</li>
             <li>Pretty row 40</li>
         </ul>
-        <div class="pull-up">
-            <span class="pull-icon"></span><span class="pull-label">Pull up to load more...</span>
-        </div>
     </div>
 </div>
-<div id="footer"></div>
+<div id="footer"><p></p></div>
+<script>
+    var footer = document.getElementById("footer");
+    var div = document.createElement("div");
+    console.log(typeof  div === "object");
+    console.log([] instanceof Array);
+    div.className = "pull-down";
+    div.innerHTML = "down";
+    //footer.appendChild(div);
+    //footer.insertBefore(div, footer.firstChild);
+    var div2 = document.createElement("div");
+    div2.className = "pull-up";
+    div2.innerHTML = "up";
+    //footer.appendChild(div2);
+    var arr = [div, div2];
+    if (Object.prototype.toString.call(arr) === "[object Array]") {
+        for (var i in arr){
+            footer.appendChild(arr[i]);
+        }
+    }
+</script>
 </body>
 </html>
