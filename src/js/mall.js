@@ -109,6 +109,7 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
 
         // 指定图表的配置项和数据
         if (document.getElementById('chart-commission')) {
+            console.log(jsonContent);
             var chartCommission = echarts.init(document.getElementById('chart-commission'));
             var optionCommission = {
                 title: {
@@ -125,7 +126,7 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
                             fontSize: fontSize
                         }
                     },
-                    data: ["一月","二月","三月","四月","五月","六月"]
+                    data: jsonContent.xAxis
                 },
                 yAxis: {
                     axisLabel: {
@@ -148,7 +149,7 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
                             }
                         }
                     },
-                    data: [899, 1500, 3856, 4822, 3000, 5500]
+                    data: jsonContent.data
                 }]
             };
             chartCommission.setOption(optionCommission);
@@ -157,30 +158,25 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
         if (document.getElementById('chart-order')) {
             var chartOrder = echarts.init(document.getElementById('chart-order'));
             var optionOrder = {
-                title : {
+                title: {
                     show: false
                 },
-                tooltip : {
-                    show: false,
-                    trigger: 'item',
-                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                tooltip: {
+                    show: false
                 },
                 legend: {
-                    show: false,
-                    orient : 'vertical',
-                    x : 'left',
-                    data:['已使用订单', '待使用订单', '已退款订单']
+                    show: false
                 },
-                calculable : true,
-                series : [
+                calculable: true,
+                series: [
                     {
-                        name:'订单统计',
-                        type:'pie',
-                        radius : '55%',
+                        name: '订单统计',
+                        type: 'pie',
+                        radius: '55%',
                         center: ['50%', '60%'],
-                        itemStyle:{
-                            normal:{
-                                label:{
+                        itemStyle: {
+                            normal: {
+                                label: {
                                     show: true,
                                     textStyle: {
                                         fontFamily: '"Microsoft YaHei","Helvetica Neue",Helvetica,Arial,sans-serif',
@@ -188,14 +184,12 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
                                     },
                                     formatter: '{b}\n{c} ({d}%)'
                                 },
-                                labelLine :{show:true}
+                                labelLine: {
+                                    show: true
+                                }
                             }
                         },
-                        data:[
-                            {value:15, name:'已使用订单'},
-                            {value:166, name:'待使用订单'},
-                            {value:16, name:'已退款订单'}
-                        ]
+                        data: jsonContent.order
                     }
                 ]
             };
@@ -205,30 +199,25 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
         if (document.getElementById('chart-order-history')) {
             var chartOrderHistory = echarts.init(document.getElementById('chart-order-history'));
             var optionOrderHistory = {
-                title : {
+                title: {
                     show: false
                 },
-                tooltip : {
-                    show: false,
-                    trigger: 'item',
-                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                tooltip: {
+                    show: false
                 },
                 legend: {
-                    show: false,
-                    orient : 'vertical',
-                    x : 'left',
-                    data:['已使用订单', '待使用订单', '已退款订单']
+                    show: false
                 },
-                calculable : true,
-                series : [
+                calculable: true,
+                series: [
                     {
-                        name:'订单统计',
-                        type:'pie',
-                        radius : '55%',
+                        name: '订单统计',
+                        type: 'pie',
+                        radius: '55%',
                         center: ['50%', '60%'],
-                        itemStyle:{
-                            normal:{
-                                label:{
+                        itemStyle: {
+                            normal: {
+                                label: {
                                     show: true,
                                     textStyle: {
                                         fontFamily: '"Microsoft YaHei","Helvetica Neue",Helvetica,Arial,sans-serif',
@@ -236,14 +225,12 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
                                     },
                                     formatter: '{b}\n{c} ({d}%)'
                                 },
-                                labelLine :{show:true}
+                                labelLine: {
+                                    show: true
+                                }
                             }
                         },
-                        data:[
-                            {value:15, name:'已使用订单'},
-                            {value:166, name:'待使用订单'},
-                            {value:16, name:'已退款订单'}
-                        ]
+                        data: jsonContent.orderHistory
                     }
                 ]
             };
