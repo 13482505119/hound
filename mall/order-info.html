@@ -81,7 +81,7 @@
     <div class="section">
         <div class="section-head">备注</div>
         <div class="section-body">
-            <textarea name="notes" class="form-control" placeholder="点击这里输入您的备注"></textarea>
+            <textarea name="notes" id="notes" class="form-control" placeholder="点击这里输入您的备注"></textarea>
         </div>
     </div>
     <div class="section hspace">
@@ -124,10 +124,11 @@
     <div class="container">
         <div class="row btn-group-row">
             <button class="rem-5 btn" type="button">合计： <span class="text-price"><i class="fa fa-rmb"></i><span class="jTotal"><span class="text-big">113.</span>60</span></span></button>
-            <button class="rem-5 btn btn-attract" type="button">提交订单</button>
+            <!-- data-url=提交地址 -->
+            <button class="rem-5 btn btn-attract jBuy" type="button" data-url="payment.json">提交订单</button>
         </div>
     </div>
 </div>
-
+<script type="text" id="jsonContent">{"openid":"oHgbm076CkKuZNmUy-mhgantrLlI","spid":"1","receiver_mobile":"18601781861","quantity":"1","payment":"weixin","notes":""}</script>
 </body>
 </html>

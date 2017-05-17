@@ -105,8 +105,98 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
             $total.html('<span class="text-big">' + total.substr(0, dotIndex) + '.</span>' + total.substr(dotIndex + 1));
         });
 
-        var fontSize = parseInt(document.documentElement.getAttribute("data-dpr")) * 12;
+        //接口配置
+        var api = {
+            notify: "/public/home/member/notify.html",
+            orderDetail: "/public/home/order/detail.html?orderno=",
+            data: {
+                orderno: 0
+            }
+        };
+        //提及订单并支付
+        $(document).on("click", ".jBuy", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
 
+            var $this = $(this),
+                url = $this.data("url"),
+                data = {
+                    spid: jsonContent.spid,
+                    receiver_mobile: jsonContent.receiver_mobile,
+                    quantity: $("#quantity").val(),
+                    payment: jsonContent.payment,/*$('input:radio[name="payment"]:checked').val()*/
+                    notes: $("#notes").val()
+                };
+
+            if ($this.data("notify")) {
+                api.notify = $this.data("notify");
+            }
+
+            if (!hound.mobile.test(data.receiver_mobile)) {
+                hound.alert("请选择一个有效的接收手机号码！");
+                return;
+            }
+
+            hound.post(url, data, function (json) {
+                if (json.data.orderno == "") {
+                    hound.post(url, data, function (json) {
+                        if (json.data.orderno == "") {
+                            hound.alert("提交订单失败！");
+                        } else {
+                            api.data.orderno = json.data.orderno;
+                            weixinPay($.parseJSON(json.data.jsApiParameters));
+                        }
+                    });
+                } else {
+                    api.data.orderno = json.data.orderno;
+                    weixinPay($.parseJSON(json.data.jsApiParameters));
+                }
+            });
+        });
+        //继续支付
+        $(document).on("click", ".jPay", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.data("url"),//获得支付数据接口地址
+                data = $.extend({}, $this.data("data"));
+
+            hound.post(url, data, function (json) {
+                api.data.orderno = json.data.orderno;
+                weixinPay($.parseJSON(json.data.jsApiParameters));
+            });
+        });
+        function weixinPay(data) {
+            //调用微信JS api 支付
+            function jsApiCall() {
+                WeixinJSBridge.invoke('getBrandWCPayRequest', data, function(res){
+                        //"get_brand_wcpay_request:ok"
+                        //"get_brand_wcpay_request:cancel"
+                        if (res.err_msg == "get_brand_wcpay_request:cancel") {
+                            hound.redirect(api.orderDetail + api.data.orderno);
+                        } else {
+                            hound.post(api.notify, api.data);
+                        }
+                    }
+                );
+            }
+            function callpay() {
+                if (typeof WeixinJSBridge == "undefined") {
+                    if (document.addEventListener) {
+                        document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+                    } else if (document.attachEvent) {
+                        document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+                        document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+                    }
+                } else {
+                    jsApiCall();
+                }
+            }
+            callpay();
+        }
+
+        var fontSize = parseInt(document.documentElement.getAttribute("data-dpr")) * 12;
         // 指定图表的配置项和数据
         if (document.getElementById('chart-commission')) {
             console.log(jsonContent);

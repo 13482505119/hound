@@ -128,7 +128,7 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
                     _this.swal.close();
                     switch (json.code) {
                         case 200:
-                            $.isFunction (fn) && fn();
+                            $.isFunction (fn) && fn(json);
                             json.msg && _this.success(json.msg);
                             json.redirect && _this.redirect(json.redirect, json.msg ? _this.delay : 0);
                             break;
