@@ -326,8 +326,8 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
         }
 
         //消费券核销
-        var $keyboard = $(".verification-keyboard"),
-            $keyLi = $(".verification-input > li"),
+        var $keyboard = $(".keyboard"),
+            $keyLi = $(".cav-input > li"),
             keyVal = [];
         if ($keyboard.length == 1) {
             $keyboard.on('click', '[data-key]', function () {
