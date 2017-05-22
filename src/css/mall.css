@@ -1468,6 +1468,9 @@ a.btn-attract-o:active {
 .verification-input li {
     flex: 1;
     border: 1px solid #FFFFFF;
+    text-align: center;
+    font-size: 0.3733333333333334rem;
+    line-height: 0.9866666666666667rem;
 }
 .verification-body {
     flex: 1;

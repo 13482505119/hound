@@ -244,7 +244,6 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
             };
             chartCommission.setOption(optionCommission);
         }
-
         if (document.getElementById('chart-order')) {
             var chartOrder = echarts.init(document.getElementById('chart-order'));
             var optionOrder = {
@@ -285,7 +284,6 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
             };
             chartOrder.setOption(optionOrder);
         }
-
         if (document.getElementById('chart-order-history')) {
             var chartOrderHistory = echarts.init(document.getElementById('chart-order-history'));
             var optionOrderHistory = {
@@ -325,6 +323,47 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
                 ]
             };
             chartOrderHistory.setOption(optionOrderHistory);
+        }
+
+        //消费券核销
+        var $keyboard = $(".verification-keyboard"),
+            $keyLi = $(".verification-input > li"),
+            keyVal = [];
+        if ($keyboard.length == 1) {
+            $keyboard.on('click', '[data-key]', function () {
+                var key = $(this).data("key");
+                switch (key) {
+                    case "backspace":
+                        keyVal.pop();
+                        break;
+                    case "submit":
+                        if (keyVal.length == 9) {
+                            hound.post("", {}, function () {
+
+                            });
+                        } else {
+                            hound.alert("消费券码不正确");
+                        }
+                        break;
+                    default :
+                        if (keyVal.length < 9) {
+                            keyVal.push(key);
+                        }
+                        break;
+                }
+                showKeys(keyVal);
+            });
+        }
+
+        function showKeys() {
+            var len = keyVal.length;
+            $keyLi.each(function (i) {
+                if (i >= len) {
+                    $keyLi.eq(i).text("");
+                } else {
+                    $keyLi.eq(i).text(keyVal[i]);
+                }
+            });
         }
     });
 });
