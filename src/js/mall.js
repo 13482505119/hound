@@ -41,7 +41,7 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
             initKeyboard();
         }
         if ($(".record-date").length == 1) {
-            initDate();
+            initCalendar();
         }
     });
 
@@ -449,20 +449,20 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
         }
     }
 
-    function initDate() {
+    function initCalendar() {
         var $date = $(".record-date"),
             $add = $date.find(".fa-chevron-left"),
             $sub = $date.find(".fa-chevron-right"),
             $input = $date.find(".form-control"),
             $text = $date.find("span"),
+            $count = $(".record-text span"),
             date = new Date();
 
         var $wrapper = $("#wrapper"),
             $pullList = $wrapper.find(".pullList"),
             url = $wrapper.data("url"),
-            data = $.extend({
-                page: 1
-            }, request);
+            urlCount = $wrapper.data("count"),
+            data = $.extend({}, request);
 
         //setVal();
         $input.change(function () {
@@ -495,7 +495,12 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
                 $sub.css("visibility", "visible");
             }
 
-            getHtml(myIScroll, $pullList, url, data)
+            data.date = v;
+            data.page = 1;
+            hound.post(urlCount, data, function (json) {
+                $count.text(json.data);
+            });
+            getHtml(myIScroll, $pullList, url, data);
         }
     }
     //js格式化时间 "yyyy-MM-dd hh:mm:ss"

@@ -223,6 +223,9 @@ a:focus {
 .section-data > li {
     width: 3.066666666666666rem;
 }
+.section-data > div {
+    flex: 1;
+}
 .row-fa {
     position: relative;
     padding-left: 2em;
@@ -1668,6 +1671,34 @@ a.btn-attract-o:active {
     font-size: 0.4rem;
     text-align: center;
 }
+.sale-header {
+    margin: 0 auto;
+    padding-top: 1px;
+    width: 10rem;
+    height: 2.08rem;
+    background: #FFFFFF;
+    text-align: center;
+}
+.sale-header h2 {
+    margin: 0.28rem 0 0.2rem 0;
+    font-size: 0.64rem;
+    font-weight: normal;
+    color: #ff5000;
+}
+.sale-header p {
+    margin: 0;
+    font-size: 0.4rem;
+}
+.sale .item-caption > div {
+    width: auto;
+}
+.sale .item-heading {
+    -webkit-line-clamp: 3;
+}
+.sale .text-price .text-big {
+    font-size: 0.48rem;
+    line-height: 0.64rem;
+}
 
 /* Hound UI */
 .h-radio,
@@ -1866,6 +1897,10 @@ a.btn-attract-o:active {
 }
 #wrapper.record {
     top: 3.28rem;
+    bottom: 1.1733333333333333rem;
+}
+#wrapper.sale {
+    top: 2.2rem;
     bottom: 1.1733333333333333rem;
 }
 #scroller {
