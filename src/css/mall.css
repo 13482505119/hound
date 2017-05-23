@@ -1473,6 +1473,75 @@ a.btn-attract-o:active {
     width: 10rem;
     margin: 0 auto;
 }
+.cav-item {
+    position: relative;
+    margin: 0.24rem 0.16rem 0.24rem 0.84rem;
+    padding: 0.12rem 0.32rem 1px 0.84rem;
+    background: #FFFFFF;
+    border-radius: 0.0666666666666667rem;
+    font-size: 0.3733333333333334rem;
+    line-height: 0.48rem;
+}
+.cav-item-object {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -0.6666666666666666rem;
+    margin: auto 0;
+    border-radius: 0.0666666666666667rem;
+    width: 1.3333333333333333rem;
+    height: 1.3333333333333333rem;
+    overflow: hidden;
+}
+.cav-item-object img {
+    max-width: 100%;
+}
+.cav-item-heading {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    margin: 0;
+    font-size: 0.3733333333333334rem;
+    font-weight: normal;
+    color: #122733;
+}
+.cav-item-body {}
+.cav-item-body dl {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.2rem 0;
+}
+.cav-item-body dt {
+    font-size: 0.3466666666666667rem;
+    color: #999999;
+}
+.cav-item-body p {
+    margin: 0.2rem 0;
+}
+.cav-btn-group .btn {
+    margin-left: 0.9333333333333333rem;
+    width: 3.6rem;
+    height: 0.9333333333333333rem;
+    border-radius: 0.0666666666666667rem;
+    font-size: 0.4rem;
+}
+.cav-btn-group .btn-attract {
+    background: #FF8C55;
+}
+.cav-btn-group .btn-attract-o {
+    color: #FF8C55;
+}
+#output .cav-item {
+    margin: 0.96rem 0.3333333333333333rem 0.3333333333333333rem 0.3333333333333333rem;
+    padding: 0.8rem 0.5333333333333333rem 1px 0.5333333333333333rem;
+}
+#output .cav-item-object {
+    top: -0.6666666666666666rem;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
 .keyboard {
     border-collapse: collapse;
     border-spacing: 0;
@@ -1483,11 +1552,13 @@ a.btn-attract-o:active {
     width: 3.333333333333333rem;
     height: 25%;
     border: 1px solid #797979;
+    background: #FFFFFF;
     text-align: center;
     font-size: 0.9066666666666666rem;
     transition: all 0.1s;
 }
 .keyboard td.submit,
+.keyboard td.active,
 .keyboard td:active {
     background: #1E81D2;
     color: #FFFFFF;
@@ -1502,6 +1573,7 @@ a.btn-attract-o:active {
     background: url("images/supplier/backspace.png") no-repeat;
     background-size: cover;
 }
+.keyboard td.active .backspace,
 .keyboard td:active .backspace {
     background: url("images/supplier/backspace-active.png") no-repeat;
     background-size: cover;
@@ -1531,7 +1603,71 @@ a.btn-attract-o:active {
     background: url("images/supplier/shopping-cart-active.png") no-repeat;
     background-size: cover;
 }
-
+.record-header {
+    margin: 0 auto;
+    width: 10rem;
+    height: 3.28rem;
+    background: #FFFFFF;
+}
+.record-header .form-search {
+    margin: 0 auto;
+    width: 9.2rem;
+}
+.record-header .form-search .form-control {
+    padding-left: 1rem;
+    font-size: 0.32rem;
+    line-height: 0.4rem;
+    outline: none;
+}
+.record-header .form-search:before {
+    left: 0.4rem;
+    font-size: 0.36rem;
+}
+.record-date {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.32rem;
+}
+.record-date .fa-chevron-left,
+.record-date .fa-chevron-right {
+    color: #666666;
+    line-height: 0.6666666666666666rem;
+}
+.record-date .fa-chevron-right {
+    visibility: hidden;
+}
+.record-date .fa-calendar-check-o {
+    position: relative;
+    margin: 0 0.44rem;
+    padding-left: 0.6rem;
+    width: 2.8rem;
+    height: 0.6666666666666666rem;
+    background: #FF8C55;
+    border-radius: 0.12rem;
+    font-size: 0.3733333333333334rem;
+    line-height: 0.6666666666666666rem;
+    color: #FFFFFF;
+    text-align: center;
+}
+.record-date .fa-calendar-check-o:before {
+    position: absolute;
+    top: 0;
+    left: 0.16rem;
+    font-size: 0.44rem;
+}
+.record-date .form-control {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+}
+.record-text {
+    margin-top: 0.4rem;
+    font-size: 0.4rem;
+    text-align: center;
+}
 
 /* Hound UI */
 .h-radio,
@@ -1721,6 +1857,16 @@ a.btn-attract-o:active {
     width: 10rem;
     margin: 0 auto;
     overflow: hidden;
+}
+#wrapper.order {
+    top: 2.2061rem
+}
+#wrapper.favorite {
+    top: 0;
+}
+#wrapper.record {
+    top: 3.28rem;
+    bottom: 1.1733333333333333rem;
 }
 #scroller {
     position: absolute;

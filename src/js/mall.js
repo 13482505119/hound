@@ -4,80 +4,114 @@
  */
 
 require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pullLoad, echarts) {
+    //接口配置
+    var api = {
+            notify: "/public/home/member/notify.html",
+            orderDetail: "/public/home/order/detail.html?orderno=",
+            data: {
+                orderno: 0
+            }
+        },
+        request = $.extend({
+            page: 1,
+            pagesize: 12
+        }, hound.getRequest()),
+        jsonContent,
+        myIScroll;
+
     //document.ready
     $(function () {
-        var request = $.extend({
-                page: 1,
-                pagesize: 12
-            }, hound.getRequest()),
-            jsonContent = $.parseJSON($("#jsonContent").text() || "{}");
+        jsonContent = $.parseJSON($("#jsonContent").text() || "{}");
 
-        //IScroll
-        var $wrapper = $("#wrapper");
-        if ($wrapper.find("#scroller").length == 1) {
-            var $pullList = $wrapper.find(".pullList"),
-                url = $wrapper.data("url"),
-                data = $.extend({}, request);
-
-            var myIScroll = pullLoad("#wrapper", {
-                pullDownAction: function () {
-                    data.page = 1;
-                    getHtml(myIScroll, $pullList, url, data);
-                },
-                pullUpAction: function () {
-                    data.page++;
-                    getHtml(myIScroll, $pullList, url, data);
-                }
-            });
+        if ($("#wrapper").length == 1) {
+            initPullLoad();
         }
-        function getHtml(iScroll, $target, url, data) {
-            $.ajax({
-                url: url,
-                data: data,
-                success: function (html) {
-                    if (data.page == 1) {
-                        $target.empty();
-                    }
-                    var size = $(html).length;
-                    if (size == 0) {
-                        //错误信息
-                        hound.alert(html);
-                        iScroll.lockPullUp(true);
-                    } else {
-                        $target.append(html);
-                        myIScroll.refresh();
-                        setSWControl();
-                        iScroll.lockPullUp(size < data.pagesize);
-                    }
-                },
-                error: function () {
-                    hound.alert(hound.messages.fail);
-                },
-                dataType: "html"
-            });
+        if ($(".swiper-slide", ".swiper-goods").length > 1) {
+            initSwiperGoods();
+        }
+        if ($(".input-group-quantity").length > 1) {
+            initQuantity();
         }
 
-        //商品图片轮播
-        var swGoods = {
-                loop: true,
-                pagination: '.swiper-pagination'
+        setSwiperControl();
+        initPay();
+        initCharts();
+
+        if ($(".keyboard").length == 1) {
+            initKeyboard();
+        }
+        if ($(".record-date").length == 1) {
+            initDate();
+        }
+    });
+
+    //init pullLoad
+    function initPullLoad() {
+        var $wrapper = $("#wrapper"),
+            $pullList = $wrapper.find(".pullList"),
+            url = $wrapper.data("url"),
+            data = $.extend({}, request);
+
+        myIScroll = pullLoad("#wrapper", {
+            pullDownAction: function () {
+                data.page = 1;
+                getHtml(myIScroll, $pullList, url, data);
             },
-            swControl = {
+            pullUpAction: function () {
+                data.page++;
+                getHtml(myIScroll, $pullList, url, data);
+            }
+        });
+    }
+    function getHtml(iScroll, $target, url, data) {
+        $.ajax({
+            url: url,
+            data: data,
+            success: function (html) {
+                if (data.page == 1) {
+                    $target.empty();
+                }
+                var size = $(html).length;
+                if (size == 0) {
+                    //错误信息
+                    hound.alert(html);
+                    iScroll.lockPullUp(true);
+                } else {
+                    $target.append(html);
+                    myIScroll.refresh();
+                    setSwiperControl();
+                    iScroll.lockPullUp(size < data.pagesize);
+                }
+            },
+            error: function () {
+                hound.alert(hound.messages.fail);
+                myIScroll.refresh();
+            },
+            dataType: "html"
+        });
+    }
+
+    //商品大图轮播
+    function initSwiperGoods() {
+        new Swiper ('.swiper-goods', {
+            loop: true,
+            pagination: '.swiper-pagination'
+        });
+    }
+
+    //侧滑删除
+    function setSwiperControl() {
+        if ($(".swiper-control").length > 0) {
+            new Swiper('.swiper-control', {
                 slidesPerView: 'auto',
                 resistanceRatio: .00000000000001,
                 slideToClickedSlide: true
-            };
-        if ($(".swiper-wrapper", ".swiper-goods").children().length > 1) {
-            new Swiper ('.swiper-goods', swGoods);
+            });
         }
-        function setSWControl() {
-            if ($(".swiper-control").length > 1) {
-                new Swiper('.swiper-control', swControl);
-            }
-        }
-        setSWControl();
+    }
 
-        //商品数量
+    //商品数量加减
+    function initQuantity() {
         $(".input-group-quantity").on("click", ".input-group-addon", function () {
             var $this = $(this),
                 $quantity = $this.parent().find("input"),
@@ -104,16 +138,10 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
             $count.html(quantity);
             $total.html('<span class="text-big">' + total.substr(0, dotIndex) + '.</span>' + total.substr(dotIndex + 1));
         });
+    }
 
-        //接口配置
-        var api = {
-            notify: "/public/home/member/notify.html",
-            orderDetail: "/public/home/order/detail.html?orderno=",
-            data: {
-                orderno: 0
-            }
-        };
-        //提及订单并支付
+    //支付
+    function initPay() {
         $(document).on("click", ".jBuy", function (e) {
             e.preventDefault();
             e.stopPropagation();
@@ -167,39 +195,41 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
                 weixinPay($.parseJSON(json.data.jsApiParameters));
             });
         });
-        function weixinPay(data) {
-            //调用微信JS api 支付
-            function jsApiCall() {
-                WeixinJSBridge.invoke('getBrandWCPayRequest', data, function(res){
-                        //"get_brand_wcpay_request:ok"
-                        //"get_brand_wcpay_request:cancel"
-                        if (res.err_msg == "get_brand_wcpay_request:cancel") {
-                            hound.redirect(api.orderDetail + api.data.orderno);
-                        } else {
-                            hound.post(api.notify, api.data);
-                        }
+    }
+    function weixinPay(data) {
+        //调用微信JS api 支付
+        function jsApiCall() {
+            WeixinJSBridge.invoke('getBrandWCPayRequest', data, function(res){
+                    //"get_brand_wcpay_request:ok"
+                    //"get_brand_wcpay_request:cancel"
+                    if (res.err_msg == "get_brand_wcpay_request:cancel") {
+                        hound.redirect(api.orderDetail + api.data.orderno);
+                    } else {
+                        hound.post(api.notify, api.data);
                     }
-                );
-            }
-            function callpay() {
-                if (typeof WeixinJSBridge == "undefined") {
-                    if (document.addEventListener) {
-                        document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
-                    } else if (document.attachEvent) {
-                        document.attachEvent('WeixinJSBridgeReady', jsApiCall);
-                        document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
-                    }
-                } else {
-                    jsApiCall();
                 }
-            }
-            callpay();
+            );
         }
+        function callpay() {
+            if (typeof WeixinJSBridge == "undefined") {
+                if (document.addEventListener) {
+                    document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+                } else if (document.attachEvent) {
+                    document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+                    document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+                }
+            } else {
+                jsApiCall();
+            }
+        }
+        callpay();
+    }
 
+    //经销商图表
+    function initCharts() {
         var fontSize = parseInt(document.documentElement.getAttribute("data-dpr")) * 12;
         // 指定图表的配置项和数据
         if (document.getElementById('chart-commission')) {
-            console.log(jsonContent);
             var chartCommission = echarts.init(document.getElementById('chart-commission'));
             var optionCommission = {
                 title: {
@@ -324,46 +354,185 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
             };
             chartOrderHistory.setOption(optionOrderHistory);
         }
+    }
 
-        //消费券核销
+    //供应商核销
+    function initKeyboard() {
         var $keyboard = $(".keyboard"),
             $keyLi = $(".cav-input > li"),
-            keyVal = [];
-        if ($keyboard.length == 1) {
-            $keyboard.on('click', '[data-key]', function () {
-                var key = $(this).data("key");
-                switch (key) {
-                    case "backspace":
-                        keyVal.pop();
-                        break;
-                    case "submit":
-                        if (keyVal.length == 9) {
-                            hound.post("", {}, function () {
+            $input = $("#input"),
+            $output = $("#output"),
+            cavUrl = $input.data("url"),
+            code = [],
+            cavTimeout = 0,
+            cavInterval = 0;
 
-                            });
-                        } else {
-                            hound.alert("消费券码不正确");
-                        }
-                        break;
-                    default :
-                        if (keyVal.length < 9) {
-                            keyVal.push(key);
-                        }
-                        break;
-                }
-                showKeys(keyVal);
+        $(".cav-input").click(function () {
+            resetCav();
+        });
+        $keyboard.on('click', '[data-key]', function () {
+            var key = $(this).data("key");
+            switch (key) {
+                case "backspace":
+                    //keyVal.pop();
+                    break;
+                case "submit":
+                    if (code.length == 9) {
+                        hound.loadHTML($output, cavUrl, {code: code.join('')});
+                        $input.hide();
+                    } else {
+                        hound.alert("消费券码不正确");
+                    }
+                    break;
+                default :
+                    if (code.length < 9) {
+                        code.push(key);
+                    }
+                    break;
+            }
+            showKeys();
+        });
+        $keyboard.find('[data-key="backspace"]').on({
+            touchstart: function (e) {
+                $(this).addClass("active");
+                code.pop();
+                showKeys();
+                cavTimeout = setTimeout(function () {
+                    cavInterval = setInterval(function () {
+                        code.pop();
+                        showKeys();
+                    }, 200);
+                }, 1000);
+                e.preventDefault();
+            },
+            touchmove: function () {
+                resetTouch();
+            },
+            touchend: function () {
+                $(this).removeClass("active");
+                resetTouch();
+                return false;
+            }
+        });
+        $output.on("click", ".btn-attract-o", function () {
+            resetCav();
+        });
+        $output.on("click", ".btn-attract", function () {
+            hound.post($(this).data("url"), {code: code.join('')}, function () {
+                resetCav();
             });
-        }
+        });
 
         function showKeys() {
-            var len = keyVal.length;
+            var len = code.length;
             $keyLi.each(function (i) {
                 if (i >= len) {
                     $keyLi.eq(i).text("");
                 } else {
-                    $keyLi.eq(i).text(keyVal[i]);
+                    $keyLi.eq(i).text(code[i]);
                 }
             });
         }
-    });
+        function resetTouch() {
+            clearTimeout(cavTimeout);
+            cavTimeout = 0;
+            if (cavInterval != 0) {
+                clearInterval(cavInterval);
+                cavInterval = 0;
+            }
+        }
+        function resetCav() {
+            $output.empty();
+            $input.show();
+            code = [];
+            showKeys();
+        }
+    }
+
+    function initDate() {
+        var $date = $(".record-date"),
+            $add = $date.find(".fa-chevron-left"),
+            $sub = $date.find(".fa-chevron-right"),
+            $input = $date.find(".form-control"),
+            $text = $date.find("span"),
+            date = new Date();
+
+        var $wrapper = $("#wrapper"),
+            $pullList = $wrapper.find(".pullList"),
+            url = $wrapper.data("url"),
+            data = $.extend({
+                page: 1
+            }, request);
+
+        //setVal();
+        $input.change(function () {
+            date = new Date($(this).val());
+            if (date > new Date()) {
+                date = new Date();
+            }
+            setVal();
+        });
+        $add.click(function () {
+            date.addDays(-1);
+            setVal();
+        });
+        $sub.click(function () {
+            date.addDays(1);
+            if (date > new Date()) {
+                date = new Date();
+            }
+            setVal();
+        });
+
+        function setVal() {
+            var v = date.Format("yyyy-MM-dd");
+            $input.val(v);
+            if (v == (new Date()).Format("yyyy-MM-dd")) {
+                $text.text('今天');
+                $sub.css("visibility", "hidden");
+            } else {
+                $text.text(v);
+                $sub.css("visibility", "visible");
+            }
+
+            getHtml(myIScroll, $pullList, url, data)
+        }
+    }
+    //js格式化时间 "yyyy-MM-dd hh:mm:ss"
+    Date.prototype.Format = function (fmt) {
+        var o = {
+            "M+": this.getMonth() + 1, //月份
+            "d+": this.getDate(), //日
+            "h+": this.getHours(), //小时
+            "m+": this.getMinutes(), //分
+            "s+": this.getSeconds(), //秒
+            "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+            "S": this.getMilliseconds() //毫秒
+        };
+        if (/(y+)/.test(fmt))
+            fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var k in o)
+            if (new RegExp("(" + k + ")").test(fmt))
+                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        return fmt;
+    };
+    Date.prototype.addDays = function (d) {
+        this.setDate(this.getDate() + d);
+    };
+    Date.prototype.addWeeks = function (w) {
+        this.addDays(w * 7);
+    };
+    Date.prototype.addMonths = function (m) {
+        var d = this.getDate();
+        this.setMonth(this.getMonth() + m);
+        if (this.getDate() < d)
+            this.setDate(0);
+    };
+    Date.prototype.addYears = function (y) {
+        var m = this.getMonth();
+        this.setFullYear(this.getFullYear() + y);
+        if (m < this.getMonth()) {
+            this.setDate(0);
+        }
+    };
 });
