@@ -128,7 +128,7 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
                     _this.swal.close();
                     switch (json.code) {
                         case 200:
-                            $.isFunction (fn) && fn(json);
+                            $.isFunction(fn) && fn(json);
                             json.msg && _this.success(json.msg);
                             json.redirect && _this.redirect(json.redirect, json.msg ? _this.delay : 0);
                             break;
@@ -149,25 +149,36 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
 
             _this.loading(xhr);
         },
-        get: function (url, fn) {
+        get: function (url, data, fn) {
             var _this = this,
-                xhr = _this.ajax("GET", url, "", fn);
+                xhr = _this.ajax("GET", url, data, fn);
 
             _this.loading(xhr);
         },
-        loadHTML: function ($element, url, data) {
+        getHTML: function (url, data, fn) {
             var _this = this;
-
-            $.ajax({
+            return $.ajax({
                 url: url,
                 data: data,
                 success: function (html) {
-                    $element.html(html);
+                    $.isFunction(fn) && fn(html);
                 },
                 error: function () {
-                    $element.html(_this.messages.fail);
+                    _this.error(_this.messages.fail);
                 },
                 dataType: "html"
+            });
+        },
+        loadHTML: function ($e, url, data, fn) {
+            var _this = this;
+
+            if ($.isFunction(data)) {
+                fn = data;
+                data = {};
+            }
+            _this.getHTML(url, data, function (html) {
+                $e.html(html);
+                $.isFunction(fn) && fn($e);
             });
         },
         getRequest: function () {
@@ -390,7 +401,7 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
         //element load a url
         $('[data-load]').each(function () {
             var $this = $(this);
-            $.hound.loadHTML($this, $this.data("load"));
+            $.hound.loadHTML($this, $this.data("load"), $.extend({}, $this.data("data")));
         });
 
         //form validate
