@@ -76,7 +76,7 @@ define("pullLoad2", ["plugins/iscroll/iscroll-probe"], function (IScroll) {
             c.style.top = "-10000px";
             e.parentNode.appendChild(c);
 
-            var h = c.offsetHeight;
+            var h = c.getBoundingClientRect().height;
             e.parentNode.removeChild(c);
 
             return h;
@@ -158,7 +158,8 @@ define("pullLoad2", ["plugins/iscroll/iscroll-probe"], function (IScroll) {
 
         pull.scroller = pull.wrapper.children[0];
         pull.body = pull.scroller.children[0];
-        pull.body.style.minHeight = pull.wrapper.offsetHeight + "px";
+        //pull.body.style.minHeight = pull.wrapper.offsetHeight + "px";
+        pull.body.style.minHeight = Math.ceil(pull.wrapper.getBoundingClientRect().height) + "px";
         pull.down.action = param.pullDownAction;
         pull.down.lock = param.pullDownLock;
         pull.down.texts = param.pullDownTexts;
@@ -298,7 +299,8 @@ define("pullLoad2", ["plugins/iscroll/iscroll-probe"], function (IScroll) {
                 this.scrollTo(0, this.maxScrollY, 0);
             }
 
-            p.body.style.minHeight = p.wrapper.offsetHeight + "px";
+            //p.body.style.minHeight = p.wrapper.offsetHeight + "px";
+            p.body.style.minHeight = Math.ceil(p.wrapper.getBoundingClientRect().height) + "px";
 
             p.isLoading = false;
         });

@@ -104,8 +104,8 @@ define("pullLoad", ["plugins/iscroll/iscroll-probe"], function (IScroll) {
         clone.style.top = "-10000px";
         el.parentNode.appendChild(clone);
 
-        var width = clone.offsetWidth;
-        var height = clone.offsetHeight;
+        var width = clone.getBoundingClientRect().width;
+        var height = clone.getBoundingClientRect().height;
         el.parentNode.removeChild(clone);
         return widthOrHeight == "width" ? width : height;
     }
@@ -159,7 +159,8 @@ define("pullLoad", ["plugins/iscroll/iscroll-probe"], function (IScroll) {
         }*/
         //定义内部容器最小高度
         options.pullContainer = options.pullDownElement ? options.pullDownElement.nextElementSibling : options.pullElement.children[0].children[0];
-        options.pullContainer.style.minHeight = options.pullElement.offsetHeight + "px";
+        //options.pullContainer.style.minHeight = (options.pullElement.offsetHeight + 1) + "px";
+        options.pullContainer.style.minHeight = Math.ceil(options.pullElement.getBoundingClientRect().height) + "px";
 
         //Build
         _IScroll = new IScroll(el, options);
@@ -275,7 +276,8 @@ define("pullLoad", ["plugins/iscroll/iscroll-probe"], function (IScroll) {
                 this.scrollTo(0, this.maxScrollY, 0);
             }
 
-            opts.pullContainer.style.minHeight = opts.pullElement.offsetHeight + "px";
+            //opts.pullContainer.style.minHeight = opts.pullElement.offsetHeight + "px";
+            opts.pullContainer.style.minHeight = Math.ceil(opts.pullElement.getBoundingClientRect().height) + "px";
 
             isLoading = false;
         });
