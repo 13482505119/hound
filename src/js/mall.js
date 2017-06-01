@@ -148,13 +148,10 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
 
             var $this = $(this),
                 url = $this.data("url"),
-                data = {
-                    spid: jsonContent.spid,
-                    receiver_mobile: jsonContent.receiver_mobile,
+                data = $.extend({}, jsonContent, {
                     quantity: $("#quantity").val(),
-                    payment: jsonContent.payment,/*$('input:radio[name="payment"]:checked').val()*/
                     notes: $("#notes").val()
-                };
+                });
 
             if ($this.data("notify")) {
                 api.notify = $this.data("notify");
