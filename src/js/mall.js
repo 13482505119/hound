@@ -199,6 +199,7 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
             WeixinJSBridge.invoke('getBrandWCPayRequest', data, function(res){
                     //"get_brand_wcpay_request:ok"
                     //"get_brand_wcpay_request:cancel"
+                    //"get_brand_wcpay_request:fail"
                     if (res.err_msg == "get_brand_wcpay_request:cancel") {
                         hound.redirect(api.orderDetail + api.data.orderno);
                     } else {
