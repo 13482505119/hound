@@ -30,99 +30,197 @@
         <li><a href="">已上架</a></li>
         <li><a href="">已下架</a></li>
     </ul>
-    <ul class="dealer-subnav">
-        <li><a href="">佣金</a></li>
-        <li><a href="">销量</a></li>
-        <li><a href="">新品</a></li>
-        <li>
-            <a href="">
-                <!-- 默认排序 -->
-                <span>价格<i class="fa fa-sort"></i></span>
-                <!-- 正序 -->
-                <!--<span>价格<i class="fa fa-sort-asc"></i></span>-->
-                <!-- 倒叙 -->
-                <!--<span>价格<i class="fa fa-sort-desc"></i></span>-->
-            </a>
-        </li>
-    </ul>
 </header>
+<!-- 没有商品 begin -->
+<div class="result-wrapper result-wrapper-no result-dealer">
+    <div class="result result-no-record">
+        <div class="result-icon"></div>
+        <div class="result-text">
+            <p>目前还没有商品哦</p>
+        </div>
+    </div>
+</div>
+<!-- 没有商品 end -->
 
 <div id="wrapper" class="dealer-list" data-url="list-part.html">
     <div id="scroller">
         <div id="pullDown">
             <span class="pullDownIcon"></span><span class="pullDownLabel">下拉刷新</span>
         </div>
-        <!-- 商品列表样式 begin -->
-        <div class="wrapper pullList">
-            <div class="item" href="item.html">
-                <div class="item-figure">
-                    <a href="" class="img-thumbnail">
-                        <img src="holder.js/100px100p?theme=sky&text=Image" alt="...">
-                        <span class="sold-out">已售罄</span>
+        <div class="wrapper">
+            <ul class="dealer-subnav">
+                <li><a href="">佣金</a></li>
+                <li><a href="">销量</a></li>
+                <li><a href="">新品</a></li>
+                <li class="active">
+                    <a href="">
+                        <!-- 默认排序 -->
+                        <!--<span>价格<i class="fa fa-sort"></i></span>-->
+                        <!-- 正序 -->
+                        <span>价格<i class="fa fa-sort"></i><i class="fa fa-sort-asc"></i></span>
+                        <!-- 倒叙 -->
+                        <!--<span>价格<i class="fa fa-sort"></i><i class="fa fa-sort-desc"></i></span>-->
                     </a>
-                </div>
-                <div class="item-body">
-                    <a href="" class="item-heading">￥600/套---无锡铂尔曼樱花节超值套餐（高级房+加双人自助早餐+加双人自助晚餐）</a>
-                    <div class="item-caption">
-                        <div>
-                            佣金：<span class="text-price"><i class="fa fa-rmb"></i>23.5</span><br>销量：1256
+                </li>
+            </ul>
+            <div class="pullList">
+                <div class="item" href="item.html">
+                    <div class="item-figure">
+                        <a href="" class="img-thumbnail">
+                            <img src="holder.js/100px100p?theme=sky&text=Image" alt="...">
+                            <span class="sold-out">已售罄</span>
+                        </a>
+                    </div>
+                    <div class="item-body">
+                        <a href="" class="item-heading">￥600/套---无锡铂尔曼樱花节超值套餐（高级房+加双人自助早餐+加双人自助晚餐）</a>
+                        <div class="item-caption">
+                            <div>
+                                佣金：<span class="text-price"><i class="fa fa-rmb"></i>23.5</span><br>销量：1256
+                            </div>
+                            <div>
+                                价格：<i class="fa fa-rmb"></i>600<br>库存：1256
+                            </div>
+                            <button class="btn btn-attract" type="button" data-click="toggle" data-url="../../public/success.json">
+                                <span data-data='{"skuId":"qwe123","method":"up"}'><i class="fa fa-caret-up"></i><br>上架</span>
+                                <span data-data='{"skuId":"qwe123","method":"down"}'><i class="fa fa-caret-down"></i><br>下架</span>
+                            </button>
                         </div>
-                        <div>
-                            价格：<i class="fa fa-rmb"></i>600<br>库存：1256
-                        </div>
-                        <button class="btn btn-attract" type="button" data-click="toggle" data-url="../../public/success.json">
-                            <span data-data='{"skuId":"qwe123","method":"up"}'><i class="fa fa-caret-up"></i><br>上架</span>
-                            <span data-data='{"skuId":"qwe123","method":"down"}'><i class="fa fa-caret-down"></i><br>下架</span>
-                        </button>
                     </div>
                 </div>
-            </div>
-            <div class="item" href="item.html">
-                <div class="item-figure">
-                    <a href="" class="img-thumbnail">
-                        <img src="holder.js/100px100p?theme=sky&text=Image" alt="...">
-                    </a>
-                </div>
-                <div class="item-body">
-                    <a href="" class="item-heading">￥600/套---无锡铂尔曼樱花节超值套餐（高级房+加双人自助早餐+加双人自助晚餐）</a>
-                    <div class="item-caption">
-                        <div>
-                            佣金：<span class="text-price"><i class="fa fa-rmb"></i>23.5</span><br>销量：1256
+                <div class="item" href="item.html">
+                    <div class="item-figure">
+                        <a href="" class="img-thumbnail">
+                            <img src="holder.js/100px100p?theme=sky&text=Image" alt="...">
+                        </a>
+                    </div>
+                    <div class="item-body">
+                        <a href="" class="item-heading">￥600/套---无锡铂尔曼樱花节超值套餐（高级房+加双人自助早餐+加双人自助晚餐）</a>
+                        <div class="item-caption">
+                            <div>
+                                佣金：<span class="text-price"><i class="fa fa-rmb"></i>23.5</span><br>销量：1256
+                            </div>
+                            <div>
+                                价格：<i class="fa fa-rmb"></i>600<br>库存：1256
+                            </div>
+                            <button class="btn btn-attract toggled" type="button" data-click="toggle" data-url="../../public/success.json">
+                                <span data-data='{"skuId":"qwe123","method":"up"}'><i class="fa fa-caret-up"></i><br>上架</span>
+                                <span data-data='{"skuId":"qwe123","method":"down"}'><i class="fa fa-caret-down"></i><br>下架</span>
+                            </button>
                         </div>
-                        <div>
-                            价格：<i class="fa fa-rmb"></i>600<br>库存：1256
-                        </div>
-                        <button class="btn btn-attract toggled" type="button" data-click="toggle" data-url="../../public/success.json">
-                            <span data-data='{"skuId":"qwe123","method":"up"}'><i class="fa fa-caret-up"></i><br>上架</span>
-                            <span data-data='{"skuId":"qwe123","method":"down"}'><i class="fa fa-caret-down"></i><br>下架</span>
-                        </button>
                     </div>
                 </div>
-            </div>
-            <div class="item" href="item.html">
-                <div class="item-figure">
-                    <a href="" class="img-thumbnail">
-                        <img src="holder.js/100px100p?theme=sky&text=Image" alt="...">
-                    </a>
+                <div class="item" href="item.html">
+                    <div class="item-figure">
+                        <a href="" class="img-thumbnail">
+                            <img src="holder.js/100px100p?theme=sky&text=Image" alt="...">
+                        </a>
+                    </div>
+                    <div class="item-body">
+                        <a href="" class="item-heading">￥600/套---无锡铂尔曼樱花节超值套餐（高级房+加双人自助早餐+加双人自助晚餐）</a>
+                        <div class="item-caption">
+                            <div>
+                                佣金：<span class="text-price"><i class="fa fa-rmb"></i>23.5</span><br>销量：1256
+                            </div>
+                            <div>
+                                价格：<i class="fa fa-rmb"></i>600<br>库存：1256
+                            </div>
+                            <button class="btn btn-attract" type="button" data-click="toggle" data-url="../../public/success.json">
+                                <span data-data='{"skuId":"qwe123","method":"up"}'><i class="fa fa-caret-up"></i><br>上架</span>
+                                <span data-data='{"skuId":"qwe123","method":"down"}'><i class="fa fa-caret-down"></i><br>下架</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div class="item-body">
-                    <a href="" class="item-heading">￥600/套---无锡铂尔曼樱花节超值套餐（高级房+加双人自助早餐+加双人自助晚餐）</a>
-                    <div class="item-caption">
-                        <div>
-                            佣金：<span class="text-price"><i class="fa fa-rmb"></i>23.5</span><br>销量：1256
+                <div class="item" href="item.html">
+                    <div class="item-figure">
+                        <a href="" class="img-thumbnail">
+                            <img src="holder.js/100px100p?theme=sky&text=Image" alt="...">
+                        </a>
+                    </div>
+                    <div class="item-body">
+                        <a href="" class="item-heading">￥600/套---无锡铂尔曼樱花节超值套餐（高级房+加双人自助早餐+加双人自助晚餐）</a>
+                        <div class="item-caption">
+                            <div>
+                                佣金：<span class="text-price"><i class="fa fa-rmb"></i>23.5</span><br>销量：1256
+                            </div>
+                            <div>
+                                价格：<i class="fa fa-rmb"></i>600<br>库存：1256
+                            </div>
+                            <button class="btn btn-attract" type="button" data-click="toggle" data-url="../../public/success.json">
+                                <span data-data='{"skuId":"qwe123","method":"up"}'><i class="fa fa-caret-up"></i><br>上架</span>
+                                <span data-data='{"skuId":"qwe123","method":"down"}'><i class="fa fa-caret-down"></i><br>下架</span>
+                            </button>
                         </div>
-                        <div>
-                            价格：<i class="fa fa-rmb"></i>600<br>库存：1256
+                    </div>
+                </div>
+                <div class="item" href="item.html">
+                    <div class="item-figure">
+                        <a href="" class="img-thumbnail">
+                            <img src="holder.js/100px100p?theme=sky&text=Image" alt="...">
+                        </a>
+                    </div>
+                    <div class="item-body">
+                        <a href="" class="item-heading">￥600/套---无锡铂尔曼樱花节超值套餐（高级房+加双人自助早餐+加双人自助晚餐）</a>
+                        <div class="item-caption">
+                            <div>
+                                佣金：<span class="text-price"><i class="fa fa-rmb"></i>23.5</span><br>销量：1256
+                            </div>
+                            <div>
+                                价格：<i class="fa fa-rmb"></i>600<br>库存：1256
+                            </div>
+                            <button class="btn btn-attract" type="button" data-click="toggle" data-url="../../public/success.json">
+                                <span data-data='{"skuId":"qwe123","method":"up"}'><i class="fa fa-caret-up"></i><br>上架</span>
+                                <span data-data='{"skuId":"qwe123","method":"down"}'><i class="fa fa-caret-down"></i><br>下架</span>
+                            </button>
                         </div>
-                        <button class="btn btn-attract" type="button" data-click="toggle" data-url="../../public/success.json">
-                            <span data-data='{"skuId":"qwe123","method":"up"}'><i class="fa fa-caret-up"></i><br>上架</span>
-                            <span data-data='{"skuId":"qwe123","method":"down"}'><i class="fa fa-caret-down"></i><br>下架</span>
-                        </button>
+                    </div>
+                </div>
+                <div class="item" href="item.html">
+                    <div class="item-figure">
+                        <a href="" class="img-thumbnail">
+                            <img src="holder.js/100px100p?theme=sky&text=Image" alt="...">
+                        </a>
+                    </div>
+                    <div class="item-body">
+                        <a href="" class="item-heading">￥600/套---无锡铂尔曼樱花节超值套餐（高级房+加双人自助早餐+加双人自助晚餐）</a>
+                        <div class="item-caption">
+                            <div>
+                                佣金：<span class="text-price"><i class="fa fa-rmb"></i>23.5</span><br>销量：1256
+                            </div>
+                            <div>
+                                价格：<i class="fa fa-rmb"></i>600<br>库存：1256
+                            </div>
+                            <button class="btn btn-attract" type="button" data-click="toggle" data-url="../../public/success.json">
+                                <span data-data='{"skuId":"qwe123","method":"up"}'><i class="fa fa-caret-up"></i><br>上架</span>
+                                <span data-data='{"skuId":"qwe123","method":"down"}'><i class="fa fa-caret-down"></i><br>下架</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item" href="item.html">
+                    <div class="item-figure">
+                        <a href="" class="img-thumbnail">
+                            <img src="holder.js/100px100p?theme=sky&text=Image" alt="...">
+                        </a>
+                    </div>
+                    <div class="item-body">
+                        <a href="" class="item-heading">￥600/套---无锡铂尔曼樱花节超值套餐（高级房+加双人自助早餐+加双人自助晚餐）</a>
+                        <div class="item-caption">
+                            <div>
+                                佣金：<span class="text-price"><i class="fa fa-rmb"></i>23.5</span><br>销量：1256
+                            </div>
+                            <div>
+                                价格：<i class="fa fa-rmb"></i>600<br>库存：1256
+                            </div>
+                            <button class="btn btn-attract" type="button" data-click="toggle" data-url="../../public/success.json">
+                                <span data-data='{"skuId":"qwe123","method":"up"}'><i class="fa fa-caret-up"></i><br>上架</span>
+                                <span data-data='{"skuId":"qwe123","method":"down"}'><i class="fa fa-caret-down"></i><br>下架</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- 商品列表样式 end -->
         <div id="pullUp">
             <span class="pullUpIcon"></span><span class="pullUpLabel">下拉加载更多</span>
         </div>

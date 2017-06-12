@@ -189,10 +189,11 @@ define("pullLoad", ["plugins/iscroll/iscroll-probe"], function (IScroll) {
             }
             var opts = this.options;
             if (opts.pullDownElement && !opts.pullDownLock) {
-                if (this.y >= 5 && !hasClass(opts.pullDownElement, "flip")) {
+                //5 -> 0
+                if (this.y >= 0 && !hasClass(opts.pullDownElement, "flip")) {
                     addClass(opts.pullDownElement, "flip");
                     opts.pullDownLabel.innerHTML = opts.pullDownText[1];
-                } else if (this.y < 5 && hasClass(opts.pullDownElement, "flip")) {
+                } else if (this.y < 0 && hasClass(opts.pullDownElement, "flip")) {
                     removeClass(opts.pullDownElement, "flip");
                     opts.pullDownLabel.innerHTML = opts.pullDownText[0];
                 }

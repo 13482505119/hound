@@ -45,6 +45,20 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
         }
     });
 
+    //新增气泡操作
+    /*$(document).on('click', '[data-click="toggle2"]', function (e) {
+        e.preventDefault();
+
+        var $this = $(this),
+            $target = $this.children().eq($this.hasClass("toggled") ? 1 : 0),
+            url = $this.data("url") || $target.data("url"),
+            data = $.extend({}, $target.data("data"));
+
+        $.hound.post(url, data, function () {
+            $this.toggleClass("toggled");
+        });
+    });*/
+
     //init pullLoad
     function initPullLoad() {
         var $wrapper = $("#wrapper"),
@@ -53,6 +67,8 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
             data = $.extend({}, request);
 
         myIScroll = pullLoad("#wrapper", {
+            pullDownText: ["", "", ""],
+            pullUpText: ["", "", ""],
             pullDownAction: function () {
                 data.page = 1;
                 getHtml(myIScroll, $pullList, url, data);
@@ -74,7 +90,8 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
                 var size = $(html).length;
                 if (size == 0) {
                     //错误信息
-                    hound.alert(html);
+                    //hound.alert(html);
+                    $target.append('<div class="text-center">' + html + '</div>');
                     iScroll.lockPullUp(true);
                 } else {
                     $target.append(html);

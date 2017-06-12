@@ -124,6 +124,7 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
                 type: type,
                 url: url,
                 data: data,
+                cache: false,
                 success: function (json) {
                     _this.swal.close();
                     switch (json.code) {

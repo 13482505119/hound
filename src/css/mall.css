@@ -46,8 +46,7 @@ a {
     color: #122733;
     text-decoration: none;
 }
-a:hover,
-a:focus {
+a:active {
     color: #ff5000;
     text-decoration: none;
 }
@@ -616,7 +615,7 @@ a.btn-attract-o:active {
 .navbar-fixed-top,
 .navbar-fixed-bottom,
 .navbar-fixed-supplier {
-    position: fixed;
+    position: absolute;
     right: 0;
     left: 0;
     z-index: 1030;
@@ -1014,6 +1013,9 @@ a.btn-attract-o:active {
 .result-wrapper .section {
     margin-top: 1.8rem;
 }
+.result-dealer {
+    margin-top: 2.266666666666667rem;
+}
 
 .icon-weixin,
 .icon-zhifubao {
@@ -1109,7 +1111,7 @@ a.btn-attract-o:active {
     border-left: 0;
 }
 .dealer-footer {
-    position: fixed;
+    position: absolute;
     right: 0;
     left: 0;
     bottom: 0;
@@ -1234,7 +1236,7 @@ a.btn-attract-o:active {
     width: 9.2rem;
 }
 .navbar-fixed-top-dealer {
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
     left: 0;
@@ -1315,6 +1317,19 @@ a.btn-attract-o:active {
 .dealer-subnav li {
     flex: 1;
 }
+.dealer-subnav a {
+    display: inline-block;
+    position: relative;
+}
+.dealer-subnav .fa-sort-asc,
+.dealer-subnav .fa-sort-desc {
+    position: absolute;
+    top: 0.2266666666666667rem;
+    right: 0;
+}
+.dealer-subnav .fa-sort {
+    color: #122733;
+}
 .dealer-subnav .active a {
     color: #ff5000;
 }
@@ -1335,13 +1350,13 @@ a.btn-attract-o:active {
     padding: 0 0.24rem;
 }
 #wrapper.dealer-list {
-    top: 3.08rem;
+    top: 2.266666666666667rem;
 }
-#wrapper.dealer-list-up {
-    top: 3.28rem;
+#wrapper.dealer-list .pullList {
+    padding-top: 0.24rem;
 }
-#wrapper.dealer-list-down {
-    top: 2.4rem;
+#wrapper.dealer-list .swiper-slide-btn {
+    height: 2.906666666666667rem;
 }
 #wrapper.dealer-orders {
     top: 0.96rem;
@@ -1351,9 +1366,6 @@ a.btn-attract-o:active {
     align-items: flex-start;
     padding: 0.12rem 0.2rem 0.12rem 0.12rem;
     background: #ffffff;
-}
-.item:first-child {
-    padding-top: 0.24rem;
 }
 .item-figure {
     margin-right: 0.28rem;
@@ -1935,15 +1947,16 @@ a.btn-attract-o:active {
 }
 #pullDown, #pullUp {
     display: none;
-    padding: 0.145rem 0.29rem;
+    text-align: center;
     font-weight: bold;
-    line-height: 2;
     color: #888;
 }
 #pullDown {
+    padding-bottom: 0.1rem;
     border-bottom: 1px solid #ccc;
 }
 #pullUp {
+    padding-top: 0.1rem;
     border-top: 1px solid #ccc;
 }
 #pullDown .pullDownLabel,
@@ -1952,9 +1965,8 @@ a.btn-attract-o:active {
 }
 #pullDown .pullDownIcon,
 #pullUp .pullUpIcon {
-    display: block;
-    float: left;
-    font: normal normal normal 2em/1 FontAwesome;
+    display: inline-block;
+    font: normal normal normal 1.5em/1 FontAwesome;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     -webkit-transition-property: -webkit-transform;
@@ -1978,13 +1990,12 @@ a.btn-attract-o:active {
     background-position: 0 100%;
     -webkit-transform: rotate(0deg) translateZ(0);
     -webkit-transition-duration: 0ms;
-    -webkit-animation-name: loading;
-    -webkit-animation-duration: 2s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: linear;
+    -webkit-animation: ring 1s linear 0s infinite;
+    -o-animation: ring 1s linear 0s infinite;
+    animation: ring 1s linear 0s infinite;
 }
 
-@-webkit-keyframes loading {
+@-webkit-keyframes ring {
     from {
         -webkit-transform: rotate(0deg) translateZ(0);
     }
