@@ -22,9 +22,10 @@
 <body>
 <header class="navbar navbar-fixed-top">
     <div class="container">
-        <label class="form-search fa fa-search">
-            <input type="text" class="form-control" id="keyword" placeholder="搜索订单">
-        </label>
+        <form class="form-search" method="get" action="" autocomplete="off">
+            <input type="text" class="form-control" id="keyword" placeholder="搜索订单" required autocomplete="off" autocorrect="off" maxlength="64">
+            <button class="fa fa-search" type="submit"></button>
+        </form>
     </div>
     <nav class="container">
         <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">

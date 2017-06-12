@@ -21,8 +21,9 @@
 </head>
 <body>
 <header class="record-header">
-    <form class="form-search fa fa-search">
-        <input type="text" class="form-control" id="keyword" placeholder="搜索订单">
+    <form class="form-search" method="get" action="" autocomplete="off">
+        <input type="text" class="form-control" id="keyword" placeholder="搜索订单" required autocomplete="off" autocorrect="off" maxlength="64">
+        <button class="fa fa-search" type="submit"></button>
     </form>
     <div class="record-date">
         <i class="fa fa-chevron-left"></i>

@@ -21,9 +21,9 @@
 </head>
 <body>
 <header class="navbar navbar-fixed-top-dealer">
-    <form class="dealer-search" action="" method="post">
-        <input type="text" name="keyword" placeholder="搜索商品">
-        <label class="fa fa-search"></label>
+    <form class="dealer-search" action="" method="get" autocomplete="off">
+        <input type="text" name="keyword" placeholder="搜索商品" required autocomplete="off" autocorrect="off" maxlength="64">
+        <button type="submit" class="fa fa-search"></button>
     </form>
     <ul class="dealer-nav">
         <li><a href="">商品库</a></li>

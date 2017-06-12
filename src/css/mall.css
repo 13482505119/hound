@@ -589,11 +589,14 @@ a.btn-attract-o:active {
     width: 100%;
     padding-top: 0.3059581320450885rem;
 }
-.form-search:before {
+.form-search .fa-search {
     position: absolute;
     left: 0.322rem;
     top: 0.5rem;
     display: block;
+    padding: 0;
+    border: 0;
+    background: transparent;
     font-size: 0.5475rem;
     line-height: 1;
 }
@@ -1236,7 +1239,9 @@ a.btn-attract-o:active {
     right: 0;
     left: 0;
     z-index: 1030;
+    margin: 0 auto;
     padding: 0;
+    width: 10rem;
     background: #ffffff;
 }
 .dealer-search {
@@ -1256,8 +1261,12 @@ a.btn-attract-o:active {
 }
 .dealer-search .fa-search {
     position: absolute;
-    top: 0.48rem;
+    top: 0.5rem;
     left: 0.72rem;
+    display: block;
+    padding: 0;
+    border: 0;
+    background: transparent;
     font-size: 0.4rem;
 }
 .dealer-nav {
@@ -1622,7 +1631,7 @@ a.btn-attract-o:active {
     line-height: 0.4rem;
     outline: none;
 }
-.record-header .form-search:before {
+.record-header .form-search {
     left: 0.4rem;
     font-size: 0.36rem;
 }
