@@ -411,19 +411,12 @@ a.btn-attract-o:active {
     width: 100%;
 }
 .btn-group-justified {
-    display: table;
+    display: flex;
     width: 100%;
-    table-layout: fixed;
-    border-collapse: separate;
 }
 .btn-group-justified > .btn {
-    display: table-cell;
-    float: none;
-    width: 1%;
-    text-align: center;
-}
-.btn-group-justified > .btn {
-    width: 100%;
+    flex: 1;
+    display: block;
 }
 .btn-group-justified > .btn:active,
 .btn-group-justified > .btn.active {
@@ -1359,7 +1352,7 @@ a.btn-attract-o:active {
     height: 2.906666666666667rem;
 }
 #wrapper.dealer-orders {
-    top: 0.96rem;
+    top: 2.16rem;
 }
 .item {
     display: flex;
