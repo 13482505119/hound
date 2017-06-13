@@ -608,7 +608,7 @@ a.btn-attract-o:active {
 .navbar-fixed-top,
 .navbar-fixed-bottom,
 .navbar-fixed-supplier {
-    position: absolute;
+    position: fixed;
     right: 0;
     left: 0;
     z-index: 1030;
