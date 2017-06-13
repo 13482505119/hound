@@ -1301,7 +1301,7 @@ a.btn-attract-o:active {
     margin: 0;
     padding: 0;
     height: 0.8rem;
-    background: #f2f2f2;
+    background: #ffffff;/*f2f2f2*/
     list-style: none;
     font-size: 0.3466666666666667rem;
     line-height: 0.8rem;
@@ -1350,6 +1350,7 @@ a.btn-attract-o:active {
 }
 #wrapper.dealer-list .swiper-slide-btn {
     height: 2.906666666666667rem;
+    line-height: 2.906666666666667rem;
 }
 #wrapper.dealer-orders {
     top: 2.16rem;

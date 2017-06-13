@@ -14,7 +14,7 @@
     paths: {
         "jquery": "jquery-3.2.1.min",
         "bootstrap": "bootstrap.min",
-        "swiper": "plugins/swiper/swiper.jquery.min",
+        "swiper": "plugins/swiper/swiper.min",
         "sweetAlert": "plugins/sweetalert2/sweetalert2.min",
         "form": "plugins/form/jquery.form.min",
         "validate": "plugins/validate/jquery.validate.min",

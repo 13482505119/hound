@@ -9,7 +9,7 @@
 require.config({
     paths: {
         "jquery": "jquery-3.2.1.min",
-        "swiper": "plugins/swiper/swiper.jquery.min",
+        "swiper": "plugins/swiper/swiper.min",
         "sweetAlert": "plugins/sweetalert2/sweetalert2.min",
         "form": "plugins/form/jquery.form.min",
         "validate": "plugins/validate/jquery.validate.min"
@@ -387,7 +387,8 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
                         $.hound.swal({
                             title: confirm,
                             type: "question",
-                            showCancelButton: true
+                            showCancelButton: true,
+                            allowOutsideClick: false /* 修复部分浏览器嵌套点击 */
                         }).then(
                             function () {
                                 handle(element, event);
