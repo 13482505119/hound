@@ -165,10 +165,12 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
                 total,
                 dotIndex;
 
-            if (isNaN(quantity) || quantity < 1) {
-                quantity = 1;
-                $quantity.val(quantity);
+            if (isNaN(quantity) || quantity < min) {
+                quantity = min;
+            } else if (quantity > max) {
+                quantity = max;
             }
+            $quantity.val(quantity);
 
             total = (price * quantity).toFixed(2).toString();
             dotIndex = total.indexOf(".");

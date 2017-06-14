@@ -36,8 +36,8 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
             version: "2.0",
             debug: false,
             dataType: "json",
-            timeout: 45000, //ajax 请求超时时间
-            delay: 1500, //消息提醒后延迟调整时间
+            timeout: 45000, //ajax请求超时时间:ms
+            delay: 1500, //消息提醒后延迟跳转:ms
             mobile: /^1(3[0-9]|[458][0-35-9]|7[0678])\d{8}$/,
             messages: {
                 loading: "加载中……",
@@ -51,13 +51,21 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
         };
 
     $.extend(hound.prototype, {
+        isBlank: function (obj) {
+            return(!obj || $.trim(obj) === "");
+        },
         //SweetAlert2
         swal: sweetAlert,
         alert: function (title, text) {
             this.swal(title, text, "warning");
         },
-        success: function (title, text) {
-            this.swal(title, text, "success");
+        success: function (title, text, timer) {
+            this.swal({
+                title: title,
+                text: text,
+                type: "success",
+                timer: timer
+            }).then(function () {}, function () {});
         },
         error: function (title, text) {
             this.swal(title, text, "error");
@@ -69,7 +77,7 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
             var _this = this;
             _this.swal({
                 title: _this.messages.loading,
-                html: '<i class="fa fa-circle-o-notch fa-spin fa-4x"></i>',
+                html: '<i class="fa fa-circle-o-notch fa-spin fa-4x"></i>', //Required Font Awesome
                 showConfirmButton: false,
                 allowOutsideClick: false,
                 allowEscapeKey: false,
@@ -86,22 +94,24 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
             );
         },
         redirect: function (url, delay) {
+            if (this.isBlank(url)) return;
+
             delay = $.isNumeric(delay) ? delay : 0;
             setTimeout(function () {
                 switch (url) {
-                    case null:
-                    case undefined:
-                    case "":
-                        break;
+                    //case null:
+                    //case undefined:
+                    //case "":
+                    //    break;
                     case "reload":
                         window.location.reload();
                         break;
                     case "back":
-                        history.back();
+                        window.history.back();
                         break;
                     case "close":
-                        self.focus();
-                        self.close();
+                        window.self.focus();
+                        window.self.close();
                         return false;
                         break;
                     default :
@@ -130,11 +140,11 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
                     switch (json.code) {
                         case 200:
                             $.isFunction(fn) && fn(json);
-                            json.msg && _this.success(json.msg);
-                            json.redirect && _this.redirect(json.redirect, json.msg ? _this.delay : 0);
+                            !_this.isBlank(json.msg) && _this.success(json.msg, "", json.timer);
+                            !_this.isBlank(json.redirect) && _this.redirect(json.redirect, _this.isBlank(json.msg) ? 0 : _this.delay);
                             break;
                         default :
-                            json.msg && _this.alert(json.msg);
+                            !_this.isBlank(json.msg) && _this.alert(json.msg);
                             break;
                     }
                 },
@@ -296,7 +306,21 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
             redirect: function (element, event) {
                 event.preventDefault();
 
-                $.hound.redirect($(element).data("url"));
+                var url = $(element).data("url");
+                if ($.hound.isBlank(url)) {
+                    url = window.location.href;
+                    if (url.indexOf("?") == -1) {
+                        url += "?_=" + (new Date().getTime());
+                    } else {
+                        if (url.indexOf("_=") == -1) {
+                            url += "&_=" + (new Date().getTime());
+                        } else {
+                            url = url.replace(/(_=)\d+/, "$1" + (new Date().getTime()));
+                        }
+                    }
+                }
+
+                $.hound.redirect(url);
             },
             ajaxSubmit: function (element, event) {
                 event.preventDefault();
@@ -317,14 +341,14 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
                         switch (responseText.code) {
                             case 200:
                                 $this.resetForm();
-                                $.hound.success(responseText.msg);
+                                !$.hound.isBlank(responseText.msg) && $.hound.success(responseText.msg, "", responseText.timer);
                                 break;
                             default:
                                 $this.find(":password").val("");
-                                $.hound.alert(responseText.msg);
+                                !$.hound.isBlank(responseText.msg) && $.hound.alert(responseText.msg);
                                 break;
                         }
-                        $.hound.redirect(responseText.redirect, responseText.msg ? $.hound.delay : 0);
+                        !$.hound.isBlank(responseText.redirect) && $.hound.redirect(responseText.redirect, $.hound.isBlank(responseText.msg) ? 0 : $.hound.delay);
                     }
                 });
             },
@@ -476,7 +500,8 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
     //sweetAlert Settings
     sweetAlert.setDefaults({
         confirmButtonText: '确认',
-        cancelButtonText: "取消"
+        cancelButtonText: "取消",
+        width: $.hound.isBlank(window.document.documentElement.style.fontSize) ? "500px" : "5rem"
     });
 
 
