@@ -308,7 +308,7 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
                     beforeSubmit: function () {//arr, $form, options
                         return validate ? $this.valid() : true;
                     },
-                    resetForm: true,
+                    //resetForm: true,
                     dataType: "json",
                     error: function () {//xhr, statusText, error, $form
                         $.hound.error($.hound.messages.fail);
@@ -316,9 +316,11 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function
                     success: function (responseText) {//responseText, statusText, xhr, $form
                         switch (responseText.code) {
                             case 200:
+                                $this.resetForm();
                                 $.hound.success(responseText.msg);
                                 break;
-                            default :
+                            default:
+                                $this.find(":password").val("");
                                 $.hound.alert(responseText.msg);
                                 break;
                         }

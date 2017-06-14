@@ -603,6 +603,108 @@ a.btn-attract-o:active {
     font-weight: bold;
     line-height: 0.5475rem;
 }
+.form-login {
+    margin-top: 1.12rem;
+}
+.form-login .form-group {
+    position: relative;
+    margin: 0.2666666666666667rem 0.2rem;
+}
+.form-login .form-control {
+    padding-left: 2rem;
+    height: 1.333333333333333rem;
+    border-radius: 0.12rem;
+    font-size: 0.32rem;
+}
+.form-login label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 2rem;
+    height: 1.333333333333333rem;
+    font-size: 0.4rem;
+    line-height: 1.333333333333333rem;
+    color: #666666;
+    text-align: center;
+}
+.form-login .btn {
+    margin-top: 1.533333333333333rem;
+    height: 1.066666666666667rem;
+    border-radius: 0.12rem;
+    font-size: 0.4rem;
+    line-height: 1.066666666666667rem;
+}
+.form-login .form-control-feedback {
+    position: absolute;
+    top: 0;
+    right: 0.5rem;
+    font-size: 0.4rem;
+    line-height: 1.333333333333333rem;
+}
+.form-login .help-block {
+    display: none !important;
+}
+.has-success .form-control {
+    border-color: #3c763d;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+.has-success .form-control:focus {
+    border-color: #2b542c;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;
+}
+.has-success .input-group-addon {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #3c763d;
+}
+.has-success .form-control-feedback {
+    color: #3c763d;
+}
+.has-warning .form-control {
+    border-color: #8a6d3b;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+.has-warning .form-control:focus {
+    border-color: #66512c;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #c0a16b;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #c0a16b;
+}
+.has-warning .input-group-addon {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #8a6d3b;
+}
+.has-warning .form-control-feedback {
+    color: #8a6d3b;
+}
+.has-error .form-control {
+    border-color: #a94442;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+.has-error .form-control:focus {
+    border-color: #843534;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+}
+.has-error .input-group-addon {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #a94442;
+}
+.has-error .form-control-feedback {
+    color: #a94442;
+}
+.help-block {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color: #737373;
+}
 
 /* ¶¥²¿µ×²¿µ¼º½ */
 .navbar-fixed-top,

@@ -29,7 +29,7 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
         if ($(".swiper-slide", ".swiper-goods").length > 1) {
             initSwiperGoods();
         }
-        if ($(".input-group-quantity").length > 1) {
+        if ($(".input-group-quantity").length == 1) {
             initQuantity();
         }
 
@@ -146,6 +146,27 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
                 $quantity.val(quantity);
             } else {
                 quantity = quantity < max ? ++quantity : max;
+                $quantity.val(quantity);
+            }
+
+            total = (price * quantity).toFixed(2).toString();
+            dotIndex = total.indexOf(".");
+
+            $count.html(quantity);
+            $total.html('<span class="text-big">' + total.substr(0, dotIndex) + '.</span>' + total.substr(dotIndex + 1));
+        }).on("keyup mouseup", "#quantity", function () {
+            var $quantity = $(this),
+                $total = $($quantity.data("total")),
+                $count = $($quantity.data("count")),
+                quantity = parseInt($quantity.val()),
+                price = parseFloat($quantity.data("price")),
+                min = $quantity.attr("min"),
+                max = $quantity.attr("max"),
+                total,
+                dotIndex;
+
+            if (isNaN(quantity) || quantity < 1) {
+                quantity = 1;
                 $quantity.val(quantity);
             }
 
