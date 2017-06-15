@@ -225,6 +225,18 @@ a:focus {
 .section-data > div {
     flex: 1;
 }
+.section-code {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.section-code > li {
+    display: flex;
+    justify-content: space-between;
+}
+.section-code > li + li {
+    margin-top: 0.2rem;
+}
 .row-fa {
     position: relative;
     padding-left: 2em;
