@@ -167,6 +167,13 @@ a:focus {
     font-weight: bold;
     color: #ff5000;
 }
+.section-divider {
+    margin-left: 0.4rem;
+    /*border-left: 0.4rem solid #ffffff;*/
+    height: 1px;
+    overflow: hidden;
+    background: #797979;
+}
 .section-body {
     padding: 0.2rem 0.4rem;
     word-wrap: break-word;
