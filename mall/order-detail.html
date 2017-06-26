@@ -146,8 +146,10 @@
 <div class="navbar-fixed-bottom" style="display: none;">
     <div class="container">
         <div class="row btn-group-row">
+            <!-- 订单取消POST返回值，如停留当前页需要刷新来重置按钮状态 -->
+            <button class="rem-3 btn" type="button" data-click="post" data-url="payment.json" data-data='{"orderno":1}'>取消订单</button>
             <!-- data-url=获取支付数据API -->
-            <button class="rem-10 btn btn-attract jPay" type="button" data-url="payment.json" data-data='{"orderno":1}'>确认付款</button>
+            <button class="rem-7 btn btn-attract jPay" type="button" data-url="payment.json" data-data='{"orderno":1}'>确认付款</button>
         </div>
     </div>
 </div>

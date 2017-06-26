@@ -17,7 +17,8 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
             pagesize: 12
         }, hound.getRequest()),
         jsonContent,
-        myIScroll;
+        myIScroll,
+        swipers = [];
 
     //document.ready
     $(function () {
@@ -62,22 +63,23 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
     //init pullLoad
     function initPullLoad() {
         var $wrapper = $("#wrapper"),
-            $pullList = $wrapper.find(".pullList"),
+            $pullList = $wrapper.find(".pullList:visible"),
             url = $wrapper.data("url"),
             data = $.extend({}, request);
-
-        myIScroll = pullLoad("#wrapper", {
-            pullDownText: ["", "", ""],
-            pullUpText: ["", "", ""],
-            pullDownAction: function () {
-                data.page = 1;
-                getHtml(myIScroll, $pullList, url, data);
-            },
-            pullUpAction: function () {
-                data.page++;
-                getHtml(myIScroll, $pullList, url, data);
-            }
-        });
+        if ($pullList.length == 1) {
+            myIScroll = pullLoad("#wrapper", {
+                pullDownText: ["", "", ""],
+                pullUpText: ["", "", ""],
+                pullDownAction: function () {
+                    data.page = 1;
+                    getHtml(myIScroll, $pullList, url, data);
+                },
+                pullUpAction: function () {
+                    data.page++;
+                    getHtml(myIScroll, $pullList, url, data);
+                }
+            });
+        }
     }
     function getHtml(iScroll, $target, url, data) {
         $.ajax({
@@ -118,13 +120,27 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
 
     //侧滑删除
     function setSwiperControl() {
-        if ($(".swiper-control").length > 0) {
-            new Swiper('.swiper-control', {
-                slidesPerView: 'auto',
-                resistanceRatio: .00000000000001,
-                slideToClickedSlide: true
-            });
-        }
+        $(".swiper-control").each(function () {
+            var $this = $(this);
+            if (!$this.hasClass("swiper-container-horizontal")) {
+                swipers.push(
+                    new Swiper($this[0], {
+                        slidesPerView: 'auto',
+                        resistanceRatio: .00000000000001,
+                        slideToClickedSlide: true,
+                        onReachEnd: function (swiper) {
+                            var index = $(swiper.container).index();
+                            $.each(swipers, function (i, n) {
+                                //console.log(i + ":" + n.isEnd);
+                                if (i != index && n.isEnd) {
+                                    n.slideTo(0);
+                                }
+                            });
+                        }
+                    })
+                );
+            }
+        });
     }
 
     //商品数量加减
@@ -154,7 +170,7 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
 
             $count.html(quantity);
             $total.html('<span class="text-big">' + total.substr(0, dotIndex) + '.</span>' + total.substr(dotIndex + 1));
-        }).on("keyup mouseup", "#quantity", function () {
+        }).on("keyup mouseup", "#quantity", function (e) {
             var $quantity = $(this),
                 $total = $($quantity.data("total")),
                 $count = $($quantity.data("count")),
@@ -164,6 +180,11 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
                 max = $quantity.attr("max"),
                 total,
                 dotIndex;
+
+            //删除键判断
+            if (e.keyCode == 8) {
+                return;
+            }
 
             if (isNaN(quantity) || quantity < min) {
                 quantity = min;
