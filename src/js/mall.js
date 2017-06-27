@@ -91,10 +91,15 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
                 }
                 var size = $(html).length;
                 if (size == 0) {
-                    //错误信息
-                    //hound.alert(html);
-                    $target.append('<div class="text-center">' + html + '</div>');
-                    iScroll.lockPullUp(true);
+                    html = $.trim(html);
+                    if (/^(reload|back|close)$/i.test(html) || /^(?=^.{3,255}$)(http(s)?:\/\/)?(www\.)?[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+(:\d+)?(\/\w+(\.\w+)?)*\/?([\?&]\w+=\w*)*$/.test(html)) {
+                        $.hound.redirect(html);
+                    } else {
+                        //错误信息
+                        //hound.alert(html);
+                        $target.append('<div class="text-center">' + html + '</div>');
+                        iScroll.lockPullUp(true);
+                    }
                 } else {
                     $target.append(html);
                     myIScroll.refresh();
