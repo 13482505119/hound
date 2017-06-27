@@ -338,10 +338,10 @@ a:focus {
 }
 .dl-horizontal {
     margin: 0;
-    display: flex;
     font-size: 0.322rem;
 }
 .dl-horizontal dt {
+    float: left;
     width: 1.65rem;
     overflow: hidden;
     clear: left;
@@ -349,8 +349,9 @@ a:focus {
     white-space: nowrap;
 }
 .dl-horizontal dd {
-    flex: 1;
+    float: left;
     margin-left: 0;
+    width: 7.55rem;
     overflow: hidden;
 }
 .dl-horizontal + .dl-horizontal {
@@ -360,7 +361,9 @@ a:focus {
     width: 1.8rem;
     text-align: right;
 }
-
+.dl-horizontal-widened dd {
+    width: 7.4rem;
+}
 .jumbotron {
     padding: 0.5rem 0.25rem 0.25rem 0.25rem;
     background: #ffffff;
@@ -2018,6 +2021,10 @@ a.btn-attract-o:active {
 .row:after,
 .form-horizontal .form-group:before,
 .form-horizontal .form-group:after,
+.dl-horizontal:before,
+.dl-horizontal:after,
+.dl-horizontal dd:before,
+.dl-horizontal dd:after,
 .orderli-state:before,
 .orderli-state:after,
 .media-bottom:before,
@@ -2032,6 +2039,8 @@ a.btn-attract-o:active {
 .section-body:after,
 .row:after,
 .form-horizontal .form-group:after,
+.dl-horizontal:after,
+.dl-horizontal dd:after,
 .orderli-state:after,
 .media-bottom:after {
     clear: both;
