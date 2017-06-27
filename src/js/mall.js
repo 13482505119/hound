@@ -89,10 +89,10 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
                 if (data.page == 1) {
                     $target.empty();
                 }
-                var size = $(html).length;
+                var size = $('<div>' + html + '</div>').children().length;
                 if (size == 0) {
                     html = $.trim(html);
-                    if (/^(reload|back|close)$/i.test(html) || /^(?=^.{3,255}$)(http(s)?:\/\/)?(www\.)?([a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+(:\d+)?)?(\/\w+(\.\w+)?)*\/?([\?&]\w+=\w*)*$/.test(html)) {
+                    if (/^reload|back|close$/i.test(html) || /^(?=^.{3,255}$)(http(s)?:\/\/)?(www\.)?([a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+(:\d+)?)?(\/\w+(\.\w+)?)*\/?([\?&]\w+=\w*)*(#[-\w]+)?$/.test(html)) {
                         $.hound.redirect(html);
                     } else {
                         //错误信息
