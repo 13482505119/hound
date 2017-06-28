@@ -66,11 +66,14 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
         var $wrapper = $("#wrapper"),
             $pullList = $wrapper.find(".pullList:visible"),
             url = $wrapper.data("url"),
-            data = $.extend({}, request);
+            data = $.extend({}, request),
+            size = 0;
         if ($pullList.length == 1) {
+            size = $pullList.children().length;
             myIScroll = pullLoad("#wrapper", {
                 pullDownText: ["", "", ""],
                 pullUpText: ["", "", ""],
+                pullUpLock: size < data.pagesize,
                 pullDownAction: function () {
                     data.page = 1;
                     getHtml(myIScroll, $pullList, url, data);
