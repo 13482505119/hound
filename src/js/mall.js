@@ -609,19 +609,28 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
     function initRemain() {
         var $remain = $("#remain"),
             remainInterval = 0,
+            orderKey = "order-" + jsonContent.orderno,
             rest = jsonContent.remain;
 
         if ($remain.length == 1 && !isNaN(rest) && rest > 0) {
+            if ($.cookie(orderKey) == undefined) {
+                $.cookie(orderKey, timeEnd(rest));
+            }
+
             remainInterval = setInterval(function () {
+                rest--;
+                //定时器重启
+                if ($.cookie(orderKey) != timeEnd(rest)) {
+                    rest = $.cookie(orderKey) - Math.floor((new Date().getTime()) / 1000);
+                }
                 if (rest <= 0) {
                     clearInterval(remainInterval);
+                    $.removeCookie(orderKey);
                     $.hound.redirect("reload");
                 } else {
-                    rest--;
                     $remain.text(formatTime(rest));
                 }
             }, 1000);
-
         }
     }
     function formatTime(rest) {
@@ -636,5 +645,7 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
     function timeFixed(int) {
         return ("0" + int).substr(-2);
     }
-
+    function timeEnd(rest) {
+        return Math.floor((new Date().getTime()) / 1000) + parseInt(rest);
+    }
 });

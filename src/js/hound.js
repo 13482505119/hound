@@ -12,7 +12,8 @@ require.config({
         "swiper": "plugins/swiper/swiper.min",
         "sweetAlert": "plugins/sweetalert2/sweetalert2.min",
         "form": "plugins/form/jquery.form.min",
-        "validate": "plugins/validate/jquery.validate.min"
+        "validate": "plugins/validate/jquery.validate.min",
+        "cookie": "plugins/cookie/jquery.cookie"
     },
     shim:{
         "swiper": {
@@ -30,7 +31,7 @@ require.config({
     }
 });
 
-define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate"], function (Swiper, sweetAlert) {
+define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate", "cookie"], function (Swiper, sweetAlert) {
 
     var config = {
             version: "2.0",

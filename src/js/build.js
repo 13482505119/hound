@@ -19,7 +19,8 @@
         "form": "plugins/form/jquery.form.min",
         "validate": "plugins/validate/jquery.validate.min",
         "dropload": "plugins/dropload/dropload.min",
-        "lazyload": "plugins/lazyload/jquery.lazyload.min"
+        "lazyload": "plugins/lazyload/jquery.lazyload.min",
+        "cookie": "plugins/cookie/jquery.cookie"
     },
     shim:{
         "bootstrap": {
@@ -38,11 +39,15 @@
             deps: ["jquery"],
             exports: "$"
         },
-        "dropload":{
+        "dropload": {
             deps: ["jquery"],
             exports: "$"
         },
-        "lazyload":{
+        "lazyload": {
+            deps: ["jquery"],
+            exports: "$"
+        },
+        "cookie": {
             deps: ["jquery"],
             exports: "$"
         },
