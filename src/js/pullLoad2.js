@@ -296,7 +296,8 @@ define("pullLoad2", ["plugins/iscroll/iscroll-probe"], function (IScroll) {
             } else if (p.up.element && utils.hasClass(p.up.element, p.loading)) {
                 utils.removeClass(p.up.element, p.loading);
                 p.up.label.innerHTML = p.up.texts[0];
-                this.scrollTo(0, this.maxScrollY, 0);
+                //this.scrollTo(0, this.maxScrollY, 0);
+                this.scrollTo(0, this.y - this.wrapperHeight + p.up.offset, 0);
             }
 
             //p.body.style.minHeight = p.wrapper.offsetHeight + "px";

@@ -274,7 +274,8 @@ define("pullLoad", ["plugins/iscroll/iscroll-probe"], function (IScroll) {
             } else if (opts.pullUpElement && hasClass(opts.pullUpElement, "loading")) {
                 removeClass(opts.pullUpElement, "loading");
                 opts.pullUpLabel.innerHTML = opts.pullUpText[0];
-                this.scrollTo(0, this.maxScrollY, 0);
+                //this.scrollTo(0, this.maxScrollY, 0);
+                this.scrollTo(0, this.y - this.wrapperHeight + opts.pullUpOffset, 0);
             }
 
             //opts.pullContainer.style.minHeight = opts.pullElement.offsetHeight + "px";
