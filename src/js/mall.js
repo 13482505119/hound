@@ -631,7 +631,7 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
             minute = Math.floor((rest % _h) / _m),
             second = rest % _m;
 
-        return hour + ":" + timeFixed(minute) + ":" + timeFixed(second);
+        return timeFixed(hour) + ":" + timeFixed(minute) + ":" + timeFixed(second);
     }
     function timeFixed(int) {
         return ("0" + int).substr(-2);
