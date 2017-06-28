@@ -37,6 +37,7 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
         setSwiperControl();
         initPay();
         initCharts();
+        initRemain();
 
         if ($(".keyboard").length == 1) {
             initKeyboard();
@@ -604,4 +605,36 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
             this.setDate(0);
         }
     };
+
+    function initRemain() {
+        var $remain = $("#remain"),
+            remainInterval = 0,
+            rest = jsonContent.remain;
+
+        if ($remain.length == 1 && !isNaN(rest) && rest > 0) {
+            remainInterval = setInterval(function () {
+                if (rest <= 0) {
+                    clearInterval(remainInterval);
+                    $.hound.redirect("reload");
+                } else {
+                    rest--;
+                    $remain.text(formatTime(rest));
+                }
+            }, 1000);
+
+        }
+    }
+    function formatTime(rest) {
+        var _m = 60,
+            _h = _m * 60;
+        var hour = Math.floor(rest / _h),
+            minute = Math.floor((rest % _h) / _m),
+            second = rest % _m;
+
+        return hour + ":" + timeFixed(minute) + ":" + timeFixed(second);
+    }
+    function timeFixed(int) {
+        return ("0" + int).substr(-2);
+    }
+
 });

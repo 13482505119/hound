@@ -779,6 +779,7 @@ a.btn-attract-o:active {
 }
 .navbar-fixed-bottom {
     bottom: 0;
+    border-top: 1px solid #e1e1e1;
 }
 .navbar-fixed-bottom nav {
     padding-top: 0.2174rem;

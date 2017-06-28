@@ -22,9 +22,9 @@
 <body>
 
 <!-- 待付款 begin -->
-<div class="wrapper wrapper-has-footer" style="display: none;">
+<div class="wrapper wrapper-has-footer">
     <div class="jumbotron text-center">
-        <div class="jumbotron-head">剩余支付时间   29:59</div>
+        <div class="jumbotron-head">剩余支付时间 <span id="remain">--:--</span></div>
         <div class="jumbotron-body">商品库存有限，请尽快支付。超时未支付订单将被自动关闭。</div>
     </div>
     <div class="orderli hspace-clear">
@@ -143,7 +143,7 @@
         </div>
     </div>
 </div>
-<div class="navbar-fixed-bottom" style="display: none;">
+<div class="navbar-fixed-bottom">
     <div class="container">
         <div class="row btn-group-row">
             <!-- 订单取消POST返回值，如停留当前页需要刷新来重置按钮状态 -->
@@ -854,7 +854,7 @@
 <!-- 已过期 end -->
 
 <!-- 已完成 begin -->
-<div class="wrapper">
+<div class="wrapper" style="display: none;">
     <div class="orderli hspace-clear">
         <div class="orderli-media">
             <a class="media" href="item.html">
@@ -979,6 +979,6 @@
     </div>
 </div>
 <!-- 已完成 end -->
-
+<script type="text" id="jsonContent">{"remain":1500}</script>
 </body>
 </html>
