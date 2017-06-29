@@ -347,6 +347,7 @@ a:focus {
     clear: left;
     text-overflow: ellipsis;
     white-space: nowrap;
+    text-align: right;
 }
 .dl-horizontal dd {
     float: left;
