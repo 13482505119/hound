@@ -1620,6 +1620,9 @@ a.btn-attract-o:active {
     margin-top: 0.68rem;
     font-size: 0.3466666666666667rem;
 }
+.cav-header a {
+    color: #ffffff;
+}
 .cav-input {
     display: flex;
     list-style: none;
@@ -1794,7 +1797,7 @@ a.btn-attract-o:active {
     line-height: 0.4rem;
     outline: none;
 }
-.record-header .form-search {
+.record-header .fa-search {
     left: 0.4rem;
     font-size: 0.36rem;
 }
