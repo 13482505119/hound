@@ -66,19 +66,20 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
         var $wrapper = $("#wrapper"),
             $pullList = $wrapper.find(".pullList:visible"),
             url = $wrapper.data("url"),
-            data = $.extend({}, request),
             size = 0;
         if ($pullList.length == 1) {
             size = $pullList.children().length;
             myIScroll = pullLoad("#wrapper", {
                 pullDownText: ["", "", ""],
                 pullUpText: ["", "", ""],
-                pullUpLock: size < data.pagesize,
+                pullUpLock: size < request.pagesize,
                 pullDownAction: function () {
+                    var data = $.extend({}, request);
                     data.page = 1;
                     getHtml(myIScroll, $pullList, url, data);
                 },
                 pullUpAction: function () {
+                    var data = $.extend({}, request);
                     data.page++;
                     getHtml(myIScroll, $pullList, url, data);
                 }
@@ -102,6 +103,7 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
                         //错误信息
                         //hound.alert(html);
                         $target.append('<div class="text-center">' + html + '</div>');
+                        myIScroll.refresh();
                         iScroll.lockPullUp(true);
                     }
                 } else {
@@ -562,6 +564,7 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
                 $sub.css("visibility", "visible");
             }
 
+            request.date = v;
             data.date = v;
             data.page = 1;
             hound.post(urlCount, data, function (json) {
