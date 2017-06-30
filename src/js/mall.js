@@ -136,7 +136,6 @@ require(["hound", "pullLoad", "plugins/echarts/echarts.min"], function(hound, pu
                     new Swiper($this[0], {
                         slidesPerView: 'auto',
                         resistanceRatio: .00000000000001,
-                        slideToClickedSlide: true,
                         onReachEnd: function (swiper) {
                             var index = $(swiper.container).index();
                             $.each(swipers, function (i, n) {
