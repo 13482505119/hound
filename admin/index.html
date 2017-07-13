@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <script src="../src/js/holder.min.js"></script>
+    <title>管理中心-首页</title>
+    <link href="../src/css/admin.css?v=20170713" rel="stylesheet">
+    <script>
+        var require = {
+            baseUrl: "../src/js/",
+            urlArgs: "v=20170713"
+        };
+    </script>
+    <script data-main="admin" src="../src/js/require.js"></script>
+</head>
+<body>
+<div id="container">
+    <div id="sidebar">
+        <nav class="navbar-default" role="navigation">
+            <ul class="nav metismenu">
+                <li class="nav-header">
+                    <div class="profile">
+                        <img alt="image" class="img-circle" src="http://julong.go-trip.com.cn/_test/visa/Webserver/img/background/newlist-header.png">
+                    </div>
+                    <div class="dropdown space-half">
+                        <div data-toggle="dropdown" class="dropdown-toggle" role="link">
+                            <div><strong>彭广胜</strong></div>
+                            <div class="text-muted text-xs">管理员<b class="caret"></b></div>
+                        </div>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">个人信息</a></li>
+                            <li><a href="#">修改密码</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">安全退出</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="active">
+                    <a href="javascript:" class="has-arrow" aria-expanded="true"><i class="fa fa-th-large"></i> 商品管理</a>
+                    <ul class="nav collapse in" aria-expanded="true">
+                        <li class="active"><a href="#">发布商品</a></li>
+                        <li><a href="#">出售商品</a></li>
+                        <li><a href="#">下架商品</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 订单管理</a>
+                    <ul class="nav collapse" aria-expanded="false">
+                        <li>
+                            <a href="#" class="has-arrow" aria-expanded="false">所有订单</a>
+                            <ul class="nav collapse" aria-expanded="false">
+                                <li><a href="#">订单详情</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">投诉订单</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 分销商管理</a>
+                    <ul class="nav collapse" aria-expanded="false">
+                        <li>
+                            <a href="#" class="has-arrow" aria-expanded="false">分销商管理</a>
+                            <ul class="nav collapse" aria-expanded="false">
+                                <li><a href="#">分销商-商品管理</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 供应商管理</a>
+                    <ul class="nav collapse" aria-expanded="false">
+                        <li><a href="#">供应商管理</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 财务管理</a>
+                    <ul class="nav collapse" aria-expanded="false">
+                        <li>
+                            <a href="#" class="has-arrow" aria-expanded="false">退款订单</a>
+                            <ul class="nav collapse" aria-expanded="false">
+                                <li><a href="#">退款订单详情</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 账号管理</a>
+                    <ul class="nav collapse" aria-expanded="false">
+                        <li><a href="#">账号管理</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div id="main" class="container">
+        <div class="row nav-bar">
+            <div class="col-xs-6">
+                <ul class="breadcrumb">
+                    <li class="bread" style="margin-left: 12px;"><a href="#" style="outline:none;color: #676a6c">云签证操作平台</a></li>
+                    <li class="bread"><a href="#" style="outline:none;color: #676a6c">前台组</a></li>
+                    <li class="active">签证管理</li>
+                </ul>
+            </div>
+            <div class="col-xs-6">
+                <ul class="navbar-top-links navbar-right">
+                    <li>
+            <span class="m-r-sm text-muted welcome-message">
+                <a href="#" style="outline:none" title="返回首页">
+                    <i class="fa fa-home"></i>
+                </a>
+                彭广胜，欢迎使用云签证操作平台</span>
+                    </li>
+                    <li>
+                        <a href="http://julong.go-trip.com.cn/submit.php/user/logout" style="outline:none">
+                            <i class="glyphicon glyphicon-log-out"></i> 退出
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
