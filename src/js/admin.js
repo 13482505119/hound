@@ -5,11 +5,11 @@
 require.config({
     paths: {
         "jquery": "jquery-3.2.1.min",
-        "Bootstrap": "bootstrap.min",
+        "bootstrap": "bootstrap.min",
         "metisMenu": "plugins/metismenu/metisMenu.min"
     },
     shim:{
-        "Bootstrap": {
+        "bootstrap": {
             deps: ["jquery"],
             exports: "$"
         },
@@ -20,7 +20,7 @@ require.config({
     }
 });
 
-require(["hound", "Bootstrap", "metisMenu"], function(hound) {
+require(["hound", "bootstrap", "metisMenu"], function(hound) {
     //MetsiMenu
     $('.metismenu').metisMenu();
 });
