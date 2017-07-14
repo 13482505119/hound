@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <script src="../src/js/holder.min.js"></script>
+    <title>商品管理-发布商品--系统总后台</title>
+    <link href="../src/css/admin.css?v=20170713" rel="stylesheet">
+    <script>
+        var require = {
+            baseUrl: "../src/js/",
+            urlArgs: "v=20170713"
+        };
+    </script>
+    <script data-main="admin" src="../src/js/require.js"></script>
+</head>
+<body>
+<div id="container">
+    <div id="sidebar">
+        <nav class="navbar-default" role="navigation">
+            <ul class="nav metismenu">
+                <li class="nav-header">
+                    <div class="profile">
+                        <img alt="image" class="img-circle" src="http://julong.go-trip.com.cn/_test/visa/Webserver/img/background/newlist-header.png">
+                    </div>
+                    <div class="dropdown space-half">
+                        <div data-toggle="dropdown" class="dropdown-toggle" role="link">
+                            <div><strong>彭广胜</strong></div>
+                            <div class="text-muted text-xs">管理员<b class="caret"></b></div>
+                        </div>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">个人信息</a></li>
+                            <li><a href="#">修改密码</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">安全退出</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="active">
+                    <a href="javascript:" class="has-arrow" aria-expanded="true"><i class="fa fa-th-large"></i> 商品管理</a>
+                    <ul class="nav collapse in" aria-expanded="true">
+                        <li class="active"><a href="#">发布商品</a></li>
+                        <li><a href="#">出售商品</a></li>
+                        <li><a href="#">下架商品</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 订单管理</a>
+                    <ul class="nav collapse" aria-expanded="false">
+                        <li>
+                            <a href="#" class="has-arrow" aria-expanded="false">所有订单</a>
+                            <ul class="nav collapse" aria-expanded="false">
+                                <li><a href="#">订单详情</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">投诉订单</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 分销商管理</a>
+                    <ul class="nav collapse" aria-expanded="false">
+                        <li>
+                            <a href="#" class="has-arrow" aria-expanded="false">分销商管理</a>
+                            <ul class="nav collapse" aria-expanded="false">
+                                <li><a href="#">分销商-商品管理</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 供应商管理</a>
+                    <ul class="nav collapse" aria-expanded="false">
+                        <li><a href="#">供应商管理</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 财务管理</a>
+                    <ul class="nav collapse" aria-expanded="false">
+                        <li>
+                            <a href="#" class="has-arrow" aria-expanded="false">退款订单</a>
+                            <ul class="nav collapse" aria-expanded="false">
+                                <li><a href="#">退款订单详情</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 账号管理</a>
+                    <ul class="nav collapse" aria-expanded="false">
+                        <li><a href="#">账号管理</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="main" class="container">
+        <nav class="navbar">
+            <div class="container-fluid">
+                <div class="navbar-collapse">
+                    <ol class="breadcrumb">
+                        <li><a href="index.html">系统总后台</a></li>
+                        <li><a href="#">商品管理</a></li>
+                        <li class="active">发布商品</li>
+                    </ol>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" title="返回首页"><i class="fa fa-home"></i> <span class="text-muted">彭广胜，欢迎使用云签证操作平台</span></a>
+                        </li>
+                        <li>
+                            <a href="http://julong.go-trip.com.cn/submit.php/user/logout"><i class="fa fa-sign-out"></i> 退出</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <form class="form-horizontal" method="post" action="" data-validate="true">
+            <fieldset>
+                <legend>1、商品基本信息</legend>
+                <div class="form-group">
+                    <label for="goodsTitle" class="col-sm-2 control-label"><span class="text-danger">*</span> 商品标题</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="goodsTitle" name="goodsTitle" placeholder="请输入商品标题" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="goodsSubTitle" class="col-sm-2 control-label">副标题</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="goodsSubTitle" name="goodsSubTitle" placeholder="请输入副标题">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="goodsSKU" class="col-sm-4 control-label"><span class="text-danger">*</span> SKU</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="goodsSKU" name="goodsSKU" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="goodsCommission" class="col-sm-4 control-label"><span class="text-danger">*</span> 佣金</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="goodsCommission" name="goodsCommission" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="goodsSellPrice" class="col-sm-4 control-label"><span class="text-danger">*</span> 出售价</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="goodsSellPrice" name="goodsSellPrice" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="goodsPurchasePrice" class="col-sm-4 control-label"><span class="text-danger">*</span> 采购价</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="goodsPurchasePrice" name="goodsPurchasePrice" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="goodsStock" class="col-sm-4 control-label"><span class="text-danger">*</span> 库存</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="goodsStock" name="goodsStock" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="goodsExpires" class="col-sm-4 control-label"><span class="text-danger">*</span> 有效期</label>
+                            <div class="col-sm-8">
+                                <input type="date" class="form-control" id="goodsExpires" name="goodsExpires" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>2、商家信息</legend>
+                <div class="form-group">
+                    <label for="supplier" class="col-sm-2 control-label"><span class="text-danger">*</span> 供应商</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" id="supplier" name="supplier" required>
+                            <option value="100" data-address="供应商地址">供应商名称</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address" class="col-sm-2 control-label"><span class="text-danger">*</span> 商家地址</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="address" name="address" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="useTime" class="col-sm-2 control-label"><span class="text-danger">*</span> 使用时间</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="useTime" name="useTime" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="other" class="col-sm-2 control-label"><span class="text-danger">*</span> 其他</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="other" name="other" required>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>3、退款规则</legend>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="refundRatio" class="col-sm-4 control-label"><span class="text-danger">*</span> 7天内退款费率</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="refundRatio" name="refundRatio" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="refundRatioHight" class="col-sm-4 control-label"><span class="text-danger">*</span> 7天后退款费率</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="refundRatioHight" name="refundRatioHight" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>4、商品图片</legend>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <div>图片List</div>
+                        <div>图片List</div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>5、商品描述</legend>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <textarea class="form-control" id="description" name="description" rows="8"></textarea>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default" data-click="ajaxSubmit">确认添加</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -23,4 +23,8 @@ require.config({
 require(["hound", "bootstrap", "metisMenu"], function(hound) {
     //MetsiMenu
     $('.metismenu').metisMenu();
+
+    $("thead :checkbox, tfoot :checkbox").on("click", function () {
+        $(this).closest("table").find(":checkbox").prop("checked", $(this).prop("checked"));
+    });
 });
