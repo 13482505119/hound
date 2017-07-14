@@ -10,15 +10,18 @@ body {
     height: 100%;
 }
 body {
+    overflow: hidden;
     font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 13px;
     color: #676a6c;
-    overflow-x: hidden;
 }
 
 #container {
     display: flex;
+    margin: 0 auto;
+    max-width: 1200px;
     height: 100%;
+    background-color: #f5f6f8;
 }
 #sidebar {
     width: 190px;
@@ -27,6 +30,27 @@ body {
 #main {
     flex: 1;
     overflow-y: scroll;
+}
+#main .navbar {
+    margin-left: -10px;
+    margin-right: -10px;
+    background: #EBEDF1;
+}
+#main .breadcrumb {
+    float: left;
+    margin-bottom: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+#main .navbar .fa {
+    font-size: 16px;
+    color: #337ab7;
+}
+#main .help-block {
+    display: none!important;
+}
+.form-horizontal .has-success .form-control-feedback {
+    right: 10px;
 }
 
 .metismenu > li.active {
@@ -81,10 +105,4 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-.nav-bar {
-    padding: 10px 0;
-    background: #f5f5f5;
-    overflow: hidden;
 }
