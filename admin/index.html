@@ -35,35 +35,32 @@
                         </ul>
                     </div>
                 </li>
+                <!--
+                当前样式设定规则：
+                li class="active"
+                aria-expanded="true"
+                其父级 ul 样式加 in
+                -->
                 <li class="active">
                     <a href="javascript:" class="has-arrow" aria-expanded="true"><i class="fa fa-th-large"></i> 商品管理</a>
                     <ul class="nav collapse in" aria-expanded="true">
                         <li class="active"><a href="goods-add.html">发布商品</a></li>
                         <li><a href="goods-sale.html">出售商品</a></li>
-                        <li><a href="#">下架商品</a></li>
+                        <li><a href="goods-shelf.html">下架商品</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 订单管理</a>
                     <ul class="nav collapse" aria-expanded="false">
-                        <li>
-                            <a href="#" class="has-arrow" aria-expanded="false">所有订单</a>
-                            <ul class="nav collapse" aria-expanded="false">
-                                <li><a href="#">订单详情</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">投诉订单</a></li>
+                        <li><a href="order-list.html">所有订单</a></li>
+                        <li><a href="order-complaint.html">投诉订单</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 分销商管理</a>
                     <ul class="nav collapse" aria-expanded="false">
-                        <li>
-                            <a href="#" class="has-arrow" aria-expanded="false">分销商管理</a>
-                            <ul class="nav collapse" aria-expanded="false">
-                                <li><a href="#">分销商-商品管理</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="#">分销商管理</a></li>
+                        <li><a href="#">分销商-商品管理</a></li>
                     </ul>
                 </li>
                 <li>
@@ -76,10 +73,7 @@
                     <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 财务管理</a>
                     <ul class="nav collapse" aria-expanded="false">
                         <li>
-                            <a href="#" class="has-arrow" aria-expanded="false">退款订单</a>
-                            <ul class="nav collapse" aria-expanded="false">
-                                <li><a href="#">退款订单详情</a></li>
-                            </ul>
+                            <a href="#">退款订单</a>
                         </li>
                     </ul>
                 </li>

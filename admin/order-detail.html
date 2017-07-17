@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <script src="../src/js/holder.min.js"></script>
+    <title>发布商品-系统总后台</title>
+    <link href="../src/css/admin.css?v=20170713" rel="stylesheet">
+    <script>
+        var require = {
+            baseUrl: "../src/js/",
+            urlArgs: "v=20170713"
+        };
+    </script>
+    <script data-main="admin" src="../src/js/require.js"></script>
+</head>
+<body>
+<div id="container">
+    <div id="sidebar">
+        <nav class="navbar-default" role="navigation">
+            <ul class="nav metismenu">
+                <li class="nav-header">
+                    <div class="profile">
+                        <img alt="image" class="img-circle" src="http://julong.go-trip.com.cn/_test/visa/Webserver/img/background/newlist-header.png">
+                    </div>
+                    <div class="dropdown space-half">
+                        <div data-toggle="dropdown" class="dropdown-toggle" role="link">
+                            <div><strong>彭广胜</strong></div>
+                            <div class="text-muted text-xs">管理员<b class="caret"></b></div>
+                        </div>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">个人信息</a></li>
+                            <li><a href="#">修改密码</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">安全退出</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 商品管理</a>
+                    <ul class="nav collapse" aria-expanded="false">
+                        <li><a href="goods-add.html">发布商品</a></li>
+                        <li><a href="goods-sale.html">出售商品</a></li>
+                        <li><a href="goods-shelf.html">下架商品</a></li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="javascript:" class="has-arrow" aria-expanded="true"><i class="fa fa-th-large"></i> 订单管理</a>
+                    <ul class="nav collapse in" aria-expanded="true">
+                        <li class="active">
+                            <a href="#" class="has-arrow" aria-expanded="true">所有订单</a>
+                            <ul class="nav collapse in" aria-expanded="true">
+                                <li><a href="order-list.html">订单列表</a></li>
+                                <li class="active"><a href="order-detail.html">订单详情</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="order-complaint.html">投诉订单</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 分销商管理</a>
+                    <ul class="nav collapse" aria-expanded="false">
+                        <li>
+                            <a href="#" class="has-arrow" aria-expanded="false">分销商管理</a>
+                            <ul class="nav collapse" aria-expanded="false">
+                                <li><a href="#">分销商-商品管理</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 供应商管理</a>
+                    <ul class="nav collapse" aria-expanded="false">
+                        <li><a href="#">供应商管理</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 财务管理</a>
+                    <ul class="nav collapse" aria-expanded="false">
+                        <li>
+                            <a href="#" class="has-arrow" aria-expanded="false">退款订单</a>
+                            <ul class="nav collapse" aria-expanded="false">
+                                <li><a href="#">退款订单详情</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 账号管理</a>
+                    <ul class="nav collapse" aria-expanded="false">
+                        <li><a href="#">账号管理</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="main" class="container">
+        <nav class="navbar">
+            <div class="container-fluid">
+                <div class="navbar-collapse">
+                    <ol class="breadcrumb">
+                        <li><a href="index.html">系统总后台</a></li>
+                        <li><a href="#">订单管理</a></li>
+                        <li><a href="#">所有订单</a></li>
+                        <li class="active">订单详情</li>
+                    </ol>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" title="返回首页"><i class="fa fa-home"></i> <span class="text-muted">彭广胜，欢迎使用云签证操作平台</span></a>
+                        </li>
+                        <li>
+                            <a href="http://julong.go-trip.com.cn/submit.php/user/logout"><i class="fa fa-sign-out"></i> 退出</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="alert alert-warning" role="alert">
+            <div class="box-justify">
+                <div class="">等待买家使用</div>
+                <div class="">
+                    <button type="submit" class="btn btn-sm btn-info">核销</button>
+                    <button type="submit" class="btn btn-sm btn-info">申请退款</button>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-order">
+            <colgroup><col><col><col><col></colgroup>
+            <tbody>
+            <tr>
+                <th colspan="2">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a href="#">订单编号：201706221223123</a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a href="#">交易流水号：123456789123456789</a>
+                        </div>
+                    </div>
+                </th>
+                <th>买家：15721107719</th>
+                <th>分销商：巨龙</th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="media media-goods">
+                        <div class="media-left">
+                            <a href="#">
+                                <img src="holder.js/66x66?theme=sky&text=Image" alt="..." class="media-object">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">¥600/套---无锡铂尔曼樱花季超值套餐（高级房+双人自助早餐+双人自助晚餐）</h4>
+                            <ul class="media-param">
+                                <li><span class="text-price">¥ 779.00</span></li>
+                                <li>x3</li>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <ul class="list-unstyled">
+                        <li>
+                            123456789   待使用
+                        </li>
+                        <li>
+                            123456789   已使用
+                        </li>
+                        <li>
+                            123456789   待使用
+                        </li>
+                        <li>
+                            123456789   已使用
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <div class="text-center">
+                        <strong>实付：¥6499.00</strong><br>
+                        （总佣金：¥155.00）
+                    </div>
+                </td>
+                <td>
+                    <div class="text-center">
+                        等待买家使用<br><br>
+                        <a href="#">订单详情</a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="panel panel-default space-double">
+            <div class="panel-heading">订单日志</div>
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <td width="10%">序号</td>
+                    <td width="20%">操作内容</td>
+                    <td width="35%">备注</td>
+                    <td width="35%">操作时间</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>订单创建</td>
+                    <td></td>
+                    <td>2017.04.25   12：56：23</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>订单付款</td>
+                    <td></td>
+                    <td>2017.04.25   12：56：23</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>消费时间</td>
+                    <td></td>
+                    <td>2017.04.25   12：56：23</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>消费时间</td>
+                    <td></td>
+                    <td>2017.04.25   12：56：23</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>申请退款</td>
+                    <td>买错了买多了买错了买多了买错了买多了买错了买多了了买错了买多了买错了买多了买错了买多了买错了买多了了</td>
+                    <td>2017.04.25   12：56：23</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>退款到账</td>
+                    <td></td>
+                    <td>2017.04.25   12：56：23</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>退款失败</td>
+                    <td></td>
+                    <td>2017.04.25   12：56：23</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td><span class="text-danger">提交投诉</span></td>
+                    <td><span class="text-danger">商家态度恶劣</span></td>
+                    <td>2017.04.25   12：56：23</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">后台操作日志</div>
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <td width="10%">序号</td>
+                    <td width="15%">操作内容</td>
+                    <td width="30%">备注</td>
+                    <td width="30%">操作时间</td>
+                    <td width="15%">操作人</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>关闭订单</td>
+                    <td>操作备注备注备注备注</td>
+                    <td>2017.04.25   12：56：23</td>
+                    <td>xiaoxue</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>核销：123456789</td>
+                    <td>操作备注备注备注备注</td>
+                    <td>2017.04.25   12：56：23</td>
+                    <td>xiaoxue</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>核销：全部核销</td>
+                    <td>操作备注备注备注备注</td>
+                    <td>2017.04.25   12：56：23</td>
+                    <td>xiaoxue</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>申请退款</td>
+                    <td>帮用户提交申请退款</td>
+                    <td>2017.04.25   12：56：23</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><span class="text-success">同意退款</span></td>
+                    <td>觉得不错同意退款</td>
+                    <td>2017.04.25   12：56：23</td>
+                    <td>xiaoxue</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><span class="text-danger">拒绝退款</span></td>
+                    <td>觉得不行拒绝退款</td>
+                    <td>2017.04.25   12：56：23</td>
+                    <td>xiaoxue</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

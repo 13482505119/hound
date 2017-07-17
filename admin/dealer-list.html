@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <script src="../src/js/holder.min.js"></script>
+    <title>分销商管理-系统总后台</title>
+    <link href="../src/css/admin.css?v=20170713" rel="stylesheet">
+    <script>
+        var require = {
+            baseUrl: "../src/js/",
+            urlArgs: "v=20170713"
+        };
+    </script>
+    <script data-main="admin" src="../src/js/require.js"></script>
+</head>
+<body>
+<div id="container">
+    <div id="sidebar">
+        <nav class="navbar-default" role="navigation">
+            <ul class="nav metismenu">
+                <li class="nav-header">
+                    <div class="profile">
+                        <img alt="image" class="img-circle" src="http://julong.go-trip.com.cn/_test/visa/Webserver/img/background/newlist-header.png">
+                    </div>
+                    <div class="dropdown space-half">
+                        <div data-toggle="dropdown" class="dropdown-toggle" role="link">
+                            <div><strong>彭广胜</strong></div>
+                            <div class="text-muted text-xs">管理员<b class="caret"></b></div>
+                        </div>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">个人信息</a></li>
+                            <li><a href="#">修改密码</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">安全退出</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 商品管理</a>
+                    <ul class="nav collapse" aria-expanded="false">
+                        <li><a href="goods-add.html">发布商品</a></li>
+                        <li><a href="goods-sale.html">出售商品</a></li>
+                        <li><a href="goods-shelf.html">下架商品</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 订单管理</a>
+                    <ul class="nav collapse" aria-expanded="false">
+                        <li><a href="order-list.html">所有订单</a></li>
+                        <li><a href="order-complaint.html">投诉订单</a></li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="javascript:" class="has-arrow" aria-expanded="true"><i class="fa fa-th-large"></i> 分销商管理</a>
+                    <ul class="nav collapse in" aria-expanded="true">
+                        <li class="active"><a href="#">分销商管理</a></li>
+                        <li><a href="#">分销商-商品管理</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 供应商管理</a>
+                    <ul class="nav collapse" aria-expanded="false">
+                        <li><a href="#">供应商管理</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 财务管理</a>
+                    <ul class="nav collapse" aria-expanded="false">
+                        <li>
+                            <a href="#">退款订单</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 账号管理</a>
+                    <ul class="nav collapse" aria-expanded="false">
+                        <li><a href="#">账号管理</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="main" class="container">
+        <nav class="navbar">
+            <div class="container-fluid">
+                <div class="navbar-collapse">
+                    <ol class="breadcrumb">
+                        <li><a href="index.html">系统总后台</a></li>
+                        <li><a href="dealer-list.html">分销商管理</a></li>
+                        <li class="active">分销商管理</li>
+                    </ol>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" title="返回首页"><i class="fa fa-home"></i> <span class="text-muted">彭广胜，欢迎使用云签证操作平台</span></a>
+                        </li>
+                        <li>
+                            <a href="http://julong.go-trip.com.cn/submit.php/user/logout"><i class="fa fa-sign-out"></i> 退出</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <ul class="nav nav-tabs space-double">
+            <li role="presentation" class="active"><a href="dealer-list.html?status=running">运营中账号</a></li>
+            <li role="presentation"><a href="dealer-list.html?status=closed">关闭中账号</a></li>
+            <li class="nav-tabs-attach"><button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#dealerAdd"><i class="fa fa-plus"></i> 新增分销商</button></li>
+        </ul>
+
+        <!--运营中账号begin-->
+        <table class="table table-hover table-middle">
+            <thead>
+            <tr>
+                <th class="text-center" width="40"><input type="checkbox" name="" value="100"></th>
+                <th class="text-center" width="68">编号</th>
+                <th class="text-center">经销商</th>
+                <th class="text-center" width="12%">入驻时间</th>
+                <th class="text-center" width="12%">在售商品数</th>
+                <th class="text-center" width="12%">总销量</th>
+                <th class="text-center">联系方式</th>
+                <th class="text-center" width="160">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="text-center"><input type="checkbox"></td>
+                <td>001</td>
+                <td><a href="#">上海巨龙国旅</a></td>
+                <td>2017-03-26</td>
+                <td>20</td>
+                <td>666</td>
+                <td>任晓雪 15721107719</td>
+                <td>
+                    <button type="button" class="btn btn-xs btn-default">编辑</button>
+                    <button type="button" class="btn btn-xs btn-primary">查看商品</button>
+                    <button type="button" class="btn btn-xs btn-danger">关闭</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-center"><input type="checkbox"></td>
+                <td>001</td>
+                <td><a href="#">上海巨龙国旅</a></td>
+                <td>2017-03-26</td>
+                <td>20</td>
+                <td>666</td>
+                <td>任晓雪 15721107719</td>
+                <td>
+                    <button type="button" class="btn btn-xs btn-default">编辑</button>
+                    <button type="button" class="btn btn-xs btn-primary">查看商品</button>
+                    <button type="button" class="btn btn-xs btn-danger">关闭</button>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td class="text-center"><input type="checkbox"></td>
+                <td colspan="7">
+                    <div class="table-control">
+                        <div class="">
+                            <button type="button" class="btn btn-sm btn-danger">关闭账号</button>
+                        </div>
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination pagination-sm">
+                                <li class="disabled">
+                                    <a href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li>
+                                    <a href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+        <!--运营中账号end-->
+        <!--关闭中账号begin-->
+        <table class="table table-hover table-middle">
+            <thead>
+            <tr>
+                <th class="text-center" width="40"><input type="checkbox" name="" value="100"></th>
+                <th class="text-center" width="68">编号</th>
+                <th class="text-center">经销商</th>
+                <th class="text-center" width="12%">入驻时间</th>
+                <th class="text-center" width="12%">在售商品数</th>
+                <th class="text-center" width="12%">总销量</th>
+                <th class="text-center">联系方式</th>
+                <th class="text-center" width="95">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="text-center"><input type="checkbox"></td>
+                <td>001</td>
+                <td><a href="#">上海巨龙国旅</a></td>
+                <td>2017-03-26</td>
+                <td>20</td>
+                <td>666</td>
+                <td>任晓雪 15721107719</td>
+                <td>
+                    <button type="button" class="btn btn-xs btn-primary">启用</button>
+                    <button type="button" class="btn btn-xs btn-danger">删除</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-center"><input type="checkbox"></td>
+                <td>001</td>
+                <td><a href="#">上海巨龙国旅</a></td>
+                <td>2017-03-26</td>
+                <td>20</td>
+                <td>666</td>
+                <td>任晓雪 15721107719</td>
+                <td>
+                    <button type="button" class="btn btn-xs btn-primary">启用</button>
+                    <button type="button" class="btn btn-xs btn-danger">删除</button>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td class="text-center"><input type="checkbox"></td>
+                <td colspan="7">
+                    <div class="table-control">
+                        <div class="">
+                            <button type="button" class="btn btn-sm btn-primary">启用账号</button>
+                        </div>
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination pagination-sm">
+                                <li class="disabled">
+                                    <a href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li>
+                                    <a href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+        <!--关闭中账号end-->
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="dealerAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <form class="modal-content form-horizontal">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">新增分销商</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="dealerName" class="col-xs-4 control-label">商家名称</label>
+                            <div class="col-xs-8">
+                                <input type="text" class="form-control" id="dealerName" name="dealerName" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="dealerAddress" class="col-xs-4 control-label">商家地址</label>
+                            <div class="col-xs-8">
+                                <input type="text" class="form-control" id="dealerAddress" name="dealerAddress" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="contact" class="col-xs-4 control-label">联系人</label>
+                            <div class="col-xs-8">
+                                <input type="text" class="form-control" id="contact" name="contact" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="mobile" class="col-xs-4 control-label">手机号</label>
+                            <div class="col-xs-8">
+                                <input type="text" class="form-control" id="mobile" name="mobile" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading box-justify">
+                        <span>账号1</span>
+                        <i class="fa fa-remove"></i>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="accountName-1" class="col-xs-4 control-label">姓名</label>
+                                    <div class="col-xs-8">
+                                        <input type="text" class="form-control" id="accountName-1" name="accountName[]" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="accountPassword-1" class="col-xs-4 control-label">密码</label>
+                                    <div class="col-xs-8">
+                                        <input type="text" class="form-control" id="accountPassword-1" name="accountPassword[]" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="accountMobile-1" class="col-xs-4 control-label">手机号</label>
+                                    <div class="col-xs-8">
+                                        <input type="text" class="form-control" id="accountMobile-1" name="accountMobile[]" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">添加账号</button>
+                <button type="button" class="btn btn-primary">　确定　</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">　取消　</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

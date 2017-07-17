@@ -18,6 +18,12 @@ body {
 table {
     table-layout: fixed;
 }
+.text-price {
+    color: #ff5000;
+}
+.text-widened {
+    line-height: 2;
+}
 .hyphenate {
     overflow-wrap: break-word;
     word-wrap: break-word;
@@ -27,7 +33,8 @@ table {
 #container {
     display: flex;
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 1400px;
+    min-width: 1024px;
     height: 100%;
     background-color: #f5f6f8;
 }
@@ -58,6 +65,10 @@ table {
 #main .help-block {
     display: none!important;
 }
+#main .panel > table > tbody > tr > td {
+    text-align: center;
+}
+
 .form-horizontal .has-success .form-control-feedback {
     right: 10px;
 }
@@ -130,7 +141,9 @@ tfoot .pagination {
 }
 
 .media-goods {
-    min-width: 180px;
+    display: flex;
+    min-width: 220px;
+    max-width: 500px;
     font-size: 12px;
 }
 .media-goods .media-object {
@@ -155,3 +168,76 @@ tfoot .pagination {
 .media-goods .media-param > li {
     width: 50%;
 }
+.media-goods .media-body {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.form-range {
+    position: relative;
+}
+.form-range .fa-minus {
+    position: absolute;
+    right: -5px;
+    top: 10px;
+}
+
+.table-order {
+    border: 1px solid #eeeeee;
+    margin-bottom: 10px;
+}
+.table-order > thead > tr > th {
+    text-align: center;
+}
+.table-order > tbody > tr > th {
+    background-color: #EBEDF1;
+    font-weight: normal;
+}
+.table-order > thead > tr > th:nth-child(2),
+.table-order > colgroup > col:nth-child(2) {
+    width: 221px;
+}
+.table-order > thead > tr > th:nth-child(3),
+.table-order > colgroup > col:nth-child(3) {
+    width: 182px;
+}
+.table-order > thead > tr > th:nth-child(4),
+.table-order > colgroup > col:nth-child(4) {
+    width: 156px;
+}
+.table-order > tbody > tr > td {
+    border: 1px solid #eeeeee;
+    vertical-align: middle;
+}
+.table-order .list-unstyled {
+    margin-left: 20px;
+    margin-bottom: 0;
+}
+.table-order .dl-horizontal {
+    margin-bottom: 0;
+}
+.table-order .dl-horizontal > dt {
+    width: 98px;
+    font-weight: normal;
+}
+.table-order .dl-horizontal > dd {
+    margin-left: 98px;
+}
+
+.box-justify {
+    display: flex;
+    justify-content: space-between;
+}
+.alert .box-justify {
+    font-size: 14px;
+    color: #333333;
+    line-height: 30px;
+}
+
+.nav-tabs > .nav-tabs-attach {
+    float: right;
+}
+
