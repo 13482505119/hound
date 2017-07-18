@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <script src="../src/js/holder.min.js"></script>
-    <title>发布商品-系统总后台</title>
+    <title>财务管理-退款订单--系统总后台</title>
     <link href="../src/css/admin.css?v=20170713" rel="stylesheet">
     <script>
         var require = {
@@ -39,15 +39,15 @@
                     <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 商品管理</a>
                     <ul class="nav collapse" aria-expanded="false">
                         <li><a href="goods-add.html">发布商品</a></li>
-                        <li><a href="goods-sale.html">出售商品</a></li>
-                        <li><a href="goods-shelf.html">下架商品</a></li>
+                        <li><a href="goods.html?status=1">出售商品</a></li>
+                        <li><a href="goods.html?status=0">下架商品</a></li>
                     </ul>
                 </li>
                 <li class="active">
                     <a href="javascript:" class="has-arrow" aria-expanded="true"><i class="fa fa-th-large"></i> 订单管理</a>
                     <ul class="nav collapse in" aria-expanded="true">
-                        <li class="active"><a href="order-list.html">所有订单</a></li>
-                        <li><a href="order-complaint.html">投诉订单</a></li>
+                        <li><a href="order.html">所有订单</a></li>
+                        <li class="active"><a href="order-complaint.html">投诉订单</a></li>
                     </ul>
                 </li>
                 <li>
@@ -87,8 +87,8 @@
                 <div class="navbar-collapse">
                     <ol class="breadcrumb">
                         <li><a href="index.html">系统总后台</a></li>
-                        <li><a href="#">订单管理</a></li>
-                        <li class="active">所有订单</li>
+                        <li><a href="order-refund.html">财务管理</a></li>
+                        <li class="active">退款订单</li>
                     </ol>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
@@ -101,13 +101,16 @@
                 </div>
             </div>
         </nav>
-        <form class="form-horizontal" method="get" action="order-list.html">
+        <form class="form-horizontal" method="get" action="order.html">
             <div class="row">
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="orderType" class="col-xs-4 control-label">订单类型</label>
+                        <label for="orderType" class="col-xs-4 control-label">订单号</label>
                         <div class="col-xs-8">
-                            <input type="text" class="form-control" id="orderType" name="orderType" size="10">
+                            <select class="form-control" id="orderType" name="orderType">
+                                <option value="">所有订单</option>
+                                <option value="">退款中</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -186,309 +189,6 @@
             </thead>
         </table>
 
-        <!--等待买家付款begin-->
-        <table class="table table-order">
-            <colgroup><col><col><col><col></colgroup>
-            <tbody>
-            <tr>
-                <th colspan="2">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <a href="#">订单编号：201706221223123</a>
-                        </div>
-                        <div class="col-xs-6">
-                        </div>
-                    </div>
-                </th>
-                <th>买家：15721107719</th>
-                <th>分销商：巨龙</th>
-            </tr>
-            <tr>
-                <td>
-                    <div class="media media-goods">
-                        <div class="media-left">
-                            <a href="#">
-                                <img src="holder.js/66x66?theme=sky&text=Image" alt="..." class="media-object">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">¥600/套---无锡铂尔曼樱花季超值套餐（高级房+双人自助早餐+双人自助晚餐）</h4>
-                            <ul class="media-param">
-                                <li><span class="text-price">¥ 779.00</span></li>
-                                <li>x3</li>
-                            </ul>
-                        </div>
-                    </div>
-                </td>
-                <td></td>
-                <td>
-                    <div class="text-center">
-                        <strong>实付：¥6499.00</strong><br>
-                        （总佣金：¥155.00）
-                    </div>
-                </td>
-                <td>
-                    <div class="text-center">
-                        等待买家付款<br><br>
-                        <a href="#">订单详情</a>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <!--等待买家付款end-->
-        <!--已关闭（支付超时）begin-->
-        <table class="table table-order">
-            <colgroup><col><col><col><col></colgroup>
-            <tbody>
-            <tr>
-                <th colspan="2">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <a href="#">订单编号：201706221223123</a>
-                        </div>
-                        <div class="col-xs-6">
-                        </div>
-                    </div>
-                </th>
-                <th>买家：15721107719</th>
-                <th>分销商：巨龙</th>
-            </tr>
-            <tr>
-                <td>
-                    <div class="media media-goods">
-                        <div class="media-left">
-                            <a href="#">
-                                <img src="holder.js/66x66?theme=sky&text=Image" alt="..." class="media-object">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">¥600/套---无锡铂尔曼樱花季超值套餐（高级房+双人自助早餐+双人自助晚餐）</h4>
-                            <ul class="media-param">
-                                <li><span class="text-price">¥ 779.00</span></li>
-                                <li>x3</li>
-                            </ul>
-                        </div>
-                    </div>
-                </td>
-                <td></td>
-                <td>
-                    <div class="text-center">
-                        <strong>实付：¥6499.00</strong><br>
-                        （总佣金：¥155.00）
-                    </div>
-                </td>
-                <td>
-                    <div class="text-center">
-                        已关闭（支付超时）<br><br>
-                        <a href="#">订单详情</a>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <!--已关闭（支付超时）end-->
-        <!--等待买家使用begin-->
-        <table class="table table-order">
-            <colgroup><col><col><col><col></colgroup>
-            <tbody>
-            <tr>
-                <th colspan="2">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <a href="#">订单编号：201706221223123</a>
-                        </div>
-                        <div class="col-xs-6">
-                            <a href="#">交易流水号：123456789123456789</a>
-                        </div>
-                    </div>
-                </th>
-                <th>买家：15721107719</th>
-                <th>分销商：巨龙</th>
-            </tr>
-            <tr>
-                <td>
-                    <div class="media media-goods">
-                        <div class="media-left">
-                            <a href="#">
-                                <img src="holder.js/66x66?theme=sky&text=Image" alt="..." class="media-object">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">¥600/套---无锡铂尔曼樱花季超值套餐（高级房+双人自助早餐+双人自助晚餐）</h4>
-                            <ul class="media-param">
-                                <li><span class="text-price">¥ 779.00</span></li>
-                                <li>x3</li>
-                            </ul>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <ul class="list-unstyled">
-                        <li>
-                            123456789   待使用
-                        </li>
-                        <li>
-                            123456789   已使用
-                        </li>
-                        <li>
-                            123456789   待使用
-                        </li>
-                        <li>
-                            123456789   已使用
-                        </li>
-                    </ul>
-                </td>
-                <td>
-                    <div class="text-center">
-                        <strong>实付：¥6499.00</strong><br>
-                        （总佣金：¥155.00）
-                    </div>
-                </td>
-                <td>
-                    <div class="text-center">
-                        等待买家使用<br><br>
-                        <a href="#">订单详情</a>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <!--等待买家使用end-->
-        <!--已过期begin-->
-        <table class="table table-order">
-            <colgroup><col><col><col><col></colgroup>
-            <tbody>
-            <tr>
-                <th colspan="2">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <a href="#">订单编号：201706221223123</a>
-                        </div>
-                        <div class="col-xs-6">
-                            <a href="#">交易流水号：123456789123456789</a>
-                        </div>
-                    </div>
-                </th>
-                <th>买家：15721107719</th>
-                <th>分销商：巨龙</th>
-            </tr>
-            <tr>
-                <td>
-                    <div class="media media-goods">
-                        <div class="media-left">
-                            <a href="#">
-                                <img src="holder.js/66x66?theme=sky&text=Image" alt="..." class="media-object">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">¥600/套---无锡铂尔曼樱花季超值套餐（高级房+双人自助早餐+双人自助晚餐）</h4>
-                            <ul class="media-param">
-                                <li><span class="text-price">¥ 779.00</span></li>
-                                <li>x3</li>
-                            </ul>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <ul class="list-unstyled">
-                        <li>
-                            123456789   已过期
-                        </li>
-                        <li>
-                            123456789   已使用
-                        </li>
-                        <li>
-                            123456789   已过期
-                        </li>
-                        <li>
-                            123456789   已使用
-                        </li>
-                    </ul>
-                </td>
-                <td>
-                    <div class="text-center">
-                        <strong>实付：¥6499.00</strong><br>
-                        （总佣金：¥155.00）
-                    </div>
-                </td>
-                <td>
-                    <div class="text-center">
-                        已过期<br><br>
-                        <a href="#">订单详情</a>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <!--已过期end-->
-        <!--已完成（客户投诉）begin-->
-        <table class="table table-order">
-            <colgroup><col><col><col><col></colgroup>
-            <tbody>
-            <tr>
-                <th colspan="2">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <a href="#">订单编号：201706221223123</a>
-                        </div>
-                        <div class="col-xs-6">
-                            <a href="#">交易流水号：123456789123456789</a>
-                        </div>
-                    </div>
-                </th>
-                <th>买家：15721107719</th>
-                <th>分销商：巨龙</th>
-            </tr>
-            <tr>
-                <td>
-                    <div class="media media-goods">
-                        <div class="media-left">
-                            <a href="#">
-                                <img src="holder.js/66x66?theme=sky&text=Image" alt="..." class="media-object">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">¥600/套---无锡铂尔曼樱花季超值套餐（高级房+双人自助早餐+双人自助晚餐）</h4>
-                            <ul class="media-param">
-                                <li><span class="text-price">¥ 779.00</span></li>
-                                <li>x3</li>
-                            </ul>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <ul class="list-unstyled">
-                        <li>
-                            123456789   已使用
-                        </li>
-                        <li>
-                            123456789   已使用
-                        </li>
-                        <li>
-                            123456789   已使用
-                        </li>
-                        <li>
-                            123456789   已使用
-                        </li>
-                    </ul>
-                </td>
-                <td>
-                    <div class="text-center">
-                        <strong>实付：¥6499.00</strong><br>
-                        （总佣金：¥155.00）
-                    </div>
-                </td>
-                <td>
-                    <div class="text-center">
-                        已完成（<strong class="text-danger">客户投诉</strong>）<br><br>
-                        <a href="#">订单详情</a>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <!--已完成（客户投诉）end-->
         <!--退款待审核begin-->
         <table class="table table-order">
             <colgroup><col><col><col><col></colgroup>

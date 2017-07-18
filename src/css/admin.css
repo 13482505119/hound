@@ -29,6 +29,13 @@ table {
     word-wrap: break-word;
     hyphens: auto;
 }
+textarea {
+    resize: none;
+}
+.fa-plus,
+.fa-remove {
+    cursor: pointer;
+}
 
 #container {
     display: flex;
@@ -131,6 +138,7 @@ table {
 .table-middle > tbody > tr > td,
 .table-middle > tfoot > tr > td {
     vertical-align: middle;
+    text-align: center;
 }
 .table-control {
     display: flex;
@@ -145,6 +153,7 @@ tfoot .pagination {
     min-width: 220px;
     max-width: 500px;
     font-size: 12px;
+    text-align: left;
 }
 .media-goods .media-object {
     width: 66px;
@@ -239,5 +248,94 @@ tfoot .pagination {
 
 .nav-tabs > .nav-tabs-attach {
     float: right;
+}
+.dl-flex {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+}
+.dl-flex dt {
+    width: 30%;
+    text-align: right;
+    font-weight: normal;
+}
+.dl-flex dd {
+    width: 70%;
+    text-align: left;
+}
+.ul-flex {
+    display: inline-flex;
+    flex-direction: column;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+    min-width: 7em;
+    text-align: left;
+}
+
+.upload {
+    display: flex;
+    width: 100%;
+}
+.upload img {
+    display: block;
+    object-fit: cover;
+    -o-object-fit: cover;
+    width: 140px;
+    height: 140px;
+}
+.upload-thumbnail {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    border: 1px solid #999999;
+    width: 142px;
+    height: 142px;
+    text-align: center;
+}
+.swiper-container-upload {
+    flex: 1;
+    height: 142px;
+}
+.swiper-container-upload .swiper-slide {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    border: 1px solid #999999;
+    width: 142px;
+    height: 142px;
+    text-align: center;
+}
+.swiper-container-upload .swiper-pagination-progress {
+    height: 2px;
+}
+.upload .fa-remove {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    height: 20px;
+    background-color: rgba(73, 84, 105, 0.3);
+    line-height: 20px;
+}
+.upload-thumbnail:hover .fa-remove,
+.upload-thumbnail:focus .fa-remove,
+.swiper-slide:hover .fa-remove,
+.swiper-slide:focus .fa-remove {
+    display: block;
 }
 

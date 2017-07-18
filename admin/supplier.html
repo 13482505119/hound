@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <script src="../src/js/holder.min.js"></script>
-    <title>分销商管理-系统总后台</title>
+    <title>供应商管理-系统总后台</title>
     <link href="../src/css/admin.css?v=20170713" rel="stylesheet">
     <script>
         var require = {
@@ -39,28 +39,28 @@
                     <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 商品管理</a>
                     <ul class="nav collapse" aria-expanded="false">
                         <li><a href="goods-add.html">发布商品</a></li>
-                        <li><a href="goods-sale.html">出售商品</a></li>
-                        <li><a href="goods-shelf.html">下架商品</a></li>
+                        <li><a href="goods.html?status=1">出售商品</a></li>
+                        <li><a href="goods.html?status=0">下架商品</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 订单管理</a>
                     <ul class="nav collapse" aria-expanded="false">
-                        <li><a href="order-list.html">所有订单</a></li>
+                        <li><a href="order.html">所有订单</a></li>
                         <li><a href="order-complaint.html">投诉订单</a></li>
-                    </ul>
-                </li>
-                <li class="active">
-                    <a href="javascript:" class="has-arrow" aria-expanded="true"><i class="fa fa-th-large"></i> 分销商管理</a>
-                    <ul class="nav collapse in" aria-expanded="true">
-                        <li class="active"><a href="#">分销商管理</a></li>
-                        <li><a href="#">分销商-商品管理</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 供应商管理</a>
-                    <ul class="nav collapse" aria-expanded="false">
+                    <ul class="nav collapse in" aria-expanded="false">
                         <li><a href="#">供应商管理</a></li>
+                        <li><a href="#">供应商-商品管理</a></li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="javascript:" class="has-arrow" aria-expanded="true"><i class="fa fa-th-large"></i> 供应商管理</a>
+                    <ul class="nav collapse" aria-expanded="true">
+                        <li class="active"><a href="#">供应商管理</a></li>
                     </ul>
                 </li>
                 <li>
@@ -87,8 +87,8 @@
                 <div class="navbar-collapse">
                     <ol class="breadcrumb">
                         <li><a href="index.html">系统总后台</a></li>
-                        <li><a href="dealer-list.html">分销商管理</a></li>
-                        <li class="active">分销商管理</li>
+                        <li><a href="supplier.html">供应商管理</a></li>
+                        <li class="active">供应商管理</li>
                     </ol>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
@@ -103,9 +103,9 @@
         </nav>
 
         <ul class="nav nav-tabs space-double">
-            <li role="presentation" class="active"><a href="dealer-list.html?status=running">运营中账号</a></li>
-            <li role="presentation"><a href="dealer-list.html?status=closed">关闭中账号</a></li>
-            <li class="nav-tabs-attach"><button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#dealerAdd"><i class="fa fa-plus"></i> 新增分销商</button></li>
+            <li role="presentation" class="active"><a href="dealer.html?status=1">运营中账号</a></li>
+            <li role="presentation"><a href="dealer.html?status=0">关闭中账号</a></li>
+            <li class="nav-tabs-attach"><button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#dealerAdd"><i class="fa fa-plus"></i> 新增供应商</button></li>
         </ul>
 
         <!--运营中账号begin-->
@@ -114,51 +114,70 @@
             <tr>
                 <th class="text-center" width="40"><input type="checkbox" name="" value="100"></th>
                 <th class="text-center" width="68">编号</th>
-                <th class="text-center">经销商</th>
+                <th class="text-center">供应商</th>
                 <th class="text-center" width="12%">入驻时间</th>
                 <th class="text-center" width="12%">在售商品数</th>
-                <th class="text-center" width="12%">总销量</th>
-                <th class="text-center">联系方式</th>
-                <th class="text-center" width="160">操作</th>
+                <th class="text-center">商家地址</th>
+                <th class="text-center" width="18%">营业时间</th>
+                <th class="text-center" width="12%">联系方式</th>
+                <th class="text-center" width="95">操作</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td class="text-center"><input type="checkbox"></td>
+                <td class="text-center"><input name="ids[]" type="checkbox"></td>
                 <td>001</td>
-                <td><a href="#">上海巨龙国旅</a></td>
+                <td><a href="#">上海铂尔曼酒店</a></td>
                 <td>2017-03-26</td>
                 <td>20</td>
-                <td>666</td>
-                <td>任晓雪 15721107719</td>
                 <td>
-                    <button type="button" class="btn btn-xs btn-default">编辑</button>
-                    <button type="button" class="btn btn-xs btn-primary">查看商品</button>
-                    <button type="button" class="btn btn-xs btn-danger">关闭</button>
+                    <div class="text-left">上海市普陀区铜川路70号新城市中心广场2007</div>
+                </td>
+                <td>
+                    <ul class="ul-flex">
+                        <li>工作日</li>
+                        <li>8:00-20:30</li>
+                        <li>节假日</li>
+                        <li>10:00-18:00</li>
+                    </ul>
+                </td>
+                <td>任晓雪<br>15721107719</td>
+                <td>
+                    <button type="button" class="btn btn-xs btn-primary">编辑</button>
+                    <button type="button" class="btn btn-xs btn-warning">关闭</button>
                 </td>
             </tr>
             <tr>
-                <td class="text-center"><input type="checkbox"></td>
+                <td class="text-center"><input name="ids[]" type="checkbox"></td>
                 <td>001</td>
-                <td><a href="#">上海巨龙国旅</a></td>
+                <td><a href="#">上海铂尔曼酒店</a></td>
                 <td>2017-03-26</td>
                 <td>20</td>
-                <td>666</td>
-                <td>任晓雪 15721107719</td>
                 <td>
-                    <button type="button" class="btn btn-xs btn-default">编辑</button>
-                    <button type="button" class="btn btn-xs btn-primary">查看商品</button>
-                    <button type="button" class="btn btn-xs btn-danger">关闭</button>
+                    <div class="text-left">上海市普陀区铜川路70号新城市中心广场2007</div>
+                </td>
+                <td>
+                    <ul class="ul-flex">
+                        <li>工作日</li>
+                        <li>8:00-20:30</li>
+                        <li>双休日及节假日</li>
+                        <li>10:00-18:00</li>
+                    </ul>
+                </td>
+                <td>任晓雪<br>15721107719</td>
+                <td>
+                    <button type="button" class="btn btn-xs btn-primary">编辑</button>
+                    <button type="button" class="btn btn-xs btn-warning">关闭</button>
                 </td>
             </tr>
             </tbody>
             <tfoot>
             <tr>
-                <td class="text-center"><input type="checkbox"></td>
-                <td colspan="7">
+                <td class="text-center"><input name="ids[]" type="checkbox"></td>
+                <td colspan="8">
                     <div class="table-control">
                         <div class="">
-                            <button type="button" class="btn btn-sm btn-danger">关闭账号</button>
+                            <button type="button" class="btn btn-sm btn-warning">关闭账号</button>
                         </div>
                         <nav aria-label="Page navigation">
                             <ul class="pagination pagination-sm">
@@ -185,55 +204,77 @@
             </tfoot>
         </table>
         <!--运营中账号end-->
+
         <!--关闭中账号begin-->
         <table class="table table-hover table-middle">
             <thead>
             <tr>
                 <th class="text-center" width="40"><input type="checkbox" name="" value="100"></th>
                 <th class="text-center" width="68">编号</th>
-                <th class="text-center">经销商</th>
+                <th class="text-center">供应商</th>
                 <th class="text-center" width="12%">入驻时间</th>
                 <th class="text-center" width="12%">在售商品数</th>
-                <th class="text-center" width="12%">总销量</th>
-                <th class="text-center">联系方式</th>
+                <th class="text-center">商家地址</th>
+                <th class="text-center" width="18%">营业时间</th>
+                <th class="text-center" width="12%">联系方式</th>
                 <th class="text-center" width="95">操作</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td class="text-center"><input type="checkbox"></td>
+                <td class="text-center"><input name="ids[]" type="checkbox"></td>
                 <td>001</td>
-                <td><a href="#">上海巨龙国旅</a></td>
+                <td><a href="#">上海铂尔曼酒店</a></td>
                 <td>2017-03-26</td>
                 <td>20</td>
-                <td>666</td>
-                <td>任晓雪 15721107719</td>
                 <td>
-                    <button type="button" class="btn btn-xs btn-primary">启用</button>
+                    <div class="text-left">上海市普陀区铜川路70号新城市中心广场2007</div>
+                </td>
+                <td>
+                    <ul class="ul-flex">
+                        <li>工作日</li>
+                        <li>8:00-20:30</li>
+                        <li>节假日</li>
+                        <li>10:00-18:00</li>
+                    </ul>
+                </td>
+                <td>任晓雪<br>15721107719</td>
+                <td>
+                    <button type="button" class="btn btn-xs btn-success">启用</button>
                     <button type="button" class="btn btn-xs btn-danger">删除</button>
                 </td>
             </tr>
             <tr>
-                <td class="text-center"><input type="checkbox"></td>
+                <td class="text-center"><input name="ids[]" type="checkbox"></td>
                 <td>001</td>
-                <td><a href="#">上海巨龙国旅</a></td>
+                <td><a href="#">上海铂尔曼酒店</a></td>
                 <td>2017-03-26</td>
                 <td>20</td>
-                <td>666</td>
-                <td>任晓雪 15721107719</td>
                 <td>
-                    <button type="button" class="btn btn-xs btn-primary">启用</button>
+                    <div class="text-left">上海市普陀区铜川路70号新城市中心广场2007</div>
+                </td>
+                <td>
+                    <ul class="ul-flex">
+                        <li>工作日</li>
+                        <li>8:00-20:30</li>
+                        <li>双休日及节假日</li>
+                        <li>10:00-18:00</li>
+                    </ul>
+                </td>
+                <td>任晓雪<br>15721107719</td>
+                <td>
+                    <button type="button" class="btn btn-xs btn-success">启用</button>
                     <button type="button" class="btn btn-xs btn-danger">删除</button>
                 </td>
             </tr>
             </tbody>
             <tfoot>
             <tr>
-                <td class="text-center"><input type="checkbox"></td>
-                <td colspan="7">
+                <td class="text-center"><input name="ids[]" type="checkbox"></td>
+                <td colspan="8">
                     <div class="table-control">
                         <div class="">
-                            <button type="button" class="btn btn-sm btn-primary">启用账号</button>
+                            <button type="button" class="btn btn-sm btn-success">启用账号</button>
                         </div>
                         <nav aria-label="Page navigation">
                             <ul class="pagination pagination-sm">
@@ -268,7 +309,7 @@
         <form class="modal-content form-horizontal">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">新增分销商</h4>
+                <h4 class="modal-title" id="myModalLabel">新增供应商</h4>
             </div>
             <div class="modal-body">
                 <div class="row">

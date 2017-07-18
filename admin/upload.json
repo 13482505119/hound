@@ -1,0 +1,6 @@
+{
+  "code": 200,
+  "msg": "上传完成",
+  "data": ["../src/images/hound.jpg", "../src/images/hound.jpg", "../src/images/hound.jpg"],
+  "redirect": ""
+}

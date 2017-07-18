@@ -57,22 +57,34 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate", "cookie"]
         },
         //SweetAlert2
         swal: sweetAlert,
-        alert: function (title, text) {
-            this.swal(title, text, "warning");
-        },
-        success: function (title, text, timer) {
+        _swal: function (title, text, type, timer, ok) {
+            if ($.isFunction(timer)) {
+                ok = timer;
+                timer = null;
+            }
             this.swal({
+                type: type,
                 title: title,
                 text: text,
-                type: "success",
-                timer: timer
-            }).then(function () {}, function () {});
+                timer: $.isNumeric(timer) ? parseInt(timer) : null
+            }).then(function () {
+                $.isFunction(ok) && ok();
+            }, function () {});
         },
-        error: function (title, text) {
-            this.swal(title, text, "error");
+        alert: function (title, text, timer) {
+            //this.swal(title, text, "warning");
+            this._swal(title, text, "warning", timer);
         },
-        info: function (title, text) {
-            this.swal(title, text, "info");
+        success: function (title, text, timer) {
+            this._swal(title, text, "success", timer);
+        },
+        error: function (title, text, timer) {
+            //this.swal(title, text, "error");
+            this._swal(title, text, "error", timer);
+        },
+        info: function (title, text, timer) {
+            //this.swal(title, text, "info");
+            this._swal(title, text, "info", timer);
         },
         loading: function (xhr) {
             var _this = this;
@@ -87,8 +99,8 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate", "cookie"]
             }).then(
                 function () {},
                 function (dismiss) {
-                    if (dismiss === 'timer') {
-                        xhr && xhr.abort();
+                    if (dismiss === 'timer' && xhr) {
+                        xhr.abort();
                         _this.error(_this.messages.timeout);
                     }
                 }
