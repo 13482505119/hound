@@ -1,6 +1,35 @@
 {
-  "code": 200,
-  "msg": "",
-  "data": {"name": "任晓雪", "password": "123456", "mobile": "15721107719"},
-  "redirect": ""
+    "code": 200,
+    "msg": "",
+    "data": {
+
+        "dealerName": "上海巨龙国旅",
+        "address": "上海市宝山区松兰路1166弄113",
+        "linkman": "",
+        "mobile": "",
+        "accounts": [
+            {
+                "name": "任晓雪",
+                "password": "123456",
+                "mobile": "15721107719"
+            },
+            {
+                "name": "任晓雪",
+                "password": "123456",
+                "mobile": "15721107719"
+            }
+        ],
+
+        "supplierName": "上海巨龙国旅",
+        "workingStart": "08:00",
+        "workingEnd": "20:30",
+        "restStart": "10:00",
+        "restEnd": "18:00",
+
+        "accountName": "任晓雪",
+        "name": "",
+        "password": "",
+        "authority": 2
+    },
+    "redirect": ""
 }

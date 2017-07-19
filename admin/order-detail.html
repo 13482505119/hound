@@ -118,11 +118,56 @@
 
         <div class="alert alert-warning" role="alert">
             <div class="box-justify">
+                <div class="">等待买家付款</div>
+                <div class="">
+                    <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#orderClose">关闭订单</button>
+                </div>
+            </div>
+        </div>
+        <div class="alert alert-warning" role="alert">
+            <div class="box-justify">
                 <div class="">等待买家使用</div>
                 <div class="">
-                    <button type="submit" class="btn btn-sm btn-info">核销</button>
-                    <button type="submit" class="btn btn-sm btn-info">申请退款</button>
+                    <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#orderCancel">核销</button>
+                    <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#orderRefundApply">申请退款</button>
                 </div>
+            </div>
+        </div>
+        <div class="alert alert-warning" role="alert">
+            <div class="box-justify">
+                <div class="">已完成（客户投诉）</div>
+            </div>
+        </div>
+        <div class="alert alert-warning" role="alert">
+            <div class="box-justify">
+                <div class="">已过期</div>
+                <div class="">
+                    <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#orderRefundApply">申请退款</button>
+                </div>
+            </div>
+        </div>
+        <div class="alert alert-warning" role="alert">
+            <div class="box-justify">
+                <div class="">退款待审核</div>
+                <div class="">
+                    <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#orderRefundAgree">同意退款</button>
+                    <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#orderRefundRefuse">拒绝退款</button>
+                </div>
+            </div>
+        </div>
+        <div class="alert alert-warning" role="alert">
+            <div class="box-justify">
+                <div class="">已关闭（超时未支付）</div>
+            </div>
+        </div>
+        <div class="alert alert-warning" role="alert">
+            <div class="box-justify">
+                <div class="">已关闭（退款成功）</div>
+            </div>
+        </div>
+        <div class="alert alert-warning" role="alert">
+            <div class="box-justify">
+                <div class="">退款失败</div>
             </div>
         </div>
 
@@ -309,6 +354,126 @@
                 </tbody>
             </table>
         </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="orderClose" tabindex="-1" role="dialog" aria-labelledby="myOrderClose">
+    <div class="modal-dialog" role="document">
+        <form class="modal-content" data-validate="true" method="post" action="success.json">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myOrderClose">关闭订单</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="sr-only">请填写备注：</label>
+                    <input type="text" class="form-control" name="remark" placeholder="备注" maxlength="100">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-click="ajaxSubmit">确定关闭</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">　取消　</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal fade" id="orderCancel" tabindex="-1" role="dialog" aria-labelledby="myOrderCancel">
+    <div class="modal-dialog" role="document">
+        <form class="modal-content" data-validate="true" method="post" action="success.json">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myOrderCancel">商品核销</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">消费密码</span>
+                        <select name="code" class="form-control">
+                            <option value="123456789">123456789</option>
+                            <option value="123456789">123456789</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only">请填写备注：</label>
+                    <input type="text" class="form-control" name="remark" placeholder="备注" maxlength="100">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-click="ajaxSubmit">确定核销</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">　取消　</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal fade" id="orderRefundApply" tabindex="-1" role="dialog" aria-labelledby="myOrderRefundApply">
+    <div class="modal-dialog" role="document">
+        <form class="modal-content" data-validate="true" method="post" action="success.json">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myOrderRefundApply">退款</h4>
+            </div>
+            <div class="modal-body">
+                <dl class="dl-horizontal">
+                    <dt>商品名称：</dt>
+                    <dd>上海铂尔曼酒店双人自助</dd>
+                    <dt>退款数量：</dt>
+                    <dd>2</dd>
+                    <dt>退款金额：</dt>
+                    <dd>¥100</dd>
+                    <dt>退款手续费：</dt>
+                    <dd>¥56</dd>
+                </dl>
+                <div class="form-group">
+                    <label class="sr-only">请填写备注：</label>
+                    <input type="text" class="form-control" name="remark" placeholder="备注" maxlength="100">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-click="ajaxSubmit">申请退款</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">　取消　</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal fade" id="orderRefundAgree" tabindex="-1" role="dialog" aria-labelledby="myOrderRefundAgree">
+    <div class="modal-dialog" role="document">
+        <form class="modal-content" data-validate="true" method="post" action="success.json">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myOrderRefundAgree">同意退款</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="sr-only">请填写备注：</label>
+                    <input type="text" class="form-control" name="remark" placeholder="请填写原因" maxlength="100" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-click="ajaxSubmit">　确定　</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">　取消　</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal fade" id="orderRefundRefuse" tabindex="-1" role="dialog" aria-labelledby="myOrderRefundRefuse">
+    <div class="modal-dialog" role="document">
+        <form class="modal-content" data-validate="true" method="post" action="success.json">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myOrderRefundRefuse">拒绝退款</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="sr-only">请填写备注：</label>
+                    <input type="text" class="form-control" name="remark" placeholder="请填写原因" maxlength="100" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-click="ajaxSubmit">　确定　</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">　取消　</button>
+            </div>
+        </form>
     </div>
 </div>
 </body>

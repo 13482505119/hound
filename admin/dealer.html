@@ -105,10 +105,18 @@
         <ul class="nav nav-tabs space-double">
             <li role="presentation" class="active"><a href="dealer.html?status=1">运营中账号</a></li>
             <li role="presentation"><a href="dealer.html?status=0">关闭中账号</a></li>
-            <li class="nav-tabs-attach"><button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#dealerAdd"><i class="fa fa-plus"></i> 新增分销商</button></li>
+            <li class="nav-tabs-attach"><button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modalAdd"><i class="fa fa-plus"></i> 新增分销商</button></li>
         </ul>
 
         <!--运营中账号begin-->
+        <!--
+        data-table="true" 数据表格模式
+        data-primary="account.json" 编辑请求接口
+        data-default="dealer-goods.html" 查看页面地址
+        data-warning="success.json" 关闭接口（刷新页面）
+        data-danger="success.json" 删除接口（刷新页面）
+        data-param='{"mode":"mode"}' 公用请求参数
+        -->
         <table class="table table-hover table-middle" data-table="true" data-primary="account.json" data-default="dealer-goods.html" data-warning="success.json" data-param='{"mode":"mode"}'>
             <thead>
             <tr>
@@ -187,7 +195,7 @@
         <!--运营中账号end-->
 
         <!--关闭中账号begin-->
-        <table class="table table-hover table-middle">
+        <table class="table table-hover table-middle" data-table="true" data-success="success.json" data-danger="success.json" data-param='{"mode":"mode"}'>
             <thead>
             <tr>
                 <th class="text-center" width="40"><input type="checkbox" name="" value="100"></th>
@@ -264,9 +272,9 @@
     </div>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="dealerAdd" tabindex="-1" role="dialog" aria-labelledby="myDealerAdd">
+<div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="myDealerAdd">
     <div class="modal-dialog" role="document">
-        <form class="modal-content form-horizontal">
+        <form class="modal-content form-horizontal" data-validate="true">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myDealerAdd">新增分销商</h4>
@@ -275,17 +283,17 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label class="col-xs-4 control-label">商家名称</label>
-                            <div class="col-xs-8">
+                            <label class="col-xs-3 control-label">商家名称</label>
+                            <div class="col-xs-9">
                                 <input type="text" class="form-control" name="dealerName" required>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label class="col-xs-4 control-label">商家地址</label>
-                            <div class="col-xs-8">
-                                <input type="text" class="form-control" name="dealerAddress" required>
+                            <label class="col-xs-3 control-label">商家地址</label>
+                            <div class="col-xs-9">
+                                <input type="text" class="form-control" name="address" required>
                             </div>
                         </div>
                     </div>
@@ -293,17 +301,17 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label class="col-xs-4 control-label">联系人</label>
-                            <div class="col-xs-8">
-                                <input type="text" class="form-control" name="contact" required>
+                            <label class="col-xs-3 control-label">联系人</label>
+                            <div class="col-xs-9">
+                                <input type="text" class="form-control" name="linkman">
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label class="col-xs-4 control-label">手机号</label>
-                            <div class="col-xs-8">
-                                <input type="text" class="form-control" name="mobile" required>
+                            <label class="col-xs-3 control-label">手机号</label>
+                            <div class="col-xs-9">
+                                <input type="text" class="form-control" name="mobile">
                             </div>
                         </div>
                     </div>
@@ -346,34 +354,34 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-info">添加账号</button>
-                <button type="button" class="btn btn-primary">　确定　</button>
+                <button type="button" class="btn btn-primary" data-click="ajaxSubmit">　确定　</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">　取消　</button>
             </div>
         </form>
     </div>
 </div>
-<div class="modal fade" id="dealerModify" tabindex="-1" role="dialog" aria-labelledby="myDealerModify">
+<div class="modal fade" id="modalModify" tabindex="-1" role="dialog" aria-labelledby="myDealerModify">
     <div class="modal-dialog" role="document">
-        <form class="modal-content form-horizontal">
+        <form class="modal-content form-horizontal" data-validate="true">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myDealerModify">新增分销商</h4>
+                <h4 class="modal-title" id="myDealerModify">编辑分销商</h4>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label class="col-xs-4 control-label">商家名称</label>
-                            <div class="col-xs-8">
+                            <label class="col-xs-3 control-label">商家名称</label>
+                            <div class="col-xs-9">
                                 <input type="text" class="form-control" name="dealerName" required>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label class="col-xs-4 control-label">商家地址</label>
-                            <div class="col-xs-8">
-                                <input type="text" class="form-control" name="dealerAddress" required>
+                            <label class="col-xs-3 control-label">商家地址</label>
+                            <div class="col-xs-9">
+                                <input type="text" class="form-control" name="address" required>
                             </div>
                         </div>
                     </div>
@@ -381,17 +389,17 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label class="col-xs-4 control-label">联系人</label>
-                            <div class="col-xs-8">
-                                <input type="text" class="form-control" name="contact" required>
+                            <label class="col-xs-3 control-label">联系人</label>
+                            <div class="col-xs-9">
+                                <input type="text" class="form-control" name="linkman">
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label class="col-xs-4 control-label">手机号</label>
-                            <div class="col-xs-8">
-                                <input type="text" class="form-control" name="mobile" required>
+                            <label class="col-xs-3 control-label">手机号</label>
+                            <div class="col-xs-9">
+                                <input type="text" class="form-control" name="mobile">
                             </div>
                         </div>
                     </div>
@@ -401,7 +409,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-info">添加账号</button>
-                <button type="button" class="btn btn-primary">　确定　</button>
+                <button type="button" class="btn btn-primary" data-click="ajaxSubmit">　确定　</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">　取消　</button>
             </div>
         </form>

@@ -105,11 +105,11 @@
         <ul class="nav nav-tabs space-double">
             <li role="presentation" class="active"><a href="account.html?status=1">运营中账号</a></li>
             <li role="presentation"><a href="account.html?status=0">关闭中账号</a></li>
-            <li class="nav-tabs-attach"><button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#accountAdd"><i class="fa fa-plus"></i> 新增账号</button></li>
+            <li class="nav-tabs-attach"><button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modalAdd"><i class="fa fa-plus"></i> 新增账号</button></li>
         </ul>
 
         <!--运营中账号begin-->
-        <table class="table table-hover table-middle">
+        <table class="table table-hover table-middle" data-table="true" data-primary="account.json" data-warning="success.json" data-param='{"mode":"mode"}'>
             <thead>
             <tr>
                 <th class="text-center" width="40"><input type="checkbox" name="" value="100"></th>
@@ -201,7 +201,7 @@
         <!--运营中账号end-->
 
         <!--关闭中账号begin-->
-        <table class="table table-hover table-middle">
+        <table class="table table-hover table-middle" data-table="true" data-success="success.json" data-danger="success.json" data-param='{"mode":"mode"}'>
             <thead>
             <tr>
                 <th class="text-center" width="40"><input type="checkbox" name="" value="100"></th>
@@ -291,6 +291,104 @@
             </tfoot>
         </table>
         <!--关闭中账号end-->
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="myAccountAdd">
+    <div class="modal-dialog" role="document">
+        <form class="modal-content form-horizontal" data-validate="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myAccountAdd">新增账号</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">姓名</label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control" name="accountName" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">登录账号</label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control" name="name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">密码</label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control" name="password" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">操作权限</label>
+                    <div class="col-xs-8">
+                        <label class="radio-inline">
+                            <input type="radio" name="authority" value="1" checked> 客服
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="authority" value="2"> 财务
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="authority" value="3"> 管理员
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-click="ajaxSubmit">　确定　</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">　取消　</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal fade" id="modalModify" tabindex="-1" role="dialog" aria-labelledby="myAccountModify">
+    <div class="modal-dialog" role="document">
+        <form class="modal-content form-horizontal" data-validate="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myAccountModify">编辑账号</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">姓名</label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control" name="accountName" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">登录账号</label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control" name="name" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">密码</label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control" name="password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">操作权限</label>
+                    <div class="col-xs-8">
+                        <label class="radio-inline">
+                            <input type="radio" name="authority" value="1" checked> 客服
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="authority" value="2"> 财务
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="authority" value="3"> 管理员
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info">添加账号</button>
+                <button type="button" class="btn btn-primary" data-click="ajaxSubmit">　确定　</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">　取消　</button>
+            </div>
+        </form>
     </div>
 </div>
 </body>

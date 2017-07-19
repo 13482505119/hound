@@ -137,7 +137,7 @@ require(["hound", "bootstrap", "metisMenu"], function(hound) {
     });
 
     //添加经销商
-    $("#dealerAdd").each(function () {
+    $("#modalAdd").each(function () {
         var $this = $(this),
             $accountArea = $this.find(".accountArea"),
             index = $accountArea.children().length,
@@ -149,13 +149,12 @@ require(["hound", "bootstrap", "metisMenu"], function(hound) {
             $(this).closest(".panel").remove();
         });
     });
-    $("#dealerModify").each(function () {
+    $("#modalModify").each(function () {
         var $this = $(this),
             $accountArea = $this.find(".accountArea"),
-            index = $accountArea.children().length,
             account = $("#account").html();
         $this.on("click", ".btn-info", function () {
-            index++;
+            var index = $accountArea.children().length + 1;
             $accountArea.append($(account.replace(/##/g, index)));
         }).on("click", ".fa-remove", function () {
             $(this).closest(".panel").remove();
@@ -175,31 +174,104 @@ require(["hound", "bootstrap", "metisMenu"], function(hound) {
             //弹出编辑
             var $this = $(this);
             hound.post(data.primary, parseParam(data.param, $this), function (json) {
-                console.log(json);
-                $('#dealerModify').modal({
-                    keyboard: false
-                })
+                var $modify = $('#modalModify'),
+                    $accountArea = $modify.find(".accountArea").empty(),
+                    account = $("#account").html();
+
+                if ($modify.find('input[name="accountName"]').length == 1) {
+                    $modify.find('input[name="accountName"]').val(json.data.accountName);
+                    $modify.find('input[name="name"]').val(json.data.name);
+                    $modify.find('input[name="password"]').val(json.data.password);
+                    $modify.find('input[name="authority"][value="' + json.data.authority + '"]').prop("checked", true);
+                    $modify.modal();
+                    return;
+                } else if ($modify.find('input[name="dealerName"]').length == 1) {
+                    $modify.find('input[name="dealerName"]').val(json.data.dealerName);
+                } else if ($modify.find('input[name="supplierName"]').length == 1) {
+                    $modify.find('input[name="supplierName"]').val(json.data.supplierName);
+                    $modify.find('input[name="workingStart"]').val(json.data.workingStart);
+                    $modify.find('input[name="workingEnd"]').val(json.data.workingEnd);
+                    $modify.find('input[name="restStart"]').val(json.data.restStart);
+                    $modify.find('input[name="restEnd"]').val(json.data.restEnd);
+                }
+                $modify.find('input[name="address"]').val(json.data.address);
+                $modify.find('input[name="linkman"]').val(json.data.linkman);
+                $modify.find('input[name="mobile"]').val(json.data.mobile);
+
+                $.each(json.data.accounts, function (i, n) {
+                    var $account = $(account.replace(/##/g, i+1));
+                    $account.find('input[name="accountName[]"]').val(n.name);
+                    $account.find('input[name="accountPassword[]"]').val(n.password);
+                    $account.find('input[name="accountMobile[]"]').val(n.mobile);
+                    $accountArea.append($account);
+                });
+
+                $modify.modal();
             });
         }).on("click", ".btn-warning", function () {
             var $this = $(this);
             if ($this.hasClass("btn-sm")) {
                 //批量关闭
-
+                var $ids = $this.closest("table").find("tbody input:checkbox:checked");
+                if ($ids.length == 0) {
+                    hound.alert("请选择需要关闭的账号！", "");
+                } else {
+                    hound.hsa("确认要关闭已选择账号吗？", "", "info", function () {
+                        var param = $.extend({"ids": []}, data.param);
+                        $.each($ids.serializeArray(), function (i, n) {
+                            param.ids.push(n.value);
+                        });
+                        hound.post(data.warning, param);
+                    });
+                }
             } else {
                 //关闭
-                hound._swal("确认关闭吗？", "", "info", function () {
+                hound.hsa("确认关闭吗？", "", "info", function () {
                     hound.post(data.primary, parseParam(data.param, $this));
+                });
+            }
+        }).on("click", ".btn-success", function () {
+            var $this = $(this);
+            if ($this.hasClass("btn-sm")) {
+                //批量启用
+                var $ids = $this.closest("table").find("tbody input:checkbox:checked");
+                if ($ids.length == 0) {
+                    hound.alert("请选择需要启用的账号！", "");
+                } else {
+                    hound.hsa("确认要启用已选择账号吗？", "", "info", function () {
+                        var param = $.extend({"ids": []}, data.param);
+                        $.each($ids.serializeArray(), function (i, n) {
+                            param.ids.push(n.value);
+                        });
+                        hound.post(data.success, param);
+                    });
+                }
+            } else {
+                //启用
+                hound.hsa("确认启用吗？", "", "info", function () {
+                    hound.post(data.success, parseParam(data.param, $this));
                 });
             }
         }).on("click", ".btn-danger", function () {
             var $this = $(this);
             if ($this.hasClass("btn-sm")) {
                 //批量删除
-
+                var $ids = $this.closest("table").find("tbody input:checkbox:checked");
+                if ($ids.length == 0) {
+                    hound.alert("请选择需要删除的账号！", "");
+                } else {
+                    hound.hsa("确认要删除已选择账号吗？", "", "info", function () {
+                        var param = $.extend({"ids": []}, data.param);
+                        $.each($ids.serializeArray(), function (i, n) {
+                            param.ids.push(n.value);
+                        });
+                        hound.post(data.danger, param);
+                    });
+                }
             } else {
                 //关闭
-                hound._swal("确认删除吗？", "", "info", function () {
-                    hound.post(data.primary, parseParam(data.param, $this));
+                hound.hsa("确认删除吗？", "", "info", function () {
+                    hound.post(data.danger, parseParam(data.param, $this));
                 });
             }
         });
@@ -210,4 +282,9 @@ require(["hound", "bootstrap", "metisMenu"], function(hound) {
             id: $e.closest("tr").data("id")
         }, param));
     }
+
+    //订单操作
+    /*$(".alert-warning").on("click", ".btn", function () {
+
+    })*/
 });

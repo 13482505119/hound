@@ -105,11 +105,19 @@
         <ul class="nav nav-tabs space-double">
             <li role="presentation" class="active"><a href="dealer.html?status=1">运营中账号</a></li>
             <li role="presentation"><a href="dealer.html?status=0">关闭中账号</a></li>
-            <li class="nav-tabs-attach"><button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#dealerAdd"><i class="fa fa-plus"></i> 新增供应商</button></li>
+            <li class="nav-tabs-attach"><button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modalAdd"><i class="fa fa-plus"></i> 新增供应商</button></li>
         </ul>
 
         <!--运营中账号begin-->
-        <table class="table table-hover table-middle">
+        <!--
+        data-table="true" 数据表格模式
+        data-primary="account.json" 编辑请求接口
+        data-default="dealer-goods.html" 查看页面地址
+        data-warning="success.json" 关闭接口（刷新页面）
+        data-danger="success.json" 删除接口（刷新页面）
+        data-param='{"mode":"mode"}' 公用请求参数
+        -->
+        <table class="table table-hover table-middle" data-table="true" data-primary="account.json" data-warning="success.json" data-param='{"mode":"mode"}'>
             <thead>
             <tr>
                 <th class="text-center" width="40"><input type="checkbox" name="" value="100"></th>
@@ -206,7 +214,7 @@
         <!--运营中账号end-->
 
         <!--关闭中账号begin-->
-        <table class="table table-hover table-middle">
+        <table class="table table-hover table-middle" data-table="true" data-success="success.json" data-danger="success.json" data-param='{"mode":"mode"}'>
             <thead>
             <tr>
                 <th class="text-center" width="40"><input type="checkbox" name="" value="100"></th>
@@ -304,28 +312,35 @@
     </div>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="dealerAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="mySupplierAdd">
     <div class="modal-dialog" role="document">
         <form class="modal-content form-horizontal">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">新增供应商</h4>
+                <h4 class="modal-title" id="mySupplierAdd">新增供应商</h4>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="dealerName" class="col-xs-4 control-label">商家名称</label>
-                            <div class="col-xs-8">
-                                <input type="text" class="form-control" id="dealerName" name="dealerName" required>
+                            <label class="col-xs-3 control-label">商家名称</label>
+                            <div class="col-xs-9">
+                                <input type="text" class="form-control" name="supplierName" required>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="dealerAddress" class="col-xs-4 control-label">商家地址</label>
-                            <div class="col-xs-8">
-                                <input type="text" class="form-control" id="dealerAddress" name="dealerAddress" required>
+                            <label class="col-xs-3 control-label">营业时间</label>
+                            <div class="col-xs-6 form-range">
+                                <div class="input-group">
+                                    <span class="input-group-addon">工作日</span>
+                                    <input type="time" class="form-control" name="workingStart">
+                                </div>
+                                <i class="fa fa-minus"></i>
+                            </div>
+                            <div class="col-xs-3">
+                                <input type="time" class="form-control" name="workingEnd">
                             </div>
                         </div>
                     </div>
@@ -333,49 +348,74 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="contact" class="col-xs-4 control-label">联系人</label>
-                            <div class="col-xs-8">
-                                <input type="text" class="form-control" id="contact" name="contact" required>
+                            <label class="col-xs-3 control-label">商家地址</label>
+                            <div class="col-xs-9">
+                                <input type="text" class="form-control" name="address" required>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="mobile" class="col-xs-4 control-label">手机号</label>
-                            <div class="col-xs-8">
-                                <input type="text" class="form-control" id="mobile" name="mobile" required>
+                            <div class="col-xs-6 col-xs-offset-3 form-range">
+                                <div class="input-group">
+                                    <span class="input-group-addon">休息日</span>
+                                    <input type="time" class="form-control" name="restStart">
+                                </div>
+                                <i class="fa fa-minus"></i>
+                            </div>
+                            <div class="col-xs-3">
+                                <input type="time" class="form-control" name="restEnd">
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading box-justify">
-                        <span>账号1</span>
-                        <i class="fa fa-remove"></i>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">联系人</label>
+                            <div class="col-xs-9">
+                                <input type="text" class="form-control" name="linkman">
+                            </div>
+                        </div>
                     </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label for="accountName-1" class="col-xs-4 control-label">姓名</label>
-                                    <div class="col-xs-8">
-                                        <input type="text" class="form-control" id="accountName-1" name="accountName[]" required>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">手机号</label>
+                            <div class="col-xs-9">
+                                <input type="text" class="form-control" name="mobile">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accountArea">
+                    <div class="panel panel-default">
+                        <div class="panel-heading box-justify">
+                            <span>账号1</span>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="col-xs-4 control-label">姓名</label>
+                                        <div class="col-xs-8">
+                                            <input type="text" class="form-control" name="accountName[]">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label for="accountPassword-1" class="col-xs-4 control-label">密码</label>
-                                    <div class="col-xs-8">
-                                        <input type="text" class="form-control" id="accountPassword-1" name="accountPassword[]" required>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="col-xs-4 control-label">密码</label>
+                                        <div class="col-xs-8">
+                                            <input type="text" class="form-control" name="accountPassword[]">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label for="accountMobile-1" class="col-xs-4 control-label">手机号</label>
-                                    <div class="col-xs-8">
-                                        <input type="text" class="form-control" id="accountMobile-1" name="accountMobile[]" required>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="col-xs-4 control-label">手机号</label>
+                                        <div class="col-xs-8">
+                                            <input type="text" class="form-control" name="accountMobile[]">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -384,11 +424,133 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">添加账号</button>
+                <button type="button" class="btn btn-info">添加账号</button>
                 <button type="button" class="btn btn-primary">　确定　</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">　取消　</button>
             </div>
         </form>
+    </div>
+</div>
+<div class="modal fade" id="modalModify" tabindex="-1" role="dialog" aria-labelledby="mySupplierModify">
+    <div class="modal-dialog" role="document">
+        <form class="modal-content form-horizontal">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="mySupplierModify">编辑供应商</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">商家名称</label>
+                            <div class="col-xs-9">
+                                <input type="text" class="form-control" name="supplierName" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">营业时间</label>
+                            <div class="col-xs-6 form-range">
+                                <div class="input-group">
+                                    <span class="input-group-addon">工作日</span>
+                                    <input type="time" class="form-control" name="workingStart">
+                                </div>
+                                <i class="fa fa-minus"></i>
+                            </div>
+                            <div class="col-xs-3">
+                                <input type="time" class="form-control" name="workingEnd">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">商家地址</label>
+                            <div class="col-xs-9">
+                                <input type="text" class="form-control" name="address" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <div class="col-xs-6 col-xs-offset-3 form-range">
+                                <div class="input-group">
+                                    <span class="input-group-addon">休息日</span>
+                                    <input type="time" class="form-control" name="restStart">
+                                </div>
+                                <i class="fa fa-minus"></i>
+                            </div>
+                            <div class="col-xs-3">
+                                <input type="time" class="form-control" name="restEnd">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">联系人</label>
+                            <div class="col-xs-9">
+                                <input type="text" class="form-control" name="linkman">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">手机号</label>
+                            <div class="col-xs-9">
+                                <input type="text" class="form-control" name="mobile">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accountArea">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info">添加账号</button>
+                <button type="button" class="btn btn-primary">　确定　</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">　取消　</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="fade" id="account">
+    <div class="panel panel-default">
+        <div class="panel-heading box-justify">
+            <span>账号##</span>
+            <i class="fa fa-remove"></i>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="accountName-##" class="col-xs-4 control-label">姓名</label>
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control" id="accountName-##" name="accountName[]">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="accountPassword-##" class="col-xs-4 control-label">密码</label>
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control" id="accountPassword-##" name="accountPassword[]">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="accountMobile-##" class="col-xs-4 control-label">手机号</label>
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control" id="accountMobile-##" name="accountMobile[]">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </body>

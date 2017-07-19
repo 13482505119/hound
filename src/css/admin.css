@@ -10,6 +10,7 @@ body {
     height: 100%;
 }
 body {
+    padding-right: 0!important;
     overflow: hidden;
     font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 13px;
@@ -31,6 +32,10 @@ table {
 }
 textarea {
     resize: none;
+}
+.modal-dialog .form-control[type="time"] {
+    padding: 6px 0;
+    font-size: 12px;
 }
 .fa-plus,
 .fa-remove {
@@ -69,7 +74,8 @@ textarea {
     font-size: 16px;
     color: #337ab7;
 }
-#main .help-block {
+#main .help-block,
+.modal-dialog .help-block {
     display: none!important;
 }
 #main .panel > table > tbody > tr > td {

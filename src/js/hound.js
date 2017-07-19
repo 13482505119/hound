@@ -57,7 +57,8 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate", "cookie"]
         },
         //SweetAlert2
         swal: sweetAlert,
-        _swal: function (title, text, type, timer, ok) {
+        //hound sweet alert
+        hsa: function (title, text, type, timer, ok) {
             if ($.isFunction(timer)) {
                 ok = timer;
                 timer = null;
@@ -73,18 +74,18 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate", "cookie"]
         },
         alert: function (title, text, timer) {
             //this.swal(title, text, "warning");
-            this._swal(title, text, "warning", timer);
+            this.hsa(title, text, "warning", timer);
         },
         success: function (title, text, timer) {
-            this._swal(title, text, "success", timer);
+            this.hsa(title, text, "success", timer);
         },
         error: function (title, text, timer) {
             //this.swal(title, text, "error");
-            this._swal(title, text, "error", timer);
+            this.hsa(title, text, "error", timer);
         },
         info: function (title, text, timer) {
             //this.swal(title, text, "info");
-            this._swal(title, text, "info", timer);
+            this.hsa(title, text, "info", timer);
         },
         loading: function (xhr) {
             var _this = this;
