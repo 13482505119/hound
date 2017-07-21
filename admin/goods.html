@@ -102,23 +102,44 @@
             </div>
         </nav>
 
-        <form class="form-inline">
-            <div class="form-group">
-                <label for="goodsTitle">商品名称</label>
-                <input type="text" class="form-control" id="goodsTitle" name="goodsTitle" size="10">
+        <form class="form-horizontal">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="goodsTitle" class="col-xs-4 control-label">商品名称</label>
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control" id="goodsTitle" name="goodsTitle" size="10">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="goodsSKU" class="col-xs-4 control-label">SKU</label>
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control" id="goodsSKU" name="goodsSKU" size="10">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="supplier" class="col-xs-4 control-label">供应商</label>
+                        <div class="col-xs-8">
+                            <div class="autocomplete" data-url="autocomplete.json" data-id="supplierId">
+                                <input type="text" class="form-control" id="supplier" name="supplier" required autocomplete="off">
+                                <ul></ul>
+                            </div>
+                            <input type="hidden" name="supplierId">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <button type="submit" class="btn btn-default btn-block">搜索</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="goodsSKU">商品SKU</label>
-                <input type="text" class="form-control" id="goodsSKU" name="goodsSKU" size="10">
-            </div>
-            <div class="form-group">
-                <label for="supplier">供应商</label>
-                <select class="form-control" id="supplier" name="supplier">
-                    <option value="">选择供应商</option>
-                    <option value="100">供应商名称</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-default">搜索</button>
         </form>
 
         <ul class="nav nav-tabs space-double">

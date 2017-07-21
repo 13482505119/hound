@@ -10,12 +10,14 @@
         "accounts": [
             {
                 "name": "任晓雪",
-                "password": "123456",
+                "member": "aaa",
+                "password": "111111",
                 "mobile": "15721107719"
             },
             {
-                "name": "任晓雪",
-                "password": "123456",
+                "name": "彭广胜",
+                "member": "bbb",
+                "password": "222222",
                 "mobile": "15721107719"
             }
         ],

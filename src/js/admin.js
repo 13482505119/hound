@@ -96,6 +96,10 @@ require(["hound", "bootstrap", "metisMenu"], function(hound) {
         $upfile.click();
     }).on("click", ".fa-remove", function () {
         swiper.removeSlide(swiper.clickedIndex);
+        if ($(swiper.slides[swiper.slides.length-1]).find(".fa-plus") != 1) {
+            swiper.appendSlide('<div class="swiper-slide"><i class="fa fa-plus fa-2x"></i></div>');
+            swiper.slideTo(swiper.slides.length-1);
+        }
     });
     $upfile.change(function () {
         if (!$(this).val()) {
@@ -122,8 +126,13 @@ require(["hound", "bootstrap", "metisMenu"], function(hound) {
                     $.each(responseObj.data, function (i, n) {
                         if (swiper.slides.length < 31) {
                             swiper.prependSlide('<div class="swiper-slide"><img src="' + n + '"><i class="fa fa-remove"></i><input type="hidden" name="swiper[]" value="' + n + '"></div>');
+                            swiper.slideTo(swiper.slides.length-1);
                         }
                     });
+                    if (swiper.slides.length >= 31) {
+                        swiper.removeSlide(swiper.slides.length-1);
+                        swiper.slideTo(swiper.slides.length-1);
+                    }
                 }
                 hound.success("上传完成", "", 2000);
             } else {
@@ -136,20 +145,8 @@ require(["hound", "bootstrap", "metisMenu"], function(hound) {
         });
     });
 
-    //添加经销商
-    $("#modalAdd").each(function () {
-        var $this = $(this),
-            $accountArea = $this.find(".accountArea"),
-            index = $accountArea.children().length,
-            account = $("#account").html();
-        $this.on("click", ".btn-info", function () {
-            index++;
-            $accountArea.append($(account.replace(/##/g, index)));
-        }).on("click", ".fa-remove", function () {
-            $(this).closest(".panel").remove();
-        });
-    });
-    $("#modalModify").each(function () {
+    //添加&编辑账号操作
+    $("#modalModify, #modalAdd").each(function () {
         var $this = $(this),
             $accountArea = $this.find(".accountArea"),
             account = $("#account").html();
@@ -158,6 +155,9 @@ require(["hound", "bootstrap", "metisMenu"], function(hound) {
             $accountArea.append($(account.replace(/##/g, index)));
         }).on("click", ".fa-remove", function () {
             $(this).closest(".panel").remove();
+            $this.find(".panel").each(function (i) {
+                $(this).find(".number").text(i + 1);
+            });
         });
     });
 
@@ -178,16 +178,16 @@ require(["hound", "bootstrap", "metisMenu"], function(hound) {
                     $accountArea = $modify.find(".accountArea").empty(),
                     account = $("#account").html();
 
-                if ($modify.find('input[name="accountName"]').length == 1) {
+                if ($modify.find('input[name="accountName"]').length == 1) {//编辑管理账号
                     $modify.find('input[name="accountName"]').val(json.data.accountName);
                     $modify.find('input[name="name"]').val(json.data.name);
                     $modify.find('input[name="password"]').val(json.data.password);
                     $modify.find('input[name="authority"][value="' + json.data.authority + '"]').prop("checked", true);
                     $modify.modal();
                     return;
-                } else if ($modify.find('input[name="dealerName"]').length == 1) {
+                } else if ($modify.find('input[name="dealerName"]').length == 1) {//编辑经销商
                     $modify.find('input[name="dealerName"]').val(json.data.dealerName);
-                } else if ($modify.find('input[name="supplierName"]').length == 1) {
+                } else if ($modify.find('input[name="supplierName"]').length == 1) {//编辑供应商
                     $modify.find('input[name="supplierName"]').val(json.data.supplierName);
                     $modify.find('input[name="workingStart"]').val(json.data.workingStart);
                     $modify.find('input[name="workingEnd"]').val(json.data.workingEnd);
@@ -196,13 +196,13 @@ require(["hound", "bootstrap", "metisMenu"], function(hound) {
                 }
                 $modify.find('input[name="address"]').val(json.data.address);
                 $modify.find('input[name="linkman"]').val(json.data.linkman);
-                $modify.find('input[name="mobile"]').val(json.data.mobile);
+                //$modify.find('input[name="mobile"]').val(json.data.mobile);
 
                 $.each(json.data.accounts, function (i, n) {
                     var $account = $(account.replace(/##/g, i+1));
-                    $account.find('input[name="accountName[]"]').val(n.name);
+                    $account.find('input[name="accountName[]"]').val(n.name).prop("readonly", true);
+                    $account.find('input[name="accountMember[]"]').val(n.member).prop("readonly", true);
                     $account.find('input[name="accountPassword[]"]').val(n.password);
-                    $account.find('input[name="accountMobile[]"]').val(n.mobile);
                     $accountArea.append($account);
                 });
 
@@ -283,8 +283,49 @@ require(["hound", "bootstrap", "metisMenu"], function(hound) {
         }, param));
     }
 
-    //订单操作
-    /*$(".alert-warning").on("click", ".btn", function () {
+    //自动完成
+    $(".autocomplete").each(function () {
+        var $this = $(this),
+            $input = $this.find("input"),
+            $ul = $this.find("ul"),
+            url = $this.data("url"),
+            xhr = {status: 200},
+            $form = $this.closest("form"),
+            $inputId = $form.find('input[name="' + $this.data("id") + '"]'),
+            $inputAddress = $form.find('input[name="' + $this.data("address") + '"]');
 
-    })*/
+        $input.on("keyup", function () {
+            var data = {
+                key: $input.val()
+            };
+            if (hound.isBlank(data.key)) {
+                xhr.abort();
+                $ul.empty().hide();
+            } else {
+                if (xhr.status == 200) {
+                    xhr = hound.ajax("POST", url, data, function (json) {
+                        $ul.empty().show();
+                        if (json.data.length ==0) {
+                            $ul.append('<li>无记录</li>');
+                        }
+                        $.each(json.data, function(i, n) {
+                            $ul.append('<li data-id="' + n.id + '" data-address="' + n.address + '">' + n.name + '</li>');
+                        });
+                    });
+                }
+            }
+        }).on("blur", function () {
+            setTimeout(function () {
+                $ul.hide();
+            }, 300);
+        });
+
+        $ul.on("click", "li[data-id]", function () {
+            var $li = $(this);
+            $input.val($li.text());
+            $inputId.val($li.data("id"));
+            $inputAddress.val($li.data("address"));
+            $ul.hide();
+        });
+    });
 });

@@ -121,7 +121,6 @@
             <thead>
             <tr>
                 <th class="text-center" width="40"><input type="checkbox" name="" value="100"></th>
-                <th class="text-center" width="68">编号</th>
                 <th class="text-center">供应商</th>
                 <th class="text-center" width="12%">入驻时间</th>
                 <th class="text-center" width="12%">在售商品数</th>
@@ -134,7 +133,6 @@
             <tbody>
             <tr>
                 <td class="text-center"><input name="ids[]" type="checkbox"></td>
-                <td>001</td>
                 <td><a href="#">上海铂尔曼酒店</a></td>
                 <td>2017-03-26</td>
                 <td>20</td>
@@ -157,7 +155,6 @@
             </tr>
             <tr>
                 <td class="text-center"><input name="ids[]" type="checkbox"></td>
-                <td>001</td>
                 <td><a href="#">上海铂尔曼酒店</a></td>
                 <td>2017-03-26</td>
                 <td>20</td>
@@ -182,7 +179,7 @@
             <tfoot>
             <tr>
                 <td class="text-center"><input name="ids[]" type="checkbox"></td>
-                <td colspan="8">
+                <td colspan="7">
                     <div class="table-control">
                         <div class="">
                             <button type="button" class="btn btn-sm btn-warning">关闭账号</button>
@@ -218,7 +215,6 @@
             <thead>
             <tr>
                 <th class="text-center" width="40"><input type="checkbox" name="" value="100"></th>
-                <th class="text-center" width="68">编号</th>
                 <th class="text-center">供应商</th>
                 <th class="text-center" width="12%">入驻时间</th>
                 <th class="text-center" width="12%">在售商品数</th>
@@ -231,7 +227,6 @@
             <tbody>
             <tr>
                 <td class="text-center"><input name="ids[]" type="checkbox"></td>
-                <td>001</td>
                 <td><a href="#">上海铂尔曼酒店</a></td>
                 <td>2017-03-26</td>
                 <td>20</td>
@@ -254,7 +249,6 @@
             </tr>
             <tr>
                 <td class="text-center"><input name="ids[]" type="checkbox"></td>
-                <td>001</td>
                 <td><a href="#">上海铂尔曼酒店</a></td>
                 <td>2017-03-26</td>
                 <td>20</td>
@@ -279,7 +273,7 @@
             <tfoot>
             <tr>
                 <td class="text-center"><input name="ids[]" type="checkbox"></td>
-                <td colspan="8">
+                <td colspan="7">
                     <div class="table-control">
                         <div class="">
                             <button type="button" class="btn btn-sm btn-success">启用账号</button>
@@ -378,45 +372,27 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label class="col-xs-3 control-label">手机号</label>
-                            <div class="col-xs-9">
-                                <input type="text" class="form-control" name="mobile">
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="accountArea">
                     <div class="panel panel-default">
                         <div class="panel-heading box-justify">
-                            <span>账号1</span>
+                            <span>账号<span class="number">1</span></span>
                         </div>
                         <div class="panel-body">
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <label class="col-xs-4 control-label">姓名</label>
-                                        <div class="col-xs-8">
-                                            <input type="text" class="form-control" name="accountName[]">
-                                        </div>
-                                    </div>
+                            <div class="form-group">
+                                <label class="col-xs-2 control-label">姓名</label>
+                                <div class="col-xs-4">
+                                    <input type="text" class="form-control" name="accountName[]">
                                 </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <label class="col-xs-4 control-label">密码</label>
-                                        <div class="col-xs-8">
-                                            <input type="text" class="form-control" name="accountPassword[]">
-                                        </div>
-                                    </div>
+                                <label class="col-xs-2 control-label">登录账号</label>
+                                <div class="col-xs-4">
+                                    <input type="text" class="form-control" name="accountMember[]">
                                 </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <label class="col-xs-4 control-label">手机号</label>
-                                        <div class="col-xs-8">
-                                            <input type="text" class="form-control" name="accountMobile[]">
-                                        </div>
-                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-xs-2 control-label">密码</label>
+                                <div class="col-xs-4">
+                                    <input type="text" class="form-control" name="accountPassword[]">
                                 </div>
                             </div>
                         </div>
@@ -520,34 +496,24 @@
 <div class="fade" id="account">
     <div class="panel panel-default">
         <div class="panel-heading box-justify">
-            <span>账号##</span>
+            <span>账号<span class="number">##</span></span>
             <i class="fa fa-remove"></i>
         </div>
         <div class="panel-body">
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label for="accountName-##" class="col-xs-4 control-label">姓名</label>
-                        <div class="col-xs-8">
-                            <input type="text" class="form-control" id="accountName-##" name="accountName[]">
-                        </div>
-                    </div>
+            <div class="form-group">
+                <label class="col-xs-2 control-label">姓名</label>
+                <div class="col-xs-4">
+                    <input type="text" class="form-control" name="accountName[]">
                 </div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label for="accountPassword-##" class="col-xs-4 control-label">密码</label>
-                        <div class="col-xs-8">
-                            <input type="text" class="form-control" id="accountPassword-##" name="accountPassword[]">
-                        </div>
-                    </div>
+                <label class="col-xs-2 control-label">登录账号</label>
+                <div class="col-xs-4">
+                    <input type="text" class="form-control" name="accountMember[]">
                 </div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label for="accountMobile-##" class="col-xs-4 control-label">手机号</label>
-                        <div class="col-xs-8">
-                            <input type="text" class="form-control" id="accountMobile-##" name="accountMobile[]">
-                        </div>
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-2 control-label">密码</label>
+                <div class="col-xs-4">
+                    <input type="text" class="form-control" name="accountPassword[]">
                 </div>
             </div>
         </div>

@@ -32,7 +32,7 @@ $(function () {
             title: {
                 text: '(%)'
             },
-            min: 10
+            min: 12
         },
         tooltip: {
             headerFormat: '<b>{series.name}</b><br>',
@@ -53,7 +53,8 @@ $(function () {
                 [Date.UTC(2017, 6, 14), 14.77],
                 [Date.UTC(2017, 6, 17), 14.54],
                 [Date.UTC(2017, 6, 18), 14.45],
-                [Date.UTC(2017, 6, 19), 14.38]
+                [Date.UTC(2017, 6, 19), 14.38],
+                [Date.UTC(2017, 6, 20), 14.43]
             ]
         }, {
             name: '占流通市值比例(%)',
@@ -69,7 +70,8 @@ $(function () {
                 [Date.UTC(2017, 6, 14), 15.43],
                 [Date.UTC(2017, 6, 17), 16.59],
                 [Date.UTC(2017, 6, 18), 16.18],
-                [Date.UTC(2017, 6, 19), 15.95]
+                [Date.UTC(2017, 6, 19), 15.95],
+                [Date.UTC(2017, 6, 20), 15.77]
             ]
         }]
     });
@@ -79,6 +81,6 @@ $(function () {
 	<body>
 		<script src="highcharts.js"></script>
 		<script src="exporting.js"></script>
-		<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+		<div id="container" style="min-width: 310px; height: 800px; margin: 0 auto"></div>
 	</body>
 </html>

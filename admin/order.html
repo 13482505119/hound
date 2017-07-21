@@ -133,9 +133,11 @@
                     <div class="form-group">
                         <label for="dealer" class="col-xs-4 control-label">经销商订单</label>
                         <div class="col-xs-8">
-                            <select class="form-control" id="dealer" name="dealer">
-                                <option value="100">经销商订单</option>
-                            </select>
+                            <div class="autocomplete" data-url="autocomplete.json" data-id="supplierId">
+                                <input type="text" class="form-control" id="dealer" name="dealer" required autocomplete="off">
+                                <ul></ul>
+                            </div>
+                            <input type="hidden" name="dealerId">
                         </div>
                     </div>
                 </div>
@@ -143,9 +145,11 @@
                     <div class="form-group">
                         <label for="orderNo" class="col-xs-4 control-label">供应商订单</label>
                         <div class="col-xs-8">
-                            <select class="form-control" id="supplier" name="supplier">
-                                <option value="100">供应商名称</option>
-                            </select>
+                            <div class="autocomplete" data-url="autocomplete.json" data-id="supplierId">
+                                <input type="text" class="form-control" id="supplier" name="supplier" required autocomplete="off">
+                                <ul></ul>
+                            </div>
+                            <input type="hidden" name="supplierId">
                         </div>
                     </div>
                 </div>
@@ -153,11 +157,11 @@
                     <div class="form-group">
                         <label class="col-xs-4 control-label">下单日期</label>
                         <div class="col-xs-4 form-range">
-                            <input type="text" class="form-control" id="orderBegin" name="mobileNo">
+                            <input type="date" class="form-control" id="orderBegin" name="timeStart">
                             <i class="fa fa-minus"></i>
                         </div>
                         <div class="col-xs-4">
-                            <input type="text" class="form-control" id="orderEnd" name="mobileNo">
+                            <input type="date" class="form-control" id="orderEnd" name="timeEnd">
                         </div>
                     </div>
                 </div>

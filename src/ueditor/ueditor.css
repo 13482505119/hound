@@ -1,0 +1,62 @@
+h1 { font-size: 3.6rem; }
+h2 { font-size: 3.0rem; }
+h3 { font-size: 2.4rem; }
+h4 { font-size: 2rem; }
+
+h1, h2, h3, h4, h5, h6 {
+    text-align: left;
+    font-style: italic;
+    font-weight: lighter;
+    margin: 0.2em 0;
+    line-height: 1.2em;
+}
+
+{
+    display: block;
+    position: relative;
+}
+a {
+    text-decoration: underline;
+}
+a:hover {
+    text-decoration: underline;
+}
+h1 {
+    margin: 1em 0;
+    font-size: 3.3rem;
+    color: #FAC02E;
+}
+h2 {
+    margin: 1em 0 0.25em 0;
+    font-size: 2.2rem;
+    color: #FAC02E;
+}
+h2.subtitle {
+    margin: -1em 0 1em 4em;
+    text-indent: -2em;
+    color: #FAC02E;
+}
+h2.subtitle::before {
+    content: '——'
+}
+h3 {
+    margin: 3em 0 0.25em 0;
+    font-size: 1.6rem;
+}
+h4 {
+    margin: 3em 0 0.25em 0;
+    font-size: 1.2rem;
+}
+blockquote,
+ul,
+ol,
+li,
+p {
+    position: relative;
+    font-size: 1rem;
+    line-height: 1.66em;
+}
+li {
+    margin-bottom: 0.5em;
+}
+
