@@ -6,11 +6,21 @@ require.config({
     paths: {
         "jquery": "jquery-3.2.1.min",
         "bootstrap": "bootstrap.min",
+        "datetimepicker": "plugins/datetimepicker/bootstrap-datetimepicker.min",
+        "datetimepickerLanguage": "plugins/datetimepicker/bootstrap-datetimepicker.zh-CN",
         "metisMenu": "plugins/metismenu/metisMenu.min"
     },
     shim:{
         "bootstrap": {
             deps: ["jquery"],
+            exports: "$"
+        },
+        "datetimepicker": {
+            deps: ["jquery", "bootstrap"],
+            exports: "$"
+        },
+        "datetimepickerLanguage": {
+            deps: ["jquery", "datetimepicker"],
             exports: "$"
         },
         "metisMenu": {
@@ -20,7 +30,7 @@ require.config({
     }
 });
 
-require(["hound", "bootstrap", "metisMenu"], function(hound) {
+require(["hound", "bootstrap", "datetimepicker", "datetimepickerLanguage", "metisMenu"], function(hound) {
     //MetsiMenu
     $('.metismenu').metisMenu();
 
@@ -327,5 +337,17 @@ require(["hound", "bootstrap", "metisMenu"], function(hound) {
             $inputAddress.val($li.data("address"));
             $ul.hide();
         });
+    });
+
+    //日期选择器
+    $("#goodsExpires").datetimepicker({
+        autoclose: true,
+        startView: 2,
+        minView: 2,
+        todayBtn: true,
+        todayHighlight: true,
+        //viewSelect: "day",
+        fontAwesome: true,
+        format: 'yyyy-mm-dd'
     });
 });

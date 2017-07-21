@@ -1,6 +1,7 @@
 @import "font-awesome.min.css";
 @import "bootstrap.min.css";
 @import "bootstrap-extend.css";
+@import "../js/plugins/datetimepicker/bootstrap-datetimepicker.min.css";
 @import "../js/plugins/swiper/swiper.min.css";
 @import "../js/plugins/sweetalert2/sweetalert2.min.css";
 @import "../js/plugins/metismenu/metisMenu.min.css";
