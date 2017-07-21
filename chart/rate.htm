@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>盘点央行历次调息时间表及对股市影响</title>
+		<script type="text/javascript" src="../src/js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript">
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'spline'
+        },
+        title: {
+            text: '央行历次调息时间表及对股市影响'
+        },
+        subtitle: {
+            text: '2002 - 2014'
+        },
+        xAxis: {
+            type: 'datetime',
+            dateTimeLabelFormats: { // don't display the dummy year
+                //month: '%e. %b',
+                month: '%Y-%m',
+                year: '%Y'
+            },
+            title: {
+                text: 'Date'
+            }
+        },
+        yAxis: {
+            title: {
+                text: '(%)'
+            },
+            min: -5
+        },
+        tooltip: {
+            headerFormat: '<b>{series.name}</b><br>',
+            pointFormat: '{point.x:%Y-%m-%d}: {point.y:.2f}%'
+        },
+
+        series: [{
+            name: '存款基准利率',
+            // Define the data points. All series have a dummy year
+            // of 1970/71 in order to be compared on the same x axis. Note
+            // that in JavaScript, months start at 0 for January, 1 for February etc.
+            data: [
+                //[Date.UTC(1990,  3, 15), 10.08],
+                //[Date.UTC(1990,  7, 21), 8.64],
+                //[Date.UTC(1991,  3, 21), 7.56],
+                //[Date.UTC(1993,  4, 15), 9.18],
+                //[Date.UTC(1993,  6, 11), 10.98],
+                //[Date.UTC(1996,  4,  1), 9.18],
+                //[Date.UTC(1996,  7, 23), 7.47],
+                //[Date.UTC(1997,  9, 23), 5.67],
+                //[Date.UTC(1998,  2, 25), 5.22],
+                //[Date.UTC(1998,  6,  1), 4.77],
+                //[Date.UTC(1998, 11,  7), 3.78],
+                //[Date.UTC(1999,  5, 10), 2.25],
+                [Date.UTC(2002,  1, 21), 1.98],
+                [Date.UTC(2004,  9, 29), 2.25],
+                [Date.UTC(2006,  7, 19), 2.52],
+                [Date.UTC(2007,  2, 18), 2.79],
+                [Date.UTC(2007,  4, 19), 3.06],
+                [Date.UTC(2007,  6, 21), 3.33],
+                [Date.UTC(2007,  7, 22), 3.60],
+                [Date.UTC(2007,  8, 15), 3.87],
+                [Date.UTC(2007, 11, 21), 4.14],
+                [Date.UTC(2008,  9,  9), 3.87],
+                [Date.UTC(2008,  9, 30), 3.60],
+                [Date.UTC(2008, 10, 27), 2.52],
+                [Date.UTC(2008, 11, 23), 2.25],
+                [Date.UTC(2010,  9, 20), 2.50],
+                [Date.UTC(2010, 11, 26), 2.75],
+                [Date.UTC(2011,  1,  9), 3.00],
+                [Date.UTC(2011,  3,  6), 3.25],
+                [Date.UTC(2011,  6,  7), 3.50],
+                [Date.UTC(2012,  5,  8), 3.25],
+                [Date.UTC(2012,  6,  6), 3.00],
+                [Date.UTC(2014, 10, 22), 2.75]
+            ]
+        }, {
+            name: '贷款基准利率',
+            // Define the data points. All series have a dummy year
+            // of 1970/71 in order to be compared on the same x axis. Note
+            // that in JavaScript, months start at 0 for January, 1 for February etc.
+            data: [
+                [Date.UTC(2002,  1, 21), 5.31],
+                [Date.UTC(2004,  9, 29), 5.58],
+                [Date.UTC(2006,  3, 28), 5.85],
+                [Date.UTC(2006,  7, 19), 6.12],
+                [Date.UTC(2007,  2, 18), 6.39],
+                [Date.UTC(2007,  4, 19), 6.57],
+                [Date.UTC(2007,  6, 21), 6.84],
+                [Date.UTC(2007,  7, 22), 7.02],
+                [Date.UTC(2007,  8, 15), 7.29],
+                [Date.UTC(2007, 11, 21), 7.47],
+                [Date.UTC(2008,  8, 16), 7.20],
+                [Date.UTC(2008,  9,  9), 6.93],
+                [Date.UTC(2008,  9, 30), 6.66],
+                [Date.UTC(2008, 10, 27), 5.58],
+                [Date.UTC(2008, 11, 23), 5.31],
+                [Date.UTC(2010,  9, 20), 5.56],
+                [Date.UTC(2010, 11, 26), 5.81],
+                [Date.UTC(2011,  1,  9), 6.06],
+                [Date.UTC(2011,  3,  6), 6.31],
+                [Date.UTC(2011,  6,  7), 6.56],
+                [Date.UTC(2012,  5,  8), 6.31],
+                [Date.UTC(2012,  6,  6), 6.00],
+                [Date.UTC(2014, 10, 22), 5.60]
+            ]
+        }, {
+            name: '消息公布次日指数涨跌',
+            // Define the data points. All series have a dummy year
+            // of 1970/71 in order to be compared on the same x axis. Note
+            // that in JavaScript, months start at 0 for January, 1 for February etc.
+            data: [
+                [Date.UTC(2002,  1, 21), 1.57],
+                [Date.UTC(2004,  9, 29), -1.58],
+                [Date.UTC(2006,  3, 28), 1.66],
+                [Date.UTC(2006,  7, 19), 0.20],
+                [Date.UTC(2007,  2, 18), 2.87],
+                [Date.UTC(2007,  4, 19), 1.04],
+                [Date.UTC(2007,  6, 21), 3.81],
+                [Date.UTC(2007,  7, 22), 0.50],
+                [Date.UTC(2007,  8, 15), 2.06],
+                [Date.UTC(2007, 11, 21), 1.15],
+                [Date.UTC(2008,  8, 16), -4.47],
+                [Date.UTC(2008,  9,  9), -0.84],
+                [Date.UTC(2008,  9, 30), 2.55],
+                [Date.UTC(2008, 10, 27), 1.05],
+                [Date.UTC(2008, 11, 23), -4.55],
+                [Date.UTC(2010,  9, 20), 0.07],
+                [Date.UTC(2010, 11, 26), -1.90],
+                [Date.UTC(2011,  1,  9), -0.89],
+                [Date.UTC(2011,  3,  6), 0.22],
+                [Date.UTC(2011,  6,  7), -0.58],
+                [Date.UTC(2012,  5,  8), -0.51],
+                [Date.UTC(2012,  6,  6), -2.37],
+                [Date.UTC(2014, 10, 22), 1.85]
+            ]
+        }]
+    });
+});
+		</script>
+	</head>
+	<body>
+		<script src="highcharts.js"></script>
+		<script src="exporting.js"></script>
+		<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+	</body>
+</html>
