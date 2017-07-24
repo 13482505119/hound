@@ -6,8 +6,8 @@ require.config({
     paths: {
         "jquery": "jquery-3.2.1.min",
         "bootstrap": "bootstrap.min",
-        "datetimepicker": "plugins/datetimepicker/bootstrap-datetimepicker.min",
-        "datetimepickerLanguage": "plugins/datetimepicker/bootstrap-datetimepicker.zh-CN",
+        //"datetimepicker": "plugins/datetimepicker/bootstrap-datetimepicker.min",
+        //"datetimepickerLanguage": "plugins/datetimepicker/bootstrap-datetimepicker.zh-CN",
         "metisMenu": "plugins/metismenu/metisMenu.min"
     },
     shim:{
@@ -15,14 +15,14 @@ require.config({
             deps: ["jquery"],
             exports: "$"
         },
-        "datetimepicker": {
+        /*"datetimepicker": {
             deps: ["jquery", "bootstrap"],
             exports: "$"
         },
         "datetimepickerLanguage": {
             deps: ["jquery", "datetimepicker"],
             exports: "$"
-        },
+        },*/
         "metisMenu": {
             deps: ["jquery"],
             exports: "$"
@@ -30,7 +30,7 @@ require.config({
     }
 });
 
-require(["hound", "bootstrap", "datetimepicker", "datetimepickerLanguage", "metisMenu"], function(hound) {
+require(["hound", "bootstrap"/*, "datetimepicker", "datetimepickerLanguage"*/, "metisMenu"], function(hound) {
     //MetsiMenu
     $('.metismenu').metisMenu();
 
@@ -93,6 +93,7 @@ require(["hound", "bootstrap", "datetimepicker", "datetimepickerLanguage", "meti
 
     //图片上传
     var $upfile = $("#upfile"),
+        uploadUrl = $upfile.data("url"),
         mode = 1,//1:缩略图;2:轮播图
         uploading = false;
     $(".upload-thumbnail").on("click", ".fa-plus", function () {
@@ -127,7 +128,7 @@ require(["hound", "bootstrap", "datetimepicker", "datetimepickerLanguage", "meti
             hound.loading();
             uploading = true;
         }
-        $upfile.upload5("upload.json", function (responseObj) {
+        $upfile.upload5(uploadUrl, function (responseObj) {
             console.log(responseObj);
             if (responseObj.code == 200) {
                 if (mode == 1) {
@@ -340,7 +341,7 @@ require(["hound", "bootstrap", "datetimepicker", "datetimepickerLanguage", "meti
     });
 
     //日期选择器
-    $("#goodsExpires").datetimepicker({
+    /*$("#goodsExpires").datetimepicker({
         autoclose: true,
         startView: 2,
         minView: 2,
@@ -349,5 +350,5 @@ require(["hound", "bootstrap", "datetimepicker", "datetimepickerLanguage", "meti
         //viewSelect: "day",
         fontAwesome: true,
         format: 'yyyy-mm-dd'
-    });
+    });*/
 });
