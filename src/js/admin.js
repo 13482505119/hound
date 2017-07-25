@@ -246,14 +246,15 @@ require(["hound", "bootstrap"/*, "datetimepicker", "datetimepickerLanguage"*/, "
                 $modify.modal();
             });
         }).on("click", "button.btn-warning", function () {
-            var $this = $(this);
+            var $this = $(this),
+                text = $this.text();
             if ($this.hasClass("btn-sm")) {
                 //批量关闭
                 var $ids = $this.closest("table").find("tbody input:checkbox:checked");
                 if ($ids.length == 0) {
-                    hound.alert("请选择需要关闭的账号！", "");
+                    hound.alert("请选择需要" + text + "的行！", "");
                 } else {
-                    hound.hsa("确认要关闭已选择账号吗？", "", "info", function () {
+                    hound.hsa("确认要" + text + "吗？", "", "info", function () {
                         var param = $.extend({"ids": []}, data.param);
                         $.each($ids.serializeArray(), function (i, n) {
                             param.ids.push(n.value);
@@ -263,19 +264,20 @@ require(["hound", "bootstrap"/*, "datetimepicker", "datetimepickerLanguage"*/, "
                 }
             } else {
                 //关闭
-                hound.hsa("确认关闭吗？", "", "info", function () {
+                hound.hsa("确认" + text + "吗？", "", "info", function () {
                     hound.post(data.primary, parseParam(data.param, $this));
                 });
             }
         }).on("click", "button.btn-success", function () {
-            var $this = $(this);
+            var $this = $(this),
+                text = $this.text();
             if ($this.hasClass("btn-sm")) {
                 //批量启用
                 var $ids = $this.closest("table").find("tbody input:checkbox:checked");
                 if ($ids.length == 0) {
-                    hound.alert("请选择需要启用的账号！", "");
+                    hound.alert("请选择需要" + text + "的行！", "");
                 } else {
-                    hound.hsa("确认要启用已选择账号吗？", "", "info", function () {
+                    hound.hsa("确认要" + text + "吗？", "", "info", function () {
                         var param = $.extend({"ids": []}, data.param);
                         $.each($ids.serializeArray(), function (i, n) {
                             param.ids.push(n.value);
@@ -285,19 +287,20 @@ require(["hound", "bootstrap"/*, "datetimepicker", "datetimepickerLanguage"*/, "
                 }
             } else {
                 //启用
-                hound.hsa("确认启用吗？", "", "info", function () {
+                hound.hsa("确认" + text + "吗？", "", "info", function () {
                     hound.post(data.success, parseParam(data.param, $this));
                 });
             }
         }).on("click", "button.btn-danger", function () {
-            var $this = $(this);
+            var $this = $(this),
+                text = $this.text();
             if ($this.hasClass("btn-sm")) {
                 //批量删除
                 var $ids = $this.closest("table").find("tbody input:checkbox:checked");
                 if ($ids.length == 0) {
-                    hound.alert("请选择需要删除的账号！", "");
+                    hound.alert("请选择需要" + text + "的行！", "");
                 } else {
-                    hound.hsa("确认要删除已选择账号吗？", "", "info", function () {
+                    hound.hsa("确认要" + text + "吗？", "", "info", function () {
                         var param = $.extend({"ids": []}, data.param);
                         $.each($ids.serializeArray(), function (i, n) {
                             param.ids.push(n.value);
@@ -307,7 +310,7 @@ require(["hound", "bootstrap"/*, "datetimepicker", "datetimepickerLanguage"*/, "
                 }
             } else {
                 //关闭
-                hound.hsa("确认删除吗？", "", "info", function () {
+                hound.hsa("确认" + text + "吗？", "", "info", function () {
                     hound.post(data.danger, parseParam(data.param, $this));
                 });
             }
