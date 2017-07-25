@@ -265,7 +265,7 @@ require(["hound", "bootstrap"/*, "datetimepicker", "datetimepickerLanguage"*/, "
             } else {
                 //关闭
                 hound.hsa("确认" + text + "吗？", "", "info", function () {
-                    hound.post(data.primary, parseParam(data.param, $this));
+                    hound.post(data.warning, parseParam(data.param, $this));
                 });
             }
         }).on("click", "button.btn-success", function () {
