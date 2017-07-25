@@ -82,17 +82,19 @@ require(["hound", "bootstrap"/*, "datetimepicker", "datetimepickerLanguage"*/, "
     };
 
     //图片轮播
-    var swiper = new Swiper('.swiper-container-upload', {
+    /*var swiper = new Swiper('.swiper-container-upload', {
         pagination: '.swiper-pagination',
         paginationType: 'progress',
         slidesPerView: 'auto',
         paginationClickable: true,
         spaceBetween: 10,
         freeMode: true
-    });
+    });*/
 
     //图片上传
     var $upfile = $("#upfile"),
+        $swiper = $(".upload-swiper"),
+        $swiperPlus = $swiper.find("li:last"),
         uploadUrl = $upfile.data("url"),
         mode = 1,//1:缩略图;2:轮播图
         uploading = false;
@@ -102,14 +104,26 @@ require(["hound", "bootstrap"/*, "datetimepicker", "datetimepickerLanguage"*/, "
     }).on("click", ".fa-remove", function () {
         $(this).parent().html('<i class="fa fa-plus fa-2x"></i>');
     });
-    $(".swiper-container-upload").on("click", ".fa-plus", function () {
+    /*$(".swiper-container-upload").on("click", ".fa-plus", function () {
         mode = 2;
         $upfile.click();
     }).on("click", ".fa-remove", function () {
         swiper.removeSlide(swiper.clickedIndex);
-        if ($(swiper.slides[swiper.slides.length-1]).find(".fa-plus") != 1) {
+        if ($(swiper.slides[swiper.slides.length-1]).find(".fa-plus").length != 1) {
             swiper.appendSlide('<div class="swiper-slide"><i class="fa fa-plus fa-2x"></i></div>');
             swiper.slideTo(swiper.slides.length-1);
+        }
+    });*/
+    if ($swiper.children().length >= 31) {
+        $swiperPlus.hide();
+    }
+    $swiper.on("click", ".fa-plus", function() {
+        mode = 2;
+        $upfile.click();
+    }).on("click", ".fa-remove", function() {
+        $(this).closest("li").remove();
+        if ($swiper.children().length < 31) {
+            $swiperPlus.show();
         }
     });
     $upfile.change(function () {
@@ -117,7 +131,11 @@ require(["hound", "bootstrap"/*, "datetimepicker", "datetimepickerLanguage"*/, "
             return;
         }
 
-        if (mode == 2 && swiper.slides.length >= 31) {
+        /*if (mode == 2 && swiper.slides.length >= 31) {
+            hound.alert("轮播图最多只能上传30张图片", "");
+            return;
+        }*/
+        if (mode == 2 && $swiper.children().length >= 31) {
             hound.alert("轮播图最多只能上传30张图片", "");
             return;
         }
@@ -129,12 +147,12 @@ require(["hound", "bootstrap"/*, "datetimepicker", "datetimepickerLanguage"*/, "
             uploading = true;
         }
         $upfile.upload5(uploadUrl, function (responseObj) {
-            console.log(responseObj);
+            //console.log(responseObj);
             if (responseObj.code == 200) {
                 if (mode == 1) {
                     $(".upload-thumbnail").html('<img src="' + responseObj.data[0] + '"><i class="fa fa-remove"></i><input type="hidden" name="thumbnail" value="' + responseObj.data[0] + '">');
                 } else {
-                    $.each(responseObj.data, function (i, n) {
+                    /*$.each(responseObj.data, function (i, n) {
                         if (swiper.slides.length < 31) {
                             swiper.prependSlide('<div class="swiper-slide"><img src="' + n + '"><i class="fa fa-remove"></i><input type="hidden" name="swiper[]" value="' + n + '"></div>');
                             swiper.slideTo(swiper.slides.length-1);
@@ -143,6 +161,14 @@ require(["hound", "bootstrap"/*, "datetimepicker", "datetimepickerLanguage"*/, "
                     if (swiper.slides.length >= 31) {
                         swiper.removeSlide(swiper.slides.length-1);
                         swiper.slideTo(swiper.slides.length-1);
+                    }*/
+                    $.each(responseObj.data, function (i, n) {
+                        if ($swiper.children().length < 31) {
+                            $swiperPlus.before('<li><img src="' + n + '"><i class="fa fa-remove"></i><input type="hidden" name="swiper[]" value="' + n + '"></li>');
+                        }
+                    });
+                    if ($swiper.children().length >= 31) {
+                        $swiperPlus.hide();
                     }
                 }
                 hound.success("上传完成", "", 2000);
@@ -177,11 +203,11 @@ require(["hound", "bootstrap"/*, "datetimepicker", "datetimepickerLanguage"*/, "
         var $this = $(this),
             data = $this.data();
 
-        $this.on("click", ".btn-default", function () {
+        $this.on("click", "button.btn-default", function () {
             //查看
             var $this = $(this);
             hound.redirect(data.default + "?" + parseParam(data.param, $this));
-        }).on("click", ".btn-primary", function () {
+        }).on("click", "button.btn-primary", function () {
             //弹出编辑
             var $this = $(this);
             hound.post(data.primary, parseParam(data.param, $this), function (json) {
@@ -219,7 +245,7 @@ require(["hound", "bootstrap"/*, "datetimepicker", "datetimepickerLanguage"*/, "
 
                 $modify.modal();
             });
-        }).on("click", ".btn-warning", function () {
+        }).on("click", "button.btn-warning", function () {
             var $this = $(this);
             if ($this.hasClass("btn-sm")) {
                 //批量关闭
@@ -241,7 +267,7 @@ require(["hound", "bootstrap"/*, "datetimepicker", "datetimepickerLanguage"*/, "
                     hound.post(data.primary, parseParam(data.param, $this));
                 });
             }
-        }).on("click", ".btn-success", function () {
+        }).on("click", "button.btn-success", function () {
             var $this = $(this);
             if ($this.hasClass("btn-sm")) {
                 //批量启用
@@ -263,7 +289,7 @@ require(["hound", "bootstrap"/*, "datetimepicker", "datetimepickerLanguage"*/, "
                     hound.post(data.success, parseParam(data.param, $this));
                 });
             }
-        }).on("click", ".btn-danger", function () {
+        }).on("click", "button.btn-danger", function () {
             var $this = $(this);
             if ($this.hasClass("btn-sm")) {
                 //批量删除

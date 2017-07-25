@@ -29391,12 +29391,12 @@ UE.ui = baidu.editor.ui = {};
                     var opt = editor.options;
                     //给实例添加一个编辑器的容器引用
                     editor.container = editor.ui.getDom();
-                    var parents = domUtils.findParents(holder,true);
+                    /*var parents = domUtils.findParents(holder,true);
                     var displays = [];
                     for(var i = 0 ,ci;ci=parents[i];i++){
                         displays[i] = ci.style.display;
                         ci.style.display = 'block'
-                    }
+                    }*/
                     if (opt.initialFrameWidth) {
                         opt.minFrameWidth = opt.initialFrameWidth;
                     } else {
@@ -29411,9 +29411,10 @@ UE.ui = baidu.editor.ui = {};
                     } else {
                         opt.initialFrameHeight = opt.minFrameHeight = holder.offsetHeight;
                     }
-                    for(var i = 0 ,ci;ci=parents[i];i++){
+                    /*for(var i = 0 ,ci;ci=parents[i];i++){
                         ci.style.display =  displays[i]
-                    }
+                    }*/
+                    console.log(editor);
                     //编辑器最外容器设置了高度，会导致，编辑器不占位
                     //todo 先去掉，没有找到原因
                     if(holder.style.height){
