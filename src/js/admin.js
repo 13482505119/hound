@@ -369,6 +369,21 @@ require(["hound", "bootstrap"/*, "datetimepicker", "datetimepickerLanguage"*/, "
         });
     });
 
+    //退款操作
+    var $orderRefund = $("#orderRefund"),
+        $orderRefundForm = $orderRefund.find("form"),
+        $orderRefundId = $orderRefund.find('input:hidden[name="id"]');
+    $(".table-order").on("click", ".btn-warning", function () {
+        var $this = $(this),
+            id = $this.closest("table").data("id");
+
+        $orderRefundForm[0].reset();
+        $orderRefundId.val(id);
+        $orderRefund.modal({
+            backdrop: 'static'
+        });
+    });
+
     //日期选择器
     /*$("#goodsExpires").datetimepicker({
         autoclose: true,

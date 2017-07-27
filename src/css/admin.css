@@ -81,7 +81,8 @@ textarea {
     color: #337ab7;
 }
 #main .help-block,
-.modal-dialog .help-block {
+.modal-dialog .help-block,
+.modal-dialog .form-control-feedback {
     display: none!important;
 }
 #main .panel > table > tbody > tr > td {
