@@ -35,6 +35,12 @@
                         </ul>
                     </div>
                 </li>
+                <!--
+                当前样式设定规则：
+                li class="active"
+                aria-expanded="true"
+                其父级 ul 样式加 in
+                -->
                 <li>
                     <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 商品管理</a>
                     <ul class="nav collapse" aria-expanded="false">
@@ -51,30 +57,30 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 供应商管理</a>
-                    <ul class="nav collapse in" aria-expanded="false">
-                        <li><a href="#">供应商管理</a></li>
-                        <li><a href="#">供应商-商品管理</a></li>
+                    <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 分销商管理</a>
+                    <ul class="nav collapse" aria-expanded="false">
+                        <li><a href="dealer.html">分销商管理</a></li>
+                        <li><a href="dealer-goods.html">分销商-商品管理</a></li>
                     </ul>
                 </li>
-                <li class="active">
-                    <a href="javascript:" class="has-arrow" aria-expanded="true"><i class="fa fa-th-large"></i> 供应商管理</a>
-                    <ul class="nav collapse" aria-expanded="true">
-                        <li class="active"><a href="#">供应商管理</a></li>
+                <li>
+                    <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 供应商管理</a>
+                    <ul class="nav collapse in" aria-expanded="false">
+                        <li class="active"><a href="supplier.html">供应商管理</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 财务管理</a>
                     <ul class="nav collapse" aria-expanded="false">
                         <li>
-                            <a href="#">退款订单</a>
+                            <a href="order-refund.html">退款订单</a>
                         </li>
                     </ul>
                 </li>
                 <li>
                     <a href="javascript:" class="has-arrow" aria-expanded="false"><i class="fa fa-th-large"></i> 账号管理</a>
                     <ul class="nav collapse" aria-expanded="false">
-                        <li><a href="#">账号管理</a></li>
+                        <li><a href="account.html">账号管理</a></li>
                     </ul>
                 </li>
             </ul>
@@ -308,7 +314,7 @@
 <!-- Modal -->
 <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="mySupplierAdd">
     <div class="modal-dialog" role="document">
-        <form class="modal-content form-horizontal">
+        <form class="modal-content form-horizontal" data-validate="true" method="post" action="success.json">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="mySupplierAdd">新增供应商</h4>
@@ -401,7 +407,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-info">添加账号</button>
-                <button type="button" class="btn btn-primary">　确定　</button>
+                <button type="button" class="btn btn-primary" data-click="ajaxSubmit">　确定　</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">　取消　</button>
             </div>
         </form>
@@ -409,7 +415,7 @@
 </div>
 <div class="modal fade" id="modalModify" tabindex="-1" role="dialog" aria-labelledby="mySupplierModify">
     <div class="modal-dialog" role="document">
-        <form class="modal-content form-horizontal">
+        <form class="modal-content form-horizontal" data-validate="true" method="post" action="success.json">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="mySupplierModify">编辑供应商</h4>
@@ -487,7 +493,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-info">添加账号</button>
-                <button type="button" class="btn btn-primary">　确定　</button>
+                <button type="button" class="btn btn-primary" data-click="ajaxSubmit">　确定　</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">　取消　</button>
             </div>
         </form>

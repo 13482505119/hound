@@ -415,3 +415,12 @@ tfoot .pagination {
 .form-goods {
     padding: 0 30px;
 }
+.form-login {
+    margin: 50px auto;
+    width: 500px;
+}
+.form-login .form-horizontal {
+    padding: 30px 20px;
+    background-color: #EBEDF1;
+    border-radius: 10px;
+}
