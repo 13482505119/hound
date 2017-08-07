@@ -189,7 +189,11 @@ require(["hound", "bootstrap"/*, "datetimepicker", "datetimepickerLanguage"*/, "
             account = $("#account").html();
         $this.on("click", ".btn-info", function () {
             var index = $accountArea.children().length + 1;
-            $accountArea.append($(account.replace(/##/g, index)));
+            if (index > 10) {
+                hound.alert("最多只能添加10个账号", "");
+            } else {
+                $accountArea.append($(account.replace(/##/g, index)));
+            }
         }).on("click", ".fa-remove", function () {
             $(this).closest(".panel").remove();
             $this.find(".panel").each(function (i) {
@@ -236,7 +240,8 @@ require(["hound", "bootstrap"/*, "datetimepicker", "datetimepickerLanguage"*/, "
                 //$modify.find('input[name="mobile"]').val(json.data.mobile);
 
                 $.each(json.data.accounts, function (i, n) {
-                    var $account = $(account.replace(/##/g, i+1));
+                    var $account = $(account.replace(/##/g, i + 1));
+                    $account.find('input[name="accountId[]"]').val(n.id);
                     $account.find('input[name="accountName[]"]').val(n.name).prop("readonly", true);
                     $account.find('input[name="accountMember[]"]').val(n.member).prop("readonly", true);
                     $account.find('input[name="accountPassword[]"]').val(n.password);
