@@ -219,6 +219,8 @@ require(["hound", "bootstrap"/*, "datetimepicker", "datetimepickerLanguage"*/, "
                     $accountArea = $modify.find(".accountArea").empty(),
                     account = $("#account").html();
 
+                $modify.find('input[name="id"]').val(json.data.id);
+
                 if ($modify.find('input[name="accountName"]').length == 1) {//编辑管理账号
                     $modify.find('input[name="accountName"]').val(json.data.accountName);
                     $modify.find('input[name="name"]').val(json.data.name);
