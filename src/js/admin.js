@@ -239,7 +239,7 @@ require(["hound", "bootstrap"/*, "datetimepicker", "datetimepickerLanguage"*/, "
                 }
                 $modify.find('input[name="address"]').val(json.data.address);
                 $modify.find('input[name="linkman"]').val(json.data.linkman);
-                //$modify.find('input[name="mobile"]').val(json.data.mobile);
+                $modify.find('input[name="mobile"]').val(json.data.mobile);
 
                 $.each(json.data.accounts, function (i, n) {
                     var $account = $(account.replace(/##/g, i + 1));
