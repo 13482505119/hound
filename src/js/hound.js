@@ -309,8 +309,8 @@ define("hound", ["swiper", "sweetAlert", "jquery", "form", "validate", "cookie"]
 
                 $.hound.post(url, data, function () {
                     $target.fadeOut("fast", function () {
-                        if (siblings == 0 && $target.parent().data("redirect")) {
-                            $.hound.redirect($this.parent().data("redirect"));
+                        if (siblings == 0 && $target.parent().data("config")) {
+                            $.hound.redirect($this.parent().data("config"));
                         } else {
                             $target.remove();
                         }

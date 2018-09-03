@@ -1,0 +1,281 @@
+/* login */
+.wrapper-container {
+    background: #ffffff;
+}
+.form-user {
+    padding: 30px;
+    font-size: 28px;
+}
+.form-user .form-group {
+    margin: 30px 0;
+}
+.form-user .form-group-inline {
+    display: flex;
+}
+.form-user .form-group-inline .input-group {
+    flex: 1;
+}
+.form-user .form-control {
+    display: block;
+    height: 74px;
+    border: 2px solid #f8f8f8;
+    background-color: #f8f8f8;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 30px;
+    color: #212630;
+}
+.form-user .input-group {
+    display: flex;
+    height: 74px;
+    border: 2px solid #f8f8f8;
+    background-color: #f8f8f8;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.form-user .input-group input {
+    flex: 1;
+    border: 0;
+    padding: 0 4px;
+    background-color: #f8f8f8;
+    font-size: 30px;
+    color: #212630;
+}
+.form-user .input-group input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #f8f8f8 inset;
+    -webkit-text-fill-color: #212630;
+}
+.form-user .input-group .input-group-addon {
+    margin: 15px 20px;
+    display: block;
+    width: 44px;
+    height: 44px;
+}
+.form-user .input-group .input-group-addon-auth {
+    background: url("../images/user/addon-auth-code@3x.png") no-repeat;
+    background-size: cover;
+}
+.form-user .input-group .input-group-addon-emall {
+    background: url("../images/user/addon-email@3x.png") no-repeat;
+    background-size: cover;
+}
+.form-user .input-group .input-group-addon-eyes {
+    background: url("../images/user/addon-eyes-close@3x.png") no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+.form-user .input-group .input-group-addon-eyes.eyes-open {
+    background: url("../images/user/addon-eyes-open@3x.png") no-repeat;
+    background-size: cover;
+    transition: all 0.2s;
+}
+.form-user .input-group .input-group-addon-mobile {
+    background: url("../images/user/addon-mobile@3x.png") no-repeat;
+    background-size: cover;
+}
+.form-user .input-group .input-group-addon-password {
+    background: url("../images/user/addon-password@3x.png") no-repeat;
+    background-size: cover;
+}
+.form-user .btn-login {
+    display: block;
+    margin-top: 50px;
+    padding: 0;
+    border: 0;
+    width: 100%;
+    height: 88px;
+    background-color: #fa4532;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 30px;
+    color: #ffffff;
+}
+.form-user .btn-send,
+.form-user .btn-change {
+    display: block;
+    margin: 0 0 0 20px;
+    padding: 0;
+    width: 180px;
+    height: 78px;
+    border: 1px solid #dddddd;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background: #ffffff none;
+    font-size: 30px;
+    color: #5f6575;
+}
+.form-user .btn-change {
+    width: 235px;
+}
+.form-user a {
+    color: #3ea3f1;
+}
+.form-user .input-checkbox {
+    position: relative;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-clip: content-box;
+    -webkit-appearance: none;
+    user-select: none;
+    outline: none;
+    vertical-align: middle;
+}
+.form-user .input-checkbox:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background: url("../images/user/agree-false@3x.png") no-repeat;
+    background-size: cover;
+    transition: all 0.2s;
+}
+.form-user .input-checkbox:checked:before {
+    background: url("../images/user/agree-true@3x.png") no-repeat;
+    background-size: cover;
+}
+.form-user #imageCode {
+    display: block;
+    width: 205px;
+    height: 78px;
+}
+.form-user .btn[disabled] {
+    color: #dddddd;
+}
+.form-user .quickLogin[disabled],
+.form-user .regStep1[disabled] {
+    background: #a9a9a9;
+    color: #666666;
+}
+
+.login-tab {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding-top: 80px;
+    border-bottom: 1px solid #dddddd;
+    width: 640px;
+    height: 55px;
+    background: #f8f8f8;
+}
+.login-tab:before,
+.login-tab:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 144px;
+    height: 136px;
+}
+.login-tab:before {
+    left: 0;
+    background: url("../images/user/jianjian-eyes-open@3x.png") no-repeat;
+    background-size: cover;
+    transition: all 0.2s;
+}
+.login-tab:after {
+    right: 0;
+    background: url("../images/user/corn-eyes-open@3x.png") no-repeat;
+    background-size: cover;
+    transition: all 0.2s;
+}
+.login-tab.eyes-close:before {
+    background: url("../images/user/jianjian-eyes-close@3x.png") no-repeat;
+    background-size: cover;
+}
+.login-tab.eyes-close:after {
+    background: url("../images/user/corn-eyes-close@3x.png") no-repeat;
+    background-size: cover;
+}
+.login-tab > li {
+    position: relative;
+    width: 200px;
+    height: 30px;
+    font-size: 30px;
+    line-height: 1;
+    text-align: center;
+}
+.login-tab > li + li {
+    border-left: 2px solid #dddddd;
+}
+.login-tab > li.active {
+    color: #FF0000;
+}
+.login-tab > li.active:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -25px;
+    margin: 0 auto;
+    height: 4px;
+    width: 144px;
+    background-color: #fa4532;
+}
+.login-join {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 224px;
+    background: #f8f8f8;
+}
+.login-join > h2 {
+    position: absolute;
+    left: 0;
+    top: -45px;
+    padding-left: 30px;
+    font-size: 24px;
+    color: #979ca8;
+}
+.login-join > ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 224px;
+}
+.login-join > ul > li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 186px;
+}
+.login-join > ul > li:before {
+    content: '';
+    display: block;
+    width: 106px;
+    height: 106px;
+}
+.login-join > ul > li.logo-hrt:before {
+    background: url("../images/hrtlog.png") no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+.login-join > ul > li > h3 {
+    margin-top: 15px;
+    font-size: 28px;
+    color: #666666;
+}
+.swiper-container-login .form-user {
+    width: 580px;
+}
+
+.modal-send .form-user {
+
+}
+.modal-send .modal-dialog {
+    width: 520px;
+    padding: 0;
+    background: #ffffff;
+}
+

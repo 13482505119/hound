@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>px to rem</title>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script>
+        $(function() {
+            $.get('dpr-lookup.css', function(data) {
+                data = data.replace(/([\.\d]+)px/ig, function(rs, $1) {
+                    if (parseFloat($1) > 1) {
+                        return parseInt($1) / 64 + 'rem';
+                    } else {
+                        return $1 + 'px';
+                    }
+                });
+                $('pre').html(data);
+            });
+        });
+    </script>
+</head>
+<body>
+<pre>
+
+</pre>
+</body>
+</html>
